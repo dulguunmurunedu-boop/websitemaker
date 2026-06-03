@@ -493,9 +493,42 @@
       .footer-bottom { flex-direction: column; gap: 8px; text-align: center; }
       .cursor, .cursor-dot { display: none; }
     }
+
+    /* ===== LANG SWITCHER ===== */
+    .lang-switcher {
+      position: fixed; top: 24px; right: 40px; z-index: 1001;
+      display: flex; gap: 4px;
+      background: rgba(13,13,20,0.8);
+      backdrop-filter: blur(10px);
+      border: 1px solid rgba(255,255,255,0.08);
+      border-radius: 10px; padding: 4px;
+    }
+    .lang-btn {
+      padding: 6px 14px; border-radius: 7px;
+      font-size: 0.75rem; font-weight: 700;
+      background: transparent; color: #666;
+      border: none; cursor: pointer;
+      transition: all 0.3s;
+    }
+    .lang-btn.active {
+      background: linear-gradient(135deg, #7850ff, #5a3fd4);
+      color: #fff;
+    }
+    .lang-btn:hover:not(.active) {
+      color: #fff; background: rgba(255,255,255,0.05);
+    }
+    @media (max-width: 768px) {
+      .lang-switcher { top: 16px; right: 24px; }
+    }
   </style>
 </head>
 <body>
+
+  <!-- LANG SWITCHER -->
+  <div class="lang-switcher">
+    <button class="lang-btn active" data-lang="mn">МН</button>
+    <button class="lang-btn" data-lang="en">EN</button>
+  </div>
 
   <!-- CURSOR -->
   <div class="cursor" id="cursor"></div>
@@ -515,11 +548,11 @@
   <nav id="navbar">
     <a href="#" class="nav-logo">DUDU</a>
     <div class="nav-links">
-      <a href="#work">Ажилууд</a>
-      <a href="#services">Үйлчилгээ</a>
-      <a href="#process">Үйл явц</a>
-      <a href="#testimonials">Сэтгэгдэл</a>
-      <a href="#contact" class="nav-cta">Холбогдох</a>
+      <a href="#work"><span data-mn="navWork">Ажилууд</span></a>
+      <a href="#services"><span data-mn="navServices">Үйлчилгээ</span></a>
+      <a href="#process"><span data-mn="navProcess">Үйл явц</span></a>
+      <a href="#testimonials"><span data-mn="navReviews">Сэтгэгдэл</span></a>
+      <a href="#contact" class="nav-cta"><span data-mn="navCta">Холбогдох</span></a>
     </div>
     <button class="hamburger" id="hamburger"><span></span><span></span><span></span></button>
   </nav>
@@ -533,20 +566,20 @@
       <div class="hero-grid"></div>
     </div>
     <div class="hero-content">
-      <div class="hero-pill"><span class="dot"></span> Шинэ төсөлд бэлэн</div>
+      <div class="hero-pill"><span class="dot"></span> <span data-mn="heroPill">Шинэ төсөлд бэлэн</span></div>
       <h1 class="hero-title">
-        <span class="line line-1"><span>Би бүтээдэг</span></span>
-        <span class="line line-2"><span class="gradient">дижитал бүтээлүүд</span></span>
-        <span class="line line-3"><span>хүмүүст хайртай болдог.</span></span>
+        <span class="line line-1"><span data-mn="heroLine1">Би бүтээдэг</span></span>
+        <span class="line line-2"><span class="gradient" data-mn="heroLine2">дижитал бүтээлүүд</span></span>
+        <span class="line line-3"><span data-mn="heroLine3">хүмүүст хайртай болдог.</span></span>
       </h1>
-      <p class="hero-desc">Вэб хөгжүүлэлт, видео продакшн, дизайн, маркетинг — бүгд нэг дор. Улаанбаатар хотод суугаа, дэлхий даяар ажилладаг.</p>
+      <p class="hero-desc" data-mn="heroDesc">Вэб хөгжүүлэлт, видео продакшн, дизайн, маркетинг — бүгд нэг дор. Улаанбаатар хотод суугаа, дэлхий даяар ажилладаг.</p>
       <div class="hero-actions">
-        <a href="#work" class="btn btn-primary"><i class="fas fa-arrow-right"></i> Ажилуудыг харах</a>
-        <a href="#contact" class="btn btn-ghost"><i class="fas fa-envelope"></i> Холбогдох</a>
+        <a href="#work" class="btn btn-primary"><i class="fas fa-arrow-right"></i> <span data-mn="heroBtn1">Ажилуудыг харах</span></a>
+        <a href="#contact" class="btn btn-ghost"><i class="fas fa-envelope"></i> <span data-mn="heroBtn2">Холбогдох</span></a>
       </div>
     </div>
     <div class="scroll-indicator">
-      <span>Гүйлгэж харах</span>
+      <span data-mn="scrollText">Гүйлгэж харах</span>
       <div class="scroll-line"></div>
     </div>
   </section>
@@ -577,50 +610,50 @@
   <!-- BENTO GRID (SERVICES) -->
   <section class="bento" id="services">
     <div class="bento-header">
-      <h2>Юу хийдэг вэ?</h2>
-      <p>Бизнесээ онлайн өсгөх бүх төрлийн дижитал үйлчилгээ.</p>
+      <h2 data-mn="bentoTitle">Юу хийдэг вэ?</h2>
+      <p data-mn="bentoDesc">Бизнесээ онлайн өсгөх бүх төрлийн дижитал үйлчилгээ.</p>
     </div>
     <div class="bento-grid">
       <div class="bento-card large">
         <div class="bento-icon" style="background: rgba(120,80,255,0.1); color: #7850ff;"><i class="fas fa-code"></i></div>
-        <h3>Вэб Хөгжүүлэлт</h3>
-        <p>Орчин үеийн, хурдан вэб сайт болон вэб аппликейшн. Лэндинг хуудаснаас эхлэн өгөгдлийн сан, API, админ панел бүхий бүрэн хэмжээний апп хүртэл.</p>
+        <h3 data-mn="bentoWeb">Вэб Хөгжүүлэлт</h3>
+        <p data-mn="bentoWebDesc">Орчин үеийн, хурдан вэб сайт болон вэб аппликейшн. Лэндинг хуудаснаас эхлэн өгөгдлийн сан, API, админ панел бүхий бүрэн хэмжээний апп хүртэл.</p>
       </div>
       <div class="bento-card">
         <div class="bento-stat purple">50+</div>
-        <div class="bento-label">Амжилттай Төсөл</div>
+        <div class="bento-label" data-mn="bentoProjects">Амжилттай Төсөл</div>
       </div>
       <div class="bento-card">
         <div class="bento-icon" style="background: rgba(255,100,150,0.1); color: #ff6496;"><i class="fas fa-video"></i></div>
-        <h3>Видео Продакшн</h3>
-        <p>Рилс, промо, моушн график — анхаарлыг татах контент.</p>
+        <h3 data-mn="bentoVideo">Видео Продакшн</h3>
+        <p data-mn="bentoVideoDesc">Рилс, промо, моушн график — анхаарлыг татах контент.</p>
       </div>
       <div class="bento-card tall">
         <div class="bento-icon" style="background: rgba(80,200,255,0.1); color: #50c8ff;"><i class="fas fa-pen-nib"></i></div>
-        <h3>График Дизайн</h3>
-        <p>Брэнд дизайн, лого, сошиал медиа график, баннер, хэвлэлийн дизайн. Анхаарлыг татах, зурвас илэрхийлэх контент.</p>
+        <h3 data-mn="bentoDesign">График Дизайн</h3>
+        <p data-mn="bentoDesignDesc">Брэнд дизайн, лого, сошиал медиа график, баннер, хэвлэлийн дизайн. Анхаарлыг татах, зурвас илэрхийлэх контент.</p>
       </div>
       <div class="bento-card">
         <div class="bento-stat pink">98%</div>
-        <div class="bento-label">Үйлчлүүлэгчийн Сэтгэл Ханамж</div>
+        <div class="bento-label" data-mn="bentoSatisfaction">Үйлчлүүлэгчийн Сэтгэл Ханамж</div>
       </div>
       <div class="bento-card">
         <div class="bento-icon" style="background: rgba(255,216,80,0.1); color: #ffd850;"><i class="fas fa-bullhorn"></i></div>
-        <h3>Дижитал Маркетинг</h3>
-        <p>ФБ/ИГ зар сурталчилгаа, стратеги, контент төлөвлөгөө — үйлчлүүлэгч авчирдаг.</p>
+        <h3 data-mn="bentoMarketing">Дижитал Маркетинг</h3>
+        <p data-mn="bentoMarketingDesc">ФБ/ИГ зар сурталчилгаа, стратеги, контент төлөвлөгөө — үйлчлүүлэгч авчирдаг.</p>
       </div>
       <div class="bento-card large">
         <div class="bento-icon" style="background: rgba(120,80,255,0.1); color: #7850ff;"><i class="fas fa-rocket"></i></div>
-        <h3>Бүх Төрлийн Шийдэл</h3>
-        <p>5 хүн цалин өгөхийн оронд бүгдийг ойлгож чадаг нэг хүн ав. Стратеги, дизайн, хөгжүүлэлт, маркетинг — бүгд нэг багц.</p>
+        <h3 data-mn="bentoAll">Бүх Төрлийн Шийдэл</h3>
+        <p data-mn="bentoAllDesc">5 хүн цалин өгөхийн оронд бүгдийг ойлгож чадаг нэг хүн ав. Стратеги, дизайн, хөгжүүлэлт, маркетинг — бүгд нэг багц.</p>
       </div>
       <div class="bento-card">
         <div class="bento-stat blue">24/7</div>
-        <div class="bento-label">Дэмжлэг Бэлэн</div>
+        <div class="bento-label" data-mn="bentoSupport">Дэмжлэг Бэлэн</div>
       </div>
       <div class="bento-card">
-        <div class="bento-stat yellow">Хурдан</div>
-        <div class="bento-label">Хүргэлт Баталгаатай</div>
+        <div class="bento-stat yellow" data-mn="bentoFast">Хурдан</div>
+        <div class="bento-label" data-mn="bentoDelivery">Хүргэлт Баталгаатай</div>
       </div>
     </div>
   </section>
@@ -628,8 +661,8 @@
   <!-- SHOWCASE (HORIZONTAL SCROLL) -->
   <section class="showcase" id="work">
     <div class="showcase-header">
-      <h2>Онцлох Ажилууд</h2>
-      <p>Ширтэж харж болно. Дэлгэрэнгүй харахыг хүсвэл картаар дарна уу.</p>
+      <h2 data-mn="showcaseTitle">Онцлох Ажилууд</h2>
+      <p data-mn="showcaseDesc">Ширтэж харж болно. Дэлгэрэнгүй харахыг хүсвэл картаар дарна уу.</p>
     </div>
     <div class="showcase-track">
       <a href="https://dulguunmurunedu-boop.github.io/websitemaker/templates/business/" target="_blank" class="showcase-card">
@@ -693,36 +726,36 @@
   <!-- PROCESS -->
   <section class="process" id="process">
     <div class="process-header">
-      <h2>Хэрхэн Ажилладаг Вэ?</h2>
-      <p>Саналаас эхлэн нээлт хүртэл тодорхой, хамтын үйл явц.</p>
+      <h2 data-mn="processTitle">Хэрхэн Ажилладаг Вэ?</h2>
+      <p data-mn="processDesc">Саналаас эхлэн нээлт хүртэл тодорхой, хамтын үйл явц.</p>
     </div>
     <div class="process-timeline">
       <div class="process-step">
         <div class="step-num">01</div>
         <div class="step-content">
-          <h3>Танилцуулах Ярилцлага</h3>
-          <p>Таны зорилго, үйлчлүүлэгч, харааны туха ярилцдаг. Ажил эхлэхээс өмнө бүтэн зургийг ойлгохын тулд зөв асуулт асуудаг.</p>
+          <h3 data-mn="process1">Танилцуулах Ярилцлага</h3>
+          <p data-mn="process1Desc">Таны зорилго, үйлчлүүлэгч, харааны туха ярилцдаг. Ажил эхлэхээс өмнө бүтэн зургийг ойлгохын тулд зөв асуулт асуудаг.</p>
         </div>
       </div>
       <div class="process-step">
         <div class="step-num">02</div>
         <div class="step-content">
-          <h3>Стратеги & Дизайн</h3>
-          <p>Вайрфрейм, мокап, тодорхой төлөвлөгөө бүтээдэг. Хөгжүүлэлт эхлэхээс өмнө чиглэлийг харж чадна.</p>
+          <h3 data-mn="process2">Стратеги & Дизайн</h3>
+          <p data-mn="process2Desc">Вайрфрейм, мокап, тодорхой төлөвлөгөө бүтээдэг. Хөгжүүлэлт эхлэхээс өмнө чиглэлийг харж чадна.</p>
         </div>
       </div>
       <div class="process-step">
         <div class="step-num">03</div>
         <div class="step-content">
-          <h3>Бүтээх & Сайжруулах</h3>
-          <p>Цэвэр, орчин үеийн код. Тогтмол мэдээлэл өгнө. Алхам бүрт явцыг харж, санал бодлоо өгөх боломжтой.</p>
+          <h3 data-mn="process3">Бүтээх & Сайжруулах</h3>
+          <p data-mn="process3Desc">Цэвэр, орчин үеийн код. Тогтмол мэдээлэл өгнө. Алхам бүрт явцыг харж, санал бодлоо өгөх боломжтой.</p>
         </div>
       </div>
       <div class="process-step">
         <div class="step-num">04</div>
         <div class="step-content">
-          <h3>Нээх & Өсгөх</h3>
-          <p>Туршилт, оновчлол, нээлт. Нээлтын дараа ч алга болдогүй — тогтсон дэмжлэг болон өсөлтийн стратеги орсон.</p>
+          <h3 data-mn="process4">Нээх & Өсгөх</h3>
+          <p data-mn="process4Desc">Туршилт, оновчлол, нээлт. Нээлтын дараа ч алга болдогүй — тогтсон дэмжлэг болон өсөлтийн стратеги орсон.</p>
         </div>
       </div>
     </div>
@@ -731,16 +764,16 @@
   <!-- TESTIMONIALS -->
   <section class="testimonials" id="testimonials">
     <div class="testimonials-header">
-      <h2>Үйлчлүүлэгчдийн Сэтгэгдэл</h2>
-      <p>Надтай хамтарсан хүмүүсийн юу гэж байгааг харна уу.</p>
+      <h2 data-mn="reviewsTitle">Үйлчлүүлэгчдийн Сэтгэгдэл</h2>
+      <p data-mn="reviewsDesc">Надтай хамтарсан хүмүүсийн юу гэж байгааг харна уу.</p>
     </div>
     <div class="testimonials-grid">
       <div class="testimonial-card">
         <div class="testimonial-stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
-        <blockquote>"DUDU манай онлайн байдлыг бүрэн өөрчилсөн. Шинэ вэб сайт манай үйлчлүүлэгчийн асуултыг 300%-иар өсгөсөн. Нарийвчлан анхаарал маш их байсан."</blockquote>
+        <blockquote data-mn="review1">"DUDU манай онлайн байдлыг бүрэн өөрчилсөн. Шинэ вэб сайт манай үйлчлүүлэгчийн асуултыг 300%-иар өсгөсөн. Нарийвчлан анхаарал маш их байсан."</blockquote>
         <div class="testimonial-author">
           <div class="t-avatar" style="background: linear-gradient(135deg, #7850ff, #5a3fd4);">Б</div>
-          <div><div class="t-name">Бат-Эрдэнэ</div><div class="t-role">Гүйцэтгэх захирал, TechVista MN</div></div>
+          <div><div class="t-name" data-mn="review1Name">Бат-Эрдэнэ</div><div class="t-role" data-mn="review1Role">Гүйцэтгэх захирал, TechVista MN</div></div>
         </div>
       </div>
       <div class="testimonial-card">
@@ -748,7 +781,7 @@
         <blockquote>"Мэргэжлийн, хурдан, маш авьяастай. Бидний хувд хийсэн промо видео 50K+ үзэлт авсан. Маргаанд төсөлд санал болгож байна."</blockquote>
         <div class="testimonial-author">
           <div class="t-avatar" style="background: linear-gradient(135deg, #ff6496, #d4467a);">С</div>
-          <div><div class="t-name">Сара Жонсон</div><div class="t-role">Үүсгэн байгуулагч, GreenLeaf Co.</div></div>
+          <div><div class="t-name" data-mn="review2Name">Сара Жонсон</div><div class="t-role" data-mn="review2Role">Үүсгэн байгуулагч, GreenLeaf Co.</div></div>
         </div>
       </div>
       <div class="testimonial-card">
@@ -756,7 +789,7 @@
         <blockquote">"Зохиосон Фэйсбүүк зар сурталчилгаанд сарын дотор 500+ шинэ лавлагаа авчраа. Эцэст нь бодит үр дүн гаргадаг хүн оллоо."</blockquote>
         <div class="testimonial-author">
           <div class="t-avatar" style="background: linear-gradient(135deg, #50c8ff, #3aa0d4);">Т</div>
-          <div><div class="t-name">Тунгалаг</div><div class="t-role">Маркетингийн захирал, FreshMart</div></div>
+          <div><div class="t-name" data-mn="review3Name">Тунгалаг</div><div class="t-role" data-mn="review3Role">Маркетингийн захирал, FreshMart</div></div>
         </div>
       </div>
     </div>
@@ -765,8 +798,8 @@
   <!-- CTA -->
   <section class="cta" id="contact">
     <div class="cta-box">
-      <h2>Төслөө эхлүүлэх бэлэн үү?</h2>
-      <p>Хамт хамтдаа гайхалтай зүйл бүтээцгээе. Эхний зөвлөгөө үнэгүй — ямар нэгэн үүрэггүй, зүгээр л ярилцлага.</p>
+      <h2 data-mn="ctaTitle">Төслөө эхлүүлэх бэлэн үү?</h2>
+      <p data-mn="ctaDesc">Хамт хамтдаа гайхалтай зүйл бүтээцгээе. Эхний зөвлөгөө үнэгүй — ямар нэгэн үүрэггүй, зүгээр л ярилцлага.</p>
       <a href="mailto:dudu@creative.mn" class="btn btn-primary"><i class="fas fa-envelope"></i> dudu@creative.mn</a>
     </div>
   </section>
@@ -777,10 +810,10 @@
       <div class="footer-left">
         <span class="footer-logo">DUDU</span>
         <div class="footer-links">
-          <a href="#work">Ажилууд</a>
-          <a href="#services">Үйлчилгээ</a>
-          <a href="#process">Үйл явц</a>
-          <a href="#contact">Холбоо барих</a>
+          <a href="#work"><span data-mn="footerWork">Ажилууд</span></a>
+          <a href="#services"><span data-mn="footerServices">Үйлчилгээ</span></a>
+          <a href="#process"><span data-mn="footerProcess">Үйл явц</span></a>
+          <a href="#contact"><span data-mn="footerContact">Холбоо барих</span></a>
         </div>
       </div>
       <div class="footer-social">
@@ -791,19 +824,19 @@
       </div>
     </div>
     <div class="footer-bottom">
-      <span>&copy; 2026 DUDU. Бүх эрх хуулиар хамгаалагдсан.</span>
-      <span>Улаанбаатар, Монгол Улс &mdash; <i class="fas fa-heart" style="color: #ff6496;"></i></span>
+      <span data-mn="footerCopy">&copy; 2026 DUDU. Бүх эрх хуулиар хамгаалагдсан.</span>
+      <span data-mn="footerLocation">Улаанбаатар, Монгол Улс &mdash; <i class="fas fa-heart" style="color: #ff6496;"></i></span>
     </div>
   </footer>
 
   <!-- MOBILE NAV -->
   <div class="mobile-nav" id="mobileNav">
     <button class="mobile-close" id="mobileClose"><i class="fas fa-times"></i></button>
-    <a href="#work" class="mobile-link">Ажилууд</a>
-    <a href="#services" class="mobile-link">Үйлчилгээ</a>
-    <a href="#process" class="mobile-link">Үйл явц</a>
-    <a href="#testimonials" class="mobile-link">Сэтгэгдэл</a>
-    <a href="#contact" class="mobile-link">Холбоо барих</a>
+    <a href="#work" class="mobile-link"><span data-mn="mobileWork">Ажилууд</span></a>
+    <a href="#services" class="mobile-link"><span data-mn="mobileServices">Үйлчилгээ</span></a>
+    <a href="#process" class="mobile-link"><span data-mn="mobileProcess">Үйл явц</span></a>
+    <a href="#testimonials" class="mobile-link"><span data-mn="mobileReviews">Сэтгэгдэл</span></a>
+    <a href="#contact" class="mobile-link"><span data-mn="mobileContact">Холбоо барих</span></a>
   </div>
 
   <script>
@@ -895,6 +928,174 @@
         }
       });
     }
+
+    // LANGUAGE SWITCHER
+    const langData = {
+      mn: {
+        navWork: "Ажилууд",
+        navServices: "Үйлчилгээ",
+        navProcess: "Үйл явц",
+        navReviews: "Сэтгэгдэл",
+        navCta: "Холбогдох",
+        heroPill: "Шинэ төсөлд бэлэн",
+        heroLine1: "Би бүтээдэг",
+        heroLine2: "дижитал бүтээлүүд",
+        heroLine3: "хүмүүст хайртай болдог.",
+        heroDesc: "Вэб хөгжүүлэлт, видео продакшн, дизайн, маркетинг — бүгд нэг дор. Улаанбаатар хотод суугаа, дэлхий даяар ажилладаг.",
+        heroBtn1: "Ажилуудыг харах",
+        heroBtn2: "Холбогдох",
+        scrollText: "Гүйлгэж харах",
+        bentoTitle: "Юу хийдэг вэ?",
+        bentoDesc: "Бизнесээ онлайн өсгөх бүх төрлийн дижитал үйлчилгээ.",
+        bentoWeb: "Вэб Хөгжүүлэлт",
+        bentoWebDesc: "Орчин үеийн, хурдан вэб сайт болон вэб аппликейшн. Лэндинг хуудаснаас эхлэн өгөгдлийн сан, API, админ панел бүхий бүрэн хэмжээний апп хүртэл.",
+        bentoProjects: "Амжилттай Төсөл",
+        bentoVideo: "Видео Продакшн",
+        bentoVideoDesc: "Рилс, промо, моушн график — анхаарлыг татах контент.",
+        bentoDesign: "График Дизайн",
+        bentoDesignDesc: "Брэнд дизайн, лого, сошиал медиа график, баннер, хэвлэлийн дизайн. Анхаарлыг татах, зурвас илэрхийлэх контент.",
+        bentoSatisfaction: "Үйлчлүүлэгчийн Сэтгэл Ханамж",
+        bentoMarketing: "Дижитал Маркетинг",
+        bentoMarketingDesc: "ФБ/ИГ зар сурталчилгаа, стратеги, контент төлөвлөгөө — үйлчлүүлэгч авчирдаг.",
+        bentoAll: "Бүх Төрлийн Шийдэл",
+        bentoAllDesc: "5 хүн цалин өгөхийн оронд бүгдийг ойлгож чадаг нэг хүн ав. Стратеги, дизайн, хөгжүүлэлт, маркетинг — бүгд нэг багц.",
+        bentoSupport: "Дэмжлэг Бэлэн",
+        bentoFast: "Хурдан",
+        bentoDelivery: "Хүргэлт Баталгаатай",
+        showcaseTitle: "Онцлох Ажилууд",
+        showcaseDesc: "Ширтэж харж болно. Дэлгэрэнгүй харахыг хүсвэл картаар дарна уу.",
+        processTitle: "Хэрхэн Ажилладаг Вэ?",
+        processDesc: "Саналаас эхлэн нээлт хүртэл тодорхой, хамтын үйл явц.",
+        process1: "Танилцуулах Ярилцлага",
+        process1Desc: "Таны зорилго, үйлчлүүлэгч, харааны туха ярилцдаг. Ажил эхлэхээс өмнө бүтэн зургийг ойлгохын тулд зөв асуулт асуудаг.",
+        process2: "Стратеги & Дизайн",
+        process2Desc: "Вайрфрейм, мокап, тодорхой төлөвлөгөө бүтээдэг. Хөгжүүлэлт эхлэхээс өмнө чиглэлийг харж чадна.",
+        process3: "Бүтээх & Сайжруулах",
+        process3Desc: "Цэвэр, орчин үеийн код. Тогтмол мэдээлэл өгнө. Алхам бүрт явцыг харж, санал бодлоо өгөх боломжтой.",
+        process4: "Нээх & Өсгөх",
+        process4Desc: "Туршилт, оновчлол, нээлт. Нээлтын дараа ч алга болдогүй — тогтсон дэмжлэг болон өсөлтийн стратеги орсон.",
+        reviewsTitle: "Үйлчлүүлэгчдийн Сэтгэгдэл",
+        reviewsDesc: "Надтай хамтарсан хүмүүсийн юу гэж байгааг харна уу.",
+        review1: "DUDU манай онлайн байдлыг бүрэн өөрчилсөн. Шинэ вэб сайт манай үйлчлүүлэгчийн асуултыг 300%-иар өсгөсөн. Нарийвчлан анхаарал маш их байсан.",
+        review1Name: "Бат-Эрдэнэ",
+        review1Role: "Гүйцэтгэх захирал, TechVista MN",
+        review2: "Мэргэжлийн, хурдан, маш авьяастай. Бидний хувд хийсэн промо видео 50K+ үзэлт авсан. Маргаанд төсөлд санал болгож байна.",
+        review2Name: "Сара Жонсон",
+        review2Role: "Үүсгэн байгуулагч, GreenLeaf Co.",
+        review3: "Зохиосон Фэйсбүүк зар сурталчилгаанд сарын дотор 500+ шинэ лавлагаа авчраа. Эцэст нь бодит үр дүн гаргадаг хүн оллоо.",
+        review3Name: "Тунгалаг",
+        review3Role: "Маркетингийн захирал, FreshMart",
+        ctaTitle: "Төслөө эхлүүлэх бэлэн үү?",
+        ctaDesc: "Хамт хамтдаа гайхалтай зүйл бүтээцгээе. Эхний зөвлөгөө үнэгүй — ямар нэгэн үүрэггүй, зүгээр л ярилцлага.",
+        footerWork: "Ажилууд",
+        footerServices: "Үйлчилгээ",
+        footerProcess: "Үйл явц",
+        footerContact: "Холбоо барих",
+        footerCopy: "Бүх эрх хуулиар хамгаалагдсан.",
+        footerLocation: "Улаанбаатар, Монгол Улс",
+        mobileWork: "Ажилууд",
+        mobileServices: "Үйлчилгээ",
+        mobileProcess: "Үйл явц",
+        mobileReviews: "Сэтгэгдэл",
+        mobileContact: "Холбоо барих"
+      },
+      en: {
+        navWork: "Work",
+        navServices: "Services",
+        navProcess: "Process",
+        navReviews: "Reviews",
+        navCta: "Let's Talk",
+        heroPill: "Available for Projects",
+        heroLine1: "I build",
+        heroLine2: "digital products",
+        heroLine3: "that convert.",
+        heroDesc: "Web development, video production, design, and marketing — all under one roof. Based in Ulaanbaatar, working worldwide.",
+        heroBtn1: "View My Work",
+        heroBtn2: "Get in Touch",
+        scrollText: "Scroll",
+        bentoTitle: "What I Do",
+        bentoDesc: "Full-stack digital services to help your business grow online.",
+        bentoWeb: "Web Development",
+        bentoWebDesc: "Modern, fast websites and web applications built with clean code. From landing pages to full-stack apps with databases, APIs, and admin panels.",
+        bentoProjects: "Projects Delivered",
+        bentoVideo: "Video Production",
+        bentoVideoDesc: "Reels, promos, motion graphics that capture attention.",
+        bentoDesign: "Graphic Design",
+        bentoDesignDesc: "Brand identity, logos, social media graphics, banners, and print design. Visual content that stands out and communicates your message clearly.",
+        bentoSatisfaction: "Client Satisfaction",
+        bentoMarketing: "Digital Marketing",
+        bentoMarketingDesc: "FB/IG ads, strategy, content plans that bring customers.",
+        bentoAll: "End-to-End Solutions",
+        bentoAllDesc: "Instead of hiring 5 different people, you get one person who understands how everything connects. Strategy, design, development, and marketing — all in one package.",
+        bentoSupport: "Support Available",
+        bentoFast: "Fast",
+        bentoDelivery: "Delivery Guaranteed",
+        showcaseTitle: "Featured Work",
+        showcaseDesc: "Swipe to explore templates and projects built with attention to detail.",
+        processTitle: "How I Work",
+        processDesc: "A clear, collaborative process from idea to launch.",
+        process1: "Discovery Call",
+        process1Desc: "We talk about your goals, audience, and vision. I ask the right questions to understand the full picture before any work begins.",
+        process2: "Strategy & Design",
+        process2Desc: "I create wireframes, mockups, and a clear roadmap. You see the direction before development starts.",
+        process3: "Build & Iterate",
+        process3Desc: "Clean, modern code with regular check-ins. You see progress every step of the way and can give feedback anytime.",
+        process4: "Launch & Grow",
+        process4Desc: "Testing, optimization, and deployment. I don't disappear after launch — ongoing support and growth strategies included.",
+        reviewsTitle: "Client Reviews",
+        reviewsDesc: "What people say about working with me.",
+        review1: "DUDU completely transformed our online presence. The new website increased our customer inquiries by 300%. Incredible attention to detail.",
+        review1Name: "Bat-Erdene",
+        review1Role: "CEO, TechVista MN",
+        review2: "Professional, fast, and incredibly talented. The promo video he made for us got 50K+ views. Highly recommend for any project.",
+        review2Name: "Sarah Johnson",
+        review2Role: "Founder, GreenLeaf Co.",
+        review3: "The Facebook ad campaign he designed brought us 500+ new leads in one month. Finally someone who delivers real results, not just promises.",
+        review3Name: "Tungalag",
+        review3Role: "Marketing Director, FreshMart",
+        ctaTitle: "Ready to start your project?",
+        ctaDesc: "Let's build something great together. First consultation is free — no commitment, just a conversation.",
+        footerWork: "Work",
+        footerServices: "Services",
+        footerProcess: "Process",
+        footerContact: "Contact",
+        footerCopy: "All rights reserved.",
+        footerLocation: "Ulaanbaatar, Mongolia",
+        mobileWork: "Work",
+        mobileServices: "Services",
+        mobileProcess: "Process",
+        mobileReviews: "Reviews",
+        mobileContact: "Contact"
+      }
+    };
+
+    function setLang(lang) {
+      const d = langData[lang];
+      if (!d) return;
+      document.querySelectorAll('[data-mn]').forEach(el => {
+        const key = el.getAttribute('data-mn');
+        if (d[key]) {
+          if (el.tagName === 'INPUT' || el.tagName === 'TEXTAREA') {
+            el.placeholder = d[key];
+          } else {
+            el.textContent = d[key];
+          }
+        }
+      });
+      document.querySelectorAll('.lang-btn').forEach(btn => {
+        btn.classList.toggle('active', btn.dataset.lang === lang);
+      });
+      localStorage.setItem('lang', lang);
+    }
+
+    // Language switcher click handlers
+    document.querySelectorAll('.lang-btn').forEach(btn => {
+      btn.addEventListener('click', () => setLang(btn.dataset.lang));
+    });
+
+    // Load saved language
+    const savedLang = localStorage.getItem('lang') || 'mn';
+    setLang(savedLang);
   </script>
 </body>
 </html>

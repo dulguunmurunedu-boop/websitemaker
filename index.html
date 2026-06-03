@@ -3,472 +3,897 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>DUDU - Creative Digital Studio</title>
-  <link rel="stylesheet" href="css/style.css">
+  <title>DUDU — Digital Studio</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <style>
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+    html { scroll-behavior: smooth; font-size: 16px; }
+    body {
+      font-family: 'Inter', sans-serif;
+      background: #06060a;
+      color: #e8e8e8;
+      overflow-x: hidden;
+      cursor: default;
+    }
+    a { text-decoration: none; color: inherit; }
+
+    /* ===== CUSTOM CURSOR ===== */
+    .cursor {
+      width: 20px; height: 20px;
+      border: 2px solid rgba(120, 80, 255, 0.8);
+      border-radius: 50%;
+      position: fixed; top: 0; left: 0;
+      pointer-events: none; z-index: 9999;
+      transition: transform 0.15s ease, width 0.3s, height 0.3s, border-color 0.3s;
+      mix-blend-mode: difference;
+    }
+    .cursor.active {
+      width: 50px; height: 50px;
+      border-color: rgba(255, 100, 150, 0.8);
+    }
+    .cursor-dot {
+      width: 4px; height: 4px;
+      background: #fff;
+      border-radius: 50%;
+      position: fixed; top: 0; left: 0;
+      pointer-events: none; z-index: 9999;
+    }
+
+    /* ===== NOISE OVERLAY ===== */
+    .noise {
+      position: fixed; inset: 0;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
+      pointer-events: none; z-index: 9998;
+      opacity: 0.15;
+    }
+
+    /* ===== PRELOADER ===== */
+    #preloader {
+      position: fixed; inset: 0;
+      background: #06060a;
+      z-index: 10000;
+      display: flex; align-items: center; justify-content: center;
+      transition: opacity 0.8s ease, visibility 0.8s;
+    }
+    #preloader.hidden { opacity: 0; visibility: hidden; }
+    .loader {
+      display: flex; gap: 8px;
+    }
+    .loader span {
+      width: 12px; height: 12px;
+      border-radius: 50%;
+      animation: loaderBounce 1.4s ease-in-out infinite;
+    }
+    .loader span:nth-child(1) { background: #7850ff; animation-delay: 0s; }
+    .loader span:nth-child(2) { background: #ff6496; animation-delay: 0.2s; }
+    .loader span:nth-child(3) { background: #50c8ff; animation-delay: 0.4s; }
+    .loader span:nth-child(4) { background: #ffd850; animation-delay: 0.6s; }
+    @keyframes loaderBounce {
+      0%, 80%, 100% { transform: scale(0.4); opacity: 0.3; }
+      40% { transform: scale(1); opacity: 1; }
+    }
+
+    /* ===== NAV ===== */
+    nav {
+      position: fixed; top: 0; left: 0; right: 0;
+      z-index: 1000; padding: 24px 40px;
+      display: flex; align-items: center; justify-content: space-between;
+      transition: all 0.4s ease;
+    }
+    nav.scrolled {
+      background: rgba(6, 6, 10, 0.85);
+      backdrop-filter: blur(20px);
+      border-bottom: 1px solid rgba(255,255,255,0.04);
+      padding: 16px 40px;
+    }
+    .nav-logo {
+      font-size: 1.4rem; font-weight: 900;
+      background: linear-gradient(135deg, #7850ff, #ff6496);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      letter-spacing: -1px;
+    }
+    .nav-links { display: flex; align-items: center; gap: 40px; }
+    .nav-links a {
+      font-size: 0.85rem; font-weight: 500; color: #888;
+      transition: color 0.3s; position: relative;
+    }
+    .nav-links a::after {
+      content: ''; position: absolute; bottom: -4px; left: 0;
+      width: 0; height: 1px;
+      background: linear-gradient(90deg, #7850ff, #ff6496);
+      transition: width 0.3s;
+    }
+    .nav-links a:hover { color: #fff; }
+    .nav-links a:hover::after { width: 100%; }
+    .nav-cta {
+      background: linear-gradient(135deg, #7850ff, #5a3fd4);
+      color: #fff !important; padding: 10px 24px;
+      border-radius: 8px; font-weight: 600; font-size: 0.85rem;
+      transition: all 0.3s;
+    }
+    .nav-cta:hover { transform: translateY(-1px); box-shadow: 0 4px 20px rgba(120,80,255,0.4); }
+    .nav-cta::after { display: none !important; }
+    .hamburger { display: none; flex-direction: column; gap: 5px; background: none; border: none; cursor: pointer; }
+    .hamburger span { display: block; width: 22px; height: 2px; background: #fff; transition: all 0.3s; }
+
+    /* ===== HERO ===== */
+    .hero {
+      min-height: 100vh; display: flex; align-items: center;
+      position: relative; padding: 120px 40px 80px;
+      overflow: hidden;
+    }
+    .hero-bg {
+      position: absolute; inset: 0; pointer-events: none;
+    }
+    .hero-orb {
+      position: absolute; border-radius: 50%;
+      filter: blur(120px); opacity: 0.12;
+      animation: orbFloat 20s ease-in-out infinite;
+    }
+    .orb-1 {
+      width: 600px; height: 600px; background: #7850ff;
+      top: -200px; right: -100px;
+      animation-delay: 0s;
+    }
+    .orb-2 {
+      width: 500px; height: 500px; background: #ff6496;
+      bottom: -200px; left: -100px;
+      animation-delay: -7s;
+    }
+    .orb-3 {
+      width: 400px; height: 400px; background: #50c8ff;
+      top: 40%; left: 50%;
+      animation-delay: -14s;
+    }
+    @keyframes orbFloat {
+      0%, 100% { transform: translate(0, 0) scale(1); }
+      25% { transform: translate(50px, -30px) scale(1.1); }
+      50% { transform: translate(-30px, 50px) scale(0.9); }
+      75% { transform: translate(40px, 20px) scale(1.05); }
+    }
+    .hero-grid {
+      position: absolute; inset: 0;
+      background-image:
+        linear-gradient(rgba(255,255,255,0.02) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,0.02) 1px, transparent 1px);
+      background-size: 60px 60px;
+      mask-image: radial-gradient(ellipse at center, black 30%, transparent 70%);
+      -webkit-mask-image: radial-gradient(ellipse at center, black 30%, transparent 70%);
+    }
+    .hero-content {
+      position: relative; z-index: 1; max-width: 900px; margin: 0 auto; text-align: center;
+    }
+    .hero-pill {
+      display: inline-flex; align-items: center; gap: 8px;
+      padding: 8px 20px; border-radius: 50px;
+      background: rgba(120, 80, 255, 0.08);
+      border: 1px solid rgba(120, 80, 255, 0.2);
+      font-size: 0.8rem; font-weight: 600; color: #7850ff;
+      margin-bottom: 36px; letter-spacing: 1px; text-transform: uppercase;
+    }
+    .hero-pill .dot { width: 6px; height: 6px; border-radius: 50%; background: #7850ff; animation: pulse 2s infinite; }
+    @keyframes pulse { 0%, 100% { opacity: 1; } 50% { opacity: 0.3; } }
+    .hero-title {
+      font-size: 5.5rem; font-weight: 900; line-height: 1.05;
+      letter-spacing: -3px; margin-bottom: 28px;
+      color: #fff;
+    }
+    .hero-title .line { display: block; overflow: hidden; }
+    .hero-title .line span {
+      display: inline-block;
+      animation: slideUp 1s ease forwards;
+      opacity: 0; transform: translateY(100%);
+    }
+    .line-1 span { animation-delay: 0.5s; }
+    .line-2 span { animation-delay: 0.7s; }
+    .line-3 span { animation-delay: 0.9s; }
+    @keyframes slideUp {
+      to { opacity: 1; transform: translateY(0); }
+    }
+    .hero-title .gradient {
+      background: linear-gradient(135deg, #7850ff 0%, #ff6496 50%, #50c8ff 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    .hero-desc {
+      font-size: 1.15rem; color: #777; max-width: 560px;
+      margin: 0 auto 48px; line-height: 1.8;
+      opacity: 0; animation: fadeIn 1s ease 1.2s forwards;
+    }
+    @keyframes fadeIn { to { opacity: 1; } }
+    .hero-actions {
+      display: flex; gap: 16px; justify-content: center;
+      opacity: 0; animation: fadeIn 1s ease 1.5s forwards;
+    }
+    .btn {
+      display: inline-flex; align-items: center; gap: 8px;
+      padding: 16px 36px; border-radius: 12px;
+      font-weight: 600; font-size: 0.95rem;
+      cursor: pointer; transition: all 0.3s ease; border: none;
+    }
+    .btn-primary {
+      background: linear-gradient(135deg, #7850ff, #5a3fd4);
+      color: #fff; box-shadow: 0 4px 24px rgba(120, 80, 255, 0.35);
+    }
+    .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 8px 40px rgba(120, 80, 255, 0.5); }
+    .btn-ghost {
+      border: 1px solid rgba(255,255,255,0.12); color: #ccc; background: transparent;
+    }
+    .btn-ghost:hover { border-color: rgba(255,255,255,0.25); color: #fff; background: rgba(255,255,255,0.03); }
+    .scroll-indicator {
+      position: absolute; bottom: 40px; left: 50%; transform: translateX(-50%);
+      display: flex; flex-direction: column; align-items: center; gap: 8px;
+      opacity: 0; animation: fadeIn 1s ease 2s forwards;
+    }
+    .scroll-indicator span { font-size: 0.7rem; color: #555; letter-spacing: 2px; text-transform: uppercase; }
+    .scroll-line {
+      width: 1px; height: 40px;
+      background: linear-gradient(to bottom, #7850ff, transparent);
+      animation: scrollLine 2s ease-in-out infinite;
+    }
+    @keyframes scrollLine {
+      0%, 100% { transform: scaleY(0.3); opacity: 0.3; }
+      50% { transform: scaleY(1); opacity: 1; }
+    }
+
+    /* ===== MARQUEE ===== */
+    .marquee-section {
+      padding: 40px 0; border-top: 1px solid rgba(255,255,255,0.04);
+      border-bottom: 1px solid rgba(255,255,255,0.04);
+      overflow: hidden;
+    }
+    .marquee-track {
+      display: flex; gap: 60px;
+      animation: marquee 30s linear infinite;
+      width: max-content;
+    }
+    .marquee-item {
+      display: flex; align-items: center; gap: 12px;
+      font-size: 1.1rem; font-weight: 700; color: #333;
+      white-space: nowrap; flex-shrink: 0;
+      transition: color 0.3s;
+    }
+    .marquee-item:hover { color: #7850ff; }
+    .marquee-item i { font-size: 1.3rem; }
+    @keyframes marquee {
+      0% { transform: translateX(0); }
+      100% { transform: translateX(-50%); }
+    }
+
+    /* ===== BENTO GRID ===== */
+    .bento { padding: 120px 40px; }
+    .bento-header { text-align: center; margin-bottom: 64px; }
+    .bento-header h2 {
+      font-size: 3rem; font-weight: 800; letter-spacing: -1px;
+      margin-bottom: 16px; color: #fff;
+    }
+    .bento-header p { font-size: 1.05rem; color: #666; max-width: 500px; margin: 0 auto; }
+    .bento-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      grid-template-rows: auto auto;
+      gap: 20px; max-width: 1200px; margin: 0 auto;
+    }
+    .bento-card {
+      background: #0d0d14;
+      border: 1px solid rgba(255,255,255,0.05);
+      border-radius: 20px; padding: 36px;
+      transition: all 0.4s ease;
+      position: relative; overflow: hidden;
+    }
+    .bento-card::before {
+      content: ''; position: absolute; inset: 0;
+      background: linear-gradient(135deg, transparent 60%, rgba(120,80,255,0.03) 100%);
+      pointer-events: none;
+    }
+    .bento-card:hover {
+      border-color: rgba(120,80,255,0.2);
+      transform: translateY(-4px);
+      box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+    }
+    .bento-card.large { grid-column: span 2; }
+    .bento-card.tall { grid-row: span 2; }
+    .bento-icon {
+      width: 48px; height: 48px; border-radius: 14px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1.2rem; margin-bottom: 24px;
+    }
+    .bento-card h3 { font-size: 1.2rem; font-weight: 700; margin-bottom: 10px; color: #fff; }
+    .bento-card p { font-size: 0.9rem; color: #777; line-height: 1.7; }
+    .bento-stat { font-size: 2.8rem; font-weight: 800; margin-bottom: 8px; }
+    .bento-stat.purple { color: #7850ff; }
+    .bento-stat.pink { color: #ff6496; }
+    .bento-stat.blue { color: #50c8ff; }
+    .bento-stat.yellow { color: #ffd850; }
+    .bento-label { font-size: 0.85rem; color: #666; }
+
+    /* ===== SHOWCASE (HORIZONTAL SCROLL) ===== */
+    .showcase { padding: 120px 0; overflow: hidden; }
+    .showcase-header {
+      padding: 0 40px; margin-bottom: 48px;
+      display: flex; align-items: flex-end; justify-content: space-between;
+    }
+    .showcase-header h2 { font-size: 2.5rem; font-weight: 800; color: #fff; letter-spacing: -1px; }
+    .showcase-header p { font-size: 1rem; color: #666; max-width: 400px; }
+    .showcase-track {
+      display: flex; gap: 24px;
+      overflow-x: auto; scroll-snap-type: x mandatory;
+      padding: 0 40px 24px;
+      -webkit-overflow-scrolling: touch;
+      scrollbar-width: none;
+    }
+    .showcase-track::-webkit-scrollbar { display: none; }
+    .showcase-card {
+      min-width: 420px; scroll-snap-align: start;
+      border-radius: 20px; overflow: hidden;
+      background: #0d0d14; border: 1px solid rgba(255,255,255,0.05);
+      transition: all 0.4s ease; flex-shrink: 0;
+    }
+    .showcase-card:hover { transform: translateY(-4px); border-color: rgba(120,80,255,0.2); }
+    .showcase-img {
+      height: 260px; display: flex; align-items: center; justify-content: center;
+      font-size: 4rem; position: relative;
+    }
+    .showcase-img .badge {
+      position: absolute; top: 16px; right: 16px;
+      padding: 6px 14px; border-radius: 20px;
+      font-size: 0.7rem; font-weight: 700; text-transform: uppercase; letter-spacing: 1px;
+      background: rgba(0,0,0,0.6); backdrop-filter: blur(10px); color: #fff;
+    }
+    .showcase-info { padding: 28px; }
+    .showcase-info h3 { font-size: 1.15rem; font-weight: 700; color: #fff; margin-bottom: 8px; }
+    .showcase-info p { font-size: 0.88rem; color: #777; line-height: 1.6; margin-bottom: 16px; }
+    .showcase-tags { display: flex; flex-wrap: wrap; gap: 6px; }
+    .showcase-tags span {
+      font-size: 0.72rem; color: #888; background: rgba(255,255,255,0.04);
+      padding: 4px 12px; border-radius: 8px;
+    }
+
+    /* ===== PROCESS (TIMELINE) ===== */
+    .process { padding: 120px 40px; background: #0a0a10; }
+    .process-header { text-align: center; margin-bottom: 80px; }
+    .process-header h2 { font-size: 3rem; font-weight: 800; color: #fff; letter-spacing: -1px; margin-bottom: 16px; }
+    .process-header p { font-size: 1.05rem; color: #666; }
+    .process-timeline { max-width: 700px; margin: 0 auto; position: relative; }
+    .process-timeline::before {
+      content: ''; position: absolute; left: 28px; top: 0; bottom: 0;
+      width: 1px; background: linear-gradient(to bottom, #7850ff, #ff6496, #50c8ff, transparent);
+    }
+    .process-step {
+      display: flex; gap: 32px; margin-bottom: 48px; position: relative;
+    }
+    .process-step:last-child { margin-bottom: 0; }
+    .step-num {
+      width: 56px; height: 56px; border-radius: 50%;
+      background: #0d0d14; border: 2px solid rgba(120,80,255,0.3);
+      display: flex; align-items: center; justify-content: center;
+      font-family: 'JetBrains Mono', monospace; font-size: 0.85rem; font-weight: 700;
+      color: #7850ff; flex-shrink: 0; z-index: 1;
+    }
+    .step-content h3 { font-size: 1.2rem; font-weight: 700; color: #fff; margin-bottom: 8px; }
+    .step-content p { font-size: 0.95rem; color: #777; line-height: 1.7; }
+
+    /* ===== TESTIMONIALS ===== */
+    .testimonials { padding: 120px 40px; }
+    .testimonials-header { text-align: center; margin-bottom: 64px; }
+    .testimonials-header h2 { font-size: 3rem; font-weight: 800; color: #fff; letter-spacing: -1px; margin-bottom: 16px; }
+    .testimonials-header p { font-size: 1.05rem; color: #666; }
+    .testimonials-grid {
+      display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px;
+      max-width: 1200px; margin: 0 auto;
+    }
+    .testimonial-card {
+      background: #0d0d14; border: 1px solid rgba(255,255,255,0.05);
+      border-radius: 20px; padding: 36px; transition: all 0.3s;
+    }
+    .testimonial-card:hover { border-color: rgba(120,80,255,0.15); transform: translateY(-2px); }
+    .testimonial-stars { color: #ffd850; font-size: 0.85rem; margin-bottom: 20px; }
+    .testimonial-card blockquote {
+      color: #999; font-size: 0.95rem; line-height: 1.8;
+      margin-bottom: 24px; font-style: italic;
+    }
+    .testimonial-author { display: flex; align-items: center; gap: 14px; }
+    .t-avatar {
+      width: 42px; height: 42px; border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      font-weight: 700; font-size: 0.9rem; color: #fff;
+    }
+    .t-name { font-weight: 600; color: #fff; font-size: 0.9rem; }
+    .t-role { color: #666; font-size: 0.8rem; }
+
+    /* ===== CTA ===== */
+    .cta { padding: 120px 40px; }
+    .cta-box {
+      max-width: 900px; margin: 0 auto; text-align: center;
+      background: linear-gradient(135deg, rgba(120,80,255,0.08), rgba(255,100,150,0.05));
+      border: 1px solid rgba(120,80,255,0.15);
+      border-radius: 32px; padding: 80px 60px; position: relative; overflow: hidden;
+    }
+    .cta-box::before {
+      content: ''; position: absolute; inset: 0;
+      background: radial-gradient(ellipse at 50% 0%, rgba(120,80,255,0.1) 0%, transparent 60%);
+      pointer-events: none;
+    }
+    .cta-box h2 { font-size: 2.8rem; font-weight: 800; color: #fff; margin-bottom: 16px; position: relative; }
+    .cta-box p { font-size: 1.1rem; color: #888; margin-bottom: 40px; position: relative; max-width: 500px; margin-left: auto; margin-right: auto; }
+    .cta-box .btn { position: relative; }
+
+    /* ===== FOOTER ===== */
+    footer { padding: 60px 40px 40px; border-top: 1px solid rgba(255,255,255,0.04); }
+    .footer-inner { max-width: 1200px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; }
+    .footer-left { display: flex; align-items: center; gap: 40px; }
+    .footer-logo {
+      font-size: 1.3rem; font-weight: 900;
+      background: linear-gradient(135deg, #7850ff, #ff6496);
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+    }
+    .footer-links { display: flex; gap: 24px; }
+    .footer-links a { font-size: 0.85rem; color: #666; transition: color 0.3s; }
+    .footer-links a:hover { color: #fff; }
+    .footer-social { display: flex; gap: 10px; }
+    .footer-social a {
+      width: 38px; height: 38px; border-radius: 10px;
+      border: 1px solid rgba(255,255,255,0.06);
+      display: flex; align-items: center; justify-content: center;
+      color: #666; font-size: 0.9rem; transition: all 0.3s;
+    }
+    .footer-social a:hover { border-color: #7850ff; color: #7850ff; }
+    .footer-bottom { max-width: 1200px; margin: 32px auto 0; padding-top: 24px; border-top: 1px solid rgba(255,255,255,0.04); display: flex; justify-content: space-between; font-size: 0.8rem; color: #444; }
+
+    /* ===== MOBILE NAV ===== */
+    .mobile-nav { display: none; position: fixed; inset: 0; background: rgba(6,6,10,0.98); z-index: 2000; flex-direction: column; align-items: center; justify-content: center; gap: 32px; }
+    .mobile-nav.open { display: flex; }
+    .mobile-nav a { font-size: 1.3rem; font-weight: 600; color: #e8e8e8; }
+    .mobile-close { position: absolute; top: 24px; right: 24px; font-size: 1.5rem; background: none; border: none; cursor: pointer; color: #fff; }
+
+    /* ===== RESPONSIVE ===== */
+    @media (max-width: 1024px) {
+      .hero-title { font-size: 3.8rem; }
+      .bento-grid { grid-template-columns: repeat(2, 1fr); }
+      .bento-card.large { grid-column: span 2; }
+      .bento-card.tall { grid-row: span 1; }
+      .testimonials-grid { grid-template-columns: 1fr 1fr; }
+      .showcase-card { min-width: 340px; }
+    }
+    @media (max-width: 768px) {
+      nav { padding: 16px 24px; }
+      .nav-links { display: none; }
+      .hamburger { display: flex; }
+      .hero { padding: 100px 24px 60px; }
+      .hero-title { font-size: 2.6rem; letter-spacing: -1px; }
+      .hero-actions { flex-direction: column; align-items: center; }
+      .bento { padding: 80px 24px; }
+      .bento-grid { grid-template-columns: 1fr; }
+      .bento-card.large { grid-column: span 1; }
+      .bento-header h2 { font-size: 2rem; }
+      .showcase { padding: 80px 0; }
+      .showcase-header { padding: 0 24px; flex-direction: column; align-items: flex-start; gap: 12px; }
+      .showcase-header h2 { font-size: 2rem; }
+      .showcase-track { padding: 0 24px 24px; }
+      .showcase-card { min-width: 280px; }
+      .process { padding: 80px 24px; }
+      .process-header h2 { font-size: 2rem; }
+      .process-timeline::before { left: 20px; }
+      .step-num { width: 42px; height: 42px; font-size: 0.75rem; }
+      .testimonials { padding: 80px 24px; }
+      .testimonials-header h2 { font-size: 2rem; }
+      .testimonials-grid { grid-template-columns: 1fr; }
+      .cta { padding: 80px 24px; }
+      .cta-box { padding: 50px 28px; }
+      .cta-box h2 { font-size: 1.8rem; }
+      footer { padding: 40px 24px 24px; }
+      .footer-inner { flex-direction: column; gap: 24px; text-align: center; }
+      .footer-left { flex-direction: column; gap: 16px; }
+      .footer-bottom { flex-direction: column; gap: 8px; text-align: center; }
+      .cursor, .cursor-dot { display: none; }
+    }
+  </style>
 </head>
 <body>
 
-  <!-- NAVBAR -->
-  <nav class="navbar">
-    <div class="nav-inner">
-      <a href="#hero" class="logo">DUDU</a>
-      <ul class="nav-links">
-        <li><a href="#services">Services</a></li>
-        <li><a href="#portfolio">Portfolio</a></li>
-        <li><a href="#about">About</a></li>
-        <li><a href="#contact" class="btn-nav">Contact Me</a></li>
-      </ul>
-      <button class="hamburger" id="hamburger">
-        <span></span><span></span><span></span>
-      </button>
+  <!-- CURSOR -->
+  <div class="cursor" id="cursor"></div>
+  <div class="cursor-dot" id="cursorDot"></div>
+
+  <!-- NOISE -->
+  <div class="noise"></div>
+
+  <!-- PRELOADER -->
+  <div id="preloader">
+    <div class="loader">
+      <span></span><span></span><span></span><span></span>
     </div>
+  </div>
+
+  <!-- NAV -->
+  <nav id="navbar">
+    <a href="#" class="nav-logo">DUDU</a>
+    <div class="nav-links">
+      <a href="#work">Work</a>
+      <a href="#services">Services</a>
+      <a href="#process">Process</a>
+      <a href="#testimonials">Reviews</a>
+      <a href="#contact" class="nav-cta">Let's Talk</a>
+    </div>
+    <button class="hamburger" id="hamburger"><span></span><span></span><span></span></button>
   </nav>
 
   <!-- HERO -->
   <section class="hero" id="hero">
     <div class="hero-bg">
-      <div class="circle c1"></div>
-      <div class="circle c2"></div>
-      <div class="circle c3"></div>
+      <div class="hero-orb orb-1"></div>
+      <div class="hero-orb orb-2"></div>
+      <div class="hero-orb orb-3"></div>
+      <div class="hero-grid"></div>
     </div>
     <div class="hero-content">
-      <p class="hero-tag">Creative Digital Studio</p>
-      <h1 class="hero-title">I Build <span class="gradient">Digital</span><br>Experiences That<br><span class="gradient">Convert</span></h1>
-      <p class="hero-sub">Web Development / Video Production / Design / Marketing</p>
-      <p class="hero-sub-sub">Ulaanbaatar, Mongolia</p>
-      <div class="hero-buttons">
-        <a href="#portfolio" class="btn btn-primary">See My Work</a>
-        <a href="#contact" class="btn btn-outline">Let's Talk</a>
+      <div class="hero-pill"><span class="dot"></span> Available for Projects</div>
+      <h1 class="hero-title">
+        <span class="line line-1"><span>I build</span></span>
+        <span class="line line-2"><span class="gradient">digital products</span></span>
+        <span class="line line-3"><span>that convert.</span></span>
+      </h1>
+      <p class="hero-desc">Web development, video production, design, and marketing — all under one roof. Based in Ulaanbaatar, working worldwide.</p>
+      <div class="hero-actions">
+        <a href="#work" class="btn btn-primary"><i class="fas fa-arrow-right"></i> View My Work</a>
+        <a href="#contact" class="btn btn-ghost"><i class="fas fa-envelope"></i> Get in Touch</a>
       </div>
-      <div class="hero-stats">
-        <div class="stat"><span class="stat-num">10+</span><span class="stat-label">Skills</span></div>
-        <div class="stat"><span class="stat-num">Fast</span><span class="stat-label">Delivery</span></div>
-        <div class="stat"><span class="stat-num">Pro</span><span class="stat-label">Quality</span></div>
+    </div>
+    <div class="scroll-indicator">
+      <span>Scroll</span>
+      <div class="scroll-line"></div>
+    </div>
+  </section>
+
+  <!-- MARQUEE -->
+  <div class="marquee-section">
+    <div class="marquee-track">
+      <div class="marquee-item"><i class="fas fa-code" style="color:#7850ff;"></i> Web Development</div>
+      <div class="marquee-item"><i class="fas fa-video" style="color:#ff6496;"></i> Video Production</div>
+      <div class="marquee-item"><i class="fas fa-pen-nib" style="color:#50c8ff;"></i> Graphic Design</div>
+      <div class="marquee-item"><i class="fas fa-bullhorn" style="color:#ffd850;"></i> Digital Marketing</div>
+      <div class="marquee-item"><i class="fas fa-mobile-alt" style="color:#7850ff;"></i> App Development</div>
+      <div class="marquee-item"><i class="fas fa-palette" style="color:#ff6496;"></i> Brand Identity</div>
+      <div class="marquee-item"><i class="fas fa-chart-line" style="color:#50c8ff;"></i> SEO & Growth</div>
+      <div class="marquee-item"><i class="fas fa-camera" style="color:#ffd850;"></i> Content Creation</div>
+      <!-- Duplicate for seamless loop -->
+      <div class="marquee-item"><i class="fas fa-code" style="color:#7850ff;"></i> Web Development</div>
+      <div class="marquee-item"><i class="fas fa-video" style="color:#ff6496;"></i> Video Production</div>
+      <div class="marquee-item"><i class="fas fa-pen-nib" style="color:#50c8ff;"></i> Graphic Design</div>
+      <div class="marquee-item"><i class="fas fa-bullhorn" style="color:#ffd850;"></i> Digital Marketing</div>
+      <div class="marquee-item"><i class="fas fa-mobile-alt" style="color:#7850ff;"></i> App Development</div>
+      <div class="marquee-item"><i class="fas fa-palette" style="color:#ff6496;"></i> Brand Identity</div>
+      <div class="marquee-item"><i class="fas fa-chart-line" style="color:#50c8ff;"></i> SEO & Growth</div>
+      <div class="marquee-item"><i class="fas fa-camera" style="color:#ffd850;"></i> Content Creation</div>
+    </div>
+  </div>
+
+  <!-- BENTO GRID (SERVICES) -->
+  <section class="bento" id="services">
+    <div class="bento-header">
+      <h2>What I Do</h2>
+      <p>Full-stack digital services to help your business grow online.</p>
+    </div>
+    <div class="bento-grid">
+      <div class="bento-card large">
+        <div class="bento-icon" style="background: rgba(120,80,255,0.1); color: #7850ff;"><i class="fas fa-code"></i></div>
+        <h3>Web Development</h3>
+        <p>Modern, fast websites and web applications built with clean code. From landing pages to full-stack apps with databases, APIs, and admin panels.</p>
+      </div>
+      <div class="bento-card">
+        <div class="bento-stat purple">50+</div>
+        <div class="bento-label">Projects Delivered</div>
+      </div>
+      <div class="bento-card">
+        <div class="bento-icon" style="background: rgba(255,100,150,0.1); color: #ff6496;"><i class="fas fa-video"></i></div>
+        <h3>Video Production</h3>
+        <p>Reels, promos, motion graphics that capture attention.</p>
+      </div>
+      <div class="bento-card tall">
+        <div class="bento-icon" style="background: rgba(80,200,255,0.1); color: #50c8ff;"><i class="fas fa-pen-nib"></i></div>
+        <h3>Graphic Design</h3>
+        <p>Brand identity, logos, social media graphics, banners, and print design. Visual content that stands out and communicates your message clearly.</p>
+      </div>
+      <div class="bento-card">
+        <div class="bento-stat pink">98%</div>
+        <div class="bento-label">Client Satisfaction</div>
+      </div>
+      <div class="bento-card">
+        <div class="bento-icon" style="background: rgba(255,216,80,0.1); color: #ffd850;"><i class="fas fa-bullhorn"></i></div>
+        <h3>Digital Marketing</h3>
+        <p>FB/IG ads, strategy, content plans that bring customers.</p>
+      </div>
+      <div class="bento-card large">
+        <div class="bento-icon" style="background: rgba(120,80,255,0.1); color: #7850ff;"><i class="fas fa-rocket"></i></div>
+        <h3>End-to-End Solutions</h3>
+        <p>Instead of hiring 5 different people, you get one person who understands how everything connects. Strategy, design, development, and marketing — all in one package.</p>
+      </div>
+      <div class="bento-card">
+        <div class="bento-stat blue">24/7</div>
+        <div class="bento-label">Support Available</div>
+      </div>
+      <div class="bento-card">
+        <div class="bento-stat yellow">Fast</div>
+        <div class="bento-label">Delivery Guaranteed</div>
       </div>
     </div>
   </section>
 
-  <!-- SERVICES -->
-  <section class="services" id="services">
-    <div class="container">
-      <div class="section-header">
-        <p class="section-tag">What I Do</p>
-        <h2 class="section-title">Services That <span class="gradient">Drive Results</span></h2>
-      </div>
-      <div class="services-grid">
-
-        <div class="service-card">
-          <div class="service-icon"><i class="fas fa-code"></i></div>
-          <h3>Web Development</h3>
-          <p>Modern, fast websites and web applications built with clean code. From landing pages to full-stack apps.</p>
-          <div class="service-tags">
-            <span>HTML/CSS</span>
-            <span>JavaScript</span>
-            <span>Node.js</span>
-            <span>Responsive</span>
-          </div>
-        </div>
-
-        <div class="service-card">
-          <div class="service-icon"><i class="fas fa-video"></i></div>
-          <h3>Video Production</h3>
-          <p>Short-form content, reels, promotional videos, and motion graphics that capture attention and boost engagement.</p>
-          <div class="service-tags">
-            <span>Reels</span>
-            <span>Promo</span>
-            <span>Motion</span>
-            <span>Editing</span>
-          </div>
-        </div>
-
-        <div class="service-card">
-          <div class="service-icon"><i class="fas fa-pen-nib"></i></div>
-          <h3>Graphic Design</h3>
-          <p>Brand identity, logos, social media graphics, banners, and print design. Visual content that stands out.</p>
-          <div class="service-tags">
-            <span>Logo</span>
-            <span>Banner</span>
-            <span>Social</span>
-            <span>Brand</span>
-          </div>
-        </div>
-
-        <div class="service-card">
-          <div class="service-icon"><i class="fas fa-bullhorn"></i></div>
-          <h3>Digital Marketing</h3>
-          <p>Facebook/Instagram ads, social media strategy, content plans, and campaigns that bring real customers.</p>
-          <div class="service-tags">
-            <span>FB Ads</span>
-            <span>Strategy</span>
-            <span>Content</span>
-            <span>Growth</span>
-          </div>
-        </div>
-
-        <div class="service-card">
-          <div class="service-icon"><i class="fas fa-mobile-alt"></i></div>
-          <h3>App Development</h3>
-          <p>Mobile-first web applications and cross-platform solutions. User-focused design with smooth performance.</p>
-          <div class="service-tags">
-            <span>Mobile</span>
-            <span>PWA</span>
-            <span>Cross-platform</span>
-            <span>UX</span>
-          </div>
-        </div>
-
-        <div class="service-card">
-          <div class="service-icon"><i class="fas fa-pen-fancy"></i></div>
-          <h3>Content Writing</h3>
-          <p>Compelling copy for ads, websites, social media, and campaigns. Bilingual: Mongolian & English.</p>
-          <div class="service-tags">
-            <span>Ad Copy</span>
-            <span>SEO</span>
-            <span>MN/EN</span>
-            <span>Creative</span>
-          </div>
-        </div>
-
-      </div>
+  <!-- SHOWCASE (HORIZONTAL SCROLL) -->
+  <section class="showcase" id="work">
+    <div class="showcase-header">
+      <h2>Featured Work</h2>
+      <p>Swipe to explore templates and projects built with attention to detail.</p>
     </div>
-  </section>
-
-  <!-- PORTFOLIO -->
-  <section class="portfolio" id="portfolio">
-    <div class="container">
-      <div class="section-header">
-        <p class="section-tag">My Work</p>
-        <h2 class="section-title">Featured <span class="gradient">Projects</span></h2>
-        <p class="section-sub">Demo samples showcasing my capabilities. Each project is built with attention to detail and results in mind.</p>
+    <div class="showcase-track">
+      <div class="showcase-card">
+        <div class="showcase-img" style="background: linear-gradient(135deg, #1a1530, #0f0d1f);">
+          <i class="fas fa-building" style="color: #7850ff;"></i>
+          <span class="badge">Business</span>
+        </div>
+        <div class="showcase-info">
+          <h3>Business Landing Page</h3>
+          <p>Professional corporate website with services, testimonials, and contact form.</p>
+          <div class="showcase-tags"><span>Landing Page</span><span>Corporate</span><span>Responsive</span></div>
+        </div>
       </div>
-      <div class="portfolio-grid">
-
-        <a href="https://dulguunmurunedu-boop.github.io/websitemaker/templates/business/" target="_blank" class="portfolio-card">
-          <div class="portfolio-img" style="background: linear-gradient(135deg, #667eea, #764ba2);">
-            <div class="portfolio-overlay">
-              <i class="fas fa-external-link-alt"></i>
-            </div>
-            <span class="portfolio-badge">Business</span>
-          </div>
-          <div class="portfolio-info">
-            <h3>Business Landing Page</h3>
-            <p>Professional corporate website with services, testimonials, and contact form.</p>
-            <div class="portfolio-tags"><span>Landing Page</span><span>Corporate</span><span>Responsive</span></div>
-          </div>
-        </a>
-
-        <a href="https://dulguunmurunedu-boop.github.io/websitemaker/templates/restaurant/" target="_blank" class="portfolio-card">
-          <div class="portfolio-img" style="background: linear-gradient(135deg, #d4a853, #b8860b);">
-            <div class="portfolio-overlay">
-              <i class="fas fa-external-link-alt"></i>
-            </div>
-            <span class="portfolio-badge">Restaurant</span>
-          </div>
-          <div class="portfolio-info">
-            <h3>Restaurant Website</h3>
-            <p>Mongolian cuisine site with menu, gallery, reservation system, and reviews.</p>
-            <div class="portfolio-tags"><span>Restaurant</span><span>Menu</span><span>Booking</span></div>
-          </div>
-        </a>
-
-        <a href="https://dulguunmurunedu-boop.github.io/websitemaker/templates/freelancer/" target="_blank" class="portfolio-card">
-          <div class="portfolio-img" style="background: linear-gradient(135deg, #a78bfa, #7c3aed);">
-            <div class="portfolio-overlay">
-              <i class="fas fa-external-link-alt"></i>
-            </div>
-            <span class="portfolio-badge">Portfolio</span>
-          </div>
-          <div class="portfolio-info">
-            <h3>Freelancer Portfolio</h3>
-            <p>Minimal dark-themed portfolio with project showcase and skills grid.</p>
-            <div class="portfolio-tags"><span>Portfolio</span><span>Dark Theme</span><span>Minimal</span></div>
-          </div>
-        </a>
-
-        <div class="portfolio-card">
-          <div class="portfolio-img" style="background: linear-gradient(135deg, #43e97b, #38f9d7);">
-            <div class="portfolio-overlay">
-              <i class="fas fa-external-link-alt"></i>
-            </div>
-            <span class="portfolio-badge">Ads</span>
-          </div>
-          <div class="portfolio-info">
-            <h3>Facebook Ad Campaign</h3>
-            <p>Ad design + targeting strategy. Generated 500+ leads for local business.</p>
-            <div class="portfolio-tags"><span>FB Ads</span><span>Strategy</span><span>500+ Leads</span></div>
-          </div>
+      <div class="showcase-card">
+        <div class="showcase-img" style="background: linear-gradient(135deg, #1a1207, #2a1f10);">
+          <i class="fas fa-utensils" style="color: #d4a853;"></i>
+          <span class="badge">Restaurant</span>
         </div>
-
-        <div class="portfolio-card">
-          <div class="portfolio-img" style="background: linear-gradient(135deg, #fa709a, #fee140);">
-            <div class="portfolio-overlay">
-              <i class="fas fa-external-link-alt"></i>
-            </div>
-            <span class="portfolio-badge">Design</span>
-          </div>
-          <div class="portfolio-info">
-            <h3>Social Media Kit</h3>
-            <p>30-day content calendar with designed posts, stories, and templates.</p>
-            <div class="portfolio-tags"><span>Instagram</span><span>Templates</span><span>30 Days</span></div>
-          </div>
+        <div class="showcase-info">
+          <h3>Restaurant Website</h3>
+          <p>Mongolian cuisine site with menu, gallery, reservation system, and reviews.</p>
+          <div class="showcase-tags"><span>Restaurant</span><span>Menu</span><span>Booking</span></div>
         </div>
-
-        <div class="portfolio-card">
-          <div class="portfolio-img" style="background: linear-gradient(135deg, #a18cd1, #fbc2eb);">
-            <div class="portfolio-overlay">
-              <i class="fas fa-external-link-alt"></i>
-            </div>
-            <span class="portfolio-badge">Web</span>
-          </div>
-          <div class="portfolio-info">
-            <h3>Restaurant Website</h3>
-            <p>Online menu, reservation system, and location integration.</p>
-            <div class="portfolio-tags"><span>Landing Page</span><span>Menu</span><span>Booking</span></div>
-          </div>
-        </div>
-
       </div>
-
-      <div class="portfolio-buttons">
-        <a href="https://dulguunmurunedu-boop.github.io/websitemaker/templates/business/" target="_blank" class="btn btn-primary">
-          <i class="fas fa-building"></i> Business Template
-        </a>
-        <a href="https://dulguunmurunedu-boop.github.io/websitemaker/templates/restaurant/" target="_blank" class="btn btn-primary">
-          <i class="fas fa-utensils"></i> Restaurant Template
-        </a>
-        <a href="https://dulguunmurunedu-boop.github.io/websitemaker/templates/freelancer/" target="_blank" class="btn btn-primary">
-          <i class="fas fa-user-tie"></i> Freelancer Template
-        </a>
-      </div>
-    </div>
-  </section>
-
-  <!-- ABOUT -->
-  <section class="about" id="about">
-    <div class="container">
-      <div class="about-grid">
-        <div class="about-left">
-          <div class="about-visual">
-            <div class="about-avatar">
-              <span>D</span>
-            </div>
-            <div class="about-dots"></div>
-          </div>
+      <div class="showcase-card">
+        <div class="showcase-img" style="background: linear-gradient(135deg, #1a1525, #0f0d15);">
+          <i class="fas fa-user-tie" style="color: #a78bfa;"></i>
+          <span class="badge">Portfolio</span>
         </div>
-        <div class="about-right">
-          <p class="section-tag">About Me</p>
-          <h2 class="section-title">One Person.<br><span class="gradient">Full Stack.</span></h2>
-          <p class="about-text">
-            I'm DUDU — a multi-skilled digital creator based in Ulaanbaatar. I combine web development, video production, graphic design, and digital marketing into one package.
-          </p>
-          <p class="about-text">
-            Instead of hiring 5 different people, you get one person who understands how everything connects. I move fast, deliver quality, and focus on results that matter for your business.
-          </p>
-          <div class="skills-list">
-            <div class="skill-item"><i class="fas fa-check-circle"></i><span>Web Development (Full Stack)</span></div>
-            <div class="skill-item"><i class="fas fa-check-circle"></i><span>UI/UX Design</span></div>
-            <div class="skill-item"><i class="fas fa-check-circle"></i><span>Logo & Brand Identity</span></div>
-            <div class="skill-item"><i class="fas fa-check-circle"></i><span>Video Editing & Motion Graphics</span></div>
-            <div class="skill-item"><i class="fas fa-check-circle"></i><span>Facebook / Instagram Ads</span></div>
-            <div class="skill-item"><i class="fas fa-check-circle"></i><span>Social Media Management</span></div>
-            <div class="skill-item"><i class="fas fa-check-circle"></i><span>Content Writing (MN & EN)</span></div>
-            <div class="skill-item"><i class="fas fa-check-circle"></i><span>Fast Delivery</span></div>
-          </div>
+        <div class="showcase-info">
+          <h3>Freelancer Portfolio</h3>
+          <p>Minimal dark-themed portfolio with project showcase and skills grid.</p>
+          <div class="showcase-tags"><span>Portfolio</span><span>Dark Theme</span><span>Minimal</span></div>
+        </div>
+      </div>
+      <div class="showcase-card">
+        <div class="showcase-img" style="background: linear-gradient(135deg, #0f1a25, #152030);">
+          <i class="fas fa-shopping-bag" style="color: #50c8ff;"></i>
+          <span class="badge">E-Commerce</span>
+        </div>
+        <div class="showcase-info">
+          <h3>E-Commerce Platform</h3>
+          <p>Full-stack shopping platform with cart, checkout, and admin panel.</p>
+          <div class="showcase-tags"><span>Node.js</span><span>MongoDB</span><span>Stripe</span></div>
+        </div>
+      </div>
+      <div class="showcase-card">
+        <div class="showcase-img" style="background: linear-gradient(135deg, #1a0f1a, #2a152a);">
+          <i class="fas fa-chart-pie" style="color: #ff6496;"></i>
+          <span class="badge">SaaS</span>
+        </div>
+        <div class="showcase-info">
+          <h3>SaaS Dashboard</h3>
+          <p>Analytics dashboard with data visualization and team management.</p>
+          <div class="showcase-tags"><span>React</span><span>D3.js</span><span>Firebase</span></div>
         </div>
       </div>
     </div>
   </section>
 
   <!-- PROCESS -->
-  <section class="process">
-    <div class="container">
-      <div class="section-header">
-        <p class="section-tag">How It Works</p>
-        <h2 class="section-title">Simple. Fast. <span class="gradient">Effective.</span></h2>
+  <section class="process" id="process">
+    <div class="process-header">
+      <h2>How I Work</h2>
+      <p>A clear, collaborative process from idea to launch.</p>
+    </div>
+    <div class="process-timeline">
+      <div class="process-step">
+        <div class="step-num">01</div>
+        <div class="step-content">
+          <h3>Discovery Call</h3>
+          <p>We talk about your goals, audience, and vision. I ask the right questions to understand the full picture before any work begins.</p>
+        </div>
       </div>
-      <div class="process-grid">
-        <div class="process-card">
-          <div class="process-num">01</div>
-          <h3>You Tell Me</h3>
-          <p>Share your idea, goal, or problem. No jargon, just a conversation.</p>
+      <div class="process-step">
+        <div class="step-num">02</div>
+        <div class="step-content">
+          <h3>Strategy & Design</h3>
+          <p>I create wireframes, mockups, and a clear roadmap. You see the direction before development starts.</p>
         </div>
-        <div class="process-card">
-          <div class="process-num">02</div>
-          <h3>I Build It</h3>
-          <p>I design, code, edit — whatever you need. Fast turnaround guaranteed.</p>
+      </div>
+      <div class="process-step">
+        <div class="step-num">03</div>
+        <div class="step-content">
+          <h3>Build & Iterate</h3>
+          <p>Clean, modern code with regular check-ins. You see progress every step of the way and can give feedback anytime.</p>
         </div>
-        <div class="process-card">
-          <div class="process-num">03</div>
-          <h3>You Review</h3>
-          <p>You see the result, give feedback. Unlimited revisions until you're happy.</p>
-        </div>
-        <div class="process-card">
-          <div class="process-num">04</div>
-          <h3>We Launch</h3>
-          <p>Final delivery with all files. Optional: I manage and grow it for you.</p>
+      </div>
+      <div class="process-step">
+        <div class="step-num">04</div>
+        <div class="step-content">
+          <h3>Launch & Grow</h3>
+          <p>Testing, optimization, and deployment. I don't disappear after launch — ongoing support and growth strategies included.</p>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- PRICING -->
-  <section class="pricing">
-    <div class="container">
-      <div class="section-header">
-        <p class="section-tag">Pricing</p>
-        <h2 class="section-title">Affordable <span class="gradient">Packages</span></h2>
-        <p class="section-sub">Starting prices. Final quote depends on project scope.</p>
+  <!-- TESTIMONIALS -->
+  <section class="testimonials" id="testimonials">
+    <div class="testimonials-header">
+      <h2>Client Reviews</h2>
+      <p>What people say about working with me.</p>
+    </div>
+    <div class="testimonials-grid">
+      <div class="testimonial-card">
+        <div class="testimonial-stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+        <blockquote>"DUDU completely transformed our online presence. The new website increased our customer inquiries by 300%. Incredible attention to detail."</blockquote>
+        <div class="testimonial-author">
+          <div class="t-avatar" style="background: linear-gradient(135deg, #7850ff, #5a3fd4);">B</div>
+          <div><div class="t-name">Bat-Erdene</div><div class="t-role">CEO, TechVista MN</div></div>
+        </div>
       </div>
-      <div class="pricing-grid">
-
-        <div class="pricing-card">
-          <div class="pricing-top">
-            <h3>Starter</h3>
-            <p class="pricing-price">from <span>150K</span> MNT</p>
-            <p class="pricing-desc">Perfect for small businesses</p>
-          </div>
-          <ul class="pricing-features">
-            <li><i class="fas fa-check"></i> Logo Design (3 concepts)</li>
-            <li><i class="fas fa-check"></i> 3 Social Media Posts</li>
-            <li><i class="tras fa-check"></i> 1 Revision Round</li>
-            <li class="off"><i class="fas fa-times"></i> Website</li>
-            <li class="off"><i class="fas fa-times"></i> Video</li>
-            <li class="off"><i class="fas fa-times"></i> Ad Campaign</li>
-          </ul>
-          <a href="#contact" class="btn btn-outline btn-block">Get Started</a>
+      <div class="testimonial-card">
+        <div class="testimonial-stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+        <blockquote>"Professional, fast, and incredibly talented. The promo video he made for us got 50K+ views. Highly recommend for any project."</blockquote>
+        <div class="testimonial-author">
+          <div class="t-avatar" style="background: linear-gradient(135deg, #ff6496, #d4467a);">S</div>
+          <div><div class="t-name">Sarah Johnson</div><div class="t-role">Founder, GreenLeaf Co.</div></div>
         </div>
-
-        <div class="pricing-card featured">
-          <div class="popular-badge">Most Popular</div>
-          <div class="pricing-top">
-            <h3>Growth</h3>
-            <p class="pricing-price">from <span>500K</span> MNT</p>
-            <p class="pricing-desc">Best for growing brands</p>
-          </div>
-          <ul class="pricing-features">
-            <li><i class="fas fa-check"></i> Logo + Brand Guide</li>
-            <li><i class="fas fa-check"></i> 10 Social Media Posts</li>
-            <li><i class="fas fa-check"></i> 1 Promo Video (30s)</li>
-            <li><i class="fas fa-check"></i> 1 Page Website</li>
-            <li><i class="fas fa-check"></i> FB Ad Creative</li>
-            <li><i class="fas fa-check"></i> 3 Revision Rounds</li>
-          </ul>
-          <a href="#contact" class="btn btn-primary btn-block">Get Started</a>
+      </div>
+      <div class="testimonial-card">
+        <div class="testimonial-stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star-half-alt"></i></div>
+        <blockquote>"The Facebook ad campaign he designed brought us 500+ new leads in one month. Finally someone who delivers real results, not just promises."</blockquote>
+        <div class="testimonial-author">
+          <div class="t-avatar" style="background: linear-gradient(135deg, #50c8ff, #3aa0d4);">T</div>
+          <div><div class="t-name">Tungalag</div><div class="t-role">Marketing Director, FreshMart</div></div>
         </div>
-
-        <div class="pricing-card">
-          <div class="pricing-top">
-            <h3>Full Scale</h3>
-            <p class="pricing-price">from <span>2M</span> MNT</p>
-            <p class="pricing-desc">Complete digital presence</p>
-          </div>
-          <ul class="pricing-features">
-            <li><i class="fas fa-check"></i> Full Brand Identity</li>
-            <li><i class="fas fa-check"></i> 30-Day Content Calendar</li>
-            <li><i class="fas fa-check"></i> 3 Promo Videos</li>
-            <li><i class="fas fa-check"></i> Full Website</li>
-            <li><i class="fas fa-check"></i> FB + IG Ad Campaign</li>
-            <li><i class="fas fa-check"></i> Unlimited Revisions</li>
-          </ul>
-          <a href="#contact" class="btn btn-outline btn-block">Get Started</a>
-        </div>
-
       </div>
     </div>
   </section>
 
   <!-- CTA -->
-  <section class="cta">
-    <div class="container">
-      <div class="cta-box">
-        <h2>Ready to grow your business?</h2>
-        <p>Let's build something great together. First consultation is free.</p>
-        <a href="#contact" class="btn btn-white">Start a Project</a>
-      </div>
-    </div>
-  </section>
-
-  <!-- CONTACT -->
-  <section class="contact" id="contact">
-    <div class="container">
-      <div class="section-header">
-        <p class="section-tag">Contact</p>
-        <h2 class="section-title">Let's <span class="gradient">Connect</span></h2>
-        <p class="section-sub">Have a project in mind? Reach out and let's make it happen.</p>
-      </div>
-      <div class="contact-grid">
-        <div class="contact-info">
-          <div class="contact-item">
-            <div class="contact-icon"><i class="fab fa-facebook-messenger"></i></div>
-            <div>
-              <h4>Facebook Messenger</h4>
-              <p>Send me a message anytime</p>
-            </div>
-          </div>
-          <div class="contact-item">
-            <div class="contact-icon"><i class="fab fa-instagram"></i></div>
-            <div>
-              <h4>Instagram</h4>
-              <p>@dudu.creative</p>
-            </div>
-          </div>
-          <div class="contact-item">
-            <div class="contact-icon"><i class="fas fa-envelope"></i></div>
-            <div>
-              <h4>Email</h4>
-              <p>dudu@creative.mn</p>
-            </div>
-          </div>
-          <div class="contact-item">
-            <div class="contact-icon"><i class="fas fa-map-marker-alt"></i></div>
-            <div>
-              <h4>Location</h4>
-              <p>Ulaanbaatar, Mongolia</p>
-            </div>
-          </div>
-        </div>
-        <form class="contact-form" id="contactForm">
-          <div class="form-row">
-            <input type="text" placeholder="Your Name" required>
-            <input type="text" placeholder="Phone / Messenger">
-          </div>
-          <select id="projectType">
-            <option value="">What do you need?</option>
-            <option value="website">Website / Web App</option>
-            <option value="logo">Logo / Branding</option>
-            <option value="video">Video Production</option>
-            <option value="design">Graphic Design</option>
-            <option value="marketing">Digital Marketing / Ads</option>
-            <option value="full">Full Package</option>
-            <option value="other">Other</option>
-          </select>
-          <textarea placeholder="Tell me about your project..." rows="4"></textarea>
-          <button type="submit" class="btn btn-primary btn-block">Send Message</button>
-        </form>
-      </div>
+  <section class="cta" id="contact">
+    <div class="cta-box">
+      <h2>Ready to start your project?</h2>
+      <p>Let's build something great together. First consultation is free — no commitment, just a conversation.</p>
+      <a href="mailto:dudu@creative.mn" class="btn btn-primary"><i class="fas fa-envelope"></i> dudu@creative.mn</a>
     </div>
   </section>
 
   <!-- FOOTER -->
-  <footer class="footer">
-    <div class="container">
-      <div class="footer-inner">
-        <a href="#hero" class="logo">DUDU</a>
-        <p>Creative Digital Studio - Ulaanbaatar, Mongolia</p>
-        <div class="social-links">
-          <a href="#"><i class="fab fa-facebook"></i></a>
-          <a href="#"><i class="fab fa-instagram"></i></a>
-          <a href="#"><i class="fab fa-tiktok"></i></a>
-          <a href="#"><i class="fab fa-youtube"></i></a>
+  <footer>
+    <div class="footer-inner">
+      <div class="footer-left">
+        <span class="footer-logo">DUDU</span>
+        <div class="footer-links">
+          <a href="#work">Work</a>
+          <a href="#services">Services</a>
+          <a href="#process">Process</a>
+          <a href="#contact">Contact</a>
         </div>
-        <p class="copyright">&copy; 2025 DUDU. All rights reserved.</p>
       </div>
+      <div class="footer-social">
+        <a href="#"><i class="fab fa-facebook-f"></i></a>
+        <a href="#"><i class="fab fa-instagram"></i></a>
+        <a href="#"><i class="fab fa-tiktok"></i></a>
+        <a href="#"><i class="fab fa-youtube"></i></a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>&copy; 2026 DUDU. All rights reserved.</span>
+      <span>Made with <i class="fas fa-heart" style="color: #ff6496;"></i> in Ulaanbaatar, Mongolia</span>
     </div>
   </footer>
 
-  <script src="js/main.js"></script>
+  <!-- MOBILE NAV -->
+  <div class="mobile-nav" id="mobileNav">
+    <button class="mobile-close" id="mobileClose"><i class="fas fa-times"></i></button>
+    <a href="#work" class="mobile-link">Work</a>
+    <a href="#services" class="mobile-link">Services</a>
+    <a href="#process" class="mobile-link">Process</a>
+    <a href="#testimonials" class="mobile-link">Reviews</a>
+    <a href="#contact" class="mobile-link">Contact</a>
+  </div>
+
+  <script>
+    // PRELOADER
+    window.addEventListener('load', () => {
+      setTimeout(() => {
+        document.getElementById('preloader').classList.add('hidden');
+      }, 800);
+    });
+
+    // CUSTOM CURSOR
+    const cursor = document.getElementById('cursor');
+    const cursorDot = document.getElementById('cursorDot');
+    let mouseX = 0, mouseY = 0, curX = 0, curY = 0;
+
+    document.addEventListener('mousemove', (e) => {
+      mouseX = e.clientX; mouseY = e.clientY;
+      cursorDot.style.left = mouseX + 'px';
+      cursorDot.style.top = mouseY + 'px';
+    });
+
+    function animateCursor() {
+      curX += (mouseX - curX) * 0.15;
+      curY += (mouseY - curY) * 0.15;
+      cursor.style.left = (curX - 10) + 'px';
+      cursor.style.top = (curY - 10) + 'px';
+      requestAnimationFrame(animateCursor);
+    }
+    animateCursor();
+
+    // Cursor hover effect
+    const hoverElements = document.querySelectorAll('a, button, .portfolio-card, .bento-card, .showcase-card, .testimonial-card');
+    hoverElements.forEach(el => {
+      el.addEventListener('mouseenter', () => cursor.classList.add('active'));
+      el.addEventListener('mouseleave', () => cursor.classList.remove('active'));
+    });
+
+    // NAVBAR SCROLL
+    const navbar = document.getElementById('navbar');
+    window.addEventListener('scroll', () => {
+      navbar.classList.toggle('scrolled', window.scrollY > 50);
+    });
+
+    // MOBILE NAV
+    const hamburger = document.getElementById('hamburger');
+    const mobileNav = document.getElementById('mobileNav');
+    const mobileClose = document.getElementById('mobileClose');
+    if (hamburger) hamburger.addEventListener('click', () => mobileNav.classList.add('open'));
+    if (mobileClose) mobileClose.addEventListener('click', () => mobileNav.classList.remove('open'));
+    document.querySelectorAll('.mobile-link').forEach(link => {
+      link.addEventListener('click', () => mobileNav.classList.remove('open'));
+    });
+
+    // SMOOTH SCROLL
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function(e) {
+        e.preventDefault();
+        const target = document.querySelector(this.getAttribute('href'));
+        if (target) {
+          window.scrollTo({ top: target.offsetTop - 70, behavior: 'smooth' });
+        }
+      });
+    });
+
+    // INTERSECTION OBSERVER (scroll animations)
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.style.opacity = '1';
+          entry.target.style.transform = 'translateY(0)';
+        }
+      });
+    }, { threshold: 0.1 });
+
+    document.querySelectorAll('.bento-card, .showcase-card, .process-step, .testimonial-card').forEach(el => {
+      el.style.opacity = '0';
+      el.style.transform = 'translateY(30px)';
+      el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+      observer.observe(el);
+    });
+
+    // HORIZONTAL SCROLL with mouse wheel
+    const showcaseTrack = document.querySelector('.showcase-track');
+    if (showcaseTrack) {
+      showcaseTrack.addEventListener('wheel', (e) => {
+        if (e.deltaY !== 0) {
+          e.preventDefault();
+          showcaseTrack.scrollLeft += e.deltaY;
+        }
+      });
+    }
+  </script>
 </body>
 </html>

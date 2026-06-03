@@ -386,11 +386,14 @@ img { max-width: 100%; display: block; }
 }
 
 .portfolio-card {
+  display: block;
   border-radius: 20px;
   overflow: hidden;
   background: #12121a;
   border: 1px solid #1e1e2e;
   transition: all 0.4s ease;
+  text-decoration: none;
+  color: inherit;
 }
 
 .portfolio-card:hover {

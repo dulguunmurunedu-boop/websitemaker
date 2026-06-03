@@ -1,0 +1,536 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ХАН — Authentic Mongolian Cuisine</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700;800;900&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <style>
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+    html { scroll-behavior: smooth; font-size: 16px; }
+    body { font-family: 'Inter', sans-serif; background: #0c0c0c; color: #e0e0e0; line-height: 1.7; overflow-x: hidden; }
+    a { text-decoration: none; color: inherit; }
+    ul { list-style: none; }
+    .container { max-width: 1200px; margin: 0 auto; padding: 0 24px; }
+    .font-display { font-family: 'Playfair Display', serif; }
+
+    /* NAVBAR */
+    .navbar { position: fixed; top: 0; left: 0; right: 0; z-index: 1000; padding: 20px 0; transition: all 0.3s ease; }
+    .navbar.scrolled { background: rgba(12,12,12,0.95); backdrop-filter: blur(20px); border-bottom: 1px solid rgba(255,255,255,0.05); padding: 14px 0; }
+    .nav-inner { max-width: 1200px; margin: 0 auto; padding: 0 24px; display: flex; align-items: center; justify-content: space-between; }
+    .logo { font-size: 1.8rem; font-weight: 900; color: #d4a853; letter-spacing: 4px; font-family: 'Playfair Display', serif; }
+    .nav-links { display: flex; align-items: center; gap: 36px; }
+    .nav-links a { font-size: 0.85rem; font-weight: 500; color: #aaa; transition: color 0.3s; text-transform: uppercase; letter-spacing: 1.5px; }
+    .nav-links a:hover { color: #d4a853; }
+    .btn-nav { background: #d4a853; color: #0c0c0c !important; padding: 10px 28px !important; border-radius: 4px; font-weight: 700 !important; transition: all 0.3s; }
+    .btn-nav:hover { background: #c49848; }
+    .hamburger { display: none; flex-direction: column; gap: 5px; background: none; border: none; cursor: pointer; padding: 4px; }
+    .hamburger span { display: block; width: 24px; height: 2px; background: #d4a853; transition: all 0.3s; }
+
+    /* HERO */
+    .hero { min-height: 100vh; display: flex; align-items: center; position: relative; overflow: hidden; }
+    .hero-bg { position: absolute; inset: 0; background: linear-gradient(135deg, #1a1207 0%, #0c0c0c 50%, #1a0f0a 100%); }
+    .hero-bg::after { content: ''; position: absolute; inset: 0; background: radial-gradient(ellipse at 70% 50%, rgba(212,168,83,0.08) 0%, transparent 60%); }
+    .hero-content { position: relative; z-index: 1; max-width: 1200px; margin: 0 auto; padding: 120px 24px 80px; display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: center; }
+    .hero-tag { display: inline-block; font-size: 0.75rem; font-weight: 600; letter-spacing: 4px; text-transform: uppercase; color: #d4a853; border: 1px solid rgba(212,168,83,0.3); padding: 8px 20px; margin-bottom: 28px; }
+    .hero-title { font-size: 4.5rem; font-weight: 900; line-height: 1.05; margin-bottom: 24px; color: #fff; font-family: 'Playfair Display', serif; letter-spacing: -1px; }
+    .hero-title .accent { color: #d4a853; }
+    .hero-sub { font-size: 1.1rem; color: #999; margin-bottom: 40px; max-width: 460px; line-height: 1.9; }
+    .hero-buttons { display: flex; gap: 16px; align-items: center; }
+    .btn { display: inline-flex; align-items: center; justify-content: center; padding: 16px 36px; border-radius: 4px; font-weight: 600; font-size: 0.9rem; cursor: pointer; transition: all 0.3s ease; border: none; text-transform: uppercase; letter-spacing: 1.5px; }
+    .btn-primary { background: #d4a853; color: #0c0c0c; }
+    .btn-primary:hover { background: #c49848; transform: translateY(-2px); }
+    .btn-outline { border: 1px solid rgba(212,168,83,0.4); color: #d4a853; background: transparent; }
+    .btn-outline:hover { background: rgba(212,168,83,0.1); }
+    .hero-visual { position: relative; display: flex; align-items: center; justify-content: center; }
+    .hero-plate { width: 400px; height: 400px; border-radius: 50%; background: radial-gradient(circle, #1a1510 0%, #0c0c0c 70%); border: 1px solid rgba(212,168,83,0.15); display: flex; align-items: center; justify-content: center; position: relative; }
+    .hero-plate::before { content: ''; position: absolute; inset: 20px; border-radius: 50%; border: 1px solid rgba(212,168,83,0.08); }
+    .hero-plate-inner { text-align: center; }
+    .hero-plate-inner i { font-size: 5rem; color: #d4a853; margin-bottom: 16px; display: block; }
+    .hero-plate-inner span { display: block; font-family: 'Playfair Display', serif; font-size: 1.5rem; color: #fff; }
+    .floating-badge { position: absolute; background: rgba(12,12,12,0.9); border: 1px solid rgba(212,168,83,0.2); border-radius: 12px; padding: 14px 20px; font-weight: 600; font-size: 0.85rem; color: #d4a853; display: flex; align-items: center; gap: 10px; }
+    .floating-badge.top-right { top: 20px; right: -20px; }
+    .floating-badge.bottom-left { bottom: 20px; left: -20px; }
+    .floating-badge i { color: #d4a853; }
+
+    /* SPECIALTIES */
+    .specialties { padding: 120px 0; background: #0f0f0f; }
+    .section-header { text-align: center; margin-bottom: 60px; }
+    .section-header .tag { display: inline-block; font-size: 0.75rem; font-weight: 600; letter-spacing: 4px; text-transform: uppercase; color: #d4a853; margin-bottom: 16px; }
+    .section-header h2 { font-size: 3rem; font-weight: 800; line-height: 1.2; margin-bottom: 16px; color: #fff; font-family: 'Playfair Display', serif; }
+    .section-header p { font-size: 1.05rem; color: #777; max-width: 550px; margin: 0 auto; }
+    .specialties-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 24px; }
+    .specialty-card { background: #141414; border: 1px solid #222; border-radius: 16px; overflow: hidden; transition: all 0.4s ease; }
+    .specialty-card:hover { border-color: rgba(212,168,83,0.3); transform: translateY(-4px); }
+    .specialty-img { height: 180px; display: flex; align-items: center; justify-content: center; font-size: 3.5rem; position: relative; }
+    .specialty-info { padding: 24px; }
+    .specialty-info h3 { font-size: 1.1rem; font-weight: 700; color: #fff; margin-bottom: 8px; font-family: 'Playfair Display', serif; }
+    .specialty-info p { color: #777; font-size: 0.88rem; line-height: 1.6; margin-bottom: 16px; }
+    .specialty-price { font-size: 1.2rem; font-weight: 700; color: #d4a853; }
+
+    /* MENU */
+    .menu { padding: 120px 0; background: #0c0c0c; }
+    .menu-categories { display: flex; justify-content: center; gap: 12px; margin-bottom: 48px; flex-wrap: wrap; }
+    .menu-cat { padding: 10px 24px; border-radius: 4px; border: 1px solid #333; color: #888; font-size: 0.85rem; font-weight: 500; cursor: pointer; transition: all 0.3s; text-transform: uppercase; letter-spacing: 1px; background: transparent; }
+    .menu-cat:hover, .menu-cat.active { border-color: #d4a853; color: #d4a853; background: rgba(212,168,83,0.05); }
+    .menu-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
+    .menu-item { display: flex; gap: 20px; padding: 24px; background: #111; border: 1px solid #1e1e1e; border-radius: 16px; transition: all 0.3s; }
+    .menu-item:hover { border-color: rgba(212,168,83,0.2); }
+    .menu-item-img { width: 80px; height: 80px; border-radius: 12px; display: flex; align-items: center; justify-content: center; font-size: 2rem; flex-shrink: 0; }
+    .menu-item-info { flex: 1; }
+    .menu-item-top { display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 6px; }
+    .menu-item-info h3 { font-size: 1.05rem; font-weight: 700; color: #fff; font-family: 'Playfair Display', serif; }
+    .menu-item-price { font-size: 1.1rem; font-weight: 700; color: #d4a853; }
+    .menu-item-info p { color: #666; font-size: 0.85rem; line-height: 1.6; }
+
+    /* ABOUT */
+    .about { padding: 120px 0; background: #0f0f0f; }
+    .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center; }
+    .about-img { border-radius: 20px; height: 500px; background: linear-gradient(135deg, #1a1207, #2a1f10); display: flex; align-items: center; justify-content: center; position: relative; overflow: hidden; }
+    .about-img-inner { text-align: center; }
+    .about-img-inner i { font-size: 6rem; color: #d4a853; margin-bottom: 16px; display: block; }
+    .about-img-inner span { font-family: 'Playfair Display', serif; font-size: 1.5rem; color: #fff; }
+    .about-content h2 { font-size: 2.8rem; font-weight: 800; line-height: 1.2; margin-bottom: 24px; color: #fff; font-family: 'Playfair Display', serif; }
+    .about-content h2 .accent { color: #d4a853; }
+    .about-content p { color: #888; font-size: 1.05rem; margin-bottom: 16px; line-height: 1.8; }
+    .about-stats { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; margin-top: 36px; }
+    .about-stat { text-align: center; padding: 20px; background: #141414; border: 1px solid #222; border-radius: 14px; }
+    .about-stat .num { display: block; font-size: 1.8rem; font-weight: 800; color: #d4a853; font-family: 'Playfair Display', serif; }
+    .about-stat .label { font-size: 0.75rem; color: #666; text-transform: uppercase; letter-spacing: 1px; margin-top: 4px; }
+
+    /* GALLERY */
+    .gallery { padding: 120px 0; background: #0c0c0c; }
+    .gallery-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; }
+    .gallery-item { border-radius: 16px; height: 250px; display: flex; align-items: center; justify-content: center; font-size: 3rem; transition: all 0.4s; cursor: pointer; }
+    .gallery-item:hover { transform: scale(1.02); }
+    .gallery-item.large { grid-column: span 2; grid-row: span 2; height: auto; }
+
+    /* RESERVATION */
+    .reservation { padding: 120px 0; background: linear-gradient(135deg, #1a1207, #0c0c0c); }
+    .reservation-box { max-width: 700px; margin: 0 auto; background: #111; border: 1px solid rgba(212,168,83,0.15); border-radius: 24px; padding: 60px; }
+    .reservation-box .section-header { margin-bottom: 40px; }
+    .form-group { margin-bottom: 20px; }
+    .form-group label { display: block; font-size: 0.8rem; font-weight: 600; color: #888; margin-bottom: 8px; text-transform: uppercase; letter-spacing: 1px; }
+    .form-group input,
+    .form-group select,
+    .form-group textarea { width: 100%; padding: 14px 18px; border: 1px solid #2a2a2a; border-radius: 10px; font-size: 0.95rem; font-family: inherit; transition: border-color 0.3s; color: #e0e0e0; background: #1a1a1a; }
+    .form-group input:focus,
+    .form-group select:focus,
+    .form-group textarea:focus { outline: none; border-color: #d4a853; }
+    .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+    .btn-block { width: 100%; }
+
+    /* TESTIMONIALS */
+    .testimonials { padding: 120px 0; background: #0f0f0f; }
+    .testimonials-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 30px; }
+    .testimonial-card { background: #141414; border: 1px solid #222; border-radius: 20px; padding: 36px; transition: all 0.3s; }
+    .testimonial-card:hover { border-color: rgba(212,168,83,0.2); }
+    .testimonial-card .stars { color: #d4a853; margin-bottom: 20px; font-size: 0.85rem; }
+    .testimonial-card p { color: #999; font-size: 0.95rem; line-height: 1.8; margin-bottom: 24px; font-style: italic; }
+    .testimonial-author { display: flex; align-items: center; gap: 14px; }
+    .author-avatar { width: 44px; height: 44px; border-radius: 50%; background: rgba(212,168,83,0.15); display: flex; align-items: center; justify-content: center; color: #d4a853; font-weight: 700; font-size: 1rem; }
+    .author-info h4 { color: #fff; font-size: 0.95rem; font-weight: 600; }
+    .author-info span { color: #666; font-size: 0.8rem; }
+
+    /* CONTACT */
+    .contact { padding: 120px 0; background: #0c0c0c; }
+    .contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; }
+    .contact-info h2 { font-size: 2.5rem; font-weight: 800; margin-bottom: 16px; color: #fff; font-family: 'Playfair Display', serif; }
+    .contact-info > p { color: #777; font-size: 1.05rem; margin-bottom: 36px; }
+    .contact-item { display: flex; align-items: center; gap: 16px; margin-bottom: 24px; }
+    .contact-icon { width: 48px; height: 48px; border-radius: 12px; background: rgba(212,168,83,0.1); display: flex; align-items: center; justify-content: center; color: #d4a853; font-size: 1rem; }
+    .contact-item h4 { font-size: 0.95rem; font-weight: 600; color: #fff; margin-bottom: 2px; }
+    .contact-item span { font-size: 0.9rem; color: #888; }
+    .map-placeholder { border-radius: 20px; height: 300px; background: #141414; border: 1px solid #222; display: flex; align-items: center; justify-content: center; color: #444; font-size: 1.2rem; }
+
+    /* FOOTER */
+    .footer { padding: 60px 0 30px; background: #080808; border-top: 1px solid #1a1a1a; }
+    .footer-grid { display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 40px; margin-bottom: 40px; }
+    .footer h3 { color: #d4a853; font-size: 1.5rem; margin-bottom: 16px; font-family: 'Playfair Display', serif; letter-spacing: 3px; }
+    .footer p { font-size: 0.9rem; color: #666; line-height: 1.7; margin-bottom: 16px; }
+    .footer h4 { color: #fff; font-size: 0.95rem; font-weight: 600; margin-bottom: 16px; text-transform: uppercase; letter-spacing: 1px; }
+    .footer-links a { display: block; color: #666; font-size: 0.9rem; margin-bottom: 10px; transition: color 0.3s; }
+    .footer-links a:hover { color: #d4a853; }
+    .footer-bottom { border-top: 1px solid #1a1a1a; padding-top: 30px; display: flex; justify-content: space-between; align-items: center; font-size: 0.85rem; color: #555; }
+    .social-links a { display: inline-flex; align-items: center; justify-content: center; width: 36px; height: 36px; border-radius: 8px; background: #1a1a1a; color: #666; margin-right: 8px; transition: all 0.3s; }
+    .social-links a:hover { background: #d4a853; color: #0c0c0c; }
+
+    /* RESPONSIVE */
+    @media (max-width: 1024px) {
+      .hero-content { grid-template-columns: 1fr; text-align: center; }
+      .hero-visual { order: -1; }
+      .hero-plate { width: 280px; height: 280px; }
+      .hero-title { font-size: 3.2rem; }
+      .hero-sub { margin: 0 auto 40px; }
+      .hero-buttons { justify-content: center; }
+      .specialties-grid { grid-template-columns: repeat(2, 1fr); }
+      .menu-grid { grid-template-columns: 1fr; }
+      .about-grid { grid-template-columns: 1fr; gap: 40px; }
+      .gallery-grid { grid-template-columns: repeat(2, 1fr); }
+      .gallery-item.large { grid-column: span 2; grid-row: span 1; height: 250px; }
+      .testimonials-grid { grid-template-columns: 1fr 1fr; }
+      .contact-grid { grid-template-columns: 1fr; }
+    }
+    @media (max-width: 768px) {
+      .nav-links { display: none; }
+      .hamburger { display: flex; }
+      .hero-title { font-size: 2.4rem; }
+      .hero-plate { width: 220px; height: 220px; }
+      .hero-plate-inner i { font-size: 3rem; }
+      .specialties-grid { grid-template-columns: 1fr; }
+      .testimonials-grid { grid-template-columns: 1fr; }
+      .gallery-grid { grid-template-columns: 1fr; }
+      .gallery-item.large { grid-column: span 1; }
+      .form-row { grid-template-columns: 1fr; }
+      .reservation-box { padding: 36px 24px; }
+      .footer-grid { grid-template-columns: 1fr; }
+      .footer-bottom { flex-direction: column; gap: 16px; text-align: center; }
+      .section-header h2 { font-size: 2.2rem; }
+    }
+
+    /* MOBILE NAV */
+    .mobile-nav { display: none; position: fixed; inset: 0; background: rgba(12,12,12,0.98); z-index: 2000; flex-direction: column; align-items: center; justify-content: center; gap: 32px; }
+    .mobile-nav.open { display: flex; }
+    .mobile-nav a { font-size: 1.3rem; font-weight: 600; color: #e0e0e0; text-transform: uppercase; letter-spacing: 2px; }
+    .mobile-close { position: absolute; top: 24px; right: 24px; font-size: 1.5rem; background: none; border: none; cursor: pointer; color: #d4a853; }
+  </style>
+</head>
+<body>
+
+  <!-- NAVBAR -->
+  <nav class="navbar">
+    <div class="nav-inner">
+      <a href="#hero" class="logo">ХАН</a>
+      <ul class="nav-links">
+        <li><a href="#specialties">Specialties</a></li>
+        <li><a href="#menu">Menu</a></li>
+        <li><a href="#about">About</a></li>
+        <li><a href="#gallery">Gallery</a></li>
+        <li><a href="#reservation" class="btn-nav">Reserve</a></li>
+      </ul>
+      <button class="hamburger" id="hamburger"><span></span><span></span><span></span></button>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <section class="hero" id="hero">
+    <div class="hero-bg"></div>
+    <div class="hero-content">
+      <div class="hero-text">
+        <p class="hero-tag">Est. 2015 — Ulaanbaatar</p>
+        <h1 class="hero-title">Taste the <span class="accent">Tradition</span></h1>
+        <p class="hero-sub">Authentic Mongolian cuisine crafted with passion. Every dish tells a story of heritage, flavor, and the finest ingredients sourced locally.</p>
+        <div class="hero-buttons">
+          <a href="#menu" class="btn btn-primary">View Menu</a>
+          <a href="#reservation" class="btn btn-outline">Book a Table</a>
+        </div>
+      </div>
+      <div class="hero-visual">
+        <div class="hero-plate">
+          <div class="hero-plate-inner">
+            <i class="fas fa-utensils"></i>
+            <span>Since 2015</span>
+          </div>
+        </div>
+        <div class="floating-badge top-right"><i class="fas fa-award"></i> Best Mongolian 2024</div>
+        <div class="floating-badge bottom-left"><i class="fas fa-leaf"></i> Farm to Table</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SPECIALTIES -->
+  <section class="specialties" id="specialties">
+    <div class="container">
+      <div class="section-header">
+        <p class="tag">Our Specialties</p>
+        <h2>Chef's Selection</h2>
+        <p>Signature dishes that have made us a culinary destination in the heart of the city.</p>
+      </div>
+      <div class="specialties-grid">
+        <div class="specialty-card">
+          <div class="specialty-img" style="background: linear-gradient(135deg, #1a1510, #2a1f10);"><i class="fas fa-drumstick-bite" style="color: #d4a853;"></i></div>
+          <div class="specialty-info">
+            <h3>Grilled Lamb</h3>
+            <p>Slow-roasted lamb with traditional herbs and spices, served with seasonal vegetables.</p>
+            <span class="specialty-price">45,000 ₮</span>
+          </div>
+        </div>
+        <div class="specialty-card">
+          <div class="specialty-img" style="background: linear-gradient(135deg, #1a1010, #2a1510);"><i class="fas fa-bowl-food" style="color: #c0392b;"></i></div>
+          <div class="specialty-info">
+            <h3>Buuz Platter</h3>
+            <p>Handmade steamed dumplings filled with seasoned beef and onion. A Mongolian classic.</p>
+            <span class="specialty-price">28,000 ₮</span>
+          </div>
+        </div>
+        <div class="specialty-card">
+          <div class="specialty-img" style="background: linear-gradient(135deg, #101a10, #152a15);"><i class="fas fa-mug-hot" style="color: #27ae60;"></i></div>
+          <div class="specialty-info">
+            <h3>Süütei Tsai</h3>
+            <p>Traditional Mongolian milk tea with salt. The perfect start to any meal.</p>
+            <span class="specialty-price">8,000 ₮</span>
+          </div>
+        </div>
+        <div class="specialty-card">
+          <div class="specialty-img" style="background: linear-gradient(135deg, #1a1a10, #2a2a15);"><i class="fas fa-bread-slice" style="color: #f39c12;"></i></div>
+          <div class="specialty-info">
+            <h3>Khorkhog</h3>
+            <p>Traditional Mongolian barbecue cooked with hot stones. A feast for special occasions.</p>
+            <span class="specialty-price">65,000 ₮</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- MENU -->
+  <section class="menu" id="menu">
+    <div class="container">
+      <div class="section-header">
+        <p class="tag">Full Menu</p>
+        <h2>Explore Our Dishes</h2>
+        <p>From traditional recipes to modern interpretations — something for every palate.</p>
+      </div>
+      <div class="menu-categories">
+        <button class="menu-cat active">All</button>
+        <button class="menu-cat">Starters</button>
+        <button class="menu-cat">Main Course</button>
+        <button class="menu-cat">Drinks</button>
+        <button class="menu-cat">Desserts</button>
+      </div>
+      <div class="menu-grid">
+        <div class="menu-item">
+          <div class="menu-item-img" style="background: linear-gradient(135deg, #1a1510, #2a1f10);"><i class="fas fa-drumstick-bite" style="color: #d4a853;"></i></div>
+          <div class="menu-item-info">
+            <div class="menu-item-top"><h3>Grilled Lamb Chops</h3><span class="menu-item-price">45K ₮</span></div>
+            <p>Premium lamb chops marinated in traditional herbs, grilled to perfection.</p>
+          </div>
+        </div>
+        <div class="menu-item">
+          <div class="menu-item-img" style="background: linear-gradient(135deg, #1a1010, #2a1510);"><i class="fas fa-bowl-food" style="color: #c0392b;"></i></div>
+          <div class="menu-item-info">
+            <div class="menu-item-top"><h3>Buuz (6 pcs)</h3><span class="menu-item-price">28K ₮</span></div>
+            <p>Handmade steamed dumplings with seasoned beef, onion, and garlic.</p>
+          </div>
+        </div>
+        <div class="menu-item">
+          <div class="menu-item-img" style="background: linear-gradient(135deg, #101a10, #152a15);"><i class="fas fa-leaf" style="color: #27ae60;"></i></div>
+          <div class="menu-item-info">
+            <div class="menu-item-top"><h3>Fresh Salad</h3><span class="menu-item-price">18K ₮</span></div>
+            <p>Seasonal greens with house dressing, cherry tomatoes, and herbs.</p>
+          </div>
+        </div>
+        <div class="menu-item">
+          <div class="menu-item-img" style="background: linear-gradient(135deg, #1a1a10, #2a2a15);"><i class="fas fa-mug-hot" style="color: #f39c12;"></i></div>
+          <div class="menu-item-info">
+            <div class="menu-item-top"><h3>Süütei Tsai</h3><span class="menu-item-price">8K ₮</span></div>
+            <p>Traditional Mongolian milk tea with salt and butter.</p>
+          </div>
+        </div>
+        <div class="menu-item">
+          <div class="menu-item-img" style="background: linear-gradient(135deg, #15101a, #20152a);"><i class="fas fa-wine-glass" style="color: #8e44ad;"></i></div>
+          <div class="menu-item-info">
+            <div class="menu-item-top"><h3>Airag</h3><span class="menu-item-price">15K ₮</span></div>
+            <p>Fermented mare's milk — a traditional Mongolian beverage.</p>
+          </div>
+        </div>
+        <div class="menu-item">
+          <div class="menu-item-img" style="background: linear-gradient(135deg, #1a1510, #2a1f10);"><i class="fas fa-cookie" style="color: #e67e22;"></i></div>
+          <div class="menu-item-info">
+            <div class="menu-item-top"><h3>Boortsog</h3><span class="menu-item-price">12K ₮</span></div>
+            <p>Traditional fried dough pastries, served with honey or jam.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ABOUT -->
+  <section class="about" id="about">
+    <div class="container">
+      <div class="about-grid">
+        <div class="about-img">
+          <div class="about-img-inner">
+            <i class="fas fa-fire-burner"></i>
+            <span>Since 2015</span>
+          </div>
+        </div>
+        <div class="about-content">
+          <p class="tag">Our Story</p>
+          <h2>A Decade of <span class="accent">Culinary</span> Excellence</h2>
+          <p>Founded in 2015, our restaurant was born from a simple passion: to share the authentic flavors of Mongolia with both locals and visitors. Every recipe has been passed down through generations.</p>
+          <p>We source our ingredients from local herders and farmers, ensuring the freshest quality while supporting our community. Our chefs blend time-honored techniques with modern presentation.</p>
+          <div class="about-stats">
+            <div class="about-stat"><span class="num">10+</span><span class="label">Years</span></div>
+            <div class="about-stat"><span class="num">50+</span><span class="label">Dishes</span></div>
+            <div class="about-stat"><span class="num">30K+</span><span class="label">Guests</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- GALLERY -->
+  <section class="gallery" id="gallery">
+    <div class="container">
+      <div class="section-header">
+        <p class="tag">Gallery</p>
+        <h2>A Feast for the Eyes</h2>
+        <p>Take a glimpse into our kitchen, dining space, and the dishes we create.</p>
+      </div>
+      <div class="gallery-grid">
+        <div class="gallery-item large" style="background: linear-gradient(135deg, #1a1510, #2a1f10);"><i class="fas fa-utensils" style="color: #d4a853; font-size: 4rem;"></i></div>
+        <div class="gallery-item" style="background: linear-gradient(135deg, #1a1010, #2a1510);"><i class="fas fa-wine-glass-alt" style="color: #c0392b;"></i></div>
+        <div class="gallery-item" style="background: linear-gradient(135deg, #101a10, #152a15);"><i class="fas fa-leaf" style="color: #27ae60;"></i></div>
+        <div class="gallery-item" style="background: linear-gradient(135deg, #1a1a10, #2a2a15);"><i class="fas fa-fire" style="color: #f39c12;"></i></div>
+        <div class="gallery-item" style="background: linear-gradient(135deg, #15101a, #20152a);"><i class="fas fa-camera" style="color: #8e44ad;"></i></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- RESERVATION -->
+  <section class="reservation" id="reservation">
+    <div class="container">
+      <div class="reservation-box">
+        <div class="section-header">
+          <p class="tag">Reservation</p>
+          <h2>Book Your Table</h2>
+          <p>Reserve your spot for an unforgettable dining experience.</p>
+        </div>
+        <form>
+          <div class="form-row">
+            <div class="form-group"><label>Name</label><input type="text" placeholder="Your full name" required></div>
+            <div class="form-group"><label>Phone</label><input type="text" placeholder="Your phone number"></div>
+          </div>
+          <div class="form-row">
+            <div class="form-group"><label>Date</label><input type="date"></div>
+            <div class="form-group"><label>Time</label><select><option>12:00</option><option>13:00</option><option>14:00</option><option>18:00</option><option>19:00</option><option>20:00</option><option>21:00</option></select></div>
+          </div>
+          <div class="form-row">
+            <div class="form-group"><label>Guests</label><select><option>1 person</option><option>2 people</option><option>3 people</option><option>4 people</option><option>5 people</option><option>6+ people</option></select></div>
+            <div class="form-group"><label>Occasion</label><select><option>Casual Dining</option><option>Birthday</option><option>Business Meeting</option><option>Anniversary</option><option>Other</option></select></div>
+          </div>
+          <div class="form-group"><label>Special Requests</label><textarea rows="3" placeholder="Any dietary requirements or special requests..."></textarea></div>
+          <button type="submit" class="btn btn-primary btn-block">Confirm Reservation</button>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <!-- TESTIMONIALS -->
+  <section class="testimonials">
+    <div class="container">
+      <div class="section-header">
+        <p class="tag">Reviews</p>
+        <h2>What Guests Say</h2>
+        <p>Real experiences from real guests who dined with us.</p>
+      </div>
+      <div class="testimonials-grid">
+        <div class="testimonial-card">
+          <div class="stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+          <p>"The most authentic Mongolian food I've ever had. The buuz is incredible and the atmosphere is warm and welcoming."</p>
+          <div class="testimonial-author">
+            <div class="author-avatar">B</div>
+            <div class="author-info"><h4>Bat-Erdene</h4><span>Local Guide</span></div>
+          </div>
+        </div>
+        <div class="testimonial-card">
+          <div class="stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+          <p>"Brought my international colleagues here and they were blown away. The khorkhog is a must-try experience!"</p>
+          <div class="testimonial-author">
+            <div class="author-avatar">S</div>
+            <div class="author-info"><h4>Sarah M.</h4><span>Travel Blogger</span></div>
+          </div>
+        </div>
+        <div class="testimonial-card">
+          <div class="stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star-half-alt"></i></div>
+          <p>"Perfect for special occasions. The service is impeccable and every dish is a work of art. Highly recommend."</p>
+          <div class="testimonial-author">
+            <div class="author-avatar">T</div>
+            <div class="author-info"><h4>Tungalag</h4><span>Food Critic</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section class="contact" id="contact">
+    <div class="container">
+      <div class="contact-grid">
+        <div class="contact-info">
+          <p class="tag">Find Us</p>
+          <h2>Visit Us Today</h2>
+          <p>Located in the heart of the city, we're easy to find and always welcoming.</p>
+          <div class="contact-item">
+            <div class="contact-icon"><i class="fas fa-map-marker-alt"></i></div>
+            <div><h4>Address</h4><span>Peace Ave, Ulaanbaatar, Mongolia</span></div>
+          </div>
+          <div class="contact-item">
+            <div class="contact-icon"><i class="fas fa-phone"></i></div>
+            <div><h4>Phone</h4><span>+976 7711 2233</span></div>
+          </div>
+          <div class="contact-item">
+            <div class="contact-icon"><i class="fas fa-clock"></i></div>
+            <div><h4>Hours</h4><span>Mon – Sun: 11:00 – 22:00</span></div>
+          </div>
+          <div class="contact-item">
+            <div class="contact-icon"><i class="fas fa-envelope"></i></div>
+            <div><h4>Email</h4><span>info@han-restaurant.mn</span></div>
+          </div>
+        </div>
+        <div class="map-placeholder">
+          <i class="fas fa-map-marked-alt" style="margin-right: 12px;"></i> Interactive Map
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div>
+          <h3>ХАН</h3>
+          <p>Authentic Mongolian cuisine in the heart of Ulaanbaatar. A decade of culinary excellence, tradition, and unforgettable flavors.</p>
+          <div class="social-links">
+            <a href="#"><i class="fab fa-facebook-f"></i></a>
+            <a href="#"><i class="fab fa-instagram"></i></a>
+            <a href="#"><i class="fab fa-tiktok"></i></a>
+          </div>
+        </div>
+        <div class="footer-links">
+          <h4>Quick Links</h4>
+          <a href="#menu">Our Menu</a>
+          <a href="#reservation">Reservations</a>
+          <a href="#gallery">Gallery</a>
+          <a href="#contact">Contact</a>
+        </div>
+        <div class="footer-links">
+          <h4>Information</h4>
+          <a href="#">About Us</a>
+          <a href="#">Private Events</a>
+          <a href="#">Gift Cards</a>
+          <a href="#">Careers</a>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; 2026 ХАН Restaurant. All rights reserved.</p>
+        <p>Crafted with <i class="fas fa-heart" style="color: #d4a853;"></i> in Ulaanbaatar</p>
+      </div>
+    </div>
+  </footer>
+
+  <div class="mobile-nav" id="mobileNav">
+    <button class="mobile-close" id="mobileClose"><i class="fas fa-times"></i></button>
+    <a href="#specialties" class="mobile-link">Specialties</a>
+    <a href="#menu" class="mobile-link">Menu</a>
+    <a href="#about" class="mobile-link">About</a>
+    <a href="#gallery" class="mobile-link">Gallery</a>
+    <a href="#reservation" class="mobile-link">Reserve</a>
+  </div>
+
+</body>
+</html>

@@ -1,0 +1,474 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Company — Professional Business Solutions</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <style>
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+    html { scroll-behavior: smooth; font-size: 16px; }
+    body { font-family: 'Inter', sans-serif; background: #fff; color: #1a1a2e; line-height: 1.7; overflow-x: hidden; }
+    a { text-decoration: none; color: inherit; }
+    ul { list-style: none; }
+    .container { max-width: 1200px; margin: 0 auto; padding: 0 24px; }
+
+    /* NAVBAR */
+    .navbar { position: fixed; top: 0; left: 0; right: 0; z-index: 1000; padding: 20px 0; transition: all 0.3s ease; }
+    .navbar.scrolled { background: rgba(255,255,255,0.95); backdrop-filter: blur(20px); box-shadow: 0 1px 20px rgba(0,0,0,0.08); padding: 14px 0; }
+    .nav-inner { max-width: 1200px; margin: 0 auto; padding: 0 24px; display: flex; align-items: center; justify-content: space-between; }
+    .logo { font-size: 1.5rem; font-weight: 900; color: #2d3436; letter-spacing: -1px; }
+    .logo span { color: #0984e3; }
+    .nav-links { display: flex; align-items: center; gap: 36px; }
+    .nav-links a { font-size: 0.9rem; font-weight: 500; color: #555; transition: color 0.3s; }
+    .nav-links a:hover { color: #0984e3; }
+    .btn-nav { background: #0984e3; color: #fff !important; padding: 10px 24px !important; border-radius: 8px; font-weight: 600; transition: all 0.3s; }
+    .btn-nav:hover { background: #0770c2; transform: translateY(-1px); }
+    .hamburger { display: none; flex-direction: column; gap: 5px; background: none; border: none; cursor: pointer; padding: 4px; }
+    .hamburger span { display: block; width: 24px; height: 2px; background: #333; transition: all 0.3s; }
+
+    /* HERO */
+    .hero { min-height: 100vh; display: flex; align-items: center; position: relative; padding: 120px 24px 80px; overflow: hidden; background: linear-gradient(180deg, #f8fbff 0%, #fff 100%); }
+    .hero-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: center; max-width: 1200px; margin: 0 auto; }
+    .hero-tag { display: inline-block; font-size: 0.8rem; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: #0984e3; background: rgba(9,132,227,0.1); padding: 8px 20px; border-radius: 50px; margin-bottom: 24px; }
+    .hero-title { font-size: 3.8rem; font-weight: 900; line-height: 1.1; margin-bottom: 24px; letter-spacing: -2px; color: #1a1a2e; }
+    .hero-title .accent { color: #0984e3; }
+    .hero-sub { font-size: 1.15rem; color: #666; margin-bottom: 40px; max-width: 480px; line-height: 1.8; }
+    .hero-buttons { display: flex; gap: 16px; align-items: center; }
+    .btn { display: inline-flex; align-items: center; justify-content: center; padding: 16px 36px; border-radius: 12px; font-weight: 600; font-size: 0.95rem; cursor: pointer; transition: all 0.3s ease; border: none; }
+    .btn-primary { background: #0984e3; color: #fff; box-shadow: 0 4px 20px rgba(9,132,227,0.3); }
+    .btn-primary:hover { background: #0770c2; transform: translateY(-2px); box-shadow: 0 8px 30px rgba(9,132,227,0.4); }
+    .btn-outline { border: 2px solid #ddd; color: #555; background: transparent; }
+    .btn-outline:hover { border-color: #0984e3; color: #0984e3; }
+    .hero-visual { position: relative; }
+    .hero-card { background: #fff; border-radius: 24px; padding: 48px; box-shadow: 0 30px 80px rgba(0,0,0,0.08); position: relative; }
+    .hero-card h3 { font-size: 1.4rem; margin-bottom: 24px; color: #1a1a2e; }
+    .stat-row { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+    .stat-box { background: #f8fbff; border-radius: 16px; padding: 24px; text-align: center; border: 1px solid #e8f0fe; }
+    .stat-box .num { display: block; font-size: 2rem; font-weight: 800; color: #0984e3; }
+    .stat-box .label { font-size: 0.8rem; color: #888; font-weight: 500; margin-top: 4px; }
+    .floating-badge { position: absolute; background: #fff; border-radius: 14px; padding: 14px 20px; box-shadow: 0 10px 40px rgba(0,0,0,0.1); font-weight: 600; font-size: 0.85rem; display: flex; align-items: center; gap: 10px; }
+    .floating-badge.top-right { top: -20px; right: -20px; }
+    .floating-badge.bottom-left { bottom: -20px; left: -20px; }
+    .floating-badge i { width: 36px; height: 36px; border-radius: 10px; display: flex; align-items: center; justify-content: center; color: #fff; font-size: 0.9rem; }
+    .badge-blue { background: #0984e3; }
+    .badge-green { background: #00b894; }
+
+    /* FEATURES */
+    .features { padding: 120px 0; }
+    .section-header { text-align: center; margin-bottom: 60px; }
+    .section-header .tag { display: inline-block; font-size: 0.75rem; font-weight: 700; letter-spacing: 3px; text-transform: uppercase; color: #0984e3; margin-bottom: 12px; }
+    .section-header h2 { font-size: 2.8rem; font-weight: 800; line-height: 1.2; margin-bottom: 16px; color: #1a1a2e; }
+    .section-header p { font-size: 1.05rem; color: #888; max-width: 550px; margin: 0 auto; }
+    .features-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 30px; }
+    .feature-card { background: #fff; border: 1px solid #eee; border-radius: 20px; padding: 40px 32px; transition: all 0.4s ease; }
+    .feature-card:hover { border-color: #0984e3; transform: translateY(-4px); box-shadow: 0 20px 60px rgba(9,132,227,0.1); }
+    .feature-icon { width: 56px; height: 56px; border-radius: 16px; background: linear-gradient(135deg, rgba(9,132,227,0.1), rgba(9,132,227,0.05)); display: flex; align-items: center; justify-content: center; margin-bottom: 24px; font-size: 1.3rem; color: #0984e3; }
+    .feature-card h3 { font-size: 1.2rem; font-weight: 700; margin-bottom: 12px; color: #1a1a2e; }
+    .feature-card p { color: #777; font-size: 0.95rem; line-height: 1.7; }
+
+    /* ABOUT */
+    .about { padding: 120px 0; background: #f8fbff; }
+    .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center; }
+    .about-img { position: relative; border-radius: 24px; height: 450px; background: linear-gradient(135deg, #0984e3, #0770c2); display: flex; align-items: center; justify-content: center; overflow: hidden; }
+    .about-img-inner { width: 80%; height: 80%; background: rgba(255,255,255,0.1); border-radius: 20px; backdrop-filter: blur(10px); display: flex; align-items: center; justify-content: center; color: #fff; font-size: 4rem; }
+    .about-content h2 { font-size: 2.8rem; font-weight: 800; line-height: 1.2; margin-bottom: 24px; color: #1a1a2e; }
+    .about-content h2 .accent { color: #0984e3; }
+    .about-content p { color: #666; font-size: 1.05rem; margin-bottom: 16px; line-height: 1.8; }
+    .about-list { margin: 24px 0; }
+    .about-list li { display: flex; align-items: center; gap: 12px; margin-bottom: 14px; font-weight: 500; color: #333; }
+    .about-list li i { color: #00b894; font-size: 1.1rem; }
+
+    /* SERVICES */
+    .services { padding: 120px 0; }
+    .services-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 30px; }
+    .service-card { background: #f8fbff; border: 1px solid #e8f0fe; border-radius: 20px; padding: 40px; transition: all 0.4s ease; }
+    .service-card:hover { background: #fff; box-shadow: 0 10px 40px rgba(0,0,0,0.06); transform: translateY(-2px); }
+    .service-top { display: flex; align-items: center; gap: 16px; margin-bottom: 20px; }
+    .service-icon { width: 48px; height: 48px; border-radius: 14px; background: rgba(9,132,227,0.1); display: flex; align-items: center; justify-content: center; color: #0984e3; font-size: 1.1rem; }
+    .service-card h3 { font-size: 1.15rem; font-weight: 700; color: #1a1a2e; }
+    .service-card p { color: #777; font-size: 0.95rem; line-height: 1.7; }
+
+    /* TESTIMONIALS */
+    .testimonials { padding: 120px 0; background: #1a1a2e; }
+    .testimonials .section-header h2 { color: #fff; }
+    .testimonials .section-header p { color: #888; }
+    .testimonials .tag { color: #0984e3; }
+    .testimonials-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 30px; }
+    .testimonial-card { background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.08); border-radius: 20px; padding: 36px; }
+    .testimonial-card .stars { color: #fdcb6e; margin-bottom: 20px; font-size: 0.9rem; }
+    .testimonial-card p { color: #ccc; font-size: 0.95rem; line-height: 1.8; margin-bottom: 24px; font-style: italic; }
+    .testimonial-author { display: flex; align-items: center; gap: 14px; }
+    .author-avatar { width: 44px; height: 44px; border-radius: 50%; background: #0984e3; display: flex; align-items: center; justify-content: center; color: #fff; font-weight: 700; font-size: 1rem; }
+    .author-info h4 { color: #fff; font-size: 0.95rem; font-weight: 600; }
+    .author-info span { color: #888; font-size: 0.8rem; }
+
+    /* CTA */
+    .cta { padding: 100px 0; }
+    .cta-box { background: linear-gradient(135deg, #0984e3, #0770c2); border-radius: 24px; padding: 80px 60px; text-align: center; color: #fff; }
+    .cta-box h2 { font-size: 2.5rem; font-weight: 800; margin-bottom: 16px; }
+    .cta-box p { font-size: 1.1rem; color: rgba(255,255,255,0.8); margin-bottom: 36px; max-width: 500px; margin-left: auto; margin-right: auto; }
+    .btn-white { background: #fff; color: #0984e3; }
+    .btn-white:hover { transform: translateY(-2px); box-shadow: 0 8px 30px rgba(0,0,0,0.2); }
+
+    /* CONTACT */
+    .contact { padding: 120px 0; background: #f8fbff; }
+    .contact-grid { display: grid; grid-template-columns: 1fr 1.2fr; gap: 60px; }
+    .contact-info h2 { font-size: 2.5rem; font-weight: 800; margin-bottom: 16px; color: #1a1a2e; }
+    .contact-info p { color: #888; font-size: 1.05rem; margin-bottom: 36px; }
+    .contact-item { display: flex; align-items: center; gap: 16px; margin-bottom: 24px; }
+    .contact-icon { width: 48px; height: 48px; border-radius: 14px; background: rgba(9,132,227,0.1); display: flex; align-items: center; justify-content: center; color: #0984e3; font-size: 1rem; }
+    .contact-item h4 { font-size: 0.95rem; font-weight: 600; color: #1a1a2e; margin-bottom: 2px; }
+    .contact-item span { font-size: 0.9rem; color: #888; }
+    .contact-form { background: #fff; border-radius: 20px; padding: 48px; box-shadow: 0 10px 40px rgba(0,0,0,0.04); border: 1px solid #eee; }
+    .form-group { margin-bottom: 20px; }
+    .form-group label { display: block; font-size: 0.85rem; font-weight: 600; color: #333; margin-bottom: 8px; }
+    .form-group input,
+    .form-group textarea,
+    .form-group select { width: 100%; padding: 14px 18px; border: 2px solid #eee; border-radius: 12px; font-size: 0.95rem; font-family: inherit; transition: border-color 0.3s; color: #333; background: #fafafa; }
+    .form-group input:focus,
+    .form-group textarea:focus { outline: none; border-color: #0984e3; background: #fff; }
+    .form-group textarea { resize: vertical; min-height: 120px; }
+    .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+    .btn-block { width: 100%; }
+
+    /* FOOTER */
+    .footer { padding: 60px 0 30px; background: #1a1a2e; color: #888; }
+    .footer-grid { display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 40px; margin-bottom: 40px; }
+    .footer h3 { color: #fff; font-size: 1.3rem; margin-bottom: 16px; }
+    .footer h3 span { color: #0984e3; }
+    .footer p { font-size: 0.9rem; line-height: 1.7; margin-bottom: 16px; }
+    .footer h4 { color: #fff; font-size: 0.95rem; font-weight: 600; margin-bottom: 16px; }
+    .footer-links a { display: block; color: #888; font-size: 0.9rem; margin-bottom: 10px; transition: color 0.3s; }
+    .footer-links a:hover { color: #0984e3; }
+    .footer-bottom { border-top: 1px solid rgba(255,255,255,0.08); padding-top: 30px; display: flex; justify-content: space-between; align-items: center; font-size: 0.85rem; }
+    .social-links a { display: inline-flex; align-items: center; justify-content: center; width: 36px; height: 36px; border-radius: 8px; background: rgba(255,255,255,0.05); color: #888; margin-right: 8px; transition: all 0.3s; }
+    .social-links a:hover { background: #0984e3; color: #fff; }
+
+    /* RESPONSIVE */
+    @media (max-width: 1024px) {
+      .hero-title { font-size: 3rem; }
+      .hero-grid { grid-template-columns: 1fr; gap: 40px; }
+      .hero-visual { order: -1; }
+      .about-grid { grid-template-columns: 1fr; gap: 40px; }
+      .features-grid { grid-template-columns: repeat(2, 1fr); }
+      .testimonials-grid { grid-template-columns: 1fr 1fr; }
+      .contact-grid { grid-template-columns: 1fr; }
+      .footer-grid { grid-template-columns: 1fr 1fr; }
+    }
+    @media (max-width: 768px) {
+      .nav-links { display: none; }
+      .hamburger { display: flex; }
+      .hero-title { font-size: 2.4rem; letter-spacing: -1px; }
+      .hero { padding-top: 100px; }
+      .features-grid { grid-template-columns: 1fr; }
+      .services-grid { grid-template-columns: 1fr; }
+      .testimonials-grid { grid-template-columns: 1fr; }
+      .form-row { grid-template-columns: 1fr; }
+      .cta-box { padding: 50px 30px; }
+      .cta-box h2 { font-size: 1.8rem; }
+      .footer-grid { grid-template-columns: 1fr; }
+      .footer-bottom { flex-direction: column; gap: 16px; text-align: center; }
+      .section-header h2 { font-size: 2rem; }
+    }
+
+    /* MOBILE NAV */
+    .mobile-nav { display: none; position: fixed; inset: 0; background: rgba(255,255,255,0.98); z-index: 2000; flex-direction: column; align-items: center; justify-content: center; gap: 32px; }
+    .mobile-nav.open { display: flex; }
+    .mobile-nav a { font-size: 1.3rem; font-weight: 600; color: #1a1a2e; }
+    .mobile-close { position: absolute; top: 24px; right: 24px; font-size: 1.5rem; background: none; border: none; cursor: pointer; color: #333; }
+  </style>
+</head>
+<body>
+
+  <!-- NAVBAR -->
+  <nav class="navbar">
+    <div class="nav-inner">
+      <a href="#hero" class="logo">Comp<span>any</span></a>
+      <ul class="nav-links">
+        <li><a href="#features">Features</a></li>
+        <li><a href="#about">About</a></li>
+        <li><a href="#services">Services</a></li>
+        <li><a href="#testimonials">Testimonials</a></li>
+        <li><a href="#contact" class="btn-nav">Contact Us</a></li>
+      </ul>
+      <button class="hamburger" id="hamburger"><span></span><span></span><span></span></button>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <section class="hero" id="hero">
+    <div class="hero-grid">
+      <div class="hero-text">
+        <p class="hero-tag">Trusted by 500+ Businesses</p>
+        <h1 class="hero-title">Your Business <br>Deserves <span class="accent">More</span></h1>
+        <p class="hero-sub">Professional solutions for companies that want to grow. From strategy to execution — we handle the complexity so you can focus on what matters.</p>
+        <div class="hero-buttons">
+          <a href="#contact" class="btn btn-primary">Get Free Quote</a>
+          <a href="#services" class="btn btn-outline">Our Services</a>
+        </div>
+      </div>
+      <div class="hero-visual">
+        <div class="hero-card">
+          <h3>Our Results</h3>
+          <div class="stat-row">
+            <div class="stat-box"><span class="num">500+</span><span class="label">Clients Served</span></div>
+            <div class="stat-box"><span class="num">98%</span><span class="label">Satisfaction</span></div>
+            <div class="stat-box"><span class="num">12+</span><span class="label">Years Experience</span></div>
+            <div class="stat-box"><span class="num">24/7</span><span class="label">Support</span></div>
+          </div>
+        </div>
+        <div class="floating-badge top-right"><i class="fas fa-rocket badge-blue"></i> <span>Fast Delivery</span></div>
+        <div class="floating-badge bottom-left"><i class="fas fa-shield-alt badge-green"></i> <span>Guaranteed</span></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FEATURES -->
+  <section class="features" id="features">
+    <div class="container">
+      <div class="section-header">
+        <p class="tag">Why Choose Us</p>
+        <h2>Built for Performance</h2>
+        <p>We combine innovation with reliability to deliver solutions that drive real business outcomes.</p>
+      </div>
+      <div class="features-grid">
+        <div class="feature-card">
+          <div class="feature-icon"><i class="fas fa-bolt"></i></div>
+          <h3>Fast Turnaround</h3>
+          <p>We deliver on time, every time. Streamlined processes and dedicated teams ensure rapid without sacrificing quality.</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon"><i class="fas fa-chart-line"></i></div>
+          <h3>Growth Focused</h3>
+          <p>Every solution is designed with your growth in mind. We think long-term so your investment keeps paying off.</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon"><i class="fas fa-headset"></i></div>
+          <h3>24/7 Support</h3>
+          <p>Round-the-clock support means you're never stuck. Our team responds quickly whenever you need us.</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon"><i class="fas fa-lock"></i></div>
+          <h3>Secure & Reliable</h3>
+          <p>Enterprise-grade security protocols protect your data. We meet the highest standards for safety and compliance.</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon"><i class="fas fa-puzzle-piece"></i></div>
+          <h3>Custom Solutions</h3>
+          <p>No cookie-cutter approaches. We tailor everything to your specific needs, industry, and goals.</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon"><i class="fas fa-coins"></i></div>
+          <h3>Affordable Pricing</h3>
+          <p>Premium quality doesn't mean premium prices. Transparent pricing with no hidden fees, ever.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ABOUT -->
+  <section class="about" id="about">
+    <div class="container">
+      <div class="about-grid">
+        <div class="about-img">
+          <div class="about-img-inner"><i class="fas fa-building"></i></div>
+        </div>
+        <div class="about-content">
+          <p class="tag">About Us</p>
+          <h2>A Team That <span class="accent">Cares</span> About Your Success</h2>
+          <p>Founded over a decade ago, we've helped hundreds of businesses transform their operations through innovative solutions and unparalleled service.</p>
+          <p>Our team of experienced professionals brings together diverse expertise to tackle any challenge. We don't just provide services — we build partnerships.</p>
+          <ul class="about-list">
+            <li><i class="fas fa-check-circle"></i> Industry-leading expertise across multiple sectors</li>
+            <li><i class="fas fa-check-circle"></i> Dedicated account managers for every client</li>
+            <li><i class="fas fa-check-circle"></i> Proven track record with measurable results</li>
+            <li><i class="fas fa-check-circle"></i> Continuous innovation and improvement</li>
+            <li><i class="fas fa-check-circle"></i> Transparent communication at every stage</li>
+          </ul>
+          <a href="#contact" class="btn btn-primary">Let's Work Together</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SERVICES -->
+  <section class="services" id="services">
+    <div class="container">
+      <div class="section-header">
+        <p class="tag">Our Services</p>
+        <h2>Everything You Need to Succeed</h2>
+        <p>Comprehensive solutions designed to help your business thrive in today's competitive market.</p>
+      </div>
+      <div class="services-grid">
+        <div class="service-card">
+          <div class="service-top"><div class="service-icon"><i class="fas fa-laptop-code"></i></div><h3>Web Development</h3></div>
+          <p>Custom websites and web applications built with modern technologies. Responsive, fast, and optimized for conversions.</p>
+        </div>
+        <div class="service-card">
+          <div class="service-top"><div class="service-icon"><i class="fas fa-mobile-alt"></i></div><h3>Mobile Apps</h3></div>
+          <p>Native and cross-platform mobile applications that deliver seamless user experiences on every device.</p>
+        </div>
+        <div class="service-card">
+          <div class="service-top"><div class="service-icon"><i class="fas fa-bullhorn"></i></div><h3>Digital Marketing</h3></div>
+          <p>Data-driven marketing strategies including SEO, PPC, social media, and content marketing to grow your reach.</p>
+        </div>
+        <div class="service-card">
+          <div class="service-top"><div class="service-icon"><i class="fas fa-palette"></i></div><h3>Brand & Design</h3></div>
+          <p>Complete brand identity design including logos, color systems, brand guidelines, and marketing collateral.</p>
+        </div>
+        <div class="service-card">
+          <div class="service-top"><div class="service-icon"><i class="fas fa-cloud"></i></div><h3>Cloud Solutions</h3></div>
+          <p>Scalable cloud infrastructure setup, migration, and management. AWS, Google Cloud, and Azure expertise.</p>
+        </div>
+        <div class="service-card">
+          <div class="service-top"><div class="service-icon"><i class="fas fa-chart-bar"></i></div><h3>Analytics & BI</h3></div>
+          <p>Turn your data into actionable insights. Custom dashboards, reporting, and business intelligence solutions.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- TESTIMONIALS -->
+  <section class="testimonials" id="testimonials">
+    <div class="container">
+      <div class="section-header">
+        <p class="tag">Testimonials</p>
+        <h2>What Our Clients Say</h2>
+        <p>Don't just take our word for it — hear from the businesses we've helped grow.</p>
+      </div>
+      <div class="testimonials-grid">
+        <div class="testimonial-card">
+          <div class="stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+          <p>"The team delivered beyond our expectations. Our new website increased conversions by 300% in the first month."</p>
+          <div class="testimonial-author">
+            <div class="author-avatar">S</div>
+            <div class="author-info"><h4>Sarah Johnson</h4><span>CEO, TechVista</span></div>
+          </div>
+        </div>
+        <div class="testimonial-card">
+          <div class="stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+          <p>"Professional, responsive, and incredibly talented. They transformed our entire digital presence and we couldn't be happier."</p>
+          <div class="testimonial-author">
+            <div class="author-avatar">M</div>
+            <div class="author-info"><h4>Marco Rodriguez</h4><span>Founder, GreenLeaf Co.</span></div>
+          </div>
+        </div>
+        <div class="testimonial-card">
+          <div class="stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star-half-alt"></i></div>
+          <p>"The ROI from their marketing campaign was incredible. Finally, a team that delivers measurable results, not just promises."</p>
+          <div class="testimonial-author">
+            <div class="author-avatar">A</div>
+            <div class="author-info"><h4>Aisha Patel</h4><span>Marketing Director, FreshMart</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="cta">
+    <div class="container">
+      <div class="cta-box">
+        <h2>Ready to Elevate Your Business?</h2>
+        <p>Get a free consultation and discover how we can help you achieve your goals.</p>
+        <a href="#contact" class="btn btn-white">Schedule Free Call</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section class="contact" id="contact">
+    <div class="container">
+      <div class="contact-grid">
+        <div class="contact-info">
+          <p class="tag">Contact Us</p>
+          <h2>Let's Start a Conversation</h2>
+          <p>Have questions? We'd love to hear from you. Reach out and we'll respond within 24 hours.</p>
+          <div class="contact-item">
+            <div class="contact-icon"><i class="fas fa-phone"></i></div>
+            <div><h4>Phone</h4><span>+976 1234 5678</span></div>
+          </div>
+          <div class="contact-item">
+            <div class="contact-icon"><i class="fas fa-envelope"></i></div>
+            <div><h4>Email</h4><span>info@company.mn</span></div>
+          </div>
+          <div class="contact-item">
+            <div class="contact-icon"><i class="fas fa-map-marker-alt"></i></div>
+            <div><h4>Office</h4><span>Ulaanbaatar, Mongolia</span></div>
+          </div>
+          <div class="contact-item">
+            <div class="contact-icon"><i class="fas fa-clock"></i></div>
+            <div><h4>Hours</h4><span>Mon – Sat: 9:00 – 18:00</span></div>
+          </div>
+        </div>
+        <form class="contact-form">
+          <div class="form-row">
+            <div class="form-group"><label>Full Name</label><input type="text" placeholder="John Doe" required></div>
+            <div class="form-group"><label>Phone</label><input type="text" placeholder="Your phone number"></div>
+          </div>
+          <div class="form-group"><label>Email</label><input type="email" placeholder="john@company.com" required></div>
+          <div class="form-group"><label>Service Needed</label><select><option value="">Select a service</option><option>Web Development</option><option>Mobile App</option><option>Digital Marketing</option><option>Brand & Design</option><option>Cloud Solutions</option><option>Other</option></select></div>
+          <div class="form-group"><label>Message</label><textarea rows="4" placeholder="Tell us about your project..."></textarea></div>
+          <button type="submit" class="btn btn-primary btn-block">Send Message</button>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div>
+          <h3>Comp<span>any</span></h3>
+          <p>Professional business solutions for companies that refuse to settle for average. Building success, one project at a time.</p>
+          <div class="social-links">
+            <a href="#"><i class="fab fa-facebook-f"></i></a>
+            <a href="#"><i class="fab fa-twitter"></i></a>
+            <a href="#"><i class="fab fa-linkedin-in"></i></a>
+            <a href="#"><i class="fab fa-instagram"></i></a>
+          </div>
+        </div>
+        <div class="footer-links">
+          <h4>Services</h4>
+          <a href="#">Web Development</a>
+          <a href="#">Mobile Apps</a>
+          <a href="#">Digital Marketing</a>
+          <a href="#">Brand Design</a>
+        </div>
+        <div class="footer-links">
+          <h4>Company</h4>
+          <a href="#">About Us</a>
+          <a href="#">Our Team</a>
+          <a href="#">Careers</a>
+          <a href="#">Blog</a>
+        </div>
+        <div class="footer-links">
+          <h4>Support</h4>
+          <a href="#">Contact</a>
+          <a href="#">FAQ</a>
+          <a href="#">Privacy Policy</a>
+          <a href="#">Terms of Service</a>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; 2026 Company. All rights reserved.</p>
+        <p>Designed with <i class="fas fa-heart" style="color: #e74c3c;"></i> in Ulaanbaatar, Mongolia</p>
+      </div>
+    </div>
+  </footer>
+
+  <div class="mobile-nav" id="mobileNav">
+    <button class="mobile-close" id="mobileClose"><i class="fas fa-times"></i></button>
+    <a href="#features" class="mobile-link">Features</a>
+    <a href="#about" class="mobile-link">About</a>
+    <a href="#services" class="mobile-link">Services</a>
+    <a href="#testimonials" class="mobile-link">Testimonials</a>
+    <a href="#contact" class="mobile-link">Contact</a>
+  </div>
+
+</body>
+</html>

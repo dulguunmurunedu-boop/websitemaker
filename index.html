@@ -1361,7 +1361,12 @@
     // PRELOADER
     window.addEventListener('load', () => {
       setTimeout(() => {
-        document.getElementById('preloader').classList.add('hidden');
+        const preloader = document.getElementById('preloader');
+        if (preloader) {
+          preloader.style.opacity = '0';
+          preloader.style.visibility = 'hidden';
+          setTimeout(() => { preloader.style.display = 'none'; }, 800);
+        }
       }, 1200);
     });
 
@@ -1465,6 +1470,7 @@
     if (showcaseSection) {
       showcaseSection.appendChild(showcaseProgress);
     }
+    const showcaseTrack = document.querySelector('.showcase-track');
     if (showcaseTrack) {
       showcaseTrack.addEventListener('scroll', () => {
         const maxScroll = showcaseTrack.scrollWidth - showcaseTrack.clientWidth;
@@ -1474,7 +1480,6 @@
     }
 
     // HORIZONTAL SCROLL with mouse wheel (trackpad friendly)
-    const showcaseTrack = document.querySelector('.showcase-track');
     if (showcaseTrack) {
       showcaseTrack.addEventListener('wheel', (e) => {
         if (Math.abs(e.deltaX) > Math.abs(e.deltaY)) {

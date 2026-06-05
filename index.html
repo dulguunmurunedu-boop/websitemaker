@@ -205,12 +205,7 @@
     }
     .hero-pill .dot { width: 6px; height: 6px; border-radius: 50%; background: #7850ff; animation: pulse 2s infinite; }
     @keyframes pulse { 0%, 100% { opacity: 1; } 50% { opacity: 0.3; } }
-    .hero-title {
-      font-family: var(--font-heading);
-      font-size: clamp(3rem, 7vw, 5.5rem); font-weight: 700; line-height: 1.06;
-      letter-spacing: -3px; margin-bottom: 32px;
-      color: #fff;
-    }
+    .hero-title {\n      font-family: var(--font-heading);\n      font-size: clamp(2.4rem, 5.5vw, 4.5rem); font-weight: 700; line-height: 1.1;\n      letter-spacing: -2px; margin-bottom: 32px;\n      color: #fff;\n    }
     .hero-title .line { display: block; overflow: hidden; }
     .hero-title .line span {
       display: inline-block;
@@ -823,10 +818,10 @@
       <div class="hero-pill"><span class="dot"></span> <span data-mn="heroPill">Вэбсайт & видео хийдэг</span></div>
       <h1 class="hero-title">
         <span class="line line-1"><span data-mn="heroLine1">Бид</span></span>
-        <span class="line line-2"><span class="gradient" data-mn="heroLine2">Таны бизнесийг онлайнаар өсгөх</span></span>
+        <span class="line line-2"><span class="gradient" data-mn="heroLine2">таны бизнесийг онлайнаар өсгөх</span></span>
         <span class="line line-3"><span data-mn="heroLine3">вэбсайт, видео контент бүтээдэг.</span></span>
       </h1>
-      <p class="hero-desc" data-mn="heroDesc">Эмчилгээний газар, ресторан, жижиг бизнес, хувь хүний брэнд — бүгдэд зориулсан мэргэжлийн вэбсайт болон видео контент.</p>
+      <p class="hero-desc" data-mn="heroDesc">Эмчилгээний газар, ресторан, жижиг бизнес — мэргэжлийн вэбсайт болон видео контент.</p>
       <div class="hero-actions">
         <a href="#work" class="btn btn-primary"><i class="fas fa-arrow-right"></i> <span data-mn="heroBtn1">Ажилуудыг харах</span></a>
         <a href="#contact" class="btn btn-ghost"><i class="fas fa-envelope"></i> <span data-mn="heroBtn2">Холбогдох</span></a>
@@ -1564,7 +1559,7 @@
         heroLine1: "We build",
         heroLine2: "websites and video content",
         heroLine3: "that help businesses grow.",
-        heroDesc: "Clinics, restaurants, small businesses, personal brands — professional websites and video content for everyone.",
+        heroDesc: "Clinics, restaurants, small businesses — professional websites and video content.",
         heroBtn1: "View Our Work",
         heroBtn2: "Contact Us",
         scrollText: "Scroll Down",

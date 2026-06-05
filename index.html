@@ -5,15 +5,17 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>OGT UUR — Дижитал Студи</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;700&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
   <style>
     *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
     html { scroll-behavior: smooth; font-size: 16px; }
+    :root { --font-heading: 'Space Grotesk', 'Inter', sans-serif; --font-body: 'Inter', sans-serif; --font-mono: 'JetBrains Mono', monospace; }
     body {
       font-family: 'Inter', sans-serif;
-      background: #06060a;
+      background: #030308;
       color: #e8e8e8;
+      line-height: 1.8;
       overflow-x: hidden;
       cursor: default;
     }
@@ -52,7 +54,7 @@
     /* ===== PRELOADER ===== */
     #preloader {
       position: fixed; inset: 0;
-      background: #06060a;
+      background: #030308;
       z-index: 10000;
       display: flex; align-items: center; justify-content: center;
       transition: opacity 0.8s ease, visibility 0.8s;
@@ -90,7 +92,7 @@
     }
     .nav-logo {
       font-size: 1.6rem; font-weight: 900;
-      background: linear-gradient(135deg, #7850ff 0%, #ff6496 50%, #50c8ff 100%);
+      background: linear-gradient(135deg, #7850ff 0%, #ff6496 100%);
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
       background-clip: text;
@@ -154,7 +156,7 @@
       animation-delay: -7s;
     }
     .orb-3 {
-      width: 400px; height: 400px; background: #50c8ff;
+      width: 400px; height: 400px; background: #7850ff;
       top: 40%; left: 50%;
       animation-delay: -14s;
     }
@@ -187,8 +189,9 @@
     .hero-pill .dot { width: 6px; height: 6px; border-radius: 50%; background: #7850ff; animation: pulse 2s infinite; }
     @keyframes pulse { 0%, 100% { opacity: 1; } 50% { opacity: 0.3; } }
     .hero-title {
-      font-size: 5.5rem; font-weight: 900; line-height: 1.05;
-      letter-spacing: -3px; margin-bottom: 28px;
+      font-family: var(--font-heading);
+      font-size: 5.5rem; font-weight: 700; line-height: 1.08;
+      letter-spacing: -2px; margin-bottom: 28px;
       color: #fff;
     }
     @media (max-width: 1024px) {
@@ -207,14 +210,14 @@
       to { opacity: 1; transform: translateY(0); }
     }
     .hero-title .gradient {
-      background: linear-gradient(135deg, #7850ff 0%, #ff6496 50%, #50c8ff 100%);
+      background: linear-gradient(135deg, #7850ff 0%, #ff6496 100%);
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
       background-clip: text;
     }
     .hero-desc {
-      font-size: 1.15rem; color: #777; max-width: 560px;
-      margin: 0 auto 48px; line-height: 1.8;
+      font-size: 1.15rem; color: #888; max-width: 560px;
+      margin: 0 auto 48px; line-height: 1.9;
       opacity: 0; animation: fadeIn 1s ease 1.2s forwards;
     }
     @keyframes fadeIn { to { opacity: 1; } }
@@ -280,11 +283,18 @@
       100% { transform: translateX(-50%); }
     }
 
+    /* ===== CLIENT LOGOS ===== */
+    .clients { padding: 80px 0; border-top: 1px solid rgba(255,255,255,0.04); border-bottom: 1px solid rgba(255,255,255,0.04); overflow: hidden; }
+    .clients-label { text-align: center; font-size: 0.8rem; color: #555; letter-spacing: 2px; text-transform: uppercase; margin-bottom: 40px; }
+    .clients-track { display: flex; gap: 60px; animation: marquee 25s linear infinite; width: max-content; }
+    .client-logo { display: flex; align-items: center; justify-content: center; font-size: 1.1rem; font-weight: 700; color: #333; white-space: nowrap; flex-shrink: 0; transition: color 0.3s; }
+    .client-logo:hover { color: #7850ff; }
     /* ===== BENTO GRID ===== */
     .bento { padding: 120px 40px; }
     .bento-header { text-align: center; margin-bottom: 64px; }
     .bento-header h2 {
-      font-size: 3rem; font-weight: 800; letter-spacing: -1px;
+      font-family: var(--font-heading);
+      font-size: 3rem; font-weight: 700; letter-spacing: -1px;
       margin-bottom: 16px; color: #fff;
     }
     .bento-header p { font-size: 1.05rem; color: #666; max-width: 500px; margin: 0 auto; }
@@ -295,8 +305,10 @@
       gap: 20px; max-width: 1200px; margin: 0 auto;
     }
     .bento-card {
-      background: #0d0d14;
-      border: 1px solid rgba(255,255,255,0.05);
+      background: rgba(13,13,20,0.6);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border: 1px solid rgba(255,255,255,0.06);
       border-radius: 20px; padding: 36px;
       transition: all 0.4s ease;
       position: relative; overflow: hidden;
@@ -333,7 +345,7 @@
       padding: 0 40px; margin-bottom: 48px;
       display: flex; align-items: flex-end; justify-content: space-between;
     }
-    .showcase-header h2 { font-size: 2.5rem; font-weight: 800; color: #fff; letter-spacing: -1px; }
+    .showcase-header h2 { font-family: var(--font-heading); font-size: 2.5rem; font-weight: 700; color: #fff; letter-spacing: -1px; }
     .showcase-header p { font-size: 1rem; color: #666; max-width: 400px; }
     .showcase-track {
       display: flex; gap: 24px;
@@ -351,7 +363,7 @@
     .showcase-card {
       min-width: 420px; scroll-snap-align: start;
       border-radius: 20px; overflow: hidden;
-      background: #0d0d14; border: 1px solid rgba(255,255,255,0.05);
+      background: rgba(13,13,20,0.6); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); border: 1px solid rgba(255,255,255,0.06);
       transition: all 0.4s ease; flex-shrink: 0;
       display: block; text-decoration: none; color: inherit;
     }
@@ -450,12 +462,12 @@
     /* ===== PROCESS (TIMELINE) ===== */
     .process { padding: 120px 40px; background: #0a0a10; }
     .process-header { text-align: center; margin-bottom: 80px; }
-    .process-header h2 { font-size: 3rem; font-weight: 800; color: #fff; letter-spacing: -1px; margin-bottom: 16px; }
+    .process-header h2 { font-family: var(--font-heading); font-size: 3rem; font-weight: 700; color: #fff; letter-spacing: -1px; margin-bottom: 16px; }
     .process-header p { font-size: 1.05rem; color: #666; }
     .process-timeline { max-width: 700px; margin: 0 auto; position: relative; }
     .process-timeline::before {
       content: ''; position: absolute; left: 28px; top: 0; bottom: 0;
-      width: 1px; background: linear-gradient(to bottom, #7850ff, #ff6496, #50c8ff, transparent);
+      width: 1px; background: linear-gradient(to bottom, #7850ff, #ff6496, transparent);
     }
     .process-step {
       display: flex; gap: 32px; margin-bottom: 48px; position: relative;
@@ -474,14 +486,17 @@
     /* ===== TESTIMONIALS ===== */
     .testimonials { padding: 120px 40px; }
     .testimonials-header { text-align: center; margin-bottom: 64px; }
-    .testimonials-header h2 { font-size: 3rem; font-weight: 800; color: #fff; letter-spacing: -1px; margin-bottom: 16px; }
+    .testimonials-header h2 { font-family: var(--font-heading); font-size: 3rem; font-weight: 700; color: #fff; letter-spacing: -1px; margin-bottom: 16px; }
     .testimonials-header p { font-size: 1.05rem; color: #666; }
     .testimonials-grid {
       display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px;
       max-width: 1200px; margin: 0 auto;
     }
     .testimonial-card {
-      background: #0d0d14; border: 1px solid rgba(255,255,255,0.05);
+      background: rgba(13,13,20,0.6);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border: 1px solid rgba(255,255,255,0.06);
       border-radius: 20px; padding: 36px; transition: all 0.3s;
     }
     .testimonial-card:hover { border-color: rgba(120,80,255,0.15); transform: translateY(-2px); }
@@ -512,7 +527,7 @@
       background: radial-gradient(ellipse at 50% 0%, rgba(120,80,255,0.1) 0%, transparent 60%);
       pointer-events: none;
     }
-    .cta-box h2 { font-size: 2.8rem; font-weight: 800; color: #fff; margin-bottom: 16px; position: relative; }
+    .cta-box h2 { font-family: var(--font-heading); font-size: 2.8rem; font-weight: 700; color: #fff; margin-bottom: 16px; position: relative; }
     .cta-box p { font-size: 1.1rem; color: #888; margin-bottom: 40px; position: relative; max-width: 500px; margin-left: auto; margin-right: auto; }
     .cta-box .btn { position: relative; }
 
@@ -522,7 +537,7 @@
     .footer-left { display: flex; align-items: center; gap: 40px; }
     .footer-logo {
       font-size: 1.4rem; font-weight: 900;
-      background: linear-gradient(135deg, #7850ff 0%, #ff6496 50%, #50c8ff 100%);
+      background: linear-gradient(135deg, #7850ff 0%, #ff6496 100%);
       -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
       letter-spacing: 2px;
       filter: drop-shadow(0 0 6px rgba(120,80,255,0.4)) drop-shadow(0 0 18px rgba(255,100,150,0.25));
@@ -588,7 +603,38 @@
       .footer-bottom { flex-direction: column; gap: 8px; text-align: center; }
       .cursor, .cursor-dot { display: none; }
     }
+    /* ===== FOCUS VISIBLE =====
+    *:focus-visible {
+      outline: 2px solid #7850ff;
+      outline-offset: 2px;
+    }
+    button:focus-visible, a:focus-visible {
+      outline: 2px solid #7850ff;
+      outline-offset: 4px;
+      border-radius: 4px;
+    }
 
+    /* ===== SCROLL PROGRESS ===== */
+    .scroll-progress {
+      position: fixed; top: 0; left: 0; height: 2px;
+      background: linear-gradient(90deg, #7850ff, #ff6496);
+      z-index: 10001; transition: width 0.1s ease;
+    }
+    /* ===== STICKY CTA ===== */
+    .sticky-cta {
+      position: fixed; bottom: 24px; right: 24px; z-index: 999;
+      display: flex; align-items: center; gap: 8px;
+      padding: 14px 28px; border-radius: 50px;
+      background: linear-gradient(135deg, #7850ff, #5a3fd4);
+      color: #fff; font-weight: 600; font-size: 0.9rem;
+      box-shadow: 0 4px 24px rgba(120,80,255,0.4);
+      transition: all 0.3s ease; cursor: pointer;
+      text-decoration: none; border: none;
+    }
+    .sticky-cta:hover { transform: translateY(-2px); box-shadow: 0 8px 40px rgba(120,80,255,0.5); }
+    @media (max-width: 768px) {
+      .sticky-cta { bottom: 16px; right: 16px; padding: 12px 20px; font-size: 0.85rem; }
+    }
     /* ===== LANG SWITCHER ===== */
     .lang-switcher {
       display: flex; gap: 4px;
@@ -618,6 +664,9 @@
 </head>
 <body>
 
+  <!-- SCROLL PROGRESS -->
+  <div class="scroll-progress" id="scrollProgress"></div>
+
   <!-- CURSOR -->
   <div class="cursor" id="cursor"></div>
   <div class="cursor-dot" id="cursorDot"></div>
@@ -640,7 +689,7 @@
       <a href="#services"><span data-mn="navServices">Үйлчилгээ</span></a>
       <a href="#process"><span data-mn="navProcess">Үйл явц</span></a>
       <a href="#testimonials"><span data-mn="navReviews">Сэтгэгдэл</span></a>
-      <a href="#contact" class="nav-cta"><span data-mn="navCta">Холбогдох</span></a>
+      <a href="#contact" class="nav-cta"><span data-mn="navCta">Үнийн санал авах</span></a>
     </div>
     <div class="lang-switcher">
       <button class="lang-btn active" data-lang="mn">МН</button>
@@ -696,6 +745,26 @@
       <div class="marquee-item"><i class="fas fa-palette" style="color:#ff6496;"></i> Брэнд Дизайн</div>
       <div class="marquee-item"><i class="fas fa-chart-line" style="color:#50c8ff;"></i> SEO & Өсөлт</div>
       <div class="marquee-item"><i class="fas fa-camera" style="color:#ffd850;"></i> Контент Бүтээл</div>
+    </div>
+  </div>
+
+  <!-- CLIENT LOGOS -->
+  <div class="clients">
+    <div class="clients-label"><span data-mn="clientsLabel">Хамтарсан байгууллагууд</span></div>
+    <div class="clients-track">
+      <div class="client-logo">Монгол Экспресс</div>
+      <div class="client-logo">Номад Тур</div>
+      <div class="client-logo">BlueSky Retail</div>
+      <div class="client-logo">TechVista MN</div>
+      <div class="client-logo">GreenLeaf Co.</div>
+      <div class="client-logo">FreshMart</div>
+      <!-- Duplicate -->
+      <div class="client-logo">Монгол Экспресс</div>
+      <div class="client-logo">Номад Тур</div>
+      <div class="client-logo">BlueSky Retail</div>
+      <div class="client-logo">TechVista MN</div>
+      <div class="client-logo">GreenLeaf Co.</div>
+      <div class="client-logo">FreshMart</div>
     </div>
   </div>
 
@@ -1035,6 +1104,12 @@
     </div>
   </footer>
 
+  <!-- STICKY CTA -->
+  <a href="#contact" class="sticky-cta" id="stickyCta">
+    <i class="fas fa-paper-plane"></i>
+    <span data-mn="stickyCtaText">Үнийн санал авах</span>
+  </a>
+
   <!-- MOBILE NAV -->
   <div class="mobile-nav" id="mobileNav">
     <button class="mobile-close" id="mobileClose"><i class="fas fa-times"></i></button>
@@ -1050,7 +1125,7 @@
     window.addEventListener('load', () => {
       setTimeout(() => {
         document.getElementById('preloader').classList.add('hidden');
-      }, 800);
+      }, 1200);
     });
 
     // CUSTOM CURSOR
@@ -1078,6 +1153,21 @@
     hoverElements.forEach(el => {
       el.addEventListener('mouseenter', () => cursor.classList.add('active'));
       el.addEventListener('mouseleave', () => cursor.classList.remove('active'));
+    });
+
+    // SCROLL PROGRESS
+    const scrollProgress = document.getElementById('scrollProgress');
+    const stickyCta = document.getElementById('stickyCta');
+    window.addEventListener('scroll', () => {
+      const scrollTop = window.scrollY;
+      const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+      const progress = docHeight > 0 ? (scrollTop / docHeight) * 100 : 0;
+      if (scrollProgress) scrollProgress.style.width = progress + '%';
+      // Show sticky CTA after scrolling past hero
+      if (stickyCta) {
+        stickyCta.style.opacity = scrollTop > 600 ? '1' : '0';
+        stickyCta.style.pointerEvents = scrollTop > 600 ? 'auto' : 'none';
+      }
     });
 
     // NAVBAR SCROLL
@@ -1123,6 +1213,28 @@
       el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
       observer.observe(el);
     });
+
+    // HORIZONTAL SCROLL PROGRESS INDICATOR
+    const showcaseProgress = document.createElement('div');
+    showcaseProgress.className = 'showcase-progress';
+    showcaseProgress.style.cssText = 'padding: 0 40px 16px; display: flex; align-items: center; gap: 12px;';
+    const progressBar = document.createElement('div');
+    progressBar.style.cssText = 'flex: 1; height: 2px; background: rgba(255,255,255,0.06); border-radius: 1px; overflow: hidden;';
+    const progressFill = document.createElement('div');
+    progressFill.style.cssText = 'height: 100%; width: 0%; background: linear-gradient(90deg, #7850ff, #ff6496); transition: width 0.1s ease;';
+    progressBar.appendChild(progressFill);
+    showcaseProgress.appendChild(progressBar);
+    const showcaseSection = document.querySelector('.showcase');
+    if (showcaseSection) {
+      showcaseSection.appendChild(showcaseProgress);
+    }
+    if (showcaseTrack) {
+      showcaseTrack.addEventListener('scroll', () => {
+        const maxScroll = showcaseTrack.scrollWidth - showcaseTrack.clientWidth;
+        const progress = maxScroll > 0 ? (showcaseTrack.scrollLeft / maxScroll) * 100 : 0;
+        progressFill.style.width = progress + '%';
+      });
+    }
 
     // HORIZONTAL SCROLL with mouse wheel (trackpad friendly)
     const showcaseTrack = document.querySelector('.showcase-track');
@@ -1235,7 +1347,9 @@
         mobileServices: "Үйлчилгээ",
         mobileProcess: "Үйл явц",
         mobileReviews: "Сэтгэгдэл",
-        mobileContact: "Холбоо барих"
+        mobileContact: "Холбоо барих",
+        stickyCtaText: "Үнийн санал авах",
+        clientsLabel: "Хамтарсан байгууллагууд"
       },
       en: {
         navWork: "Work",
@@ -1303,7 +1417,9 @@
         mobileServices: "Services",
         mobileProcess: "Process",
         mobileReviews: "Reviews",
-        mobileContact: "Contact"
+        mobileContact: "Contact",
+        stickyCtaText: "Get a Quote",
+        clientsLabel: "Trusted by"
       }
     };
 

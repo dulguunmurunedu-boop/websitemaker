@@ -459,6 +459,54 @@
       padding: 4px 12px; border-radius: 8px;
     }
 
+        /* ===== PRICING ===== */
+    .pricing { padding: 120px 40px; background: #030308; }
+    .pricing-header { text-align: center; margin-bottom: 64px; }
+    .pricing-header h2 { font-family: var(--font-heading); font-size: 3rem; font-weight: 700; color: #fff; letter-spacing: -1px; margin-bottom: 16px; }
+    .pricing-header p { font-size: 1.05rem; color: #666; max-width: 500px; margin: 0 auto; }
+    .pricing-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; max-width: 1100px; margin: 0 auto; }
+    .pricing-card {
+      background: rgba(13,13,20,0.6);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border: 1px solid rgba(255,255,255,0.06);
+      border-radius: 24px; padding: 40px 32px;
+      transition: all 0.4s ease;
+      position: relative; overflow: hidden;
+    }
+    .pricing-card:hover { border-color: rgba(120,80,255,0.3); transform: translateY(-4px); box-shadow: 0 20px 60px rgba(0,0,0,0.3); }
+    .pricing-card.popular { border-color: rgba(120,80,255,0.4); }
+    .pricing-card.popular::before {
+      content: '';
+      position: absolute; top: 0; left: 0; right: 0; height: 3px;
+      background: linear-gradient(90deg, #7850ff, #ff6496);
+    }
+    .popular-badge {
+      position: absolute; top: 16px; right: 16px;
+      padding: 4px 12px; border-radius: 20px;
+      background: linear-gradient(135deg, #7850ff, #5a3fd4);
+      color: #fff; font-size: 0.7rem; font-weight: 700; letter-spacing: 1px;
+      text-transform: uppercase;
+    }
+    .pricing-name { font-family: var(--font-heading); font-size: 1.3rem; font-weight: 700; color: #fff; margin-bottom: 8px; }
+    .pricing-price { font-family: var(--font-heading); font-size: 2.5rem; font-weight: 700; color: #fff; margin-bottom: 8px; }
+    .pricing-price span { font-size: 1rem; color: #666; font-weight: 500; }
+    .pricing-desc { font-size: 0.88rem; color: #777; margin-bottom: 28px; line-height: 1.7; }
+    .pricing-features { list-style: none; margin-bottom: 32px; }
+    .pricing-features li {
+      display: flex; align-items: flex-start; gap: 10px;
+      font-size: 0.9rem; color: #999; margin-bottom: 12px;
+    }
+    .pricing-features li i { color: #7850ff; font-size: 0.85rem; margin-top: 4px; flex-shrink: 0; }
+    .pricing-card .btn { width: 100%; justify-content: center; }
+    @media (max-width: 1024px) {
+      .pricing-grid { grid-template-columns: 1fr; max-width: 480px; }
+    }
+    @media (max-width: 768px) {
+      .pricing { padding: 80px 24px; }
+      .pricing-header h2 { font-size: 2rem; }
+    }
+
     /* ===== PROCESS (TIMELINE) ===== */
     .process { padding: 120px 40px; background: #0a0a10; }
     .process-header { text-align: center; margin-bottom: 80px; }
@@ -687,6 +735,7 @@
     <div class="nav-links">
       <a href="#work"><span data-mn="navWork">Ажилууд</span></a>
       <a href="#services"><span data-mn="navServices">Үйлчилгээ</span></a>
+      <a href="#pricing"><span data-mn="navPricing">Үнэ</span></a>
       <a href="#process"><span data-mn="navProcess">Үйл явц</span></a>
       <a href="#testimonials"><span data-mn="navReviews">Сэтгэгдэл</span></a>
       <a href="#contact" class="nav-cta"><span data-mn="navCta">Үнийн санал авах</span></a>
@@ -812,6 +861,71 @@
         <div class="bento-stat yellow" data-mn="bentoSupport">Дэмжлэг</div>
         <div class="bento-label">Тогтсон дэмжлэгтэй</div>
       </div>
+    </div>
+  </section>
+
+  <!-- PRICING -->
+  <section class="pricing" id="pricing">
+    <div class="pricing-header">
+      <h2 data-mn="pricingTitle">Вэбсайтын багцууд</h2>
+      <p data-mn="pricingDesc">Таны бизнестийн хэмжээнд тохирсон багц. Илүү мэдээлэл авах хүсвэл холбогдох уу.</p>
+    </div>
+    <div class="pricing-grid">
+
+      <!-- Package 1: Starter -->
+      <div class="pricing-card">
+        <div class="pricing-name" data-mn="pkg1Name">Эхлэх вэбсайт</div>
+        <div class="pricing-price">450,000<span>₮</span></div>
+        <p class="pricing-desc" data-mn="pkg1Desc">Шинэ бизнес, хувь хүний брэнд, төслийн хуудас</p>
+        <ul class="pricing-features">
+          <li><i class="fas fa-check"></i> <span data-mn="pkg1F1">Лэндинг хуудас (1 хуудас)</span></li>
+          <li><i class="fas fa-check"></i> <span data-mn="pkg1F2">Мобайлд тохирсон (Responsive)</span></li>
+          <li><i class="fas fa-check"></i> <span data-mn="pkg1F3">Холбоо барих форм</span></li>
+          <li><i class="fas fa-check"></i> <span data-mn="pkg1F4">Үндсэн SEO тохиргоо</span></li>
+          <li><i class="fas fa-check"></i> <span data-mn="pkg1F5">Хүргэлт: 3–5 хоног</span></li>
+        </ul>
+        <a href="https://buy.stripe.com/test_placeholder1" class="btn btn-ghost" target="_blank">
+          <i class="fas fa-shopping-cart"></i> <span data-mn="pkgBuy">Үнэ авах</span>
+        </a>
+      </div>
+
+      <!-- Package 2: Business (Popular) -->
+      <div class="pricing-card popular">
+        <div class="popular-badge" data-mn="popularBadge">Түгээмэл</div>
+        <div class="pricing-name" data-mn="pkg2Name">Бизнес вэбсайт</div>
+        <div class="pricing-price">850,000<span>₮</span></div>
+        <p class="pricing-desc" data-mn="pkg2Desc">Жижиг бизнес, эмчилгээний газар, үйлчилгээний газар</p>
+        <ul class="pricing-features">
+          <li><i class="fas fa-check"></i> <span data-mn="pkg2F1">5 хуудас хүртэл</span></li>
+          <li><i class="fas fa-check"></i> <span data-mn="pkg2F2">Өөрийн дизайн</span></li>
+          <li><i class="fas fa-check"></i> <span data-mn="pkg2F3">Мобайлд тохирсон (Responsive)</span></li>
+          <li><i class="fas fa-check"></i> <span data-mn="pkg2F4">SEO бэлэн</span></li>
+          <li><i class="fas fa-check"></i> <span data-mn="pkg2F5">Домайн холболт</span></li>
+          <li><i class="fas fa-check"></i> <span data-mn="pkg2F6">Хүргэлт: 7–10 хоног</span></li>
+        </ul>
+        <a href="https://buy.stripe.com/test_placeholder2" class="btn btn-primary" target="_blank">
+          <i class="fas fa-shopping-cart"></i> <span data-mn="pkgBuy">Үнэ авах</span>
+        </a>
+      </div>
+
+      <!-- Package 3: Premium -->
+      <div class="pricing-card">
+        <div class="pricing-name" data-mn="pkg3Name">Премиум вэбсайт</div>
+        <div class="pricing-price">1,500,000<span>₮+</span></div>
+        <p class="pricing-desc" data-mn="pkg3Desc">Томоохон бизнес, цахим дэлгүүр, системтэй вэбсайт</p>
+        <ul class="pricing-features">
+          <li><i class="fas fa-check"></i> <span data-mn="pkg3F1">10+ хуудас</span></li>
+          <li><i class="fas fa-check"></i> <span data-mn="pkg3F2">Өөрийн бүтэц, дизайн</span></li>
+          <li><i class="fas fa-check"></i> <span data-mn="pkg3F3">Захиалгын систем</span></li>
+          <li><i class="fas fa-check"></i> <span data-mn="pkg3F4">Блог хэсэг</span></li>
+          <li><i class="fas fa-check"></i> <span data-mn="pkg3F5">Нарийвчилсан SEO</span></li>
+          <li><i class="fas fa-check"></i> <span data-mn="pkg3F6">Бүрэн дэмжлэг (3 сар)</span></li>
+        </ul>
+        <a href="https://buy.stripe.com/test_placeholder3" class="btn btn-ghost" target="_blank">
+          <i class="fas fa-comments"></i> <span data-mn="pkgConsult">Зөвлөгөө авах</span>
+        </a>
+      </div>
+
     </div>
   </section>
 
@@ -1345,7 +1459,35 @@
         mobileReviews: "Сэтгэгдэл",
         mobileContact: "Холбоо барих",
         stickyCtaText: "Үнийн санал авах",
-        clientsLabel: "Хамтарсан байгууллагууд"
+        clientsLabel: "Хамтарсан байгууллагууд",
+        pricingTitle: "Вэбсайтын багцууд",
+        pricingDesc: "Таны бизнестийн хэмжээнд тохирсон багц. Илүү мэдээлэл авах хүсвэл холбогдох уу.",
+        pkg1Name: "Эхлэх вэбсайт",
+        pkg1Desc: "Шинэ бизнес, хувь хүний брэнд, төслийн хуудас",
+        pkg1F1: "Лэндинг хуудас (1 хуудас)",
+        pkg1F2: "Мобайлд тохирсон (Responsive)",
+        pkg1F3: "Холбоо барих форм",
+        pkg1F4: "Үндсэн SEO тохиргоо",
+        pkg1F5: "Хүргэлт: 3–5 хоног",
+        pkg2Name: "Бизнес вэбсайт",
+        pkg2Desc: "Жижиг бизнес, эмчилгээний газар, үйлчилгээний газар",
+        pkg2F1: "5 хуудас хүртэл",
+        pkg2F2: "Өөрийн дизайн",
+        pkg2F3: "Мобайлд тохирсон (Responsive)",
+        pkg2F4: "SEO бэлэн",
+        pkg2F5: "Домайн холболт",
+        pkg2F6: "Хүргэлт: 7–10 хоног",
+        pkg3Name: "Премиум вэбсайт",
+        pkg3Desc: "Томоохон бизнес, цахим дэлгүүр, системтэй вэбсайт",
+        pkg3F1: "10+ хуудас",
+        pkg3F2: "Өөрийн бүтэц, дизайн",
+        pkg3F3: "Захиалгын систем",
+        pkg3F4: "Блог хэсэг",
+        pkg3F5: "Нарийвчилсан SEO",
+        pkg3F6: "Бүрэн дэмжлэг (3 сар)",
+        popularBadge: "Түгээмэл",
+        pkgBuy: "Үнэ авах",
+        pkgConsult: "Зөвлөгөө авах"
       },
       en: {
         navWork: "Work",
@@ -1353,6 +1495,7 @@
         navProcess: "Process",
         navReviews: "Reviews",
         navCta: "Get a Quote",
+        navPricing: "Pricing",
         heroPill: "Websites & Video",
         heroLine1: "We build",
         heroLine2: "websites and video content",
@@ -1415,7 +1558,35 @@
         mobileReviews: "Reviews",
         mobileContact: "Contact",
         stickyCtaText: "Get a Quote",
-        clientsLabel: "Trusted by"
+        clientsLabel: "Trusted by",
+        pricingTitle: "Website Packages",
+        pricingDesc: "Choose a package that fits your business size. Contact us for more information.",
+        pkg1Name: "Starter Website",
+        pkg1Desc: "New business, personal brand, project page",
+        pkg1F1: "Landing Page (1 page)",
+        pkg1F2: "Mobile Responsive",
+        pkg1F3: "Contact Form",
+        pkg1F4: "Basic SEO Setup",
+        pkg1F5: "Delivery: 3–5 days",
+        pkg2Name: "Business Website",
+        pkg2Desc: "Small business, clinic, service provider",
+        pkg2F1: "Up to 5 Pages",
+        pkg2F2: "Custom Design",
+        pkg2F3: "Mobile Responsive",
+        pkg2F4: "SEO Ready",
+        pkg2F5: "Domain Connection",
+        pkg2F6: "Delivery: 7–10 days",
+        pkg3Name: "Premium Website",
+        pkg3Desc: "Large business, e-commerce, complex website",
+        pkg3F1: "10+ Pages",
+        pkg3F2: "Custom Structure & Design",
+        pkg3F3: "Booking System",
+        pkg3F4: "Blog Section",
+        pkg3F5: "Advanced SEO",
+        pkg3F6: "Full Support (3 months)",
+        popularBadge: "Most Popular",
+        pkgBuy: "Buy Now",
+        pkgConsult: "Get Consultation"
       }
     };
 

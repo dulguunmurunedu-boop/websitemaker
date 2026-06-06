@@ -1298,18 +1298,32 @@
   </div>
 
   <script>
-    // PRELOADER — hide after load OR after max 3s fallback
-    function hidePreloader() {
-      const preloader = document.getElementById('preloader');
-      if (!preloader || preloader.dataset.hidden) return;
-      preloader.dataset.hidden = '1';
-      preloader.style.opacity = '0';
-      preloader.style.visibility = 'hidden';
-      setTimeout(() => { preloader.style.display = 'none'; }, 800);
-    }
-    window.addEventListener('load', () => setTimeout(hidePreloader, 1200));
-    // Fallback: always hide after 3s even if load event never fires
-    setTimeout(hidePreloader, 3000);
+    // PRELOADER — robust hide with multiple fallbacks
+    (function() {
+      var hidden = false;
+      function hidePreloader() {
+        if (hidden) return;
+        hidden = true;
+        var p = document.getElementById('preloader');
+        if (!p) return;
+        p.style.transition = 'opacity 0.5s ease';
+        p.style.opacity = '0';
+        p.style.pointerEvents = 'none';
+        setTimeout(function() {
+          p.style.display = 'none';
+        }, 600);
+      }
+      // Hide 1.5s after DOM ready (don't wait for all images/fonts)
+      document.addEventListener('DOMContentLoaded', function() {
+        setTimeout(hidePreloader, 1500);
+      });
+      // Also hide on load event (whichever comes first after 1.5s)
+      window.addEventListener('load', function() {
+        setTimeout(hidePreloader, 500);
+      });
+      // Hard fallback: always gone after 4s
+      setTimeout(hidePreloader, 4000);
+    })();
 
     // CUSTOM CURSOR
     const cursor = document.getElementById('cursor');

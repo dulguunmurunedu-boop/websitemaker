@@ -1298,17 +1298,18 @@
   </div>
 
   <script>
-    // PRELOADER
-    window.addEventListener('load', () => {
-      setTimeout(() => {
-        const preloader = document.getElementById('preloader');
-        if (preloader) {
-          preloader.style.opacity = '0';
-          preloader.style.visibility = 'hidden';
-          setTimeout(() => { preloader.style.display = 'none'; }, 800);
-        }
-      }, 1200);
-    });
+    // PRELOADER — hide after load OR after max 3s fallback
+    function hidePreloader() {
+      const preloader = document.getElementById('preloader');
+      if (!preloader || preloader.dataset.hidden) return;
+      preloader.dataset.hidden = '1';
+      preloader.style.opacity = '0';
+      preloader.style.visibility = 'hidden';
+      setTimeout(() => { preloader.style.display = 'none'; }, 800);
+    }
+    window.addEventListener('load', () => setTimeout(hidePreloader, 1200));
+    // Fallback: always hide after 3s even if load event never fires
+    setTimeout(hidePreloader, 3000);
 
     // CUSTOM CURSOR
     const cursor = document.getElementById('cursor');

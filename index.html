@@ -146,7 +146,7 @@
     }
     .btn-ghost:hover { border-color: rgba(255,255,255,0.2); color: #fff; background: rgba(255,255,255,0.06); transform: translateY(-3px); }
 
-    /* ===== HERO ===== */
+    /* ===== HERO — 2026 NEXT-GEN ===== */
     .hero {
       min-height: 100vh; display: flex; align-items: center;
       position: relative; padding: 140px 48px 100px;
@@ -155,64 +155,79 @@
     .hero-bg { position: absolute; inset: 0; pointer-events: none; }
     .hero-orb {
       position: absolute; border-radius: 50%;
-      filter: blur(120px); opacity: 0.12;
+      filter: blur(140px); opacity: 0.10;
       animation: orbFloat 20s ease-in-out infinite;
+      will-change: transform;
     }
-    .orb-1 { width: 600px; height: 600px; background: #7850ff; top: -200px; right: -100px; animation-delay: 0s; }
-    .orb-2 { width: 500px; height: 500px; background: #ff6496; bottom: -200px; left: -100px; animation-delay: -7s; }
-    .orb-3 { width: 400px; height: 400px; background: #7850ff; top: 40%; left: 50%; animation-delay: -14s; }
+    .orb-1 { width: 700px; height: 700px; background: #7850ff; top: -250px; right: -150px; animation-delay: 0s; }
+    .orb-2 { width: 550px; height: 550px; background: #ff6496; bottom: -250px; left: -150px; animation-delay: -7s; }
+    .orb-3 { width: 450px; height: 450px; background: #50c8ff; top: 35%; left: 45%; animation-delay: -14s; opacity: 0.06; }
     @keyframes orbFloat {
       0%, 100% { transform: translate(0, 0) scale(1); }
-      25% { transform: translate(50px, -30px) scale(1.1); }
-      50% { transform: translate(-30px, 50px) scale(0.9); }
-      75% { transform: translate(40px, 20px) scale(1.05); }
+      25% { transform: translate(60px, -40px) scale(1.08); }
+      50% { transform: translate(-40px, 60px) scale(0.92); }
+      75% { transform: translate(50px, 30px) scale(1.04); }
     }
     .hero-grid {
       position: absolute; inset: 0;
-      background-image: linear-gradient(rgba(255,255,255,0.02) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.02) 1px, transparent 1px);
+      background-image: linear-gradient(rgba(255,255,255,0.015) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.015) 1px, transparent 1px);
       background-size: 60px 60px;
       mask-image: radial-gradient(ellipse at center, black 30%, transparent 70%);
       -webkit-mask-image: radial-gradient(ellipse at center, black 30%, transparent 70%);
     }
+    .hero-glow {
+      position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);
+      width: 600px; height: 600px; border-radius: 50%;
+      background: radial-gradient(circle, rgba(120,80,255,0.06) 0%, transparent 70%);
+      pointer-events: none; z-index: 0;
+    }
     .hero-inner {
       position: relative; z-index: 1;
-      max-width: 600px; margin: 0 auto; text-align: center;
+      max-width: 680px; margin: 0 auto; text-align: center;
     }
     .hero-text { max-width: 100%; }
     .hero-pill {
-      display: inline-flex; align-items: center; gap: 8px;
-      padding: 10px 24px; border-radius: 100px;
-      background: var(--glass); backdrop-filter: blur(10px);
-      border: 1px solid var(--border);
-      font-size: 0.78rem; font-weight: 600; color: var(--accent);
-      margin-bottom: 40px; letter-spacing: 2px; text-transform: uppercase;
+      display: inline-flex; align-items: center; gap: 10px;
+      padding: 10px 28px; border-radius: 100px;
+      background: rgba(120,80,255,0.06); backdrop-filter: blur(12px);
+      border: 1px solid rgba(120,80,255,0.12);
+      font-size: 0.75rem; font-weight: 600; color: var(--accent);
+      margin-bottom: 48px; letter-spacing: 2px; text-transform: uppercase;
+      opacity: 0; animation: fadeInUp 0.8s ease 0.2s forwards;
+      transition: all 0.3s ease;
     }
-    .hero-pill .dot { width: 6px; height: 6px; border-radius: 50%; background: #7850ff; animation: pulse 2s infinite; }
+    .hero-pill:hover { background: rgba(120,80,255,0.1); border-color: rgba(120,80,255,0.2); }
+    .hero-pill .dot { width: 7px; height: 7px; border-radius: 50%; background: #7850ff; animation: pulse 2s infinite; }
+    @keyframes pulse { 0%, 100% { opacity: 1; transform: scale(1); } 50% { opacity: 0.4; transform: scale(0.8); } }
     .hero-title {
       font-family: var(--font-heading);
-      font-size: clamp(2.4rem, 5.5vw, 4.5rem); font-weight: 700; line-height: 1.1;
-      letter-spacing: -2px; margin-bottom: 32px; color: #fff;
+      font-size: clamp(2.8rem, 6vw, 5rem); font-weight: 700; line-height: 1.08;
+      letter-spacing: -2.5px; margin-bottom: 28px; color: #fff;
     }
     .hero-title .line { display: block; overflow: hidden; }
     .hero-title .line span { display: inline-block; opacity: 0; transform: translateY(100%); }
-    .line-1 span { animation: slideUp 1s ease 0.5s forwards; }
-    .line-2 span { animation: slideUp 1s ease 0.7s forwards; }
+    .line-1 span { animation: slideUp 1s cubic-bezier(0.16, 1, 0.3, 1) 0.5s forwards; }
+    .line-2 span { animation: slideUp 1s cubic-bezier(0.16, 1, 0.3, 1) 0.7s forwards; }
     @keyframes slideUp { to { opacity: 1; transform: translateY(0); } }
     .hero-title .gradient {
-      background: linear-gradient(135deg, #7850ff 0%, #ff6496 100%);
+      background: linear-gradient(135deg, #7850ff 0%, #ff6496 50%, #50c8ff 100%);
       -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
     }
     .hero-desc {
-      font-size: 1.125rem; color: var(--text-muted); max-width: 520px;
-      margin-bottom: 56px; opacity: 0; animation: fadeIn 1s ease 1.2s forwards;
+      font-size: 1.15rem; color: #888; max-width: 520px; margin: 0 auto 48px;
+      line-height: 1.75; opacity: 0; animation: fadeInUp 0.8s ease 1s forwards;
     }
-    .hero-actions { display: flex; gap: 16px; justify-content: center; opacity: 0; animation: fadeIn 1s ease 1.5s forwards; }
+    .hero-actions {
+      display: flex; gap: 16px; justify-content: center;
+      opacity: 0; animation: fadeInUp 0.8s ease 1.3s forwards;
+    }
+    @keyframes fadeInUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
     .scroll-indicator {
       position: absolute; bottom: 40px; left: 50%; transform: translateX(-50%);
       display: flex; flex-direction: column; align-items: center; gap: 8px;
       opacity: 0; animation: fadeIn 1s ease 2s forwards;
     }
-    .scroll-indicator span { font-size: 0.65rem; color: #444; letter-spacing: 3px; text-transform: uppercase; font-weight: 500; }
+    .scroll-indicator span { font-size: 0.6rem; color: #444; letter-spacing: 3px; text-transform: uppercase; font-weight: 500; }
     .scroll-line { width: 1px; height: 40px; background: linear-gradient(to bottom, #7850ff, transparent); animation: scrollLine 2s ease-in-out infinite; }
     @keyframes scrollLine { 0%, 100% { transform: scaleY(0.3); opacity: 0.3; } 50% { transform: scaleY(1); opacity: 1; } }
     @keyframes fadeIn { to { opacity: 1; } }
@@ -223,8 +238,7 @@
       border-bottom: 1px solid rgba(255,255,255,0.04);
       overflow: hidden;
     }
-    /* ===== MARQUEE ===== */
-    .marquee-section {
+    .marquee-track {
       display: flex; gap: 60px;
       animation: marquee 30s linear infinite;
       width: max-content;
@@ -866,6 +880,7 @@
       <div class="hero-orb orb-2"></div>
       <div class="hero-orb orb-3"></div>
       <div class="hero-grid"></div>
+      <div class="hero-glow"></div>
     </div>
     <div class="hero-inner">
       <div class="hero-text">

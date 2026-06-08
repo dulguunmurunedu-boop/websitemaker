@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>OGT UUR — Вэбсайт & Видео Студи</title>
+  <title>OGT UUR — Website Studio</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;700&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
@@ -665,7 +665,7 @@
     .marketplace-header { text-align: center; margin-bottom: 56px; }
     .marketplace-header h2 { font-family: var(--font-heading); font-size: 2.4rem; font-weight: 700; color: #fff; margin-bottom: 12px; }
     .marketplace-header p { font-size: 1rem; color: #888; max-width: 500px; margin: 0 auto; }
-    .marketplace-grid { max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+    .marketplace-grid { max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; }
     .template-card {
       background: rgba(13,13,20,0.5); border: 1px solid rgba(255,255,255,0.06);
       border-radius: 20px; overflow: hidden; transition: all 0.3s ease; cursor: pointer;
@@ -703,6 +703,7 @@
     .btn-outline { background: transparent; border: 1px solid rgba(255,255,255,0.15); color: #ccc; }
     .btn-outline:hover { border-color: rgba(120,80,255,0.4); color: #fff; background: rgba(120,80,255,0.05); }
     @media (max-width: 1024px) { .marketplace-grid { grid-template-columns: repeat(2, 1fr); } }
+    @media (max-width: 600px) { .marketplace-grid { grid-template-columns: 1fr; } }
     @media (max-width: 768px) { .marketplace-grid { grid-template-columns: 1fr; max-width: 420px; } .marketplace { padding: 60px 24px; } }
 
     /* ===== TEMPLATE MODAL ===== */
@@ -749,6 +750,34 @@
       .modal-actions { flex-direction: column; }
       .device-tabs { flex-wrap: wrap; }
     }
+
+    /* ===== SERVICES ===== */
+    .services { padding: 100px 48px; background: #0a0a12; }
+    .services-header { text-align: center; margin-bottom: 56px; }
+    .services-header h2 { font-family: var(--font-heading); font-size: 2.4rem; font-weight: 700; color: #fff; margin-bottom: 12px; }
+    .services-header p { font-size: 1rem; color: #888; }
+    .services-grid { max-width: 900px; margin: 0 auto; display: grid; grid-template-columns: repeat(2, 1fr); gap: 24px; }
+    .service-card {
+      background: rgba(13,13,20,0.6); border: 1px solid rgba(255,255,255,0.06);
+      border-radius: 24px; padding: 40px 32px; transition: all 0.3s ease;
+    }
+    .service-card:hover { border-color: rgba(120,80,255,0.2); transform: translateY(-4px); }
+    .service-icon { width: 52px; height: 52px; border-radius: 14px; display: flex; align-items: center; justify-content: center; font-size: 1.2rem; margin-bottom: 24px; }
+    .service-icon.purple { background: rgba(120,80,255,0.12); color: #7850ff; }
+    .service-icon.pink { background: rgba(255,100,150,0.12); color: #ff6496; }
+    .service-card h3 { font-family: var(--font-heading); font-size: 1.3rem; font-weight: 700; color: #fff; margin-bottom: 12px; }
+    .service-card p { font-size: 0.9rem; color: #888; line-height: 1.7; margin-bottom: 20px; }
+    .service-price { font-family: var(--font-heading); font-size: 1.4rem; font-weight: 700; color: var(--accent-2); margin-bottom: 20px; }
+    .service-features { list-style: none; margin-bottom: 24px; }
+    .service-features li { font-size: 0.85rem; color: #aaa; margin-bottom: 8px; display: flex; align-items: center; gap: 8px; }
+    .service-features i { color: #50c8ff; font-size: 0.7rem; }
+    @media (max-width: 768px) { .services-grid { grid-template-columns: 1fr; } .services { padding: 60px 24px; } }
+
+    /* ===== PRICING NOTE ===== */
+    .pricing-note { text-align: center; font-size: 0.85rem; color: #666; margin-top: 32px; font-style: italic; }
+
+    /* ===== TEMPLATE BESTFOR ===== */
+    .template-bestfor { font-size: 0.75rem; color: #888; margin-bottom: 12px; font-style: italic; }
     /* ===== PRICING ===== */
     .pricing { padding: 120px 40px; background: #030308; }
     .pricing-header { text-align: center; margin-bottom: 72px; }
@@ -1553,7 +1582,7 @@
     .marketplace-header { text-align: center; margin-bottom: 56px; }
     .marketplace-header h2 { font-family: var(--font-heading); font-size: 2.4rem; font-weight: 700; color: #fff; margin-bottom: 12px; }
     .marketplace-header p { font-size: 1rem; color: #888; max-width: 500px; margin: 0 auto; }
-    .marketplace-grid { max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+    .marketplace-grid { max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; }
     .template-card {
       background: rgba(13,13,20,0.5); border: 1px solid rgba(255,255,255,0.06);
       border-radius: 20px; overflow: hidden; transition: all 0.3s ease; cursor: pointer;
@@ -1591,6 +1620,7 @@
     .btn-outline { background: transparent; border: 1px solid rgba(255,255,255,0.15); color: #ccc; }
     .btn-outline:hover { border-color: rgba(120,80,255,0.4); color: #fff; background: rgba(120,80,255,0.05); }
     @media (max-width: 1024px) { .marketplace-grid { grid-template-columns: repeat(2, 1fr); } }
+    @media (max-width: 600px) { .marketplace-grid { grid-template-columns: 1fr; } }
     @media (max-width: 768px) { .marketplace-grid { grid-template-columns: 1fr; max-width: 420px; } .marketplace { padding: 60px 24px; } }
 
     /* ===== TEMPLATE MODAL ===== */
@@ -1637,6 +1667,34 @@
       .modal-actions { flex-direction: column; }
       .device-tabs { flex-wrap: wrap; }
     }
+
+    /* ===== SERVICES ===== */
+    .services { padding: 100px 48px; background: #0a0a12; }
+    .services-header { text-align: center; margin-bottom: 56px; }
+    .services-header h2 { font-family: var(--font-heading); font-size: 2.4rem; font-weight: 700; color: #fff; margin-bottom: 12px; }
+    .services-header p { font-size: 1rem; color: #888; }
+    .services-grid { max-width: 900px; margin: 0 auto; display: grid; grid-template-columns: repeat(2, 1fr); gap: 24px; }
+    .service-card {
+      background: rgba(13,13,20,0.6); border: 1px solid rgba(255,255,255,0.06);
+      border-radius: 24px; padding: 40px 32px; transition: all 0.3s ease;
+    }
+    .service-card:hover { border-color: rgba(120,80,255,0.2); transform: translateY(-4px); }
+    .service-icon { width: 52px; height: 52px; border-radius: 14px; display: flex; align-items: center; justify-content: center; font-size: 1.2rem; margin-bottom: 24px; }
+    .service-icon.purple { background: rgba(120,80,255,0.12); color: #7850ff; }
+    .service-icon.pink { background: rgba(255,100,150,0.12); color: #ff6496; }
+    .service-card h3 { font-family: var(--font-heading); font-size: 1.3rem; font-weight: 700; color: #fff; margin-bottom: 12px; }
+    .service-card p { font-size: 0.9rem; color: #888; line-height: 1.7; margin-bottom: 20px; }
+    .service-price { font-family: var(--font-heading); font-size: 1.4rem; font-weight: 700; color: var(--accent-2); margin-bottom: 20px; }
+    .service-features { list-style: none; margin-bottom: 24px; }
+    .service-features li { font-size: 0.85rem; color: #aaa; margin-bottom: 8px; display: flex; align-items: center; gap: 8px; }
+    .service-features i { color: #50c8ff; font-size: 0.7rem; }
+    @media (max-width: 768px) { .services-grid { grid-template-columns: 1fr; } .services { padding: 60px 24px; } }
+
+    /* ===== PRICING NOTE ===== */
+    .pricing-note { text-align: center; font-size: 0.85rem; color: #666; margin-top: 32px; font-style: italic; }
+
+    /* ===== TEMPLATE BESTFOR ===== */
+    .template-bestfor { font-size: 0.75rem; color: #888; margin-bottom: 12px; font-style: italic; }
     /* ===== PRICING ===== */
     .pricing { padding: 120px 40px; background: #030308; }
     .pricing-header { text-align: center; margin-bottom: 72px; }
@@ -2051,7 +2109,7 @@
 
       <!-- LEFT: 40% text -->
       <div class="hero-text">
-        <div class="hero-pill"><span class="dot"></span> Website + Video Studio</div>
+        <div class="hero-pill"><span class="dot"></span> Website Studio</div>
         <h1 class="hero-title">
           Вэбсайт ба видео.<br>
           <span class="gradient">Бизнес өсөлтийн эхлэл.</span>
@@ -2062,8 +2120,8 @@
           <a href="https://www.facebook.com/profile.php?id=61582969455784" class="btn btn-ghost" target="_blank"><i class="fab fa-facebook-messenger"></i> Facebook Messenger</a>
         </div>
         <div class="hero-trust">
+          <span><i class="fas fa-globe"></i> Бэлэн загварууд</span>
           <span><i class="fas fa-phone"></i> 99620992</span>
-          <span><i class="fas fa-envelope"></i> dulguunmurun.edu@gmail.com</span>
         </div>
       </div>
 
@@ -2144,6 +2202,7 @@
       <span>Гүйлгэж харах</span>
       <div class="scroll-line"></div>
     </div>
+    <p class="pricing-note">Үнэ нь хуудасны тоо, дизайн, нэмэлт функц, текст зураг бэлэн эсэхээс хамаарч өөрчлөгдөнө.</p>
   </section>
 
   <!-- MARQUEE -->
@@ -2168,187 +2227,94 @@
   <!-- CLIENT LOGOS removed - add real logos later -->
 
   <!-- SERVICES -->
-  <section class="bento" id="services">
-    <div class="bento-header">
-      <h2 data-mn="bentoTitle">Юу хийдэг вэ?</h2>
-      <p data-mn="bentoDesc">Бид вэбсайт болон видео контент бүтээдэг. Энэ хоёр нь таны бизнесийг онлайнаар өсгөх хамгийн хүчирхэг хэрэгсэл.</p>
+  <section class="services" id="services">
+    <div class="services-header">
+      <h2>Үйлчилгээнүүд</h2>
+      <p>Захиалгаар вэбсайт хийлгэх эсвэл бэлэн template сонгох</p>
     </div>
-    <div class="bento-grid">
-      <div class="bento-card large">
-        <div class="bento-icon" style="background: rgba(120,80,255,0.1); color: #7850ff;"><i class="fas fa-code"></i></div>
-        <h3 data-mn="bentoWeb">Вэбсайт Хөгжүүлэлт</h3>
-        <p data-mn="bentoWebDesc">Эмчилгээний газар, ресторан, жижиг бизнес, хувь хүний брэнд — бүгдэд зориулсан мэргэжлийн вэбсайт. Хурдан, найдвартай, хэрэглэгчид ойлгомжтой.</p>
+    <div class="services-grid">
+      <div class="service-card">
+        <div class="service-icon purple"><i class="fas fa-code"></i></div>
+        <h3>Захиалгаар вэбсайт хөгжүүлэх</h3>
+        <p>Таны бизнесийн онцлог, үйлчилгээ, зорилтот хэрэглэгчид тохирсон цоо шинэ вэбсайт хөгжүүлнэ.</p>
+        <div class="service-price">650,000₮+</div>
+        <ul class="service-features">
+          <li><i class="fas fa-check"></i> Custom дизайн</li>
+          <li><i class="fas fa-check"></i> Mobile responsive</li>
+          <li><i class="fas fa-check"></i> Contact form</li>
+          <li><i class="fas fa-check"></i> SEO basic</li>
+          <li><i class="fas fa-check"></i> Домайн холболтын зөвлөгөө</li>
+        </ul>
+        <a href="tel:99620992" class="btn btn-primary"><i class="fas fa-phone"></i> Үнийн санал авах</a>
       </div>
-      <div class="bento-card">
-        <div class="bento-stat purple">30+</div>
-        <div class="bento-label" data-mn="bentoProjects">Бэлэн вэбсайт</div>
-      </div>
-      <div class="bento-card">
-        <div class="bento-icon" style="background: rgba(255,100,150,0.1); color: #ff6496;"><i class="fas fa-video"></i></div>
-        <h3 data-mn="bentoVideo">Видео Продакшн</h3>
-        <p data-mn="bentoVideoDesc">Промо видео, брэндийн видео, сошиал медиа контент. Таны бизнесийг хүмүүст харуулах хамгийн хүчирхэг арга.</p>
-      </div>
-      <div class="bento-card tall">
-        <div class="bento-icon" style="background: rgba(120,80,255,0.1); color: #7850ff;"><i class="fas fa-laptop"></i></div>
-        <h3 data-mn="bentoDesign">Лэндинг Хуудас</h3>
-        <p data-mn="bentoDesignDesc">Тусгай зорилготой хуудас. Захиалга авах, мэдээлэл хүргэх, борлуулалт өсгөх — бүгд нэг хуудсан дээр.</p>
-      </div>
-      <div class="bento-card">
-        <div class="bento-stat pink">50+</div>
-        <div class="bento-label" data-mn="bentoSatisfaction">Видео бүтээсэн</div>
-      </div>
-      <div class="bento-card">
-        <div class="bento-icon" style="background: rgba(255,100,150,0.1); color: #ff6496;"><i class="fas fa-film"></i></div>
-        <h3 data-mn="bentoMarketing">Промо Видео</h3>
-        <p data-mn="bentoMarketingDesc">Таны бүтээгдэхүүн, үйлчилгээг хүмүүст таниулах 30-60 секундын видео.</p>
-      </div>
-      <div class="bento-card large">
-        <div class="bento-icon" style="background: rgba(120,80,255,0.1); color: #7850ff;"><i class="fas fa-rocket"></i></div>
-        <h3 data-mn="bentoAll">Вэбсайт + Видео</h3>
-        <p data-mn="bentoAllDesc">Вэбсайт болон видео контент хоёуланг нь нэг дороос. Таны бизнесийг онлайнаар бүрэн байлгана.</p>
-      </div>
-      <div class="bento-card">
-        <div class="bento-stat blue" data-mn="bentoFast">Хурдан</div>
-        <div class="bento-label" data-mn="bentoDelivery">Хүргэлт баталгаатай</div>
-      </div>
-      <div class="bento-card">
-        <div class="bento-stat yellow" data-mn="bentoSupport">Дэмжлэг</div>
-        <div class="bento-label">Тогтсон дэмжлэгтэй</div>
+      <div class="service-card">
+        <div class="service-icon pink"><i class="fas fa-layer-group"></i></div>
+        <h3>Бэлэн website template авах</h3>
+        <p>Бэлэн загвараас сонгоод текст, зураг, өнгө, холбоо барих мэдээллээ тохируулан 3–7 хоногт сайттай болно.</p>
+        <div class="service-price">350,000₮+</div>
+        <ul class="service-features">
+          <li><i class="fas fa-check"></i> Бэлэн загвар</li>
+          <li><i class="fas fa-check"></i> Текст, зураг солих</li>
+          <li><i class="fas fa-check"></i> Mobile responsive</li>
+          <li><i class="fas fa-check"></i> Messenger холболт</li>
+          <li><i class="fas fa-check"></i> 3–7 хоногт бэлэн</li>
+        </ul>
+        <a href="#work" class="btn btn-outline"><i class="fas fa-eye"></i> Загварууд үзэх</a>
       </div>
     </div>
+    <p class="pricing-note">Үнэ нь хуудасны тоо, дизайн, нэмэлт функц, текст зураг бэлэн эсэхээс хамаарч өөрчлөгдөнө.</p>
   </section>
 
-
-
-  <!-- TEMPLATE MARKETPLACE -->
+    <!-- TEMPLATE MARKETPLACE -->
   <section class="marketplace" id="work">
     <div class="marketplace-header">
-      <h2>Бэлэн Вэбсайтын Загварууд</h2>
-      <p>Шаардлагатай загвараа сонгоод, өөрийн бизнестээ ашиглаарай</p>
+      <h2>Бэлэн вэбсайт загварууд</h2>
+      <p>Монголын жижиг, дунд бизнесүүдэд хамгийн их хэрэгтэй төрлүүдээр бэлтгэсэн template-үүд.</p>
     </div>
     <div class="marketplace-grid">
 
-      <!-- Template 1: Restaurant -->
+      <!-- Template 1: Online Shop -->
       <div class="template-card" onclick="openModal(0)">
-        <div class="template-preview">
-          <div class="browser-mockup">
-            <div class="browser-bar"><div class="browser-dot"></div><div class="browser-dot"></div><div class="browser-dot"></div><div class="browser-url">restaurant.mn</div></div>
-            <div class="browser-content" style="background: linear-gradient(135deg, #1a1207 0%, #2a1f10 100%);">
-              <div class="browser-hero"><div class="browser-hero-line" style="width:50%;height:8px;background:#d4a853;border-radius:3px;margin-bottom:6px;"></div><div class="browser-hero-line" style="width:70%;height:5px;background:rgba(212,168,83,0.5);border-radius:3px;margin-bottom:6px;"></div><div class="browser-hero-btn" style="width:60px;height:14px;background:#d4a853;border-radius:3px;"></div></div>
-              <div class="browser-cards"><div class="browser-card" style="background:rgba(212,168,83,0.12);"></div><div class="browser-card" style="background:rgba(212,168,83,0.12);"></div><div class="browser-card" style="background:rgba(212,168,83,0.12);"></div></div>
-            </div>
-          </div>
-          <div class="template-overlay"><span class="template-overlay-btn"><i class="fas fa-eye"></i> Дэлгэрэнгүй</span></div>
-        </div>
-        <div class="template-info">
-          <div class="template-category">Ресторан</div>
-          <h3>Ресторан Вэбсайт</h3>
-          <div class="template-price">450,000₮ – 750,000₮</div>
-          <ul class="template-features"><li><i class="fas fa-check"></i> Mobile Responsive</li><li><i class="fas fa-check"></i> Цэс / Захиалгын систем</li><li><i class="fas fa-check"></i> SEO Ready</li><li><i class="fas fa-check"></i> Гэрэл зургийн цомог</li></ul>
-        </div>
+        <div class="template-preview"><div class="browser-mockup"><div class="browser-bar"><div class="browser-dot"></div><div class="browser-dot"></div><div class="browser-dot"></div><div class="browser-url">shop.mn</div></div><div class="browser-content" style="background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);"><div class="browser-hero"><div class="browser-hero-line" style="width:50%;height:8px;background:#e94560;border-radius:3px;margin-bottom:6px;"></div><div class="browser-hero-btn" style="width:60px;height:14px;background:#e94560;border-radius:3px;"></div></div><div class="browser-cards"><div class="browser-card" style="background:rgba(233,69,96,0.08);"></div><div class="browser-card" style="background:rgba(233,69,96,0.08);"></div><div class="browser-card" style="background:rgba(233,69,96,0.08);"></div></div></div></div><div class="template-overlay"><span class="template-overlay-btn"><i class="fas fa-eye"></i> Дэлгэрэнгүй</span></div></div>
+        <div class="template-info"><div class="template-category">Онлайн дэлгүүр</div><h3>Online Shop Загвар</h3><div class="template-price">850,000₮ – 1,200,000₮</div><div class="template-bestfor">Цахим худалдаа эхлүүлэгчдэд</div><ul class="template-features"><li><i class="fas fa-check"></i> Бүтээгдэхүүн харуулах</li><li><i class="fas fa-check"></i> Сагс / Төлбөр</li><li><i class="fas fa-check"></i> Mobile Responsive</li><li><i class="fas fa-check"></i> SEO Ready</li></ul></div>
       </div>
-
-      <!-- Template 2: Clinic -->
+      <!-- Template 2: Business -->
       <div class="template-card" onclick="openModal(1)">
-        <div class="template-preview">
-          <div class="browser-mockup">
-            <div class="browser-bar"><div class="browser-dot"></div><div class="browser-dot"></div><div class="browser-dot"></div><div class="browser-url">clinic.mn</div></div>
-            <div class="browser-content" style="background: linear-gradient(135deg, #0a1628 0%, #1a2a4a 100%);">
-              <div class="browser-hero"><div class="browser-hero-line" style="width:55%;height:8px;background:#50c8ff;border-radius:3px;margin-bottom:6px;"></div><div class="browser-hero-line" style="width:75%;height:5px;background:rgba(80,200,255,0.4);border-radius:3px;margin-bottom:6px;"></div><div class="browser-hero-btn" style="width:60px;height:14px;background:#50c8ff;border-radius:3px;"></div></div>
-              <div class="browser-cards"><div class="browser-card" style="background:rgba(80,200,255,0.08);"></div><div class="browser-card" style="background:rgba(80,200,255,0.08);"></div><div class="browser-card" style="background:rgba(80,200,255,0.08);"></div></div>
-            </div>
-          </div>
-          <div class="template-overlay"><span class="template-overlay-btn"><i class="fas fa-eye"></i> Дэлгэрэнгүй</span></div>
-        </div>
-        <div class="template-info">
-          <div class="template-category">Эмчилгээний газар</div>
-          <h3>Клиник Вэбсайт</h3>
-          <div class="template-price">650,000₮ – 950,000₮</div>
-          <ul class="template-features"><li><i class="fas fa-check"></i> Mobile Responsive</li><li><i class="fas fa-check"></i> Цаг захиалга</li><li><i class="fas fa-check"></i> SEO Ready</li><li><i class="fas fa-check"></i> Эмчийн мэдээлэл</li></ul>
-        </div>
+        <div class="template-preview"><div class="browser-mockup"><div class="browser-bar"><div class="browser-dot"></div><div class="browser-dot"></div><div class="browser-dot"></div><div class="browser-url">business.mn</div></div><div class="browser-content" style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);"><div class="browser-hero"><div class="browser-hero-line" style="width:60%;height:8px;background:rgba(255,255,255,0.9);border-radius:3px;margin-bottom:6px;"></div><div class="browser-hero-btn" style="width:60px;height:14px;background:rgba(255,255,255,0.3);border-radius:3px;"></div></div><div class="browser-cards"><div class="browser-card"></div><div class="browser-card"></div><div class="browser-card"></div></div></div></div><div class="template-overlay"><span class="template-overlay-btn"><i class="fas fa-eye"></i> Дэлгэрэнгүй</span></div></div>
+        <div class="template-info"><div class="template-category">Бизнес</div><h3>Бизнес Вэбсайт</h3><div class="template-price">650,000₮ – 850,000₮</div><div class="template-bestfor">Жижиг бизнес, үйлчилгээ</div><ul class="template-features"><li><i class="fas fa-check"></i> Үйлчилгээний хуудас</li><li><i class="fas fa-check"></i> Contact form</li><li><i class="fas fa-check"></i> Mobile Responsive</li><li><i class="fas fa-check"></i> SEO Ready</li></ul></div>
       </div>
-
-      <!-- Template 3: Corporate -->
+      <!-- Template 3: Portfolio -->
       <div class="template-card" onclick="openModal(2)">
-        <div class="template-preview">
-          <div class="browser-mockup">
-            <div class="browser-bar"><div class="browser-dot"></div><div class="browser-dot"></div><div class="browser-dot"></div><div class="browser-url">company.mn</div></div>
-            <div class="browser-content" style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);">
-              <div class="browser-hero"><div class="browser-hero-line" style="width:60%;height:8px;background:rgba(255,255,255,0.9);border-radius:3px;margin-bottom:6px;"></div><div class="browser-hero-line" style="width:80%;height:5px;background:rgba(255,255,255,0.5);border-radius:3px;margin-bottom:6px;"></div><div class="browser-hero-btn" style="width:60px;height:14px;background:rgba(255,255,255,0.3);border-radius:3px;"></div></div>
-              <div class="browser-cards"><div class="browser-card"></div><div class="browser-card"></div><div class="browser-card"></div></div>
-            </div>
-          </div>
-          <div class="template-overlay"><span class="template-overlay-btn"><i class="fas fa-eye"></i> Дэлгэрэнгүй</span></div>
-        </div>
-        <div class="template-info">
-          <div class="template-category">Корпоратив</div>
-          <h3>Бизнес Вэбсайт</h3>
-          <div class="template-price">650,000₮ – 850,000₮</div>
-          <ul class="template-features"><li><i class="fas fa-check"></i> Mobile Responsive</li><li><i class="fas fa-check"></i> Үйлчилгээний хуудас</li><li><i class="fas fa-check"></i> SEO Ready</li><li><i class="fas fa-check"></i> Холбоо барих форм</li></ul>
-        </div>
+        <div class="template-preview"><div class="browser-mockup"><div class="browser-bar"><div class="browser-dot"></div><div class="browser-dot"></div><div class="browser-dot"></div><div class="browser-url">portfolio.mn</div></div><div class="browser-content" style="background: linear-gradient(135deg, #0a0a0a 0%, #1a1525 100%);"><div class="browser-hero"><div class="browser-avatar" style="width:30px;height:30px;border-radius:50%;background:linear-gradient(135deg,#a78bfa,#7c3aed);margin-bottom:8px;"></div><div class="browser-hero-line" style="width:55%;height:7px;background:#a78bfa;border-radius:3px;"></div></div><div class="browser-cards"><div class="browser-card" style="background:rgba(167,139,250,0.08);"></div><div class="browser-card" style="background:rgba(167,139,250,0.08);"></div></div></div></div><div class="template-overlay"><span class="template-overlay-btn"><i class="fas fa-eye"></i> Дэлгэрэнгүй</span></div></div>
+        <div class="template-info"><div class="template-category">Портфолио</div><h3>Хувь хүний Портфолио</h3><div class="template-price">350,000₮ – 550,000₮</div><div class="template-bestfor">Хувь хүн, фрилансер</div><ul class="template-features"><li><i class="fas fa-check"></i> Төсөл үзүүлэх</li><li><i class="fas fa-check"></i> Modern UI</li><li><i class="fas fa-check"></i> Mobile Responsive</li><li><i class="fas fa-check"></i> Contact Form</li></ul></div>
       </div>
-
-      <!-- Template 4: Personal Portfolio -->
+      <!-- Template 4: Restaurant -->
       <div class="template-card" onclick="openModal(3)">
-        <div class="template-preview">
-          <div class="browser-mockup">
-            <div class="browser-bar"><div class="browser-dot"></div><div class="browser-dot"></div><div class="browser-dot"></div><div class="browser-url">portfolio.mn</div></div>
-            <div class="browser-content" style="background: linear-gradient(135deg, #0a0a0a 0%, #1a1525 100%);">
-              <div class="browser-hero"><div class="browser-avatar" style="width:30px;height:30px;border-radius:50%;background:linear-gradient(135deg,#a78bfa,#7c3aed);margin-bottom:8px;"></div><div class="browser-hero-line" style="width:55%;height:7px;background:#a78bfa;border-radius:3px;margin-bottom:5px;"></div><div class="browser-hero-line" style="width:75%;height:4px;background:rgba(167,139,250,0.4);border-radius:3px;"></div></div>
-              <div class="browser-cards"><div class="browser-card" style="background:rgba(167,139,250,0.08);"></div><div class="browser-card" style="background:rgba(167,139,250,0.08);"></div></div>
-            </div>
-          </div>
-          <div class="template-overlay"><span class="template-overlay-btn"><i class="fas fa-eye"></i> Дэлгэрэнгүй</span></div>
-        </div>
-        <div class="template-info">
-          <div class="template-category">Хувь хүний</div>
-          <h3>Портфолио Вэбсайт</h3>
-          <div class="template-price">350,000₮ – 450,000₮</div>
-          <ul class="template-features"><li><i class="fas fa-check"></i> Mobile Responsive</li><li><i class="fas fa-check"></i> Төсөл үзүүлэх</li><li><i class="fas fa-check"></i> Modern UI</li><li><i class="fas fa-check"></i> Холбоо барих форм</li></ul>
-        </div>
+        <div class="template-preview"><div class="browser-mockup"><div class="browser-bar"><div class="browser-dot"></div><div class="browser-dot"></div><div class="browser-dot"></div><div class="browser-url">restaurant.mn</div></div><div class="browser-content" style="background: linear-gradient(135deg, #1a1207 0%, #2a1f10 100%);"><div class="browser-hero"><div class="browser-hero-line" style="width:50%;height:8px;background:#d4a853;border-radius:3px;margin-bottom:6px;"></div><div class="browser-hero-btn" style="width:60px;height:14px;background:#d4a853;border-radius:3px;"></div></div><div class="browser-cards"><div class="browser-card" style="background:rgba(212,168,83,0.12);"></div><div class="browser-card" style="background:rgba(212,168,83,0.12);"></div><div class="browser-card" style="background:rgba(212,168,83,0.12);"></div></div></div></div><div class="template-overlay"><span class="template-overlay-btn"><i class="fas fa-eye"></i> Дэлгэрэнгүй</span></div></div>
+        <div class="template-info"><div class="template-category">Ресторан / Кафе</div><h3>Ресторан Вэбсайт</h3><div class="template-price">550,000₮ – 750,000₮</div><div class="template-bestfor">Ресторан, кафе, цайны газар</div><ul class="template-features"><li><i class="fas fa-check"></i> Цэс харуулах</li><li><i class="fas fa-check"></i> Захиалгын систем</li><li><i class="fas fa-check"></i> Mobile Responsive</li><li><i class="fas fa-check"></i> Гэрэл зургийн цомог</li></ul></div>
       </div>
-
-      <!-- Template 5: Small Business -->
+      <!-- Template 5: Clinic -->
       <div class="template-card" onclick="openModal(4)">
-        <div class="template-preview">
-          <div class="browser-mockup">
-            <div class="browser-bar"><div class="browser-dot"></div><div class="browser-dot"></div><div class="browser-dot"></div><div class="browser-url">business.mn</div></div>
-            <div class="browser-content" style="background: linear-gradient(135deg, #0d1117 0%, #161b22 100%);">
-              <div class="browser-hero"><div class="browser-hero-line" style="width:45%;height:8px;background:#7850ff;border-radius:3px;margin-bottom:6px;"></div><div class="browser-hero-line" style="width:65%;height:5px;background:rgba(120,80,255,0.4);border-radius:3px;margin-bottom:6px;"></div><div class="browser-hero-btn" style="width:60px;height:14px;background:#7850ff;border-radius:3px;"></div></div>
-              <div class="browser-cards"><div class="browser-card" style="background:rgba(120,80,255,0.08);"></div><div class="browser-card" style="background:rgba(120,80,255,0.08);"></div><div class="browser-card" style="background:rgba(120,80,255,0.08);"></div></div>
-            </div>
-          </div>
-          <div class="template-overlay"><span class="template-overlay-btn"><i class="fas fa-eye"></i> Дэлгэрэнгүй</span></div>
-        </div>
-        <div class="template-info">
-          <div class="template-category">Жижиг бизнес</div>
-          <h3>Жижиг Бизнес Вэбсайт</h3>
-          <div class="template-price">550,000₮</div>
-          <ul class="template-features"><li><i class="fas fa-check"></i> Mobile Responsive</li><li><i class="fas fa-check"></i> Бүтээгдэхүүн харуулах</li><li><i class="fas fa-check"></i> SEO Ready</li><li><i class="fas fa-check"></i> Холбоо барих форм</li></ul>
-        </div>
+        <div class="template-preview"><div class="browser-mockup"><div class="browser-bar"><div class="browser-dot"></div><div class="browser-dot"></div><div class="browser-dot"></div><div class="browser-url">clinic.mn</div></div><div class="browser-content" style="background: linear-gradient(135deg, #0a1628 0%, #1a2a4a 100%);"><div class="browser-hero"><div class="browser-hero-line" style="width:55%;height:8px;background:#50c8ff;border-radius:3px;margin-bottom:6px;"></div><div class="browser-hero-btn" style="width:60px;height:14px;background:#50c8ff;border-radius:3px;"></div></div><div class="browser-cards"><div class="browser-card" style="background:rgba(80,200,255,0.08);"></div><div class="browser-card" style="background:rgba(80,200,255,0.08);"></div><div class="browser-card" style="background:rgba(80,200,255,0.08);"></div></div></div></div><div class="template-overlay"><span class="template-overlay-btn"><i class="fas fa-eye"></i> Дэлгэрэнгүй</span></div></div>
+        <div class="template-info"><div class="template-category">Эмчилгээ</div><h3>Клиник Вэбсайт</h3><div class="template-price">750,000₮ – 1,000,000₮</div><div class="template-bestfor">Эмчилгээний газар, эрүүл мэнд</div><ul class="template-features"><li><i class="fas fa-check"></i> Цаг захиалга</li><li><i class="fas fa-check"></i> Эмчийн мэдээлэл</li><li><i class="fas fa-check"></i> Mobile Responsive</li><li><i class="fas fa-check"></i> Contact Form</li></ul></div>
       </div>
-
-      <!-- Template 6: Premium -->
+      <!-- Template 6: Delivery -->
       <div class="template-card" onclick="openModal(5)">
-        <div class="template-preview">
-          <div class="browser-mockup">
-            <div class="browser-bar"><div class="browser-dot"></div><div class="browser-dot"></div><div class="browser-dot"></div><div class="browser-url">premium.mn</div></div>
-            <div class="browser-content" style="background: linear-gradient(135deg, #030308 0%, #0a0a12 100%);">
-              <div class="browser-hero"><div class="browser-hero-line" style="width:50%;height:8px;background:linear-gradient(90deg,#7850ff,#ff6496);border-radius:3px;margin-bottom:6px;"></div><div class="browser-hero-line" style="width:70%;height:5px;background:rgba(120,80,255,0.3);border-radius:3px;margin-bottom:6px;"></div><div class="browser-hero-btn" style="width:60px;height:14px;background:linear-gradient(135deg,#7850ff,#5a3fd4);border-radius:3px;"></div></div>
-              <div class="browser-cards"><div class="browser-card" style="background:rgba(120,80,255,0.06);"></div><div class="browser-card" style="background:rgba(120,80,255,0.06);"></div><div class="browser-card" style="background:rgba(120,80,255,0.06);"></div></div>
-            </div>
-          </div>
-          <div class="template-overlay"><span class="template-overlay-btn"><i class="fas fa-eye"></i> Дэлгэрэнгүй</span></div>
-        </div>
-        <div class="template-info">
-          <div class="template-category">Премиум</div>
-          <h3>Премиум Корпоратив</h3>
-          <div class="template-price">1,200,000₮+</div>
-          <ul class="template-features"><li><i class="fas fa-check"></i> Mobile Responsive</li><li><i class="fas fa-check"></i> Олон хуудас</li><li><i class="fas fa-check"></i> Тусгай дизайн</li><li><i class="fas fa-check"></i> 3 сарын дэмжлэг</li></ul>
-        </div>
+        <div class="template-preview"><div class="browser-mockup"><div class="browser-bar"><div class="browser-dot"></div><div class="browser-dot"></div><div class="browser-dot"></div><div class="browser-url">delivery.mn</div></div><div class="browser-content" style="background: linear-gradient(135deg, #0d1b0e 0%, #1a2e1b 100%);"><div class="browser-hero"><div class="browser-hero-line" style="width:50%;height:8px;background:#4ade80;border-radius:3px;margin-bottom:6px;"></div><div class="browser-hero-btn" style="width:60px;height:14px;background:#4ade80;border-radius:3px;"></div></div><div class="browser-cards"><div class="browser-card" style="background:rgba(74,222,128,0.08);"></div><div class="browser-card" style="background:rgba(74,222,128,0.08);"></div><div class="browser-card" style="background:rgba(74,222,128,0.08);"></div></div></div></div><div class="template-overlay"><span class="template-overlay-btn"><i class="fas fa-eye"></i> Дэлгэрэнгүй</span></div></div>
+        <div class="template-info"><div class="template-category">Хүргэлт / Логистик</div><h3>Delivery Вэбсайт</h3><div class="template-price">650,000₮ – 900,000₮</div><div class="template-bestfor">Хүргэлтийн үйлчилгээ</div><ul class="template-features"><li><i class="fas fa-check"></i> Захиалгын форм</li><li><i class="fas fa-check"></i> Байршил харуулах</li><li><i class="fas fa-check"></i> Mobile Responsive</li><li><i class="fas fa-check"></i> Messenger холболт</li></ul></div>
       </div>
-
+      <!-- Template 7: Education -->
+      <div class="template-card" onclick="openModal(6)">
+        <div class="template-preview"><div class="browser-mockup"><div class="browser-bar"><div class="browser-dot"></div><div class="browser-dot"></div><div class="browser-dot"></div><div class="browser-url">education.mn</div></div><div class="browser-content" style="background: linear-gradient(135deg, #1e1e2e 0%, #2d2d44 100%);"><div class="browser-hero"><div class="browser-hero-line" style="width:55%;height:8px;background:#f59e0b;border-radius:3px;margin-bottom:6px;"></div><div class="browser-hero-btn" style="width:60px;height:14px;background:#f59e0b;border-radius:3px;"></div></div><div class="browser-cards"><div class="browser-card" style="background:rgba(245,158,11,0.08);"></div><div class="browser-card" style="background:rgba(245,158,11,0.08);"></div><div class="browser-card" style="background:rgba(245,158,11,0.08);"></div></div></div></div><div class="template-overlay"><span class="template-overlay-btn"><i class="fas fa-eye"></i> Дэлгэрэнгүй</span></div></div>
+        <div class="template-info"><div class="template-category">Боловсрол</div><h3>Сургалтын Вэбсайт</h3><div class="template-price">550,000₮ – 850,000₮</div><div class="template-bestfor">Сургалт, курс, сургах зөвлөгөө</div><ul class="template-features"><li><i class="fas fa-check"></i> Курс харуулах</li><li><i class="fas fa-check"></i> Бүртгэлийн форм</li><li><i class="fas fa-check"></i> Mobile Responsive</li><li><i class="fas fa-check"></i> SEO Ready</li></ul></div>
+      </div>
+      <!-- Template 8: Real Estate -->
+      <div class="template-card" onclick="openModal(7)">
+        <div class="template-preview"><div class="browser-mockup"><div class="browser-bar"><div class="browser-dot"></div><div class="browser-dot"></div><div class="browser-dot"></div><div class="browser-url">realestate.mn</div></div><div class="browser-content" style="background: linear-gradient(135deg, #1a1a1a 0%, #2a2a2a 100%);"><div class="browser-hero"><div class="browser-hero-line" style="width:50%;height:8px;background:#fbbf24;border-radius:3px;margin-bottom:6px;"></div><div class="browser-hero-btn" style="width:60px;height:14px;background:#fbbf24;border-radius:3px;"></div></div><div class="browser-cards"><div class="browser-card" style="background:rgba(251,191,36,0.08);"></div><div class="browser-card" style="background:rgba(251,191,36,0.08);"></div><div class="browser-card" style="background:rgba(251,191,36,0.08);"></div></div></div></div><div class="template-overlay"><span class="template-overlay-btn"><i class="fas fa-eye"></i> Дэлгэрэнгүй</span></div></div>
+        <div class="template-info"><div class="template-category">Үл хөдлөх</div><h3>Үл хөдлөх хөрөнгө</h3><div class="template-price">800,000₮ – 1,200,000₮</div><div class="template-bestfor">Үл хөдлөх зуучлал</div><ul class="template-features"><li><i class="fas fa-check"></i> Зар харуулах</li><li><i class="fas fa-check"></i> Шүүлтүүр</li><li><i class="fas fa-check"></i> Mobile Responsive</li><li><i class="fas fa-check"></i> Contact Form</li></ul></div>
+      </div>
     </div>
+    <p class="pricing-note">Үнэ нь хуудасны тоо, дизайн, нэмэлт функц, текст зураг бэлэн эсэхээс хамаарч өөрчлөгдөнө.</p>
   </section>
 
   <!-- TEMPLATE MODAL -->
@@ -2396,22 +2362,22 @@
   <!-- PRICING -->
   <section class="pricing" id="pricing">
     <div class="pricing-header">
-      <h2 data-mn="pricingTitle">Вэбсайтын багцууд</h2>
-      <p data-mn="pricingDesc">Таны бизнестийн хэмжээнд тохирсон багц. Илүү мэдээлэл авах хүсвэл холбогдох уу.</p>
+      <h2>Багцууд</h2>
+      <p>Таны бизнест тохирсон багцыг сонгоно уу</p>
     </div>
     <div class="pricing-grid">
 
       <!-- Package 1: Starter -->
       <div class="pricing-card">
-        <div class="pricing-name" data-mn="pkg1Name">Стартер Лэндинг</div>
-        <div class="pricing-price">350,000<span>₮ – 450,000₮</span></div>
-        <p class="pricing-desc" data-mn="pkg1Desc">Шинэ бизнес, хувь хүний брэнд, төслийн хуудас</p>
+        <div class="pricing-name">Стартер Template</div>
+        <div class="pricing-price">350,000<span>₮+</span></div>
+        <p class="pricing-desc">Хувь хүн, портфолио, жижиг үйлчилгээ</p>
         <ul class="pricing-features">
-          <li><i class="fas fa-check"></i> <span data-mn="pkg1F1">Лэндинг хуудас (1 хуудас)</span></li>
-          <li><i class="fas fa-check"></i> <span data-mn="pkg1F2">Мобайлд тохирсон (Responsive)</span></li>
-          <li><i class="fas fa-check"></i> <span data-mn="pkg1F3">Холбоо барих форм</span></li>
-          <li><i class="fas fa-check"></i> <span data-mn="pkg1F4">Үндсэн SEO тохиргоо</span></li>
-          <li><i class="fas fa-check"></i> <span data-mn="pkg1F5">Хүргэлт: 3–5 хоног</span></li>
+          <li><i class="fas fa-check"></i> Бэлэн загвар</li>
+          <li><i class="fas fa-check"></i> 1–3 хуудас</li>
+          <li><i class="fas fa-check"></i> Текст, зураг солих</li>
+          <li><i class="fas fa-check"></i> Mobile responsive</li>
+          <li><i class="fas fa-check"></i> Messenger холбоос</li>
         </ul>
         <a href="tel:99620992" class="btn btn-ghost"><i class="fas fa-phone"></i> <span data-mn="pkgBuy">Захиалах</span></a>
       </div>
@@ -2419,32 +2385,31 @@
       <!-- Package 2: Business (Popular) -->
       <div class="pricing-card popular">
         <div class="popular-badge" data-mn="popularBadge">Түгээмэл</div>
-        <div class="pricing-name" data-mn="pkg2Name">Бизнес Вэбсайт</div>
-        <div class="pricing-price">650,000<span>₮ – 850,000₮</span></div>
-        <p class="pricing-desc" data-mn="pkg2Desc">Жижиг бизнес, эмчилгээний газар, үйлчилгээний газар</p>
+        <div class="pricing-name">Бизнес Template</div>
+        <div class="pricing-price">650,000<span>₮+</span></div>
+        <p class="pricing-desc">Жижиг бизнес, үйлчилгээний байгууллага</p>
         <ul class="pricing-features">
-          <li><i class="fas fa-check"></i> <span data-mn="pkg2F1">5 хуудас хүртэл</span></li>
-          <li><i class="fas fa-check"></i> <span data-mn="pkg2F2">Өөрийн дизайн</span></li>
-          <li><i class="fas fa-check"></i> <span data-mn="pkg2F3">Мобайлд тохирсон (Responsive)</span></li>
-          <li><i class="fas fa-check"></i> <span data-mn="pkg2F4">SEO бэлэн</span></li>
-          <li><i class="fas fa-check"></i> <span data-mn="pkg2F5">Домайн холболт</span></li>
-          <li><i class="fas fa-check"></i> <span data-mn="pkg2F6">Хүргэлт: 7–10 хоног</span></li>
+          <li><i class="fas fa-check"></i> 5 хүртэл хуудас</li>
+          <li><i class="fas fa-check"></i> Contact form</li>
+          <li><i class="fas fa-check"></i> Үйлчилгээний хэсэг</li>
+          <li><i class="fas fa-check"></i> SEO basic</li>
+          <li><i class="fas fa-check"></i> Домайн холболтын зөвлөгөө</li>
         </ul>
         <a href="tel:99620992" class="btn btn-primary"><i class="fas fa-phone"></i> <span data-mn="pkgBuy">Захиалах</span></a>
       </div>
 
       <!-- Package 3: Premium -->
       <div class="pricing-card">
-        <div class="pricing-name" data-mn="pkg3Name">Премиум Корпоратив</div>
+        <div class="pricing-name">Custom Website</div>
         <div class="pricing-price">1,200,000<span>₮+</span></div>
-        <p class="pricing-desc" data-mn="pkg3Desc">Томоохон бизнес, цахим дэлгүүр, системтэй вэбсайт</p>
+        <p class="pricing-desc">Онцгой бүтэц, тусгай шаардлагатай бизнес</p>
         <ul class="pricing-features">
-          <li><i class="fas fa-check"></i> <span data-mn="pkg3F1">10+ хуудас</span></li>
-          <li><i class="fas fa-check"></i> <span data-mn="pkg3F2">Өөрийн бүтэц, дизайн</span></li>
-          <li><i class="fas fa-check"></i> <span data-mn="pkg3F3">Захиалгын систем</span></li>
-          <li><i class="fas fa-check"></i> <span data-mn="pkg3F4">Блог хэсэг</span></li>
-          <li><i class="fas fa-check"></i> <span data-mn="pkg3F5">Нарийвчилсан SEO</span></li>
-          <li><i class="fas fa-check"></i> <span data-mn="pkg3F6">Бүрэн дэмжлэг (3 сар)</span></li>
+          <li><i class="fas fa-check"></i> Custom дизайн</li>
+          <li><i class="fas fa-check"></i> Цоо шинэ бүтэц</li>
+          <li><i class="fas fa-check"></i> Илүү олон хуудас</li>
+          <li><i class="fas fa-check"></i> Захиалгын form</li>
+          <li><i class="fas fa-check"></i> Нэмэлт хөгжүүлэлт</li>
+          <li><i class="fas fa-check"></i> 3 сарын дэмжлэг</li>
         </ul>
         <a href="https://www.facebook.com/profile.php?id=61582969455784" class="btn btn-ghost" target="_blank"><i class="fab fa-facebook-messenger"></i> <span data-mn="pkgConsult">Зөвлөгөө авах</span></a>
       </div>
@@ -2457,15 +2422,15 @@
 
   <section class="process" id="process">
     <div class="process-header">
-      <h2 data-mn="processTitle">Хэрхэн ажилладаг вэ?</h2>
-      <p data-mn="processDesc">Тодорхой, ойлгомжтой үйл явц. Төсөл эхлэхээс нээлт хүртэл бүх алхамыг хамтдаа шийднэ.</p>
+      <h2>Хэрхэн ажилладаг вэ?</h2>
+      <p>Төрлөө сонгоод, материал өгөөд, тохируулга хийгдээд сайт ашиглалтад орно.</p>
     </div>
     <div class="process-timeline">
       <div class="process-step">
         <div class="step-num">01</div>
         <div class="step-content">
-          <h3 data-mn="process1">Ярилцлага</h3>
-          <p data-mn="process1Desc">Таны бизнес, зорилго, үйлчлүүлэгчийн тухай ярилцдаг. Юу хэрэгтэй, яагаад вэ гэдгийг ойлгоно.</p>
+          <h3>Төрлөө сонгоно</h3>
+          <p>Template авах уу эсвэл захиалгаар хийлгэх үү гэдгээ сонгоно.</p>
         </div>
       </div>
       <div class="process-step">
@@ -2490,6 +2455,7 @@
         </div>
       </div>
     </div>
+    <p class="pricing-note">Үнэ нь хуудасны тоо, дизайн, нэмэлт функц, текст зураг бэлэн эсэхээс хамаарч өөрчлөгдөнө.</p>
   </section>
 
   <!-- TESTIMONIALS (hidden until real reviews) -->
@@ -2524,15 +2490,16 @@
         </div>
       </div>
     </div>
+    <p class="pricing-note">Үнэ нь хуудасны тоо, дизайн, нэмэлт функц, текст зураг бэлэн эсэхээс хамаарч өөрчлөгдөнө.</p>
   </section>
 
   <!-- CTA -->
   <section class="cta" id="contact">
     <div class="cta-box">
-      <h2 data-mn="ctaTitle">Бизнесээ онлайнаар өсгөхөд бэлэн үү?</h2>
-      <p data-mn="ctaDesc">Вэбсайт болон видео контентын тусламжтай илүү олон харилцагчтай болоорой.</p>
-      <a href="tel:99620992" class="btn btn-primary"><i class="fas fa-phone"></i> <span data-mn="ctaBtn">Утасдах</span></a>
-      <a href="https://www.facebook.com/profile.php?id=61582969455784" class="btn btn-ghost" target="_blank"><i class="fab fa-facebook-messenger"></i> Messenger</a>
+      <h2>Ямар вэбсайт танд тохирохоо мэдэхгүй байна уу?</h2>
+      <p>Бизнесийнхээ төрлийг хэлээрэй. Бид танд тохирох template болон үнийн санал зөвлөе.</p>
+      <a href="https://www.facebook.com/profile.php?id=61582969455784" class="btn btn-primary" target="_blank"><i class="fab fa-facebook-messenger"></i> Messenger-ээр зөвлөгөө авах</a>
+      <a href="tel:99620992" class="btn btn-ghost"><i class="fas fa-phone"></i> Утасдах</a>
     </div>
   </section>
 
@@ -2590,12 +2557,14 @@
 
     // TEMPLATE MODAL
     var templates = [
-      { name: 'Ресторан Вэбсайт', category: 'Ресторан', price: '450,000₮ – 750,000₮', url: 'restaurant.mn', color: 'linear-gradient(135deg, #1a1207 0%, #2a1f10 100%)', features: ['Mobile Responsive', 'Цэс / Захиалгын систем', 'SEO Ready', 'Гэрэл зургийн цомог', 'Fast Loading', 'Contact Form'] },
-      { name: 'Клиник Вэбсайт', category: 'Эмчилгээний газар', price: '650,000₮ – 950,000₮', url: 'clinic.mn', color: 'linear-gradient(135deg, #0a1628 0%, #1a2a4a 100%)', features: ['Mobile Responsive', 'Цаг захиалга', 'SEO Ready', 'Эмчийн мэдээлэл', 'Fast Loading', 'Contact Form'] },
-      { name: 'Бизнес Вэбсайт', category: 'Корпоратив', price: '650,000₮ – 850,000₮', url: 'company.mn', color: 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)', features: ['Mobile Responsive', 'Үйлчилгээний хуудас', 'SEO Ready', 'Холбоо барих форм', 'Fast Loading', 'Modern UI'] },
-      { name: 'Портфолио Вэбсайт', category: 'Хувь хүний', price: '350,000₮ – 450,000₮', url: 'portfolio.mn', color: 'linear-gradient(135deg, #0a0a0a 0%, #1a1525 100%)', features: ['Mobile Responsive', 'Төсөл үзүүлэх', 'Modern UI', 'Холбоо барих форм', 'Fast Loading', 'SEO Ready'] },
-      { name: 'Жижиг Бизнес Вэбсайт', category: 'Жижиг бизнес', price: '550,000₮', url: 'business.mn', color: 'linear-gradient(135deg, #0d1117 0%, #161b22 100%)', features: ['Mobile Responsive', 'Бүтээгдэхүүн харуулах', 'SEO Ready', 'Холбоо барих форм', 'Fast Loading', 'Modern UI'] },
-      { name: 'Премиум Корпоратив', category: 'Премиум', price: '1,200,000₮+', url: 'premium.mn', color: 'linear-gradient(135deg, #030308 0%, #0a0a12 100%)', features: ['Mobile Responsive', 'Олон хуудас', 'Тусгай дизайн', '3 сарын дэмжлэг', 'Fast Loading', 'SEO Ready'] }
+      { name: 'Online Shop Загвар', category: 'Онлайн дэлгүүр', price: '850,000₮ – 1,200,000₮', url: 'shop.mn', color: 'linear-gradient(135deg, #1a1a2e 0%, #16213e 100%)', features: ['Бүтээгдэхүүн харуулах', 'Сагс / Төлбөр', 'Mobile Responsive', 'SEO Ready', 'Fast Loading', 'Contact Form'] },
+      { name: 'Бизнес Вэбсайт', category: 'Бизнес', price: '650,000₮ – 850,000₮', url: 'business.mn', color: 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)', features: ['Үйлчилгээний хуудас', 'Contact form', 'Mobile Responsive', 'SEO Ready', 'Fast Loading', 'Modern UI'] },
+      { name: 'Хувь хүний Портфолио', category: 'Портфолио', price: '350,000₮ – 550,000₮', url: 'portfolio.mn', color: 'linear-gradient(135deg, #0a0a0a 0%, #1a1525 100%)', features: ['Төсөл үзүүлэх', 'Modern UI', 'Mobile Responsive', 'Contact Form', 'Fast Loading', 'SEO Ready'] },
+      { name: 'Ресторан Вэбсайт', category: 'Ресторан / Кафе', price: '550,000₮ – 750,000₮', url: 'restaurant.mn', color: 'linear-gradient(135deg, #1a1207 0%, #2a1f10 100%)', features: ['Цэс харуулах', 'Захиалгын систем', 'Mobile Responsive', 'Гэрэл зургийн цомог', 'Fast Loading', 'SEO Ready'] },
+      { name: 'Клиник Вэбсайт', category: 'Эмчилгээ', price: '750,000₮ – 1,000,000₮', url: 'clinic.mn', color: 'linear-gradient(135deg, #0a1628 0%, #1a2a4a 100%)', features: ['Цаг захиалга', 'Эмчийн мэдээлэл', 'Mobile Responsive', 'Contact Form', 'Fast Loading', 'SEO Ready'] },
+      { name: 'Delivery Вэбсайт', category: 'Хүргэлт / Логистик', price: '650,000₮ – 900,000₮', url: 'delivery.mn', color: 'linear-gradient(135deg, #0d1b0e 0%, #1a2e1b 100%)', features: ['Захиалгын форм', 'Байршил харуулах', 'Mobile Responsive', 'Messenger холболт', 'Fast Loading', 'SEO Ready'] },
+      { name: 'Сургалтын Вэбсайт', category: 'Боловсрол', price: '550,000₮ – 850,000₮', url: 'education.mn', color: 'linear-gradient(135deg, #1e1e2e 0%, #2d2d44 100%)', features: ['Курс харуулах', 'Бүртгэлийн форм', 'Mobile Responsive', 'SEO Ready', 'Fast Loading', 'Contact Form'] },
+      { name: 'Үл хөдлөх хөрөнгө', category: 'Үл хөдлөх', price: '800,000₮ – 1,200,000₮', url: 'realestate.mn', color: 'linear-gradient(135deg, #1a1a1a 0%, #2a2a2a 100%)', features: ['Зар харуулах', 'Шүүлтүүр', 'Mobile Responsive', 'Contact Form', 'Fast Loading', 'SEO Ready'] }
     ];
 
     function openModal(idx) {

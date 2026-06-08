@@ -146,15 +146,16 @@
     }
     .btn-ghost:hover { border-color: rgba(255,255,255,0.2); color: #fff; background: rgba(255,255,255,0.06); transform: translateY(-3px); }
 
-    /* ===== HERO — LAPTOP FIRST v2 ===== */
+    /* ===== HERO ===== */
     .hero {
-      min-height: 100vh; display: flex; align-items: center; justify-content: center;
-      position: relative; padding: 100px 48px 60px; overflow: hidden;
+      min-height: 100vh; display: flex; align-items: center;
+      position: relative; padding: 140px 48px 100px;
+      overflow: hidden;
     }
-    .hero-bg { position: absolute; inset: 0; pointer-events: none; z-index: 0; }
+    .hero-bg { position: absolute; inset: 0; pointer-events: none; }
     .hero-orb {
       position: absolute; border-radius: 50%;
-      filter: blur(120px); opacity: 0.08;
+      filter: blur(120px); opacity: 0.12;
       animation: orbFloat 20s ease-in-out infinite;
     }
     .orb-1 { width: 600px; height: 600px; background: #7850ff; top: -200px; right: -100px; animation-delay: 0s; }
@@ -168,269 +169,53 @@
     }
     .hero-grid {
       position: absolute; inset: 0;
-      background-image: linear-gradient(rgba(255,255,255,0.012) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.012) 1px, transparent 1px);
+      background-image: linear-gradient(rgba(255,255,255,0.02) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.02) 1px, transparent 1px);
       background-size: 60px 60px;
       mask-image: radial-gradient(ellipse at center, black 30%, transparent 70%);
       -webkit-mask-image: radial-gradient(ellipse at center, black 30%, transparent 70%);
     }
-
-    /* Hero layout — 35/65 split */
     .hero-inner {
       position: relative; z-index: 1;
-      display: flex; align-items: center; gap: 48px;
-      max-width: 1440px; width: 100%; margin: 0 auto;
+      max-width: 600px; margin: 0 auto; text-align: center;
     }
-
-    /* LEFT: 35% text */
-    .hero-text {
-      flex: 0 0 380px; max-width: 380px;
-      display: flex; flex-direction: column; align-items: flex-start;
-    }
+    .hero-text { max-width: 100%; }
     .hero-pill {
       display: inline-flex; align-items: center; gap: 8px;
-      padding: 7px 18px; border-radius: 100px;
-      background: rgba(120,80,255,0.08); backdrop-filter: blur(10px);
-      border: 1px solid rgba(120,80,255,0.15);
-      font-size: 0.7rem; font-weight: 600; color: var(--accent);
-      letter-spacing: 2px; text-transform: uppercase;
-      margin-bottom: 28px;
+      padding: 10px 24px; border-radius: 100px;
+      background: var(--glass); backdrop-filter: blur(10px);
+      border: 1px solid var(--border);
+      font-size: 0.78rem; font-weight: 600; color: var(--accent);
+      margin-bottom: 40px; letter-spacing: 2px; text-transform: uppercase;
     }
     .hero-pill .dot { width: 6px; height: 6px; border-radius: 50%; background: #7850ff; animation: pulse 2s infinite; }
-    @keyframes pulse { 0%, 100% { opacity: 1; } 50% { opacity: 0.3; } }
-
     .hero-title {
       font-family: var(--font-heading);
-      font-size: clamp(2rem, 4vw, 3.2rem); font-weight: 700; line-height: 1.1;
-      letter-spacing: -1.5px; margin-bottom: 16px; color: #fff;
+      font-size: clamp(2.4rem, 5.5vw, 4.5rem); font-weight: 700; line-height: 1.1;
+      letter-spacing: -2px; margin-bottom: 32px; color: #fff;
     }
-    .hero-title .line { display: block; }
+    .hero-title .line { display: block; overflow: hidden; }
+    .hero-title .line span { display: inline-block; opacity: 0; transform: translateY(100%); }
+    .line-1 span { animation: slideUp 1s ease 0.5s forwards; }
+    .line-2 span { animation: slideUp 1s ease 0.7s forwards; }
+    @keyframes slideUp { to { opacity: 1; transform: translateY(0); } }
     .hero-title .gradient {
       background: linear-gradient(135deg, #7850ff 0%, #ff6496 100%);
       -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
     }
     .hero-desc {
-      font-size: 0.95rem; color: #888; max-width: 360px;
-      margin-bottom: 32px; line-height: 1.7;
+      font-size: 1.125rem; color: var(--text-muted); max-width: 520px;
+      margin-bottom: 56px; opacity: 0; animation: fadeIn 1s ease 1.2s forwards;
     }
-    .hero-actions { display: flex; gap: 12px; }
-
-    /* ===== LAPTOP — 65% ===== */
-    .laptop-wrapper {
-      flex: 1; display: flex; justify-content: center; align-items: center;
-      position: relative; perspective: 1400px; min-width: 0;
-    }
-    .laptop {
-      position: relative; width: 100%; max-width: 820px;
-      transform: rotateY(-10deg) rotateX(5deg);
-      transform-style: preserve-3d;
-      animation: laptopFloat 6s ease-in-out infinite;
-      will-change: transform;
-    }
-    @keyframes laptopFloat {
-      0%, 100% { transform: rotateY(-10deg) rotateX(5deg) translateY(0); }
-      50% { transform: rotateY(-10deg) rotateX(5deg) translateY(-14px); }
-    }
-
-    /* Screen */
-    .laptop-screen {
-      position: relative;
-      background: #12121e;
-      border-radius: 18px 18px 0 0;
-      border: 3px solid #2a2a3e;
-      border-bottom: none;
-      overflow: hidden;
-      box-shadow: 0 0 0 1px rgba(255,255,255,0.04), 0 30px 80px rgba(0,0,0,0.5), 0 0 120px rgba(120,80,255,0.06);
-    }
-    .laptop-screen::before {
-      content: ''; position: absolute; top: 8px; left: 50%; transform: translateX(-50%);
-      width: 8px; height: 8px; border-radius: 50%; background: #333; z-index: 10;
-    }
-    .laptop-screen::after {
-      content: ''; position: absolute; inset: 0;
-      background: linear-gradient(135deg, rgba(255,255,255,0.025) 0%, transparent 50%);
-      pointer-events: none; z-index: 5; border-radius: 15px 15px 0 0;
-    }
-
-    .laptop-display {
-      width: 100%; height: 0; padding-bottom: 60%;
-      position: relative; overflow: hidden; background: #08080f;
-    }
-    .laptop-display-inner {
-      position: absolute; inset: 0; overflow: hidden;
-    }
-
-    /* Mini website */
-    .mini-site { width: 100%; height: 100%; background: #08080f; }
-    .mini-nav {
-      height: 7%; background: rgba(8,8,15,0.95);
-      border-bottom: 1px solid rgba(255,255,255,0.05);
-      display: flex; align-items: center; justify-content: space-between;
-      padding: 0 3%;
-    }
-    .mini-nav-logo {
-      font-family: var(--font-heading); font-size: clamp(7px, 1.1vw, 13px);
-      font-weight: 700; background: linear-gradient(135deg, #7850ff, #ff6496);
-      -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
-      letter-spacing: 2px;
-    }
-    .mini-nav-links { display: flex; gap: 3%; }
-    .mini-nav-links span { display: block; height: 2px; width: clamp(18px, 2.5vw, 36px); background: rgba(255,255,255,0.15); border-radius: 1px; }
-    .mini-nav-cta {
-      padding: 1% 3%; border-radius: 4px;
-      background: linear-gradient(135deg, #7850ff, #5a3fd4);
-      display: flex; align-items: center;
-    }
-    .mini-nav-cta span { display: block; height: 1px; width: 100%; background: rgba(255,255,255,0.6); }
-
-    .mini-hero { padding: 4% 3%; display: flex; align-items: center; gap: 3%; }
-    .mini-hero-text { flex: 1; }
-    .mini-hero-title-1 {
-      font-family: var(--font-heading); font-size: clamp(9px, 1.6vw, 20px);
-      font-weight: 700; color: #fff; line-height: 1.15; margin-bottom: 3px;
-    }
-    .mini-hero-title-2 {
-      font-family: var(--font-heading); font-size: clamp(9px, 1.6vw, 20px);
-      font-weight: 700; line-height: 1.15;
-      background: linear-gradient(135deg, #7850ff, #ff6496);
-      -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
-      margin-bottom: 5px;
-    }
-    .mini-hero-desc { font-size: clamp(4px, 0.6vw, 8px); color: #555; line-height: 1.5; margin-bottom: 6px; max-width: 80%; }
-    .mini-hero-btns { display: flex; gap: 2%; }
-    .mini-btn-primary {
-      padding: 2% 4%; border-radius: 4px;
-      background: linear-gradient(135deg, #7850ff, #5a3fd4);
-      font-size: clamp(4px, 0.55vw, 7px); color: #fff; font-weight: 600;
-    }
-    .mini-btn-ghost {
-      padding: 2% 4%; border-radius: 4px;
-      border: 1px solid rgba(255,255,255,0.08);
-      font-size: clamp(4px, 0.55vw, 7px); color: #777; font-weight: 600;
-    }
-    .mini-hero-visual {
-      flex: 0 0 32%; height: clamp(50px, 9vw, 110px);
-      border-radius: 6px; overflow: hidden; position: relative;
-      background: linear-gradient(135deg, rgba(120,80,255,0.12), rgba(255,100,150,0.08));
-      border: 1px solid rgba(120,80,255,0.15);
-    }
-    .mini-hero-visual::before {
-      content: ''; position: absolute; inset: 0;
-      background: linear-gradient(135deg, transparent 60%, rgba(120,80,255,0.06));
-    }
-
-    /* Cards grid */
-    .mini-cards-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 3%; padding: 2% 3% 0; }
-    .mini-card {
-      background: rgba(13,13,20,0.5);
-      border: 1px solid rgba(255,255,255,0.05);
-      border-radius: 5px; padding: 7% 5%;
-    }
-    .mini-card-icon { width: clamp(10px, 1.3vw, 18px); height: clamp(10px, 1.3vw, 18px); border-radius: 3px; margin-bottom: 3px; }
-    .mini-card-icon.purple { background: rgba(120,80,255,0.2); }
-    .mini-card-icon.pink { background: rgba(255,100,150,0.2); }
-    .mini-card-icon.blue { background: rgba(80,200,255,0.2); }
-    .mini-card-title { font-size: clamp(4px, 0.6vw, 8px); font-weight: 700; color: #fff; margin-bottom: 1px; }
-    .mini-card-desc { font-size: clamp(3px, 0.45vw, 6px); color: #444; line-height: 1.4; }
-
-    /* Stats */
-    .mini-stats { display: flex; gap: 2%; padding: 2% 3% 3%; }
-    .mini-stat {
-      flex: 1; text-align: center; padding: 2% 1%;
-      background: rgba(255,255,255,0.015); border-radius: 4px;
-      border: 1px solid rgba(255,255,255,0.03);
-    }
-    .mini-stat-num { font-family: var(--font-heading); font-size: clamp(7px, 1vw, 14px); font-weight: 800; margin-bottom: 1px; }
-    .mini-stat-num.purple { color: #7850ff; }
-    .mini-stat-num.pink { color: #ff6496; }
-    .mini-stat-num.cyan { color: #50c8ff; }
-    .mini-stat-label { font-size: clamp(3px, 0.4vw, 6px); color: #444; }
-
-    /* Keyboard base */
-    .laptop-base {
-      position: relative;
-      background: linear-gradient(180deg, #2a2a3e 0%, #1a1a28 100%);
-      border-radius: 0 0 14px 14px;
-      padding: 1.5% 3% 2.5%;
-      box-shadow: 0 15px 50px rgba(0,0,0,0.4), inset 0 1px 0 rgba(255,255,255,0.04);
-    }
-    .laptop-keyboard { display: grid; grid-template-rows: repeat(5, 1fr); gap: 2%; margin-bottom: 2%; }
-    .keyboard-row { display: flex; gap: 1%; }
-    .key { flex: 1; height: clamp(3px, 0.4vw, 7px); background: rgba(255,255,255,0.05); border-radius: 1px; }
-    .key.space { flex: 4; }
-    .laptop-trackpad { width: 22%; height: clamp(8px, 1vw, 18px); background: rgba(255,255,255,0.03); border-radius: 3px; margin: 0 auto; }
-
-    /* Reflection */
-    .laptop-reflection {
-      position: absolute; bottom: -25%; left: 8%; right: 8%; height: 25%;
-      background: linear-gradient(180deg, rgba(120,80,255,0.03), transparent);
-      transform: scaleY(-1) rotateX(60deg);
-      filter: blur(6px); pointer-events: none; opacity: 0.4;
-    }
-
-    /* ===== FLOATING CARDS — 6 cards ===== */
-    .float-card {
-      position: absolute;
-      background: rgba(10,10,18,0.75);
-      backdrop-filter: blur(16px);
-      border: 1px solid rgba(255,255,255,0.07);
-      border-radius: 14px; padding: 12px 16px;
-      display: flex; align-items: center; gap: 10px;
-      box-shadow: 0 8px 32px rgba(0,0,0,0.3), 0 0 40px rgba(120,80,255,0.04);
-      animation: floatCard 5s ease-in-out infinite;
-      z-index: 3; will-change: transform;
-    }
-    @keyframes floatCard {
-      0%, 100% { transform: translateY(0); }
-      50% { transform: translateY(-10px); }
-    }
-    .float-card-icon {
-      width: 34px; height: 34px; border-radius: 10px;
-      display: flex; align-items: center; justify-content: center;
-      font-size: 0.8rem; flex-shrink: 0;
-    }
-    .float-card-icon.purple { background: rgba(120,80,255,0.12); color: #7850ff; }
-    .float-card-icon.pink { background: rgba(255,100,150,0.12); color: #ff6496; }
-    .float-card-icon.cyan { background: rgba(80,200,255,0.12); color: #50c8ff; }
-    .float-card-icon.yellow { background: rgba(255,216,80,0.12); color: #ffd850; }
-    .float-card-icon.green { background: rgba(80,220,120,0.12); color: #50dc78; }
-    .float-card-icon.orange { background: rgba(255,160,60,0.12); color: #ffa03c; }
-    .float-card-label { font-size: 0.6rem; color: #555; margin-bottom: 1px; }
-    .float-card-value { font-size: 0.8rem; font-weight: 700; color: #fff; }
-
-    .float-card.top-left { top: 5%; left: -8%; animation-delay: 0s; }
-    .float-card.top-right { top: 8%; right: -8%; animation-delay: -1.5s; }
-    .float-card.mid-left { top: 45%; left: -10%; animation-delay: -3s; }
-    .float-card.mid-right { top: 48%; right: -10%; animation-delay: -2s; }
-    .float-card.bottom-left { bottom: 12%; left: -6%; animation-delay: -4s; }
-    .float-card.bottom-right { bottom: 8%; right: -6%; animation-delay: -2.5s; }
-
-    /* Scroll indicator */
+    .hero-actions { display: flex; gap: 16px; justify-content: center; opacity: 0; animation: fadeIn 1s ease 1.5s forwards; }
     .scroll-indicator {
-      position: absolute; bottom: 24px; left: 50%; transform: translateX(-50%);
-      display: flex; flex-direction: column; align-items: center; gap: 8px; opacity: 0.3;
+      position: absolute; bottom: 40px; left: 50%; transform: translateX(-50%);
+      display: flex; flex-direction: column; align-items: center; gap: 8px;
+      opacity: 0; animation: fadeIn 1s ease 2s forwards;
     }
-    .scroll-indicator span { font-size: 0.55rem; color: #444; letter-spacing: 3px; text-transform: uppercase; font-weight: 500; }
-    .scroll-line { width: 1px; height: 32px; background: linear-gradient(to bottom, #7850ff, transparent); animation: scrollLine 2s ease-in-out infinite; }
+    .scroll-indicator span { font-size: 0.65rem; color: #444; letter-spacing: 3px; text-transform: uppercase; font-weight: 500; }
+    .scroll-line { width: 1px; height: 40px; background: linear-gradient(to bottom, #7850ff, transparent); animation: scrollLine 2s ease-in-out infinite; }
     @keyframes scrollLine { 0%, 100% { transform: scaleY(0.3); opacity: 0.3; } 50% { transform: scaleY(1); opacity: 1; } }
-
-    /* ===== HERO RESPONSIVE ===== */
-    @media (max-width: 1024px) {
-      .hero-inner { flex-direction: column; gap: 40px; }
-      .hero-text { flex: none; max-width: 100%; align-items: center; text-align: center; }
-      .hero-desc { max-width: 100%; }
-      .hero-actions { justify-content: center; }
-      .laptop-wrapper { flex: none; width: 100%; }
-      .laptop { max-width: 600px; transform: rotateY(0) rotateX(2deg); }
-      .float-card { display: none; }
-    }
-    @media (max-width: 768px) {
-      .hero { padding: 90px 20px 50px; }
-      .hero-title { font-size: 1.6rem; }
-      .laptop-screen { border-radius: 10px 10px 0 0; }
-      .laptop-base { border-radius: 0 0 8px 8px; }
-    }
-
-    /* ===== MARQUEE ===== */
+    @keyframes fadeIn { to { opacity: 1; } }
 
     /* ===== MARQUEE ===== */
     .marquee-section {
@@ -1074,7 +859,7 @@
     <button class="hamburger" id="hamburger"><span></span><span></span><span></span></button>
   </nav>
 
-  <!-- HERO — LAPTOP FIRST v2 -->
+  <!-- HERO -->
   <section class="hero" id="hero">
     <div class="hero-bg">
       <div class="hero-orb orb-1"></div>
@@ -1082,121 +867,20 @@
       <div class="hero-orb orb-3"></div>
       <div class="hero-grid"></div>
     </div>
-
     <div class="hero-inner">
-
-      <!-- LEFT: 35% text -->
       <div class="hero-text">
         <div class="hero-pill"><span class="dot"></span> <span data-mn="heroPill">Website + Video Studio</span></div>
         <h1 class="hero-title">
-          <span class="line">Бизнесээ</span>
-          <span class="line gradient">онлайнаар өсгө.</span>
+          <span class="line"><span data-mn="heroLine1">Вэбсайт ба видео.</span></span>
+          <span class="line"><span class="gradient" data-mn="heroLine2">Бизнес өсөлтийн эхлэл.</span></span>
         </h1>
-        <p class="hero-desc" data-mn="heroDesc">Вэбсайт болон видео контент.</p>
+        <p class="hero-desc" data-mn="heroDesc">Жижиг бизнес, брэнд, үйлчилгээний байгууллагад зориулсан вэбсайт болон видео контент бүтэнэ.</p>
         <div class="hero-actions">
           <a href="#pricing" class="btn btn-primary"><i class="fas fa-rocket"></i> <span data-mn="heroBtn1">Үнийн санал авах</span></a>
           <a href="#work" class="btn btn-ghost"><i class="fas fa-play-circle"></i> <span data-mn="heroBtn2">Ажлууд харах</span></a>
         </div>
       </div>
-
-      <!-- RIGHT: 65% laptop -->
-      <div class="laptop-wrapper">
-
-        <!-- 6 Floating cards -->
-        <div class="float-card top-left">
-          <div class="float-card-icon purple"><i class="fas fa-code"></i></div>
-          <div><div class="float-card-label">Үйлчилгээ</div><div class="float-card-value">Website Development</div></div>
-        </div>
-        <div class="float-card top-right">
-          <div class="float-card-icon pink"><i class="fas fa-video"></i></div>
-          <div><div class="float-card-label">Үйлчилгээ</div><div class="float-card-value">Video Production</div></div>
-        </div>
-        <div class="float-card mid-left">
-          <div class="float-card-icon cyan"><i class="fas fa-tag"></i></div>
-          <div><div class="float-card-label">Үнэ</div><div class="float-card-value">450,000₮ эхэлнэ</div></div>
-        </div>
-        <div class="float-card mid-right">
-          <div class="float-card-icon yellow"><i class="fas fa-clock"></i></div>
-          <div><div class="float-card-label">Хугацаа</div><div class="float-card-value">5 хоногт бэлэн</div></div>
-        </div>
-        <div class="float-card bottom-left">
-          <div class="float-card-icon green"><i class="fas fa-mobile-alt"></i></div>
-          <div><div class="float-card-label">Дизайн</div><div class="float-card-value">Responsive Design</div></div>
-        </div>
-        <div class="float-card bottom-right">
-          <div class="float-card-icon orange"><i class="fas fa-gem"></i></div>
-          <div><div class="float-card-label">Чанар</div><div class="float-card-value">Premium Quality</div></div>
-        </div>
-
-        <!-- Laptop -->
-        <div class="laptop">
-          <div class="laptop-screen">
-            <div class="laptop-display">
-              <div class="laptop-display-inner">
-                <div class="mini-site">
-                  <!-- Mini nav -->
-                  <div class="mini-nav">
-                    <div class="mini-nav-logo">OGT UUR</div>
-                    <div class="mini-nav-links"><span></span><span></span><span></span><span></span></div>
-                    <div class="mini-nav-cta"><span></span></div>
-                  </div>
-                  <!-- Mini hero -->
-                  <div class="mini-hero">
-                    <div class="mini-hero-text">
-                      <div class="mini-hero-title-1">Вэбсайт ба видео.</div>
-                      <div class="mini-hero-title-2">Бизнес өсөлтийн эхлэл.</div>
-                      <div class="mini-hero-desc">Жижиг бизнес, брэнд, үйлчилгээний байгууллагад зориулсан вэбсайт болон видео контент.</div>
-                      <div class="mini-hero-btns">
-                        <div class="mini-btn-primary">Үнийн санал авах</div>
-                        <div class="mini-btn-ghost">Ажлууд харах</div>
-                      </div>
-                    </div>
-                    <div class="mini-hero-visual"></div>
-                  </div>
-                  <!-- Mini cards -->
-                  <div class="mini-cards-grid">
-                    <div class="mini-card">
-                      <div class="mini-card-icon purple"></div>
-                      <div class="mini-card-title">Вэбсайт</div>
-                      <div class="mini-card-desc">Мэргэжлийн вэбсайт</div>
-                    </div>
-                    <div class="mini-card">
-                      <div class="mini-card-icon pink"></div>
-                      <div class="mini-card-title">Видео</div>
-                      <div class="mini-card-desc">Промо видео бүтээх</div>
-                    </div>
-                    <div class="mini-card">
-                      <div class="mini-card-icon blue"></div>
-                      <div class="mini-card-title">Дизайн</div>
-                      <div class="mini-card-desc">Брэндийн дизайн</div>
-                    </div>
-                  </div>
-                  <!-- Mini stats -->
-                  <div class="mini-stats">
-                    <div class="mini-stat"><div class="mini-stat-num purple">30+</div><div class="mini-stat-label">Вэбсайт</div></div>
-                    <div class="mini-stat"><div class="mini-stat-num pink">50+</div><div class="mini-stat-label">Видео</div></div>
-                    <div class="mini-stat"><div class="mini-stat-num cyan">100%</div><div class="mini-stat-label">Сэтгэл ханамж</div></div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="laptop-reflection"></div>
-          <div class="laptop-base">
-            <div class="laptop-keyboard">
-              <div class="keyboard-row"><div class="key"></div><div class="key"></div><div class="key"></div><div class="key"></div><div class="key"></div><div class="key"></div><div class="key"></div><div class="key"></div><div class="key"></div><div class="key"></div><div class="key"></div><div class="key"></div><div class="key"></div></div>
-              <div class="keyboard-row"><div class="key"></div><div class="key"></div><div class="key"></div><div class="key"></div><div class="key"></div><div class="key"></div><div class="key"></div><div class="key"></div><div class="key"></div><div class="key"></div><div class="key"></div><div class="key"></div></div>
-              <div class="keyboard-row"><div class="key"></div><div class="key"></div><div class="key"></div><div class="key"></div><div class="key"></div><div class="key"></div><div class="key"></div><div class="key"></div><div class="key"></div><div class="key"></div><div class="key"></div></div>
-              <div class="keyboard-row"><div class="key"></div><div class="key"></div><div class="key"></div><div class="key"></div><div class="key"></div><div class="key"></div><div class="key"></div><div class="key"></div><div class="key"></div><div class="key"></div></div>
-              <div class="keyboard-row"><div class="key"></div><div class="key space"></div><div class="key"></div></div>
-            </div>
-            <div class="laptop-trackpad"></div>
-          </div>
-        </div>
-
-      </div>
     </div>
-
     <div class="scroll-indicator">
       <span data-mn="scrollText">Гүйлгэж харах</span>
       <div class="scroll-line"></div>

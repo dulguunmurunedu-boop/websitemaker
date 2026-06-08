@@ -659,6 +659,96 @@
     .btn-sm { padding: 10px 20px; font-size: 0.82rem; width: 100%; justify-content: center; }
     @media (max-width: 1024px) { .portfolio-grid { grid-template-columns: 1fr; max-width: 480px; } }
     @media (max-width: 768px) { .portfolio { padding: 60px 24px; } }
+
+    /* ===== TEMPLATE MARKETPLACE ===== */
+    .marketplace { padding: 100px 48px; background: #030308; }
+    .marketplace-header { text-align: center; margin-bottom: 56px; }
+    .marketplace-header h2 { font-family: var(--font-heading); font-size: 2.4rem; font-weight: 700; color: #fff; margin-bottom: 12px; }
+    .marketplace-header p { font-size: 1rem; color: #888; max-width: 500px; margin: 0 auto; }
+    .marketplace-grid { max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+    .template-card {
+      background: rgba(13,13,20,0.5); border: 1px solid rgba(255,255,255,0.06);
+      border-radius: 20px; overflow: hidden; transition: all 0.3s ease; cursor: pointer;
+    }
+    .template-card:hover { border-color: rgba(120,80,255,0.25); transform: translateY(-6px); box-shadow: 0 20px 60px rgba(0,0,0,0.4); }
+    .template-preview { position: relative; overflow: hidden; height: 200px; }
+    .template-preview .browser-mockup { border-radius: 0; border: none; height: 100%; }
+    .template-preview .browser-mockup .browser-bar { height: 20px; padding: 0 6px; gap: 4px; }
+    .template-preview .browser-mockup .browser-dot { width: 6px; height: 6px; }
+    .template-preview .browser-mockup .browser-url { font-size: 0.5rem; padding: 1px 6px; }
+    .template-preview .browser-mockup .browser-content { padding: 8px; }
+    .template-preview .browser-mockup .browser-hero-line { height: 5px; margin-bottom: 4px; }
+    .template-preview .browser-mockup .browser-hero-btn { width: 50px; height: 12px; }
+    .template-preview .browser-mockup .browser-cards { gap: 4px; }
+    .template-preview .browser-mockup .browser-card { height: 20px; }
+    .template-overlay {
+      position: absolute; inset: 0; background: rgba(0,0,0,0.4);
+      display: flex; align-items: center; justify-content: center;
+      opacity: 0; transition: opacity 0.3s;
+    }
+    .template-card:hover .template-overlay { opacity: 1; }
+    .template-overlay-btn {
+      padding: 10px 24px; border-radius: 100px; background: linear-gradient(135deg, var(--accent), #5a3fd4);
+      color: #fff; font-weight: 600; font-size: 0.85rem; display: flex; align-items: center; gap: 8px;
+    }
+    .template-info { padding: 24px; }
+    .template-category { font-size: 0.7rem; color: var(--accent); font-weight: 600; letter-spacing: 1px; text-transform: uppercase; margin-bottom: 6px; }
+    .template-info h3 { font-family: var(--font-heading); font-size: 1.1rem; font-weight: 700; color: #fff; margin-bottom: 12px; }
+    .template-price { font-family: var(--font-heading); font-size: 1.3rem; font-weight: 700; color: var(--accent-2); margin-bottom: 16px; }
+    .template-features { list-style: none; margin-bottom: 20px; }
+    .template-features li { font-size: 0.8rem; color: #aaa; margin-bottom: 5px; display: flex; align-items: center; gap: 8px; }
+    .template-features i { color: #50c8ff; font-size: 0.65rem; }
+    .template-actions { display: flex; gap: 10px; }
+    .template-actions .btn { flex: 1; justify-content: center; padding: 10px 16px; font-size: 0.8rem; }
+    .btn-outline { background: transparent; border: 1px solid rgba(255,255,255,0.15); color: #ccc; }
+    .btn-outline:hover { border-color: rgba(120,80,255,0.4); color: #fff; background: rgba(120,80,255,0.05); }
+    @media (max-width: 1024px) { .marketplace-grid { grid-template-columns: repeat(2, 1fr); } }
+    @media (max-width: 768px) { .marketplace-grid { grid-template-columns: 1fr; max-width: 420px; } .marketplace { padding: 60px 24px; } }
+
+    /* ===== TEMPLATE MODAL ===== */
+    .template-modal {
+      display: none; position: fixed; inset: 0; z-index: 10000;
+      background: rgba(0,0,0,0.85); backdrop-filter: blur(12px);
+      align-items: center; justify-content: center; padding: 24px;
+    }
+    .template-modal.open { display: flex; }
+    .modal-close {
+      position: absolute; top: 20px; right: 24px; z-index: 10001;
+      width: 44px; height: 44px; border-radius: 50%; background: rgba(255,255,255,0.08);
+      border: none; color: #fff; font-size: 1.1rem; cursor: pointer; transition: all 0.3s;
+    }
+    .modal-close:hover { background: rgba(255,255,255,0.15); transform: rotate(90deg); }
+    .modal-content {
+      background: rgba(13,13,20,0.95); border: 1px solid rgba(255,255,255,0.08);
+      border-radius: 24px; max-width: 900px; width: 100%; max-height: 90vh; overflow-y: auto;
+    }
+    .modal-preview { padding: 32px; border-bottom: 1px solid rgba(255,255,255,0.06); }
+    .modal-preview h3 { font-family: var(--font-heading); font-size: 1.6rem; font-weight: 700; color: #fff; margin-bottom: 6px; }
+    .modal-preview .modal-category { font-size: 0.75rem; color: var(--accent); font-weight: 600; letter-spacing: 1px; text-transform: uppercase; margin-bottom: 20px; }
+    .device-tabs { display: flex; gap: 8px; margin-bottom: 20px; }
+    .device-tab {
+      padding: 8px 18px; border-radius: 8px; background: rgba(255,255,255,0.04);
+      border: 1px solid rgba(255,255,255,0.08); color: #888; font-size: 0.8rem; cursor: pointer;
+      transition: all 0.3s; display: flex; align-items: center; gap: 6px;
+    }
+    .device-tab.active { background: rgba(120,80,255,0.15); border-color: rgba(120,80,255,0.3); color: #fff; }
+    .device-frame { border-radius: 12px; overflow: hidden; border: 2px solid rgba(255,255,255,0.08); transition: all 0.3s; margin: 0 auto; }
+    .device-frame.desktop { max-width: 100%; }
+    .device-frame.tablet { max-width: 768px; }
+    .device-frame.mobile { max-width: 375px; }
+    .device-frame .browser-mockup { border-radius: 0; border: none; }
+    .modal-details { padding: 32px; }
+    .modal-price { font-family: var(--font-heading); font-size: 1.8rem; font-weight: 700; color: var(--accent-2); margin-bottom: 20px; }
+    .modal-features { display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px; margin-bottom: 28px; }
+    .modal-feature { display: flex; align-items: center; gap: 10px; font-size: 0.88rem; color: #ccc; }
+    .modal-feature i { color: #50c8ff; font-size: 0.8rem; width: 20px; }
+    .modal-actions { display: flex; gap: 12px; }
+    .modal-actions .btn { flex: 1; justify-content: center; padding: 14px 24px; font-size: 0.9rem; }
+    @media (max-width: 768px) {
+      .modal-features { grid-template-columns: 1fr; }
+      .modal-actions { flex-direction: column; }
+      .device-tabs { flex-wrap: wrap; }
+    }
     /* ===== PRICING ===== */
     .pricing { padding: 120px 40px; background: #030308; }
     .pricing-header { text-align: center; margin-bottom: 72px; }
@@ -1457,6 +1547,96 @@
     .btn-sm { padding: 10px 20px; font-size: 0.82rem; width: 100%; justify-content: center; }
     @media (max-width: 1024px) { .portfolio-grid { grid-template-columns: 1fr; max-width: 480px; } }
     @media (max-width: 768px) { .portfolio { padding: 60px 24px; } }
+
+    /* ===== TEMPLATE MARKETPLACE ===== */
+    .marketplace { padding: 100px 48px; background: #030308; }
+    .marketplace-header { text-align: center; margin-bottom: 56px; }
+    .marketplace-header h2 { font-family: var(--font-heading); font-size: 2.4rem; font-weight: 700; color: #fff; margin-bottom: 12px; }
+    .marketplace-header p { font-size: 1rem; color: #888; max-width: 500px; margin: 0 auto; }
+    .marketplace-grid { max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+    .template-card {
+      background: rgba(13,13,20,0.5); border: 1px solid rgba(255,255,255,0.06);
+      border-radius: 20px; overflow: hidden; transition: all 0.3s ease; cursor: pointer;
+    }
+    .template-card:hover { border-color: rgba(120,80,255,0.25); transform: translateY(-6px); box-shadow: 0 20px 60px rgba(0,0,0,0.4); }
+    .template-preview { position: relative; overflow: hidden; height: 200px; }
+    .template-preview .browser-mockup { border-radius: 0; border: none; height: 100%; }
+    .template-preview .browser-mockup .browser-bar { height: 20px; padding: 0 6px; gap: 4px; }
+    .template-preview .browser-mockup .browser-dot { width: 6px; height: 6px; }
+    .template-preview .browser-mockup .browser-url { font-size: 0.5rem; padding: 1px 6px; }
+    .template-preview .browser-mockup .browser-content { padding: 8px; }
+    .template-preview .browser-mockup .browser-hero-line { height: 5px; margin-bottom: 4px; }
+    .template-preview .browser-mockup .browser-hero-btn { width: 50px; height: 12px; }
+    .template-preview .browser-mockup .browser-cards { gap: 4px; }
+    .template-preview .browser-mockup .browser-card { height: 20px; }
+    .template-overlay {
+      position: absolute; inset: 0; background: rgba(0,0,0,0.4);
+      display: flex; align-items: center; justify-content: center;
+      opacity: 0; transition: opacity 0.3s;
+    }
+    .template-card:hover .template-overlay { opacity: 1; }
+    .template-overlay-btn {
+      padding: 10px 24px; border-radius: 100px; background: linear-gradient(135deg, var(--accent), #5a3fd4);
+      color: #fff; font-weight: 600; font-size: 0.85rem; display: flex; align-items: center; gap: 8px;
+    }
+    .template-info { padding: 24px; }
+    .template-category { font-size: 0.7rem; color: var(--accent); font-weight: 600; letter-spacing: 1px; text-transform: uppercase; margin-bottom: 6px; }
+    .template-info h3 { font-family: var(--font-heading); font-size: 1.1rem; font-weight: 700; color: #fff; margin-bottom: 12px; }
+    .template-price { font-family: var(--font-heading); font-size: 1.3rem; font-weight: 700; color: var(--accent-2); margin-bottom: 16px; }
+    .template-features { list-style: none; margin-bottom: 20px; }
+    .template-features li { font-size: 0.8rem; color: #aaa; margin-bottom: 5px; display: flex; align-items: center; gap: 8px; }
+    .template-features i { color: #50c8ff; font-size: 0.65rem; }
+    .template-actions { display: flex; gap: 10px; }
+    .template-actions .btn { flex: 1; justify-content: center; padding: 10px 16px; font-size: 0.8rem; }
+    .btn-outline { background: transparent; border: 1px solid rgba(255,255,255,0.15); color: #ccc; }
+    .btn-outline:hover { border-color: rgba(120,80,255,0.4); color: #fff; background: rgba(120,80,255,0.05); }
+    @media (max-width: 1024px) { .marketplace-grid { grid-template-columns: repeat(2, 1fr); } }
+    @media (max-width: 768px) { .marketplace-grid { grid-template-columns: 1fr; max-width: 420px; } .marketplace { padding: 60px 24px; } }
+
+    /* ===== TEMPLATE MODAL ===== */
+    .template-modal {
+      display: none; position: fixed; inset: 0; z-index: 10000;
+      background: rgba(0,0,0,0.85); backdrop-filter: blur(12px);
+      align-items: center; justify-content: center; padding: 24px;
+    }
+    .template-modal.open { display: flex; }
+    .modal-close {
+      position: absolute; top: 20px; right: 24px; z-index: 10001;
+      width: 44px; height: 44px; border-radius: 50%; background: rgba(255,255,255,0.08);
+      border: none; color: #fff; font-size: 1.1rem; cursor: pointer; transition: all 0.3s;
+    }
+    .modal-close:hover { background: rgba(255,255,255,0.15); transform: rotate(90deg); }
+    .modal-content {
+      background: rgba(13,13,20,0.95); border: 1px solid rgba(255,255,255,0.08);
+      border-radius: 24px; max-width: 900px; width: 100%; max-height: 90vh; overflow-y: auto;
+    }
+    .modal-preview { padding: 32px; border-bottom: 1px solid rgba(255,255,255,0.06); }
+    .modal-preview h3 { font-family: var(--font-heading); font-size: 1.6rem; font-weight: 700; color: #fff; margin-bottom: 6px; }
+    .modal-preview .modal-category { font-size: 0.75rem; color: var(--accent); font-weight: 600; letter-spacing: 1px; text-transform: uppercase; margin-bottom: 20px; }
+    .device-tabs { display: flex; gap: 8px; margin-bottom: 20px; }
+    .device-tab {
+      padding: 8px 18px; border-radius: 8px; background: rgba(255,255,255,0.04);
+      border: 1px solid rgba(255,255,255,0.08); color: #888; font-size: 0.8rem; cursor: pointer;
+      transition: all 0.3s; display: flex; align-items: center; gap: 6px;
+    }
+    .device-tab.active { background: rgba(120,80,255,0.15); border-color: rgba(120,80,255,0.3); color: #fff; }
+    .device-frame { border-radius: 12px; overflow: hidden; border: 2px solid rgba(255,255,255,0.08); transition: all 0.3s; margin: 0 auto; }
+    .device-frame.desktop { max-width: 100%; }
+    .device-frame.tablet { max-width: 768px; }
+    .device-frame.mobile { max-width: 375px; }
+    .device-frame .browser-mockup { border-radius: 0; border: none; }
+    .modal-details { padding: 32px; }
+    .modal-price { font-family: var(--font-heading); font-size: 1.8rem; font-weight: 700; color: var(--accent-2); margin-bottom: 20px; }
+    .modal-features { display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px; margin-bottom: 28px; }
+    .modal-feature { display: flex; align-items: center; gap: 10px; font-size: 0.88rem; color: #ccc; }
+    .modal-feature i { color: #50c8ff; font-size: 0.8rem; width: 20px; }
+    .modal-actions { display: flex; gap: 12px; }
+    .modal-actions .btn { flex: 1; justify-content: center; padding: 14px 24px; font-size: 0.9rem; }
+    @media (max-width: 768px) {
+      .modal-features { grid-template-columns: 1fr; }
+      .modal-actions { flex-direction: column; }
+      .device-tabs { flex-wrap: wrap; }
+    }
     /* ===== PRICING ===== */
     .pricing { padding: 120px 40px; background: #030308; }
     .pricing-header { text-align: center; margin-bottom: 72px; }
@@ -2038,60 +2218,180 @@
     </div>
   </section>
 
-  <!-- PORTFOLIO -->
-  <section class="portfolio" id="work">
-    <div class="portfolio-header">
-      <h2>Онцлох ажилууд</h2>
-      <p>Хэрэгжүүлсэн төслүүд — тус бүрийн хугацаа, үнэ, онцлог</p>
+
+
+  <!-- TEMPLATE MARKETPLACE -->
+  <section class="marketplace" id="work">
+    <div class="marketplace-header">
+      <h2>Бэлэн Вэбсайтын Загварууд</h2>
+      <p>Шаардлагатай загвараа сонгоод, өөрийн бизнестээ ашиглаарай</p>
     </div>
-    <div class="portfolio-grid">
-      <div class="portfolio-card">
-        <div class="portfolio-img">
+    <div class="marketplace-grid">
+
+      <!-- Template 1: Restaurant -->
+      <div class="template-card" onclick="openModal(0)">
+        <div class="template-preview">
+          <div class="browser-mockup">
+            <div class="browser-bar"><div class="browser-dot"></div><div class="browser-dot"></div><div class="browser-dot"></div><div class="browser-url">restaurant.mn</div></div>
+            <div class="browser-content" style="background: linear-gradient(135deg, #1a1207 0%, #2a1f10 100%);">
+              <div class="browser-hero"><div class="browser-hero-line" style="width:50%;height:8px;background:#d4a853;border-radius:3px;margin-bottom:6px;"></div><div class="browser-hero-line" style="width:70%;height:5px;background:rgba(212,168,83,0.5);border-radius:3px;margin-bottom:6px;"></div><div class="browser-hero-btn" style="width:60px;height:14px;background:#d4a853;border-radius:3px;"></div></div>
+              <div class="browser-cards"><div class="browser-card" style="background:rgba(212,168,83,0.12);"></div><div class="browser-card" style="background:rgba(212,168,83,0.12);"></div><div class="browser-card" style="background:rgba(212,168,83,0.12);"></div></div>
+            </div>
+          </div>
+          <div class="template-overlay"><span class="template-overlay-btn"><i class="fas fa-eye"></i> Дэлгэрэнгүй</span></div>
+        </div>
+        <div class="template-info">
+          <div class="template-category">Ресторан</div>
+          <h3>Ресторан Вэбсайт</h3>
+          <div class="template-price">450,000₮ – 750,000₮</div>
+          <ul class="template-features"><li><i class="fas fa-check"></i> Mobile Responsive</li><li><i class="fas fa-check"></i> Цэс / Захиалгын систем</li><li><i class="fas fa-check"></i> SEO Ready</li><li><i class="fas fa-check"></i> Гэрэл зургийн цомог</li></ul>
+        </div>
+      </div>
+
+      <!-- Template 2: Clinic -->
+      <div class="template-card" onclick="openModal(1)">
+        <div class="template-preview">
+          <div class="browser-mockup">
+            <div class="browser-bar"><div class="browser-dot"></div><div class="browser-dot"></div><div class="browser-dot"></div><div class="browser-url">clinic.mn</div></div>
+            <div class="browser-content" style="background: linear-gradient(135deg, #0a1628 0%, #1a2a4a 100%);">
+              <div class="browser-hero"><div class="browser-hero-line" style="width:55%;height:8px;background:#50c8ff;border-radius:3px;margin-bottom:6px;"></div><div class="browser-hero-line" style="width:75%;height:5px;background:rgba(80,200,255,0.4);border-radius:3px;margin-bottom:6px;"></div><div class="browser-hero-btn" style="width:60px;height:14px;background:#50c8ff;border-radius:3px;"></div></div>
+              <div class="browser-cards"><div class="browser-card" style="background:rgba(80,200,255,0.08);"></div><div class="browser-card" style="background:rgba(80,200,255,0.08);"></div><div class="browser-card" style="background:rgba(80,200,255,0.08);"></div></div>
+            </div>
+          </div>
+          <div class="template-overlay"><span class="template-overlay-btn"><i class="fas fa-eye"></i> Дэлгэрэнгүй</span></div>
+        </div>
+        <div class="template-info">
+          <div class="template-category">Эмчилгээний газар</div>
+          <h3>Клиник Вэбсайт</h3>
+          <div class="template-price">650,000₮ – 950,000₮</div>
+          <ul class="template-features"><li><i class="fas fa-check"></i> Mobile Responsive</li><li><i class="fas fa-check"></i> Цаг захиалга</li><li><i class="fas fa-check"></i> SEO Ready</li><li><i class="fas fa-check"></i> Эмчийн мэдээлэл</li></ul>
+        </div>
+      </div>
+
+      <!-- Template 3: Corporate -->
+      <div class="template-card" onclick="openModal(2)">
+        <div class="template-preview">
           <div class="browser-mockup">
             <div class="browser-bar"><div class="browser-dot"></div><div class="browser-dot"></div><div class="browser-dot"></div><div class="browser-url">company.mn</div></div>
-            <div class="browser-content" style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);"><div class="browser-hero"><div class="browser-hero-line" style="width:60%;height:8px;background:rgba(255,255,255,0.9);border-radius:4px;margin-bottom:8px;"></div><div class="browser-hero-btn" style="width:80px;height:20px;background:rgba(255,255,255,0.3);border-radius:4px;"></div></div><div class="browser-cards"><div class="browser-card"></div><div class="browser-card"></div><div class="browser-card"></div></div></div>
+            <div class="browser-content" style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);">
+              <div class="browser-hero"><div class="browser-hero-line" style="width:60%;height:8px;background:rgba(255,255,255,0.9);border-radius:3px;margin-bottom:6px;"></div><div class="browser-hero-line" style="width:80%;height:5px;background:rgba(255,255,255,0.5);border-radius:3px;margin-bottom:6px;"></div><div class="browser-hero-btn" style="width:60px;height:14px;background:rgba(255,255,255,0.3);border-radius:3px;"></div></div>
+              <div class="browser-cards"><div class="browser-card"></div><div class="browser-card"></div><div class="browser-card"></div></div>
+            </div>
           </div>
+          <div class="template-overlay"><span class="template-overlay-btn"><i class="fas fa-eye"></i> Дэлгэрэнгүй</span></div>
         </div>
-        <div class="portfolio-info">
-          <div class="portfolio-type">Корпоратив вэбсайт</div>
-          <h3>Бизнес Лэндинг Хуудас</h3>
-          <div class="portfolio-meta"><span><i class="fas fa-clock"></i> 5 хоног</span><span><i class="fas fa-tag"></i> 850,000₮</span></div>
-          <ul class="portfolio-features"><li><i class="fas fa-check"></i> Mobile Responsive</li><li><i class="fas fa-check"></i> SEO Ready</li><li><i class="fas fa-check"></i> Modern UI</li><li><i class="fas fa-check"></i> Холбоо барих форм</li></ul>
-          <a href="https://wa.me/97699112233" class="btn btn-primary btn-sm" target="_blank"><i class="fas fa-shopping-cart"></i> Ижил төсөл захиалах</a>
+        <div class="template-info">
+          <div class="template-category">Корпоратив</div>
+          <h3>Бизнес Вэбсайт</h3>
+          <div class="template-price">650,000₮ – 850,000₮</div>
+          <ul class="template-features"><li><i class="fas fa-check"></i> Mobile Responsive</li><li><i class="fas fa-check"></i> Үйлчилгээний хуудас</li><li><i class="fas fa-check"></i> SEO Ready</li><li><i class="fas fa-check"></i> Холбоо барих форм</li></ul>
         </div>
       </div>
-      <div class="portfolio-card">
-        <div class="portfolio-img">
+
+      <!-- Template 4: Personal Portfolio -->
+      <div class="template-card" onclick="openModal(3)">
+        <div class="template-preview">
           <div class="browser-mockup">
-            <div class="browser-bar"><div class="browser-dot"></div><div class="browser-dot"></div><div class="browser-dot"></div><div class="browser-url">han-restaurant.mn</div></div>
-            <div class="browser-content" style="background: linear-gradient(135deg, #1a1207 0%, #2a1f10 100%);"><div class="browser-hero"><div class="browser-hero-line" style="width:50%;height:10px;background:#d4a853;border-radius:4px;margin-bottom:8px;"></div><div class="browser-hero-btn" style="width:80px;height:20px;background:#d4a853;border-radius:4px;"></div></div><div class="browser-cards"><div class="browser-card" style="background:rgba(212,168,83,0.15);"></div><div class="browser-card" style="background:rgba(212,168,83,0.15);"></div><div class="browser-card" style="background:rgba(212,168,83,0.15);"></div></div></div>
+            <div class="browser-bar"><div class="browser-dot"></div><div class="browser-dot"></div><div class="browser-dot"></div><div class="browser-url">portfolio.mn</div></div>
+            <div class="browser-content" style="background: linear-gradient(135deg, #0a0a0a 0%, #1a1525 100%);">
+              <div class="browser-hero"><div class="browser-avatar" style="width:30px;height:30px;border-radius:50%;background:linear-gradient(135deg,#a78bfa,#7c3aed);margin-bottom:8px;"></div><div class="browser-hero-line" style="width:55%;height:7px;background:#a78bfa;border-radius:3px;margin-bottom:5px;"></div><div class="browser-hero-line" style="width:75%;height:4px;background:rgba(167,139,250,0.4);border-radius:3px;"></div></div>
+              <div class="browser-cards"><div class="browser-card" style="background:rgba(167,139,250,0.08);"></div><div class="browser-card" style="background:rgba(167,139,250,0.08);"></div></div>
+            </div>
           </div>
+          <div class="template-overlay"><span class="template-overlay-btn"><i class="fas fa-eye"></i> Дэлгэрэнгүй</span></div>
         </div>
-        <div class="portfolio-info">
-          <div class="portfolio-type">Ресторан вэбсайт</div>
-          <h3>Ресторан Вэб Сайт</h3>
-          <div class="portfolio-meta"><span><i class="fas fa-clock"></i> 5 хоног</span><span><i class="fas fa-tag"></i> 850,000₮</span></div>
-          <ul class="portfolio-features"><li><i class="fas fa-check"></i> Mobile Responsive</li><li><i class="fas fa-check"></i> SEO Ready</li><li><i class="fas fa-check"></i> Цэс / Захиалгын систем</li><li><i class="fas fa-check"></i> Гэрэл зургийн цомог</li></ul>
-          <a href="https://wa.me/97699112233" class="btn btn-primary btn-sm" target="_blank"><i class="fas fa-shopping-cart"></i> Ижил төсөл захиалах</a>
+        <div class="template-info">
+          <div class="template-category">Хувь хүний</div>
+          <h3>Портфолио Вэбсайт</h3>
+          <div class="template-price">350,000₮ – 450,000₮</div>
+          <ul class="template-features"><li><i class="fas fa-check"></i> Mobile Responsive</li><li><i class="fas fa-check"></i> Төсөл үзүүлэх</li><li><i class="fas fa-check"></i> Modern UI</li><li><i class="fas fa-check"></i> Холбоо барих форм</li></ul>
         </div>
       </div>
-      <div class="portfolio-card">
-        <div class="portfolio-img">
+
+      <!-- Template 5: Small Business -->
+      <div class="template-card" onclick="openModal(4)">
+        <div class="template-preview">
           <div class="browser-mockup">
-            <div class="browser-bar"><div class="browser-dot"></div><div class="browser-dot"></div><div class="browser-dot"></div><div class="browser-url">alexchen.dev</div></div>
-            <div class="browser-content" style="background: linear-gradient(135deg, #0a0a0a 0%, #1a1525 100%);"><div class="browser-hero"><div class="browser-avatar" style="width:40px;height:40px;border-radius:50%;background:linear-gradient(135deg,#a78bfa,#7c3aed);margin-bottom:10px;"></div><div class="browser-hero-line" style="width:55%;height:8px;background:#a78bfa;border-radius:4px;margin-bottom:6px;"></div></div><div class="browser-cards"><div class="browser-card" style="background:rgba(167,139,250,0.1);"></div><div class="browser-card" style="background:rgba(167,139,250,0.1);"></div></div></div>
+            <div class="browser-bar"><div class="browser-dot"></div><div class="browser-dot"></div><div class="browser-dot"></div><div class="browser-url">business.mn</div></div>
+            <div class="browser-content" style="background: linear-gradient(135deg, #0d1117 0%, #161b22 100%);">
+              <div class="browser-hero"><div class="browser-hero-line" style="width:45%;height:8px;background:#7850ff;border-radius:3px;margin-bottom:6px;"></div><div class="browser-hero-line" style="width:65%;height:5px;background:rgba(120,80,255,0.4);border-radius:3px;margin-bottom:6px;"></div><div class="browser-hero-btn" style="width:60px;height:14px;background:#7850ff;border-radius:3px;"></div></div>
+              <div class="browser-cards"><div class="browser-card" style="background:rgba(120,80,255,0.08);"></div><div class="browser-card" style="background:rgba(120,80,255,0.08);"></div><div class="browser-card" style="background:rgba(120,80,255,0.08);"></div></div>
+            </div>
+          </div>
+          <div class="template-overlay"><span class="template-overlay-btn"><i class="fas fa-eye"></i> Дэлгэрэнгүй</span></div>
+        </div>
+        <div class="template-info">
+          <div class="template-category">Жижиг бизнес</div>
+          <h3>Жижиг Бизнес Вэбсайт</h3>
+          <div class="template-price">550,000₮</div>
+          <ul class="template-features"><li><i class="fas fa-check"></i> Mobile Responsive</li><li><i class="fas fa-check"></i> Бүтээгдэхүүн харуулах</li><li><i class="fas fa-check"></i> SEO Ready</li><li><i class="fas fa-check"></i> Холбоо барих форм</li></ul>
+        </div>
+      </div>
+
+      <!-- Template 6: Premium -->
+      <div class="template-card" onclick="openModal(5)">
+        <div class="template-preview">
+          <div class="browser-mockup">
+            <div class="browser-bar"><div class="browser-dot"></div><div class="browser-dot"></div><div class="browser-dot"></div><div class="browser-url">premium.mn</div></div>
+            <div class="browser-content" style="background: linear-gradient(135deg, #030308 0%, #0a0a12 100%);">
+              <div class="browser-hero"><div class="browser-hero-line" style="width:50%;height:8px;background:linear-gradient(90deg,#7850ff,#ff6496);border-radius:3px;margin-bottom:6px;"></div><div class="browser-hero-line" style="width:70%;height:5px;background:rgba(120,80,255,0.3);border-radius:3px;margin-bottom:6px;"></div><div class="browser-hero-btn" style="width:60px;height:14px;background:linear-gradient(135deg,#7850ff,#5a3fd4);border-radius:3px;"></div></div>
+              <div class="browser-cards"><div class="browser-card" style="background:rgba(120,80,255,0.06);"></div><div class="browser-card" style="background:rgba(120,80,255,0.06);"></div><div class="browser-card" style="background:rgba(120,80,255,0.06);"></div></div>
+            </div>
+          </div>
+          <div class="template-overlay"><span class="template-overlay-btn"><i class="fas fa-eye"></i> Дэлгэрэнгүй</span></div>
+        </div>
+        <div class="template-info">
+          <div class="template-category">Премиум</div>
+          <h3>Премиум Корпоратив</h3>
+          <div class="template-price">1,200,000₮+</div>
+          <ul class="template-features"><li><i class="fas fa-check"></i> Mobile Responsive</li><li><i class="fas fa-check"></i> Олон хуудас</li><li><i class="fas fa-check"></i> Тусгай дизайн</li><li><i class="fas fa-check"></i> 3 сарын дэмжлэг</li></ul>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- TEMPLATE MODAL -->
+  <div class="template-modal" id="templateModal">
+    <button class="modal-close" onclick="closeModal()"><i class="fas fa-times"></i></button>
+    <div class="modal-content">
+      <div class="modal-preview">
+        <h3 id="modalTitle">Template Name</h3>
+        <div class="modal-category" id="modalCategory">Category</div>
+        <div class="device-tabs">
+          <button class="device-tab active" onclick="switchDevice('desktop')"><i class="fas fa-desktop"></i> Desktop</button>
+          <button class="device-tab" onclick="switchDevice('tablet')"><i class="fas fa-tablet-alt"></i> Tablet</button>
+          <button class="device-tab" onclick="switchDevice('mobile')"><i class="fas fa-mobile-alt"></i> Mobile</button>
+        </div>
+        <div class="device-frame desktop" id="deviceFrame">
+          <div class="browser-mockup">
+            <div class="browser-bar"><div class="browser-dot"></div><div class="browser-dot"></div><div class="browser-dot"></div><div class="browser-url" id="modalUrl">site.mn</div></div>
+            <div class="browser-content" id="modalContent" style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);">
+              <div class="browser-hero"><div class="browser-hero-line" style="width:60%;height:10px;background:rgba(255,255,255,0.9);border-radius:4px;margin-bottom:8px;"></div><div class="browser-hero-line" style="width:80%;height:6px;background:rgba(255,255,255,0.5);border-radius:4px;margin-bottom:8px;"></div><div class="browser-hero-btn" style="width:80px;height:20px;background:rgba(255,255,255,0.3);border-radius:4px;"></div></div>
+              <div class="browser-cards"><div class="browser-card"></div><div class="browser-card"></div><div class="browser-card"></div></div>
+            </div>
           </div>
         </div>
-        <div class="portfolio-info">
-          <div class="portfolio-type">Портфолио вэбсайт</div>
-          <h3>Фрилансер Портфолио</h3>
-          <div class="portfolio-meta"><span><i class="fas fa-clock"></i> 3 хоног</span><span><i class="fas fa-tag"></i> 450,000₮</span></div>
-          <ul class="portfolio-features"><li><i class="fas fa-check"></i> Mobile Responsive</li><li><i class="fas fa-check"></i> SEO Ready</li><li><i class="fas fa-check"></i> Modern UI</li><li><i class="fas fa-check"></i> Төсөл үзүүлэх хэсэг</li></ul>
-          <a href="https://wa.me/97699112233" class="btn btn-primary btn-sm" target="_blank"><i class="fas fa-shopping-cart"></i> Ижил төсөл захиалах</a>
+      </div>
+      <div class="modal-details">
+        <div class="modal-price" id="modalPrice">450,000₮</div>
+        <div class="modal-features" id="modalFeatures">
+          <div class="modal-feature"><i class="fas fa-check"></i> Mobile Responsive</div>
+          <div class="modal-feature"><i class="fas fa-check"></i> Fast Loading</div>
+          <div class="modal-feature"><i class="fas fa-check"></i> Modern UI</div>
+          <div class="modal-feature"><i class="fas fa-check"></i> Contact Form</div>
+          <div class="modal-feature"><i class="fas fa-check"></i> SEO Ready</div>
+          <div class="modal-feature"><i class="fas fa-check"></i> Тогтмол дэмжлэг</div>
+        </div>
+        <div class="modal-actions">
+          <button class="btn btn-outline" onclick="closeModal()"><i class="fas fa-eye"></i> Demo үзэх</button>
+          <a href="https://www.facebook.com/profile.php?id=61582969455784" class="btn btn-primary" target="_blank"><i class="fab fa-facebook-messenger"></i> Энэ загварыг захиалах</a>
         </div>
       </div>
     </div>
-  </section>
+  </div>
+
+  <!-- PRICING -->
 
   <!-- PRICING -->
   <section class="pricing" id="pricing">
@@ -2103,8 +2403,8 @@
 
       <!-- Package 1: Starter -->
       <div class="pricing-card">
-        <div class="pricing-name" data-mn="pkg1Name">Эхлэх вэбсайт</div>
-        <div class="pricing-price">450,000<span>₮</span></div>
+        <div class="pricing-name" data-mn="pkg1Name">Стартер Лэндинг</div>
+        <div class="pricing-price">350,000<span>₮ – 450,000₮</span></div>
         <p class="pricing-desc" data-mn="pkg1Desc">Шинэ бизнес, хувь хүний брэнд, төслийн хуудас</p>
         <ul class="pricing-features">
           <li><i class="fas fa-check"></i> <span data-mn="pkg1F1">Лэндинг хуудас (1 хуудас)</span></li>
@@ -2119,8 +2419,8 @@
       <!-- Package 2: Business (Popular) -->
       <div class="pricing-card popular">
         <div class="popular-badge" data-mn="popularBadge">Түгээмэл</div>
-        <div class="pricing-name" data-mn="pkg2Name">Бизнес вэбсайт</div>
-        <div class="pricing-price">850,000<span>₮</span></div>
+        <div class="pricing-name" data-mn="pkg2Name">Бизнес Вэбсайт</div>
+        <div class="pricing-price">650,000<span>₮ – 850,000₮</span></div>
         <p class="pricing-desc" data-mn="pkg2Desc">Жижиг бизнес, эмчилгээний газар, үйлчилгээний газар</p>
         <ul class="pricing-features">
           <li><i class="fas fa-check"></i> <span data-mn="pkg2F1">5 хуудас хүртэл</span></li>
@@ -2135,8 +2435,8 @@
 
       <!-- Package 3: Premium -->
       <div class="pricing-card">
-        <div class="pricing-name" data-mn="pkg3Name">Премиум вэбсайт</div>
-        <div class="pricing-price">1,500,000<span>₮+</span></div>
+        <div class="pricing-name" data-mn="pkg3Name">Премиум Корпоратив</div>
+        <div class="pricing-price">1,200,000<span>₮+</span></div>
         <p class="pricing-desc" data-mn="pkg3Desc">Томоохон бизнес, цахим дэлгүүр, системтэй вэбсайт</p>
         <ul class="pricing-features">
           <li><i class="fas fa-check"></i> <span data-mn="pkg3F1">10+ хуудас</span></li>
@@ -2265,12 +2565,12 @@
   <!-- STICKY CTA -->
   <a href="tel:99620992" class="sticky-cta" id="stickyCta">
     <i class="fas fa-phone"></i>
-    <span>Утасдах</span>
+    <span>Утасдах: 99620992</span>
   </a>
 
   <!-- STICKY CTA MOBILE -->
   <div class="sticky-cta-mobile">
-    <a href="https://www.facebook.com/profile.php?id=61582969455784" class="btn btn-primary" target="_blank"><i class="fab fa-facebook-messenger"></i> Messenger</a>
+    <a href="tel:99620992" class="btn btn-primary"><i class="fas fa-phone"></i> Утасдах</a>
   </div>
 
 
@@ -2286,6 +2586,57 @@
 
   <script>
     // PRELOADER removed — was causing loading stuck
+
+
+    // TEMPLATE MODAL
+    var templates = [
+      { name: 'Ресторан Вэбсайт', category: 'Ресторан', price: '450,000₮ – 750,000₮', url: 'restaurant.mn', color: 'linear-gradient(135deg, #1a1207 0%, #2a1f10 100%)', features: ['Mobile Responsive', 'Цэс / Захиалгын систем', 'SEO Ready', 'Гэрэл зургийн цомог', 'Fast Loading', 'Contact Form'] },
+      { name: 'Клиник Вэбсайт', category: 'Эмчилгээний газар', price: '650,000₮ – 950,000₮', url: 'clinic.mn', color: 'linear-gradient(135deg, #0a1628 0%, #1a2a4a 100%)', features: ['Mobile Responsive', 'Цаг захиалга', 'SEO Ready', 'Эмчийн мэдээлэл', 'Fast Loading', 'Contact Form'] },
+      { name: 'Бизнес Вэбсайт', category: 'Корпоратив', price: '650,000₮ – 850,000₮', url: 'company.mn', color: 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)', features: ['Mobile Responsive', 'Үйлчилгээний хуудас', 'SEO Ready', 'Холбоо барих форм', 'Fast Loading', 'Modern UI'] },
+      { name: 'Портфолио Вэбсайт', category: 'Хувь хүний', price: '350,000₮ – 450,000₮', url: 'portfolio.mn', color: 'linear-gradient(135deg, #0a0a0a 0%, #1a1525 100%)', features: ['Mobile Responsive', 'Төсөл үзүүлэх', 'Modern UI', 'Холбоо барих форм', 'Fast Loading', 'SEO Ready'] },
+      { name: 'Жижиг Бизнес Вэбсайт', category: 'Жижиг бизнес', price: '550,000₮', url: 'business.mn', color: 'linear-gradient(135deg, #0d1117 0%, #161b22 100%)', features: ['Mobile Responsive', 'Бүтээгдэхүүн харуулах', 'SEO Ready', 'Холбоо барих форм', 'Fast Loading', 'Modern UI'] },
+      { name: 'Премиум Корпоратив', category: 'Премиум', price: '1,200,000₮+', url: 'premium.mn', color: 'linear-gradient(135deg, #030308 0%, #0a0a12 100%)', features: ['Mobile Responsive', 'Олон хуудас', 'Тусгай дизайн', '3 сарын дэмжлэг', 'Fast Loading', 'SEO Ready'] }
+    ];
+
+    function openModal(idx) {
+      var t = templates[idx];
+      document.getElementById('modalTitle').textContent = t.name;
+      document.getElementById('modalCategory').textContent = t.category;
+      document.getElementById('modalPrice').textContent = t.price;
+      document.getElementById('modalUrl').textContent = t.url;
+      document.getElementById('modalContent').style.background = t.color;
+      var frame = document.getElementById('deviceFrame');
+      frame.className = 'device-frame desktop';
+      document.querySelectorAll('.device-tab').forEach(function(tab) { tab.classList.remove('active'); });
+      document.querySelector('.device-tab:first-child').classList.add('active');
+      var featuresHtml = '';
+      t.features.forEach(function(f) { featuresHtml += '<div class="modal-feature"><i class="fas fa-check"></i> ' + f + '</div>'; });
+      document.getElementById('modalFeatures').innerHTML = featuresHtml;
+      document.getElementById('templateModal').classList.add('open');
+      document.body.style.overflow = 'hidden';
+    }
+
+    function closeModal() {
+      document.getElementById('templateModal').classList.remove('open');
+      document.body.style.overflow = '';
+    }
+
+    function switchDevice(device) {
+      var frame = document.getElementById('deviceFrame');
+      frame.className = 'device-frame ' + device;
+      document.querySelectorAll('.device-tab').forEach(function(tab) { tab.classList.remove('active'); });
+      event.target.classList.add('active');
+    }
+
+    // Close modal on outside click
+    document.getElementById('templateModal').addEventListener('click', function(e) {
+      if (e.target === this) closeModal();
+    });
+
+    // Close on Escape
+    document.addEventListener('keydown', function(e) {
+      if (e.key === 'Escape') closeModal();
+    });
 
     // SCROLL PROGRESS
     const scrollProgress = document.getElementById('scrollProgress');

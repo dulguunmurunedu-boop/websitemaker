@@ -500,6 +500,8 @@ nav.scrolled {
     }
 .marquee-item:hover { color: var(--accent); }
 .marquee-item i { font-size: 1.2rem; }
+    .marquee-icon-purple { color: #7850ff; }
+    .marquee-icon-pink { color: #ff6496; }
 @keyframes marquee {
       0% { transform: translateX(0); }
       100% { transform: translateX(-50%); }
@@ -1107,6 +1109,15 @@ footer { padding: 80px 48px 40px; border-top: 1px solid var(--border); }
 .lang-btn:hover:not(.active) {
       color: #fff; background: rgba(255,255,255,0.05);
     }
+
+    .browser-line-red { background: rgba(233,69,96,0.08) !important; }
+    .browser-line-gold { background: rgba(212,168,83,0.12) !important; }
+    .browser-line-cyan { background: rgba(80,200,255,0.08) !important; }
+    .browser-line-green { background: rgba(74,222,128,0.08) !important; }
+    .browser-line-orange { background: rgba(245,158,11,0.08) !important; }
+    .browser-line-yellow { background: rgba(251,191,36,0.08) !important; }
+    .browser-line-purple { background: rgba(167,139,250,0.08) !important; }
+    .browser-gradient-purple { background: linear-gradient(135deg, #667eea 0%, #764ba2 100%) !important; }
 </style>
 
   <script type="application/ld+json">
@@ -1326,19 +1337,19 @@ footer { padding: 80px 48px 40px; border-top: 1px solid var(--border); }
   <!-- MARQUEE -->
   <div class="marquee-section">
     <div class="marquee-track">
-      <div class="marquee-item"><i class="fas fa-code" style="color:#7850ff;"></i> Вэбсайт Хөгжүүлэлт</div>
-      <div class="marquee-item"><i class="fas fa-video" style="color:#ff6496;"></i> Видео Продакшн</div>
-      <div class="marquee-item"><i class="fas fa-laptop" style="color:#7850ff;"></i> Лэндинг Хуудас</div>
-      <div class="marquee-item"><i class="fas fa-film" style="color:#ff6496;"></i> Промо Видео</div>
-      <div class="marquee-item"><i class="fas fa-shopping-cart" style="color:#7850ff;"></i> Цахим Дэлгүүр</div>
-      <div class="marquee-item"><i class="fas fa-bullhorn" style="color:#ff6496;"></i> Контент Маркетинг</div>
-      <!-- Duplicate -->
-      <div class="marquee-item"><i class="fas fa-code" style="color:#7850ff;"></i> Вэбсайт Хөгжүүлэлт</div>
-      <div class="marquee-item"><i class="fas fa-video" style="color:#ff6496;"></i> Видео Продакшн</div>
-      <div class="marquee-item"><i class="fas fa-laptop" style="color:#7850ff;"></i> Лэндинг Хуудас</div>
-      <div class="marquee-item"><i class="fas fa-film" style="color:#ff6496;"></i> Промо Видео</div>
-      <div class="marquee-item"><i class="fas fa-shopping-cart" style="color:#7850ff;"></i> Цахим Дэлгүүр</div>
-      <div class="marquee-item"><i class="fas fa-bullhorn" style="color:#ff6496;"></i> Контент Маркетинг</div>
+      <div class="marquee-item"><i class="fas fa-code marquee-icon-purple"></i> Вэбсайт Хөгжүүлэлт</div>
+      <div class="marquee-item"><i class="fas fa-video marquee-icon-pink"></i> Видео Продакшн</div>
+      <div class="marquee-item"><i class="fas fa-laptop marquee-icon-purple"></i> Лэндинг Хуудас</div>
+      <div class="marquee-item"><i class="fas fa-film marquee-icon-pink"></i> Промо Видео</div>
+      <div class="marquee-item"><i class="fas fa-shopping-cart marquee-icon-purple"></i> Цахим Дэлгүүр</div>
+      <div class="marquee-item"><i class="fas fa-bullhorn marquee-icon-pink"></i> Контент Маркетинг</div>
+      <!-- Duplicate for seamless loop -->
+      <div class="marquee-item"><i class="fas fa-code marquee-icon-purple"></i> Вэбсайт Хөгжүүлэлт</div>
+      <div class="marquee-item"><i class="fas fa-video marquee-icon-pink"></i> Видео Продакшн</div>
+      <div class="marquee-item"><i class="fas fa-laptop marquee-icon-purple"></i> Лэндинг Хуудас</div>
+      <div class="marquee-item"><i class="fas fa-film marquee-icon-pink"></i> Промо Видео</div>
+      <div class="marquee-item"><i class="fas fa-shopping-cart marquee-icon-purple"></i> Цахим Дэлгүүр</div>
+      <div class="marquee-item"><i class="fas fa-bullhorn marquee-icon-pink"></i> Контент Маркетинг</div>
     </div>
   </div>
 
@@ -1668,27 +1679,34 @@ footer { padding: 80px 48px 40px; border-top: 1px solid var(--border); }
   <!-- TRUST SECTION -->
   <section class="trust" id="trust">
     <div class="trust-header">
-      <h2>Юу багтдаг вэ?</h2>
+      <h2>Яагаад OGT UUR-г сонгох вэ?</h2>
     </div>
     <div class="trust-grid">
-      <div class="trust-card"><i class="fas fa-mobile-alt"></i><span>Mobile responsive</span></div>
-      <div class="trust-card"><i class="fas fa-edit"></i><span>Текст, зураг солих</span></div>
-      <div class="trust-card"><i class="fab fa-facebook-messenger"></i><span>Messenger холболт</span></div>
-      <div class="trust-card"><i class="fas fa-envelope"></i><span>Contact form</span></div>
-      <div class="trust-card"><i class="fas fa-search"></i><span>SEO basic</span></div>
-      <div class="trust-card"><i class="fas fa-globe"></i><span>Домайн холболтын зөвлөгөө</span></div>
-      <div class="trust-card"><i class="fas fa-clock"></i><span>3–7 хоногт бэлэн</span></div>
-      <div class="trust-card"><i class="fas fa-headset"></i><span>Дэмжлэгтэй</span></div>
+      <div class="trust-card"><i class="fas fa-clock"></i><span>Хурдан хүргэлт</span></div>
+      <div class="trust-card"><i class="fas fa-palette"></i><span>Орчин үеийн дизайн</span></div>
+      <div class="trust-card"><i class="fas fa-mobile-alt"></i><span>Mobile Responsive</span></div>
+      <div class="trust-card"><i class="fas fa-headset"></i><span>Тогтмол дэмжлэг</span></div>
+      <div class="trust-card"><i class="fas fa-comments"></i><span>Шууд холбоо</span></div>
+      <div class="trust-card"><i class="fas fa-tag"></i><span>Ил тод үнэ</span></div>
     </div>
   </section>
 
   <!-- CTA -->
   <section class="cta" id="contact">
     <div class="cta-box">
-      <h2>Ямар вэбсайт танд тохирохоо мэдэхгүй байна уу?</h2>
-      <p>Бизнесийнхээ төрлийг хэлээрэй. Бид танд тохирох template болон үнийн санал зөвлөе.</p>
-      <a href="https://www.facebook.com/profile.php?id=61582969455784" class="btn btn-primary" target="_blank"><i class="fab fa-facebook-messenger"></i> Messenger-ээр зөвлөгөө авах</a>
-      <a href="tel:99620992" class="btn btn-ghost"><i class="fas fa-phone"></i> Утасдах</a>
+      <h2>Төслөө эхлүүлэхэд бэлэн үү?</h2>
+      <p>Вэбсайт болон видео контентын төсөл байгаа бол бидэнтэй холбогдоорой.</p>
+      <div class="contact-info-grid">
+        <div class="contact-info-item"><i class="fas fa-phone"></i><div><strong>Утас</strong><br>99620992</div></div>
+        <div class="contact-info-item"><i class="fas fa-envelope"></i><div><strong>Имэйл</strong><br>dulguunmurun.edu@gmail.com</div></div>
+        <div class="contact-info-item"><i class="fab fa-facebook"></i><div><strong>Facebook</strong><br>facebook.com/ogtuur</div></div>
+        <div class="contact-info-item"><i class="fas fa-map-marker-alt"></i><div><strong>Байршил</strong><br>Улаанбаатар хот</div></div>
+        <div class="contact-info-item"><i class="fas fa-clock"></i><div><strong>Хариулах хугацаа</strong><br>Ихэнх хүсэлтэд 1 цагийн дотор хариулна.</div></div>
+      </div>
+      <div class="contact-buttons">
+        <a href="tel:99620992" class="btn btn-primary"><i class="fas fa-phone"></i> Утасдах</a>
+        <a href="https://www.facebook.com/profile.php?id=61582969455784" class="btn btn-ghost" target="_blank"><i class="fab fa-facebook-messenger"></i> Messenger-ээр холбогдох</a>
+      </div>
     </div>
   </section>
 

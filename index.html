@@ -1754,6 +1754,8 @@ footer { padding: 80px 48px 40px; border-top: 1px solid var(--border); }
   </div>
 
   <script>
+    document.addEventListener('DOMContentLoaded', function() {
+
     // PRELOADER removed — was causing loading stuck
 
     // WEBSITE CALCULATOR
@@ -2317,6 +2319,8 @@ footer { padding: 80px 48px 40px; border-top: 1px solid var(--border); }
     // Load saved language
     const savedLang = localStorage.getItem('lang') || 'mn';
     setLang(savedLang);
-  </script>
+  
+    });
+</script>
 </body>
 </html>

@@ -1020,7 +1020,7 @@ footer { padding: 80px 48px 40px; border-top: 1px solid var(--border); }
   <!-- PRELOADER removed — was causing loading stuck -->
 
   <!-- NAV -->
-  <nav id="navbar">
+  <nav id="navbar" aria-label="Үндсэн цэс">
     <a href="#" class="nav-logo">
       <img src="logo.png" alt="OGT UUR" class="nav-logo-img" />
     </a>
@@ -1032,11 +1032,11 @@ footer { padding: 80px 48px 40px; border-top: 1px solid var(--border); }
       <a href="#testimonials"><span data-mn="navReviews">Сэтгэгдэл</span></a>
       <a href="#contact" class="nav-cta"><span data-mn="navCta">Үнийн санал авах</span></a>
     </div>
-    <div class="lang-switcher">
-      <button class="lang-btn active" data-lang="mn">МН</button>
-      <button class="lang-btn" data-lang="en">EN</button>
+    <div class="lang-switcher" role="group" aria-label="Хэл сонгох">
+      <button class="lang-btn active" data-lang="mn" aria-pressed="true">МН</button>
+      <button class="lang-btn" data-lang="en" aria-pressed="false">EN</button>
     </div>
-    <button class="hamburger" id="hamburger"><span></span><span></span><span></span></button>
+    <button class="hamburger" id="hamburger" aria-label="Цэс нээх" aria-expanded="false"><span></span><span></span><span></span></button>
   </nav>
 
   <!-- HERO — CONVERSION 2026 -->
@@ -1179,7 +1179,7 @@ footer { padding: 80px 48px 40px; border-top: 1px solid var(--border); }
         </div>
       </div>
       <!-- Result -->
-      <div class="calc-result" id="calcResult">
+      <div class="calc-result" id="calcResult" aria-live="polite">
         <div class="calc-result-label">Ойролцоох үнэ</div>
         <div class="calc-result-price" id="resultPrice">650,000₮</div>
         <div class="calc-result-time" id="resultTime">3–7 хоног</div>
@@ -1260,7 +1260,7 @@ footer { padding: 80px 48px 40px; border-top: 1px solid var(--border); }
       <p>Монголын жижиг, дунд бизнесүүдэд хамгийн их хэрэгтэй төрлүүдээр бэлтгэсэн template-үүд.</p>
     </div>
     <div class="marketplace-controls">
-      <div class="marketplace-search">
+      <div class="marketplace-search" role="search">
         <i class="fas fa-search"></i>
         <input type="text" id="templateSearch" placeholder="Загвар хайх..." oninput="filterTemplates()" />
       </div>
@@ -1335,12 +1335,12 @@ footer { padding: 80px 48px 40px; border-top: 1px solid var(--border); }
 
   <!-- TEMPLATE MODAL -->
   <div class="template-modal" id="templateModal">
-    <button class="modal-close" onclick="closeModal()"><i class="fas fa-times"></i></button>
+    <button class="modal-close" onclick="closeModal()" aria-label="Хаах"><i class="fas fa-times"></i></button>
     <div class="modal-content">
       <div class="modal-preview">
         <h3 id="modalTitle">Template Name</h3>
         <div class="modal-category" id="modalCategory">Category</div>
-        <div class="device-tabs">
+        <div class="device-tabs" role="tablist" aria-label="Төхөөрөмжийн харагдах байдал">
           <button class="device-tab active" onclick="switchDevice('desktop')"><i class="fas fa-desktop"></i> Desktop</button>
           <button class="device-tab" onclick="switchDevice('tablet')"><i class="fas fa-tablet-alt"></i> Tablet</button>
           <button class="device-tab" onclick="switchDevice('mobile')"><i class="fas fa-mobile-alt"></i> Mobile</button>
@@ -1526,9 +1526,9 @@ footer { padding: 80px 48px 40px; border-top: 1px solid var(--border); }
       <div class="contact-form-wrap">
         <h3>Төслийн талаар ярилцъя</h3>
         <form class="contact-form" action="https://formspree.io/f/xpwzgkqn" method="POST">
-          <input type="text" name="name" placeholder="Нэр" required />
-          <input type="tel" name="phone" placeholder="Утас" required />
-          <textarea name="message" placeholder="Төслийн товч тайлбар" rows="4" required></textarea>
+          <input type="text" name="name" placeholder="Нэр" required aria-label="Нэр" />
+          <input type="tel" name="phone" placeholder="Утас" required aria-label="Утасны дугаар" />
+          <textarea name="message" placeholder="Төслийн товч тайлбар" rows="4" required aria-label="Төслийн товч тайлбар"></textarea>
           <button type="submit" class="btn btn-primary btn-full"><i class="fas fa-paper-plane"></i> Үнийн санал авах</button>
         </form>
       </div>
@@ -1575,7 +1575,7 @@ footer { padding: 80px 48px 40px; border-top: 1px solid var(--border); }
           <span><i class="fas fa-clock"></i> Ихэнх хүсэлтэд 1 цагийн дотор хариулна.</span>
         </div>
       </div>
-      <div class="footer-social">
+      <div class="footer-social" aria-label="Нийгмийн сүлжээ">
         <a href="https://www.facebook.com/profile.php?id=61582969455784" target="_blank"><i class="fab fa-facebook-f"></i></a>
         <a href="https://www.instagram.com/_gt_dudu_/" target="_blank"><i class="fab fa-instagram"></i></a>
         <a href="#"><i class="fab fa-tiktok"></i></a>
@@ -1602,7 +1602,7 @@ footer { padding: 80px 48px 40px; border-top: 1px solid var(--border); }
 
   <!-- MOBILE NAV -->
   <div class="mobile-nav" id="mobileNav">
-    <button class="mobile-close" id="mobileClose"><i class="fas fa-times"></i></button>
+    <button class="mobile-close" id="mobileClose" aria-label="Цэс хаах"><i class="fas fa-times"></i></button>
     <a href="#work" class="mobile-link"><span data-mn="mobileWork">Ажилууд</span></a>
     <a href="#services" class="mobile-link"><span data-mn="mobileServices">Үйлчилгээ</span></a>
     <a href="#process" class="mobile-link"><span data-mn="mobileProcess">Үйл явц</span></a>

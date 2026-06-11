@@ -1134,14 +1134,29 @@ footer { padding: 80px 48px 40px; border-top: 1px solid var(--border); }
     .calc-result-header { margin-bottom: 24px; }
     .calc-result-icon { font-size: 2rem; color: var(--accent); margin-bottom: 12px; }
     .calc-result-title { font-family: var(--font-heading); font-size: 1.2rem; color: #888; }
-    .calc-result-price { font-family: var(--font-heading); font-size: 3rem; font-weight: 700; background: linear-gradient(135deg, var(--accent), var(--accent-2)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; margin-bottom: 8px; }
+    .calc-result-price { display: none; }
+    .calc-result-price-range { font-family: var(--font-heading); font-size: 2.2rem; font-weight: 700; margin-bottom: 8px; }
+    .calc-result-price-range span { background: linear-gradient(135deg, var(--accent), var(--accent-2)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
     .calc-result-time { font-size: 1.1rem; color: #888; margin-bottom: 32px; }
     .calc-result-breakdown { text-align: left; max-width: 400px; margin: 0 auto 24px; padding: 24px; background: rgba(0,0,0,0.2); border-radius: 12px; }
     .calc-breakdown-item { display: flex; justify-content: space-between; padding: 8px 0; font-size: 0.9rem; color: #888; border-bottom: 1px solid rgba(255,255,255,0.04); }
     .calc-breakdown-item span:last-child { color: #fff; font-weight: 600; }
     .calc-breakdown-total { display: flex; justify-content: space-between; padding-top: 16px; font-size: 1.1rem; font-weight: 700; color: #fff; }
     .calc-breakdown-total span:last-child { color: var(--accent); }
-    .calc-result-notice { font-size: 0.8rem; color: #555; display: flex; align-items: center; justify-content: center; gap: 8px; }
+    .calc-result-notice { font-size: 0.8rem; color: #555; display: flex; align-items: center; justify-content: center; gap: 8px; margin-bottom: 24px; }
+
+    /* Trust Section */
+    .calc-trust { display: flex; flex-wrap: wrap; gap: 12px; justify-content: center; margin-bottom: 24px; padding: 16px; background: rgba(76,175,80,0.06); border: 1px solid rgba(76,175,80,0.15); border-radius: 12px; }
+    .calc-trust-item { font-size: 0.8rem; color: #888; display: flex; align-items: center; gap: 6px; }
+    .calc-trust-item i { color: #4caf50; }
+
+    /* Promotion Box */
+    .calc-promo { background: linear-gradient(135deg, rgba(255,193,7,0.08), rgba(255,152,0,0.08)); border: 1px solid rgba(255,193,7,0.2); border-radius: 16px; padding: 24px; margin-bottom: 24px; text-align: center; }
+    .calc-promo-header { font-family: var(--font-heading); font-size: 1.1rem; font-weight: 700; color: #ffc107; margin-bottom: 16px; }
+    .calc-promo-items { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-bottom: 16px; }
+    .calc-promo-item { font-size: 0.85rem; color: #ccc; display: flex; align-items: center; gap: 8px; text-align: left; }
+    .calc-promo-item i { color: #4caf50; font-size: 0.75rem; }
+    .calc-promo-saving { font-size: 1rem; font-weight: 700; color: #ffc107; }
 
     /* Lead Form */
     .calc-lead-form { display: none; padding: 40px; background: rgba(255,255,255,0.02); border: 1px solid rgba(255,255,255,0.06); border-radius: 24px; animation: fadeInUp 0.5s ease; }
@@ -1352,7 +1367,6 @@ footer { padding: 80px 48px 40px; border-top: 1px solid var(--border); }
   </section>
 
   <!-- WEBSITE CALCULATOR -->
-    <!-- WEBSITE CALCULATOR -->
   <section class="calculator" id="calculator">
     <div class="calc-container">
       <div class="calc-header">
@@ -1374,62 +1388,62 @@ footer { padding: 80px 48px 40px; border-top: 1px solid var(--border); }
 
       <!-- Step 1: Website Type -->
       <div class="calc-step active" id="calcStep1">
-        <div class="calc-question">Ямар төрлийн вебсайт хэрэгтэй вэ?</div>
+        <div class="calc-question">Вебсайтын төрөл</div>
         <div class="calc-options-grid">
-          <button class="calc-option-card" data-field="type" data-value="landing" data-price="800000" data-time="3" data-name="Landing Page">
+          <button class="calc-option-card" data-field="type" data-value="landing" data-price="490000" data-time="2" data-name="Landing Page">
             <div class="calc-option-icon"><i class="fas fa-file-alt"></i></div>
             <div class="calc-option-name">Landing Page</div>
-            <div class="calc-option-price">800,000₮</div>
-            <div class="calc-option-time">3 өдөр</div>
+            <div class="calc-option-price">490,000₮</div>
+            <div class="calc-option-time">2 өдөр</div>
           </button>
-          <button class="calc-option-card" data-field="type" data-value="business" data-price="1500000" data-time="5" data-name="Байгууллагын танилгуулга">
+          <button class="calc-option-card" data-field="type" data-value="business" data-price="890000" data-time="4" data-name="Байгууллагын танилгуулга">
             <div class="calc-option-icon"><i class="fas fa-building"></i></div>
             <div class="calc-option-name">Байгууллагын танилгуулга сайт</div>
-            <div class="calc-option-price">1,500,000₮</div>
-            <div class="calc-option-time">5 өдөр</div>
+            <div class="calc-option-price">890,000₮</div>
+            <div class="calc-option-time">4 өдөр</div>
           </button>
-          <button class="calc-option-card" data-field="type" data-value="shop" data-price="3500000" data-time="14" data-name="Онлайн дэлгүүр">
-            <div class="calc-option-icon"><i class="fas fa-shopping-cart"></i></div>
-            <div class="calc-option-name">Онлайн дэлгүүр</div>
-            <div class="calc-option-price">3,500,000₮</div>
-            <div class="calc-option-time">14 өдөр</div>
-          </button>
-          <button class="calc-option-card" data-field="type" data-value="booking" data-price="2500000" data-time="10" data-name="Захиалга авдаг үйлчилгээ">
+          <button class="calc-option-card" data-field="type" data-value="booking" data-price="1290000" data-time="5" data-name="Захиалга авдаг үйлчилгээ">
             <div class="calc-option-icon"><i class="fas fa-calendar-check"></i></div>
             <div class="calc-option-name">Захиалга авдаг үйлчилгээний сайт</div>
-            <div class="calc-option-price">2,500,000₮</div>
-            <div class="calc-option-time">10 өдөр</div>
+            <div class="calc-option-price">1,290,000₮</div>
+            <div class="calc-option-time">5 өдөр</div>
           </button>
-          <button class="calc-option-card" data-field="type" data-value="realestate" data-price="4000000" data-time="15" data-name="Үл хөдлөх хөрөнгө">
-            <div class="calc-option-icon"><i class="fas fa-home"></i></div>
-            <div class="calc-option-name">Үл хөдлөх хөрөнгө</div>
-            <div class="calc-option-price">4,000,000₮</div>
-            <div class="calc-option-time">15 өдөр</div>
+          <button class="calc-option-card" data-field="type" data-value="shop" data-price="1790000" data-time="7" data-name="Онлайн дэлгүүр">
+            <div class="calc-option-icon"><i class="fas fa-shopping-cart"></i></div>
+            <div class="calc-option-name">Онлайн дэлгүүр</div>
+            <div class="calc-option-price">1,790,000₮</div>
+            <div class="calc-option-time">7 өдөр</div>
           </button>
-          <button class="calc-option-card" data-field="type" data-value="hotel" data-price="3000000" data-time="12" data-name="Зочид буудал / Аялал">
-            <div class="calc-option-icon"><i class="fas fa-hotel"></i></div>
-            <div class="calc-option-name">Зочид буудал / Аялал жуулчлал</div>
-            <div class="calc-option-price">3,000,000₮</div>
-            <div class="calc-option-time">12 өдөр</div>
-          </button>
-          <button class="calc-option-card" data-field="type" data-value="clinic" data-price="3500000" data-time="14" data-name="Эмнэлэг / Клиник">
+          <button class="calc-option-card" data-field="type" data-value="clinic" data-price="1490000" data-time="6" data-name="Эмнэлэг / Клиник">
             <div class="calc-option-icon"><i class="fas fa-hospital"></i></div>
             <div class="calc-option-name">Эмнэлэг / Клиник</div>
-            <div class="calc-option-price">3,500,000₮</div>
-            <div class="calc-option-time">14 өдөр</div>
+            <div class="calc-option-price">1,490,000₮</div>
+            <div class="calc-option-time">6 өдөр</div>
           </button>
-          <button class="calc-option-card" data-field="type" data-value="other" data-price="2000000" data-time="7" data-name="Бусад">
+          <button class="calc-option-card" data-field="type" data-value="hotel" data-price="1490000" data-time="6" data-name="Зочид буудал / Аялал">
+            <div class="calc-option-icon"><i class="fas fa-hotel"></i></div>
+            <div class="calc-option-name">Зочид буудал / Аялал жуулчлал</div>
+            <div class="calc-option-price">1,490,000₮</div>
+            <div class="calc-option-time">6 өдөр</div>
+          </button>
+          <button class="calc-option-card" data-field="type" data-value="realestate" data-price="1990000" data-time="8" data-name="Үл хөдлөх хөрөнгө">
+            <div class="calc-option-icon"><i class="fas fa-home"></i></div>
+            <div class="calc-option-name">Үл хөдлөх хөрөнгө</div>
+            <div class="calc-option-price">1,990,000₮</div>
+            <div class="calc-option-time">8 өдөр</div>
+          </button>
+          <button class="calc-option-card" data-field="type" data-value="other" data-price="990000" data-time="4" data-name="Бусад">
             <div class="calc-option-icon"><i class="fas fa-ellipsis-h"></i></div>
             <div class="calc-option-name">Бусад</div>
-            <div class="calc-option-price">2,000,000₮</div>
-            <div class="calc-option-time">7 өдөр</div>
+            <div class="calc-option-price">990,000₮</div>
+            <div class="calc-option-time">4 өдөр</div>
           </button>
         </div>
       </div>
 
       <!-- Step 2: Pages -->
       <div class="calc-step" id="calcStep2">
-        <div class="calc-question">Хэдэн хуудастай байх вэ?</div>
+        <div class="calc-question">Хуудасны тоо</div>
         <div class="calc-options-grid calc-options-small">
           <button class="calc-option-card" data-field="pages" data-value="1-5" data-price="0" data-time="0" data-name="1-5 хуудас">
             <div class="calc-option-icon"><i class="fas fa-copy"></i></div>
@@ -1437,146 +1451,146 @@ footer { padding: 80px 48px 40px; border-top: 1px solid var(--border); }
             <div class="calc-option-price">+0₮</div>
             <div class="calc-option-time">+0 өдөр</div>
           </button>
-          <button class="calc-option-card" data-field="pages" data-value="6-10" data-price="500000" data-time="2" data-name="6-10 хуудас">
+          <button class="calc-option-card" data-field="pages" data-value="6-10" data-price="150000" data-time="1" data-name="6-10 хуудас">
             <div class="calc-option-icon"><i class="fas fa-copy"></i></div>
             <div class="calc-option-name">6-10 хуудас</div>
-            <div class="calc-option-price">+500,000₮</div>
-            <div class="calc-option-time">+2 өдөр</div>
+            <div class="calc-option-price">+150,000₮</div>
+            <div class="calc-option-time">+1 өдөр</div>
           </button>
-          <button class="calc-option-card" data-field="pages" data-value="11-20" data-price="1000000" data-time="4" data-name="11-20 хуудас">
+          <button class="calc-option-card" data-field="pages" data-value="11-20" data-price="350000" data-time="2" data-name="11-20 хуудас">
             <div class="calc-option-icon"><i class="fas fa-copy"></i></div>
             <div class="calc-option-name">11-20 хуудас</div>
-            <div class="calc-option-price">+1,000,000₮</div>
-            <div class="calc-option-time">+4 өдөр</div>
+            <div class="calc-option-price">+350,000₮</div>
+            <div class="calc-option-time">+2 өдөр</div>
           </button>
-          <button class="calc-option-card" data-field="pages" data-value="20+" data-price="2000000" data-time="7" data-name="20+ хуудас">
+          <button class="calc-option-card" data-field="pages" data-value="20+" data-price="650000" data-time="4" data-name="20+ хуудас">
             <div class="calc-option-icon"><i class="fas fa-copy"></i></div>
             <div class="calc-option-name">20+ хуудас</div>
-            <div class="calc-option-price">+2,000,000₮</div>
-            <div class="calc-option-time">+7 өдөр</div>
+            <div class="calc-option-price">+650,000₮</div>
+            <div class="calc-option-time">+4 өдөр</div>
           </button>
         </div>
-        <button class="calc-back-btn" onclick="calcGoBack(1)"><i class="fas fa-arrow-left"></i> Буцах</button>
+        <button class="calc-back-btn" onclick="window.calcGoBack(1)"><i class="fas fa-arrow-left"></i> Буцах</button>
       </div>
 
       <!-- Step 3: Features -->
       <div class="calc-step" id="calcStep3">
-        <div class="calc-question">Ямар нэмэлт боломжууд хэрэгтэй вэ?</div>
+        <div class="calc-question">Нэмэлт боломжууд</div>
         <div class="calc-features-grid">
           <label class="calc-checkbox-card">
-            <input type="checkbox" data-field="feature" data-value="payment" data-price="800000" data-time="3" data-name="Онлайн төлбөр">
+            <input type="checkbox" data-field="feature" data-value="payment" data-price="350000" data-name="Онлайн төлбөр">
             <div class="calc-checkbox-content">
               <div class="calc-checkbox-icon"><i class="fas fa-credit-card"></i></div>
               <div class="calc-checkbox-info">
                 <div class="calc-checkbox-name">Онлайн төлбөр</div>
-                <div class="calc-checkbox-price">+800,000₮ | +3 өдөр</div>
+                <div class="calc-checkbox-price">+350,000₮</div>
               </div>
               <div class="calc-checkbox-check"><i class="fas fa-check"></i></div>
             </div>
           </label>
           <label class="calc-checkbox-card">
-            <input type="checkbox" data-field="feature" data-value="admin" data-price="1200000" data-time="4" data-name="Админ систем">
+            <input type="checkbox" data-field="feature" data-value="admin" data-price="490000" data-name="Админ систем">
             <div class="calc-checkbox-content">
               <div class="calc-checkbox-icon"><i class="fas fa-cog"></i></div>
               <div class="calc-checkbox-info">
                 <div class="calc-checkbox-name">Админ систем</div>
-                <div class="calc-checkbox-price">+1,200,000₮ | +4 өдөр</div>
+                <div class="calc-checkbox-price">+490,000₮</div>
               </div>
               <div class="calc-checkbox-check"><i class="fas fa-check"></i></div>
             </div>
           </label>
           <label class="calc-checkbox-card">
-            <input type="checkbox" data-field="feature" data-value="booking_sys" data-price="700000" data-time="2" data-name="Захиалга удирдах систем">
+            <input type="checkbox" data-field="feature" data-value="booking_sys" data-price="250000" data-name="Захиалга удирдах систем">
             <div class="calc-checkbox-content">
               <div class="calc-checkbox-icon"><i class="fas fa-calendar-alt"></i></div>
               <div class="calc-checkbox-info">
                 <div class="calc-checkbox-name">Захиалга удирдах систем</div>
-                <div class="calc-checkbox-price">+700,000₮ | +2 өдөр</div>
+                <div class="calc-checkbox-price">+250,000₮</div>
               </div>
               <div class="calc-checkbox-check"><i class="fas fa-check"></i></div>
             </div>
           </label>
           <label class="calc-checkbox-card">
-            <input type="checkbox" data-field="feature" data-value="chat" data-price="300000" data-time="1" data-name="Live Chat">
+            <input type="checkbox" data-field="feature" data-value="chat" data-price="90000" data-name="Live Chat">
             <div class="calc-checkbox-content">
               <div class="calc-checkbox-icon"><i class="fas fa-comments"></i></div>
               <div class="calc-checkbox-info">
                 <div class="calc-checkbox-name">Live Chat</div>
-                <div class="calc-checkbox-price">+300,000₮ | +1 өдөр</div>
+                <div class="calc-checkbox-price">+90,000₮</div>
               </div>
               <div class="calc-checkbox-check"><i class="fas fa-check"></i></div>
             </div>
           </label>
           <label class="calc-checkbox-card">
-            <input type="checkbox" data-field="feature" data-value="blog" data-price="300000" data-time="1" data-name="Мэдээний хэсэг">
+            <input type="checkbox" data-field="feature" data-value="blog" data-price="120000" data-name="Мэдээний хэсэг">
             <div class="calc-checkbox-content">
               <div class="calc-checkbox-icon"><i class="fas fa-newspaper"></i></div>
               <div class="calc-checkbox-info">
                 <div class="calc-checkbox-name">Мэдээний хэсэг</div>
-                <div class="calc-checkbox-price">+300,000₮ | +1 өдөр</div>
+                <div class="calc-checkbox-price">+120,000₮</div>
               </div>
               <div class="calc-checkbox-check"><i class="fas fa-check"></i></div>
             </div>
           </label>
           <label class="calc-checkbox-card">
-            <input type="checkbox" data-field="feature" data-value="multilang" data-price="800000" data-time="2" data-name="Олон хэл">
+            <input type="checkbox" data-field="feature" data-value="multilang" data-price="250000" data-name="Олон хэл">
             <div class="calc-checkbox-content">
               <div class="calc-checkbox-icon"><i class="fas fa-globe"></i></div>
               <div class="calc-checkbox-info">
                 <div class="calc-checkbox-name">Олон хэл</div>
-                <div class="calc-checkbox-price">+800,000₮ | +2 өдөр</div>
+                <div class="calc-checkbox-price">+250,000₮</div>
               </div>
               <div class="calc-checkbox-check"><i class="fas fa-check"></i></div>
             </div>
           </label>
           <label class="calc-checkbox-card">
-            <input type="checkbox" data-field="feature" data-value="crm" data-price="1000000" data-time="3" data-name="CRM холболт">
+            <input type="checkbox" data-field="feature" data-value="crm" data-price="390000" data-name="CRM холболт">
             <div class="calc-checkbox-content">
               <div class="calc-checkbox-icon"><i class="fas fa-users"></i></div>
               <div class="calc-checkbox-info">
                 <div class="calc-checkbox-name">CRM холболт</div>
-                <div class="calc-checkbox-price">+1,000,000₮ | +3 өдөр</div>
+                <div class="calc-checkbox-price">+390,000₮</div>
               </div>
               <div class="calc-checkbox-check"><i class="fas fa-check"></i></div>
             </div>
           </label>
           <label class="calc-checkbox-card">
-            <input type="checkbox" data-field="feature" data-value="email" data-price="500000" data-time="2" data-name="Имэйл автоматжуулалт">
+            <input type="checkbox" data-field="feature" data-value="email" data-price="150000" data-name="Имэйл автоматжуулалт">
             <div class="calc-checkbox-content">
               <div class="calc-checkbox-icon"><i class="fas fa-envelope"></i></div>
               <div class="calc-checkbox-info">
                 <div class="calc-checkbox-name">Имэйл автоматжуулалт</div>
-                <div class="calc-checkbox-price">+500,000₮ | +2 өдөр</div>
+                <div class="calc-checkbox-price">+150,000₮</div>
               </div>
               <div class="calc-checkbox-check"><i class="fas fa-check"></i></div>
             </div>
           </label>
           <label class="calc-checkbox-card">
-            <input type="checkbox" data-field="feature" data-value="analytics" data-price="200000" data-time="0" data-name="Google Analytics">
+            <input type="checkbox" data-field="feature" data-value="analytics" data-price="50000" data-name="Google Analytics">
             <div class="calc-checkbox-content">
               <div class="calc-checkbox-icon"><i class="fas fa-chart-bar"></i></div>
               <div class="calc-checkbox-info">
                 <div class="calc-checkbox-name">Google Analytics</div>
-                <div class="calc-checkbox-price">+200,000₮ | +0 өдөр</div>
+                <div class="calc-checkbox-price">+50,000₮</div>
               </div>
               <div class="calc-checkbox-check"><i class="fas fa-check"></i></div>
             </div>
           </label>
           <label class="calc-checkbox-card">
-            <input type="checkbox" data-field="feature" data-value="seo" data-price="400000" data-time="1" data-name="SEO суурь тохиргоо">
+            <input type="checkbox" data-field="feature" data-value="seo" data-price="120000" data-name="SEO суурь тохиргоо">
             <div class="calc-checkbox-content">
               <div class="calc-checkbox-icon"><i class="fas fa-search"></i></div>
               <div class="calc-checkbox-info">
                 <div class="calc-checkbox-name">SEO суурь тохиргоо</div>
-                <div class="calc-checkbox-price">+400,000₮ | +1 өдөр</div>
+                <div class="calc-checkbox-price">+120,000₮</div>
               </div>
               <div class="calc-checkbox-check"><i class="fas fa-check"></i></div>
             </div>
           </label>
         </div>
         <div class="calc-step-nav">
-          <button class="calc-back-btn" onclick="calcGoBack(2)"><i class="fas fa-arrow-left"></i> Буцах</button>
-          <button class="calc-next-btn" onclick="calcGoStep(4)">Үргэлжлүүлэх <i class="fas fa-arrow-right"></i></button>
+          <button class="calc-back-btn" onclick="window.calcGoBack(2)"><i class="fas fa-arrow-left"></i> Буцах</button>
+          <button class="calc-next-btn" onclick="window.calcGoStep(4)">Үргэлжлүүлэх <i class="fas fa-arrow-right"></i></button>
         </div>
       </div>
 
@@ -1584,49 +1598,46 @@ footer { padding: 80px 48px 40px; border-top: 1px solid var(--border); }
       <div class="calc-step" id="calcStep4">
         <div class="calc-question">Дизайны түвшин</div>
         <div class="calc-options-grid calc-options-small">
-          <button class="calc-option-card" data-field="design" data-value="standard" data-price="0" data-time="0" data-name="Standard">
+          <button class="calc-option-card" data-field="design" data-value="standard" data-price="0" data-name="Standard">
             <div class="calc-option-icon"><i class="fas fa-palette"></i></div>
             <div class="calc-option-name">Standard</div>
             <div class="calc-option-price">+0₮</div>
-            <div class="calc-option-time">+0 өдөр</div>
           </button>
-          <button class="calc-option-card" data-field="design" data-value="premium" data-price="1000000" data-time="3" data-name="Premium">
+          <button class="calc-option-card" data-field="design" data-value="premium" data-price="290000" data-name="Premium">
             <div class="calc-option-icon"><i class="fas fa-star"></i></div>
             <div class="calc-option-name">Premium</div>
-            <div class="calc-option-price">+1,000,000₮</div>
-            <div class="calc-option-time">+3 өдөр</div>
+            <div class="calc-option-price">+290,000₮</div>
           </button>
-          <button class="calc-option-card" data-field="design" data-value="custom" data-price="2500000" data-time="7" data-name="Custom Premium">
+          <button class="calc-option-card" data-field="design" data-value="custom" data-price="790000" data-name="VIP Custom Design">
             <div class="calc-option-icon"><i class="fas fa-gem"></i></div>
-            <div class="calc-option-name">Custom Premium</div>
-            <div class="calc-option-price">+2,500,000₮</div>
-            <div class="calc-option-time">+7 өдөр</div>
+            <div class="calc-option-name">VIP Custom Design</div>
+            <div class="calc-option-price">+790,000₮</div>
           </button>
         </div>
-        <button class="calc-back-btn" onclick="calcGoBack(3)"><i class="fas fa-arrow-left"></i> Буцах</button>
+        <button class="calc-back-btn" onclick="window.calcGoBack(3)"><i class="fas fa-arrow-left"></i> Буцах</button>
       </div>
 
       <!-- Step 5: Content -->
       <div class="calc-step" id="calcStep5">
-        <div class="calc-question">Контент бэлэн байгаа юу?</div>
+        <div class="calc-question">Контент бэлэн эсэх</div>
         <div class="calc-options-grid calc-options-small">
           <button class="calc-option-card" data-field="content" data-value="ready" data-price="0" data-name="Бүх зураг текст бэлэн">
             <div class="calc-option-icon"><i class="fas fa-check-circle"></i></div>
             <div class="calc-option-name">Бүх зураг текст бэлэн</div>
             <div class="calc-option-price">+0₮</div>
           </button>
-          <button class="calc-option-card" data-field="content" data-value="partial" data-price="300000" data-name="Хэсэгчлэн бэлэн">
+          <button class="calc-option-card" data-field="content" data-value="partial" data-price="100000" data-name="Хэсэгчлэн бэлэн">
             <div class="calc-option-icon"><i class="fas fa-adjust"></i></div>
             <div class="calc-option-name">Хэсэгчлэн бэлэн</div>
-            <div class="calc-option-price">+300,000₮</div>
+            <div class="calc-option-price">+100,000₮</div>
           </button>
-          <button class="calc-option-card" data-field="content" data-value="none" data-price="700000" data-name="Огт бэлэн биш">
+          <button class="calc-option-card" data-field="content" data-value="none" data-price="250000" data-name="Огт бэлэн биш">
             <div class="calc-option-icon"><i class="fas fa-times-circle"></i></div>
             <div class="calc-option-name">Огт бэлэн биш</div>
-            <div class="calc-option-price">+700,000₮</div>
+            <div class="calc-option-price">+250,000₮</div>
           </button>
         </div>
-        <button class="calc-back-btn" onclick="calcGoBack(4)"><i class="fas fa-arrow-left"></i> Буцах</button>
+        <button class="calc-back-btn" onclick="window.calcGoBack(4)"><i class="fas fa-arrow-left"></i> Буцах</button>
       </div>
 
       <!-- Result -->
@@ -1635,17 +1646,36 @@ footer { padding: 80px 48px 40px; border-top: 1px solid var(--border); }
           <div class="calc-result-icon"><i class="fas fa-calculator"></i></div>
           <div class="calc-result-title">Таны ойролцоох төсөв</div>
         </div>
-        <div class="calc-result-price" id="calcResultPrice">0₮</div>
-        <div class="calc-result-time" id="calcResultTime">0 өдөр</div>
+        <div class="calc-result-price-range">
+          <span id="calcResultPriceMin">0₮</span> – <span id="calcResultPriceMax">0₮</span>
+        </div>
+        <div class="calc-result-time" id="calcResultTime">⏱️ Хугацаа: 0 өдөр</div>
         <div class="calc-result-breakdown" id="calcResultBreakdown">
           <div class="calc-breakdown-item"><span>Вебсайт төрөл:</span><span id="breakdownType">0₮</span></div>
           <div class="calc-breakdown-item"><span>Хуудасны тоо:</span><span id="breakdownPages">0₮</span></div>
           <div class="calc-breakdown-item"><span>Нэмэлт боломжууд:</span><span id="breakdownFeatures">0₮</span></div>
           <div class="calc-breakdown-item"><span>Дизайн:</span><span id="breakdownDesign">0₮</span></div>
           <div class="calc-breakdown-item"><span>Контент:</span><span id="breakdownContent">0₮</span></div>
-          <div class="calc-breakdown-total"><span>Нийт:</span><span id="breakdownTotal">0₮</span></div>
         </div>
-        <div class="calc-result-notice"><i class="fas fa-info-circle"></i> Энэхүү тооцоолол нь ойролцоох үнэ бөгөөд таны шаардлагаас хамааран өөрчлөгдөж болно.</div>
+
+        <!-- Trust Section -->
+        <div class="calc-trust">
+          <div class="calc-trust-item"><i class="fas fa-bolt"></i> ⚡ 30 минутын дотор хариу өгнө</div>
+          <div class="calc-trust-item"><i class="fas fa-tools"></i> 🛠️ Үнэгүй зөвлөгөө</div>
+          <div class="calc-trust-item"><i class="fas fa-file-pdf"></i> 📄 PDF үнийн санал илгээнэ</div>
+        </div>
+
+        <!-- Promotion Box -->
+        <div class="calc-promo">
+          <div class="calc-promo-header">🔥 Энэ долоо хоногийн урамшуулал</div>
+          <div class="calc-promo-items">
+            <div class="calc-promo-item"><i class="fas fa-check"></i> Домэйн үнэгүй</div>
+            <div class="calc-promo-item"><i class="fas fa-check"></i> Хостинг үнэгүй</div>
+            <div class="calc-promo-item"><i class="fas fa-check"></i> Google Maps холболт үнэгүй</div>
+            <div class="calc-promo-item"><i class="fas fa-check"></i> SEO суурь тохиргоо үнэгүй</div>
+          </div>
+          <div class="calc-promo-saving">Нийт 250,000₮ хүртэлх хэмнэлт</div>
+        </div>
       </div>
 
       <!-- Lead Form -->
@@ -1654,7 +1684,7 @@ footer { padding: 80px 48px 40px; border-top: 1px solid var(--border); }
           <h3>Нарийвчилсан үнийн санал авах</h3>
           <p>Мэдээллээ үлдэээрэй, бид 30 минутын дотор холбогдоно.</p>
         </div>
-        <form id="calcForm" onsubmit="calcSubmitForm(event)">
+        <form id="calcForm" onsubmit="window.calcSubmitForm(event)">
           <div class="calc-form-row">
             <input type="text" name="name" placeholder="Нэр" required aria-label="Нэр">
             <input type="tel" name="phone" placeholder="Утасны дугаар" required aria-label="Утасны дугаар">
@@ -2236,14 +2266,18 @@ footer { padding: 80px 48px 40px; border-top: 1px solid var(--border); }
 
     window.calcUpdateUI = function() {
       var total = calcUpdateTotal();
-      document.getElementById('calcResultPrice').textContent = formatPrice(total.price);
-      document.getElementById('calcResultTime').textContent = total.time + ' өдөр';
+      var minPrice = Math.round(total.price * 0.9);
+      var maxPrice = Math.round(total.price * 1.1);
+      var minTime = Math.max(1, total.time - 1);
+      var maxTime = total.time + 2;
+      document.getElementById('calcResultPriceMin').textContent = formatPrice(minPrice);
+      document.getElementById('calcResultPriceMax').textContent = formatPrice(maxPrice);
+      document.getElementById('calcResultTime').textContent = '⏱️ Хугацаа: ' + minTime + '–' + maxTime + ' өдөр';
       document.getElementById('breakdownType').textContent = formatPrice(calcState.typePrice);
       document.getElementById('breakdownPages').textContent = formatPrice(calcState.pagesPrice);
       document.getElementById('breakdownFeatures').textContent = formatPrice(calcState.featuresPrice);
       document.getElementById('breakdownDesign').textContent = formatPrice(calcState.designPrice);
       document.getElementById('breakdownContent').textContent = formatPrice(calcState.contentPrice);
-      document.getElementById('breakdownTotal').textContent = formatPrice(total.price);
     }
 
     window.calcGoStep = function(step) {
@@ -2270,7 +2304,6 @@ footer { padding: 80px 48px 40px; border-top: 1px solid var(--border); }
       document.getElementById('calcResult').classList.add('show');
       document.getElementById('calcLeadForm').classList.add('show');
       calcUpdateUI();
-      // Save to localStorage
       localStorage.setItem('calcState', JSON.stringify(calcState));
     }
 

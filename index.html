@@ -82,61 +82,104 @@ a { text-decoration: none; color: inherit; }
       pointer-events: none; z-index: 9998;
       opacity: 0.15;
     }
-
-
-
-
-@keyframes blobFloat {
-      0%, 100% { transform: translate(0, 0) scale(1); opacity: 0.08; }
-      33% { transform: translate(60px, -40px) scale(1.1); opacity: 0.12; }
-      66% { transform: translate(-40px, 60px) scale(0.9); opacity: 0.06; }
+/* ===== SKIP LINK ===== */
+    .skip-link {
+      position: absolute; top: -100px; left: 16px; z-index: 99999;
+      background: var(--accent); color: #fff;
+      padding: 12px 24px; font-size: 0.9rem; font-weight: 600;
+      border-radius: 0 0 8px 8px; transition: top 0.3s;
     }
-nav {
+    .skip-link:focus { top: 0; }
+
+    /* ===== NAV ===== */
+    nav {
       position: fixed; top: 0; left: 0; right: 0;
       z-index: 1000; padding: 20px 48px;
       display: flex; align-items: center; justify-content: space-between;
       transition: all 0.5s var(--ease-out);
     }
-nav.scrolled {
+    nav.scrolled {
       background: rgba(3,3,8,0.8);
       backdrop-filter: blur(40px) saturate(1.5);
       -webkit-backdrop-filter: blur(40px) saturate(1.5);
       border-bottom: 1px solid var(--border);
       padding: 14px 48px;
     }
-.nav-logo {
+    .nav-logo {
       text-decoration: none;
       display: flex; align-items: center;
-      position: relative;
-      transition: opacity 0.3s;
+      position: relative; transition: opacity 0.3s;
     }
-.nav-logo-img { height: 48px; width: auto; flex-shrink: 0; }
-.nav-logo:hover { opacity: 0.8; }
-.nav-links { display: flex; align-items: center; gap: 40px; }
-.nav-links a {
+    .nav-logo-img { height: 48px; width: auto; flex-shrink: 0; }
+    .nav-logo:hover { opacity: 0.8; }
+    .nav-links { display: flex; align-items: center; gap: 40px; }
+    .nav-links a {
       font-size: 0.82rem; font-weight: 500; color: #888;
       transition: all 0.4s var(--ease-out); position: relative;
       padding: 4px 0;
     }
-.nav-links a::after {
+    .nav-links a::after {
       content: ''; position: absolute; bottom: -2px; left: 50%;
       width: 0; height: 1px;
       background: linear-gradient(90deg, var(--accent), var(--accent-2));
       transition: all 0.4s var(--ease-out);
       transform: translateX(-50%);
     }
-.nav-links a:hover { color: #fff; transform: translateY(-1px); }
-.nav-links a:hover::after { width: 100%; }
-.nav-cta {
-      background: linear-gradient(135deg, #7850ff, #5a3fd4);
-      color: #fff !important; padding: 10px 24px;
-      border-radius: 8px; font-weight: 600; font-size: 0.85rem;
+    .nav-links a:hover { color: #fff; transform: translateY(-1px); }
+    .nav-links a:hover::after { width: 100%; }
+
+    /* Nav Actions Container */
+    .nav-actions {
+      display: flex; align-items: center; gap: 18px;
+    }
+
+    /* Nav CTA Button */
+    .nav-cta {
+      display: flex; align-items: center; justify-content: center; gap: 8px;
+      padding: 12px 24px; min-height: 44px;
+      background: linear-gradient(135deg, #7c3aed, #6d5dfc);
+      color: #fff !important;
+      border-radius: 14px; border: 1px solid rgba(255,255,255,0.12);
+      font-weight: 700; font-size: 14px; line-height: 1;
+      box-shadow: 0 8px 28px rgba(124, 58, 237, 0.28);
       transition: all 0.3s;
     }
-.nav-cta:hover { transform: translateY(-1px); box-shadow: 0 4px 20px rgba(120,80,255,0.4); }
-.nav-cta::after { display: none !important; }
-.hamburger { display: none; flex-direction: column; gap: 5px; background: none; border: none; cursor: pointer; }
-.hamburger span { display: block; width: 22px; height: 2px; background: #fff; transition: all 0.3s; }
+    .nav-cta:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 12px 36px rgba(124, 58, 237, 0.38);
+    }
+    .nav-cta::after { display: none !important; }
+
+    /* Language Switcher */
+    .lang-switcher {
+      display: flex; align-items: center; gap: 4px;
+      padding: 4px;
+      background: rgba(255,255,255,0.04);
+      border: 1px solid rgba(255,255,255,0.10);
+      border-radius: 16px;
+      backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px);
+    }
+    .lang-btn {
+      width: 42px; height: 34px;
+      border-radius: 12px; border: none;
+      background: transparent;
+      color: rgba(255,255,255,0.55);
+      font-size: 13px; font-weight: 700;
+      cursor: pointer; transition: all 0.3s;
+      display: flex; align-items: center; justify-content: center;
+    }
+    .lang-btn:hover {
+      background: rgba(255,255,255,0.06);
+      color: #fff;
+    }
+    .lang-btn.active {
+      background: linear-gradient(135deg, #7c3aed, #6d5dfc);
+      color: #fff;
+      box-shadow: 0 6px 18px rgba(124,58,237,0.28);
+    }
+
+    .hamburger { display: none; flex-direction: column; gap: 5px; background: none; border: none; cursor: pointer; }
+    .hamburger span { display: block; width: 22px; height: 2px; background: #fff; transition: all 0.3s; }
 .btn {
       display: inline-flex; align-items: center; gap: 10px;
       padding: 14px 32px; border-radius: 100px;
@@ -154,7 +197,18 @@ nav.scrolled {
       backdrop-filter: blur(10px);
     }
 .btn-ghost:hover { border-color: rgba(255,255,255,0.2); color: #fff; background: rgba(255,255,255,0.06); transform: translateY(-3px); }
-/* ===== HERO ===== */
+
+    /* Mobile Nav */
+    @media (max-width: 600px) {
+      .nav-links { display: none; }
+      .hamburger { display: flex; }
+      .lang-switcher { padding: 3px; border-radius: 12px; }
+      .lang-btn { width: 36px; height: 30px; font-size: 11px; border-radius: 10px; }
+      .nav-cta { padding: 10px 16px; font-size: 13px; min-height: 40px; }
+      .nav-actions { gap: 12px; }
+    }
+
+    /* ===== HERO ===== */
     .hero {
       min-height: 100vh; display: flex; align-items: center;
       position: relative; padding: 120px 48px 80px; overflow: hidden;
@@ -476,11 +530,13 @@ nav.scrolled {
       <a href="#pricing"><span data-mn="navPricing">Үнэ</span></a>
       <a href="#process"><span data-mn="navProcess">Үйл явц</span></a>
       <a href="#testimonials"><span data-mn="navReviews">Сэтгэгдэл</span></a>
-      <a href="#contact" class="nav-cta"><span data-mn="navCta">Үнийн санал авах</span></a>
     </div>
-    <div class="lang-switcher" role="group" aria-label="Хэл сонгох">
-      <button class="lang-btn active" data-lang="mn" aria-pressed="true">МН</button>
-      <button class="lang-btn" data-lang="en" aria-pressed="false">EN</button>
+    <div class="nav-actions">
+      <a href="#calculator" class="nav-cta"><i class="fas fa-calculator"></i> Үнийн санал авах</a>
+      <div class="lang-switcher" role="group" aria-label="Хэл сонгох">
+        <button class="lang-btn active" data-lang="mn" aria-pressed="true">МН</button>
+        <button class="lang-btn" data-lang="en" aria-pressed="false">EN</button>
+      </div>
     </div>
     <button class="hamburger" id="hamburger" aria-label="Цэс нээх" aria-expanded="false"><span></span><span></span><span></span></button>
   </nav>

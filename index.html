@@ -281,68 +281,59 @@ nav.scrolled {
 .ho-ring.r3 { inset: -9%; border-color: rgba(80,200,255,0.12); animation-duration: 48s; }
 .ho-ring.r3::before { background: var(--accent); box-shadow: 0 0 16px var(--accent); }
 @keyframes spinSlow { to { transform: rotate(360deg); } }
-/* Interactive ecosystem nodes — each orbit is a service; hover = value, click = related section */
-.eco-node {
-  position: absolute; transform: translate(-50%, -50%);
-  display: flex; flex-direction: column; align-items: center; gap: 9px;
-  background: none; border: none; cursor: pointer; z-index: 6;
-  font-family: var(--font-body); padding: 0;
+/* ===== 3D LOGO NAVIGATION HUB ===== */
+.logo-canvas {
+  position: absolute; inset: 0; width: 100%; height: 100%;
+  pointer-events: none; opacity: 0; transition: opacity 1.4s var(--ease-out);
 }
-.eco-node[data-eco="website"]    { top: -2%;  left: 50%; }
-.eco-node[data-eco="seo"]        { top: 30%;  left: 101%; }
-.eco-node[data-eco="branding"]   { top: 92%;  left: 82%; }
-.eco-node[data-eco="automation"] { top: 92%;  left: 18%; }
-.eco-node[data-eco="growth"]     { top: 30%;  left: -1%; }
-.eco-icon {
-  width: 56px; height: 56px; border-radius: 50%;
-  background: rgba(13,13,22,0.75); border: 1px solid rgba(255,255,255,0.14);
-  backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px);
-  display: flex; align-items: center; justify-content: center;
-  color: #b9a3ff; font-size: 1rem;
-  transition: all .4s var(--ease-out);
-  animation: floatY 7s ease-in-out infinite;
-  box-shadow: 0 8px 32px rgba(0,0,0,0.4);
+.hero-3d.webgl-on .logo-canvas { opacity: 1; }
+.hero-object { transition: opacity .9s ease; }
+.hero-3d.webgl-on .hero-object { opacity: 0; pointer-events: none; }
+.hub-toggle {
+  position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);
+  width: 76%; height: 44%; border-radius: 28px;
+  background: transparent; border: none; cursor: pointer; z-index: 5; padding: 0;
 }
-.eco-node[data-eco="seo"] .eco-icon { animation-delay: -1.4s; color: #80d4ff; }
-.eco-node[data-eco="branding"] .eco-icon { animation-delay: -2.8s; color: #ff8fab; }
-.eco-node[data-eco="automation"] .eco-icon { animation-delay: -4.2s; color: #ffd080; }
-.eco-node[data-eco="growth"] .eco-icon { animation-delay: -5.6s; color: #7ee8b5; }
-.eco-node:hover .eco-icon, .eco-node:focus-visible .eco-icon {
-  border-color: rgba(120,80,255,0.7); transform: scale(1.12);
-  box-shadow: 0 0 32px rgba(120,80,255,0.4);
+.hub-toggle:focus-visible { outline: 2px solid rgba(120,80,255,0.7); outline-offset: 8px; }
+.hub-nav { position: absolute; inset: 0; pointer-events: none; z-index: 7; }
+.hub-item {
+  position: absolute; top: 50%; left: 50%;
+  transform: translate(-50%, -50%) scale(0.5);
+  display: flex; flex-direction: column; align-items: center; gap: 3px;
+  padding: 13px 24px; border-radius: 18px;
+  background: rgba(10,10,20,0.85); border: 1px solid rgba(120,80,255,0.28);
+  backdrop-filter: blur(18px); -webkit-backdrop-filter: blur(18px);
+  color: #fff; cursor: pointer; font-family: var(--font-body); white-space: nowrap;
+  box-shadow: 0 16px 48px rgba(0,0,0,0.5);
+  opacity: 0; pointer-events: none;
+  transition: opacity .55s var(--ease-out), border-color .3s, box-shadow .3s;
 }
-.eco-label {
-  font-family: var(--font-mono); font-size: .56rem; letter-spacing: .2em; text-transform: uppercase;
-  color: var(--text-dim); white-space: nowrap; transition: color .3s;
+.hub-nav.emerge .hub-item { transition: transform .85s var(--ease-out), opacity .55s var(--ease-out), border-color .3s, box-shadow .3s; }
+.hub-nav.open .hub-item { opacity: 1; pointer-events: auto; }
+.hub-item:hover, .hub-item:focus-visible {
+  border-color: rgba(120,80,255,0.7);
+  box-shadow: 0 0 40px rgba(120,80,255,0.35), 0 16px 48px rgba(0,0,0,0.5);
+  z-index: 9;
 }
-.eco-node:hover .eco-label, .eco-node:focus-visible .eco-label { color: #fff; }
-.eco-tip {
-  position: absolute; bottom: calc(100% + 16px); left: 50%;
-  transform: translateX(-50%) translateY(8px);
-  width: 232px; padding: 18px 20px; border-radius: 16px; text-align: left;
-  background: rgba(10,10,18,0.94); border: 1px solid rgba(120,80,255,0.3);
-  backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px);
-  box-shadow: 0 20px 60px rgba(0,0,0,0.6);
-  opacity: 0; pointer-events: none; transition: all .4s var(--ease-out); z-index: 20;
+.hub-item-label { font-family: var(--font-heading); font-weight: 600; font-size: .95rem; letter-spacing: -0.01em; }
+.hub-item-desc {
+  font-size: .68rem; color: var(--text-dim); font-weight: 300; white-space: normal;
+  max-width: 180px; text-align: center;
+  opacity: 0; max-height: 0; overflow: hidden; transition: all .35s var(--ease-out);
 }
-.eco-node:hover .eco-tip, .eco-node:focus-visible .eco-tip { opacity: 1; transform: translateX(-50%) translateY(0); }
-.eco-node[data-eco="branding"] .eco-tip, .eco-node[data-eco="automation"] .eco-tip { bottom: auto; top: calc(100% + 16px); transform: translateX(-50%) translateY(-8px); }
-.eco-node[data-eco="branding"] .eco-tip { left: auto; right: -10px; transform: translateY(-8px); }
-.eco-node[data-eco="branding"]:hover .eco-tip, .eco-node[data-eco="branding"]:focus-visible .eco-tip { transform: translateY(0); }
-.eco-node[data-eco="automation"]:hover .eco-tip, .eco-node[data-eco="automation"]:focus-visible .eco-tip { transform: translateX(-50%) translateY(0); }
-.eco-tip h4 { font-family: var(--font-heading); font-size: .92rem; font-weight: 600; color: #fff; margin-bottom: 6px; }
-.eco-tip p { font-size: .76rem; color: var(--text-dim); font-weight: 300; line-height: 1.55; margin-bottom: 10px; }
-.eco-tip .eco-go { font-size: .7rem; font-weight: 600; color: #b9a3ff; letter-spacing: .04em; }
-.eco-hint {
+.hub-item:hover .hub-item-desc, .hub-item:focus-visible .hub-item-desc { opacity: 1; max-height: 44px; }
+.hub-hint {
   position: absolute; bottom: -8%; left: 50%; transform: translateX(-50%);
   font-family: var(--font-mono); font-size: .58rem; letter-spacing: .26em; text-transform: uppercase;
   color: var(--text-muted); white-space: nowrap; pointer-events: none;
+  transition: opacity .5s;
 }
+.hero-3d.hub-open .hub-hint { opacity: 0; }
 @keyframes floatY { 0%,100% { transform: translateY(0); } 50% { transform: translateY(-12px); } }
 @media (max-width: 640px) {
-  .eco-icon { width: 44px; height: 44px; font-size: .85rem; }
-  .eco-label { font-size: .5rem; }
-  .eco-tip { width: 190px; padding: 14px 16px; }
+  .hub-item { padding: 10px 18px; }
+  .hub-item-label { font-size: .82rem; }
+  .hub-item-desc { font-size: .62rem; max-width: 140px; }
 }
 .hero-scroll-hint {
   position: absolute; bottom: 36px; left: 50%; transform: translateX(-50%);
@@ -1175,62 +1166,43 @@ footer { border-top: 1px solid var(--border); padding: 72px var(--side-pad) 36px
            To embed a Spline scene, paste inside #hero-3d-container:
            <iframe src="https://my.spline.design/YOUR-SCENE-URL/" loading="lazy" title="3D"></iframe>
            or use the spline-viewer web component. The CSS fallback object hides automatically. -->
+      <!-- 3D LOGO NAVIGATION HUB
+           The OGT UUR logo is rendered as extruded 3D letters (Three.js).
+           Click the logo: letters separate and the navigation orbit emerges.
+           If WebGL/CDN is unavailable, the CSS sphere below remains as fallback
+           and the hub navigation still works. -->
       <div class="hero-3d" id="hero-3d-container" data-reveal="scale" data-delay="250">
-        <div class="hero-object">
-          <div class="ho-ring r3" aria-hidden="true"></div>
-          <div class="ho-ring" aria-hidden="true"></div>
-          <div class="ho-ring r2" aria-hidden="true"></div>
-          <div class="ho-core" aria-hidden="true"></div>
-
-          <!-- Interactive ecosystem: hover = value, click = related section -->
-          <button class="eco-node" data-eco="website" data-target="#work">
-            <span class="eco-icon"><i class="fas fa-laptop-code"></i></span>
-            <span class="eco-label" data-i18n="ecoWebsite">Вэбсайт</span>
-            <span class="eco-tip">
-              <h4 data-i18n="ecoWebsiteT">Таны дижитал гэр</h4>
-              <p data-i18n="ecoWebsiteD">Брэндийн төв цэг. Бүх харилцагч эндээс эхэлж танилцана.</p>
-              <span class="eco-go" data-i18n="ecoWebsiteG">Цуглуулга үзэх →</span>
-            </span>
-          </button>
-          <button class="eco-node" data-eco="seo" data-target="#custom">
-            <span class="eco-icon"><i class="fas fa-magnifying-glass-chart"></i></span>
-            <span class="eco-label">SEO</span>
-            <span class="eco-tip">
-              <h4 data-i18n="ecoSeoT">Google-д олдоно</h4>
-              <p data-i18n="ecoSeoD">Хайлтад дээгүүр гарч, шинэ харилцагч өөрөө ирдэг болно.</p>
-              <span class="eco-go" data-i18n="ecoSeoG">Хэрхэн ажилладаг →</span>
-            </span>
-          </button>
-          <button class="eco-node" data-eco="branding" data-target="#transformation">
-            <span class="eco-icon"><i class="fas fa-gem"></i></span>
-            <span class="eco-label" data-i18n="ecoBrand">Брэндинг</span>
-            <span class="eco-tip">
-              <h4 data-i18n="ecoBrandT">Анхны сэтгэгдэл</h4>
-              <p data-i18n="ecoBrandD">Сайхан дизайн итгэл төрүүлж, итгэл худалдан авалт болдог.</p>
-              <span class="eco-go" data-i18n="ecoBrandG">Өөрчлөлт харах →</span>
-            </span>
-          </button>
-          <button class="eco-node" data-eco="automation" data-target="#calculator">
-            <span class="eco-icon"><i class="fas fa-bolt"></i></span>
-            <span class="eco-label" data-i18n="ecoAuto">Автомат</span>
-            <span class="eco-tip">
-              <h4 data-i18n="ecoAutoT">Өөрөө ажилладаг</h4>
-              <p data-i18n="ecoAutoD">Захиалга, форм, мессеж — таныг унтаж байхад ч ажиллана.</p>
-              <span class="eco-go" data-i18n="ecoAutoG">Үнэ тооцох →</span>
-            </span>
-          </button>
-          <button class="eco-node" data-eco="growth" data-target="#trust">
-            <span class="eco-icon"><i class="fas fa-chart-line"></i></span>
-            <span class="eco-label" data-i18n="ecoGrowth">Өсөлт</span>
-            <span class="eco-tip">
-              <h4 data-i18n="ecoGrowthT">Хэмжигдэх үр дүн</h4>
-              <p data-i18n="ecoGrowthD">Тоо худал хэлдэггүй. Үр дүнг хамтдаа хэмжинэ.</p>
-              <span class="eco-go" data-i18n="ecoGrowthG">Үр дүн харах →</span>
-            </span>
-          </button>
-
-          <span class="eco-hint" data-i18n="ecoHint">Экосистемийг судлаарай</span>
+        <canvas class="logo-canvas" id="logoCanvas" aria-hidden="true"></canvas>
+        <div class="hero-object" aria-hidden="true">
+          <div class="ho-ring r3"></div>
+          <div class="ho-ring"></div>
+          <div class="ho-ring r2"></div>
+          <div class="ho-core"></div>
         </div>
+        <button class="hub-toggle" id="hubToggle" aria-expanded="false" aria-label="Навигацийн цэс нээх / хаах"></button>
+        <nav class="hub-nav" id="hubNav" aria-label="3D лого навигаци">
+          <button class="hub-item" data-target="#work">
+            <span class="hub-item-label" data-i18n="hubTplL">Цуглуулга</span>
+            <span class="hub-item-desc" data-i18n="hubTplD">Бэлэн premium вэбсайтууд</span>
+          </button>
+          <button class="hub-item" data-target="#custom">
+            <span class="hub-item-label" data-i18n="hubSrvL">Custom вэб</span>
+            <span class="hub-item-desc" data-i18n="hubSrvD">Танд зориулж тусгайлан бүтээнэ</span>
+          </button>
+          <button class="hub-item" data-target="#pricing">
+            <span class="hub-item-label" data-i18n="hubPriceL">Үнэ</span>
+            <span class="hub-item-desc" data-i18n="hubPriceD">Ил тод, энгийн багцууд</span>
+          </button>
+          <button class="hub-item" data-target="#calculator">
+            <span class="hub-item-label" data-i18n="hubCalcL">Тооцоолуур</span>
+            <span class="hub-item-desc" data-i18n="hubCalcD">2 минутад төсвөө мэдээрэй</span>
+          </button>
+          <button class="hub-item" data-target="#contact">
+            <span class="hub-item-label" data-i18n="hubContactL">Холбоо барих</span>
+            <span class="hub-item-desc" data-i18n="hubContactD">1 цагийн дотор хариулна</span>
+          </button>
+        </nav>
+        <span class="hub-hint" data-i18n="hubHint">Лого дээр дарж цэс нээ</span>
       </div>
     </div>
     <div class="hero-scroll-hint" aria-hidden="true">
@@ -2093,13 +2065,73 @@ footer { border-top: 1px solid var(--border); padding: 72px var(--side-pad) 36px
     /* ============================================================
        INTERACTIVE STORYTELLING
        ============================================================ */
-    // Hero ecosystem: each orbit node guides to the section that proves its value
-    function initEcosystem() {
-      document.querySelectorAll('.eco-node').forEach(function(node) {
-        node.addEventListener('click', function() {
-          var target = document.querySelector(node.dataset.target);
+    // 3D logo navigation hub: click the logo, nav items orbit out of it.
+    // Works with or without the WebGL layer (CSS sphere fallback).
+    function initHub() {
+      var container = document.getElementById('hero-3d-container');
+      var toggle = document.getElementById('hubToggle');
+      var nav = document.getElementById('hubNav');
+      if (!container || !toggle || !nav) return;
+      var items = Array.prototype.slice.call(nav.querySelectorAll('.hub-item'));
+      var open = false, angle = -Math.PI / 2, paused = false, rafId = null, lastT = 0, emergeT = null;
+
+      // start collapsed at the logo's center
+      items.forEach(function(it) { it.style.transform = 'translate(-50%, -50%) scale(0.5)'; });
+
+      function layout() {
+        var R = Math.min(container.clientWidth, container.clientHeight) / 2 - 64;
+        var xStretch = container.clientWidth > 520 ? 1.16 : 1;
+        items.forEach(function(it, i) {
+          var a = angle + i * (Math.PI * 2 / items.length);
+          var x = Math.cos(a) * R * xStretch;
+          var y = Math.sin(a) * R * 0.86;
+          it.style.transform = 'translate(-50%, -50%) translate(' + x + 'px, ' + y + 'px)';
+        });
+      }
+      function tick(t) {
+        if (!lastT) lastT = t;
+        var dt = Math.min((t - lastT) / 1000, 0.05); lastT = t;
+        if (!paused && !reduceMotion) angle += dt * 0.12;
+        layout();
+        rafId = open ? requestAnimationFrame(tick) : null;
+      }
+      function setOpen(v) {
+        open = v;
+        container.classList.toggle('hub-open', open);
+        toggle.setAttribute('aria-expanded', open);
+        // transitions on transform only during emerge/collapse, so the orbit loop stays direct
+        nav.classList.add('emerge');
+        clearTimeout(emergeT);
+        emergeT = setTimeout(function() { nav.classList.remove('emerge'); }, 950);
+        if (open) {
+          nav.classList.add('open');
+          items.forEach(function(it, i) { it.style.transitionDelay = (i * 70) + 'ms'; });
+          lastT = 0;
+          layout();
+          if (!rafId) rafId = requestAnimationFrame(tick);
+        } else {
+          nav.classList.remove('open');
+          items.forEach(function(it, i) {
+            it.style.transitionDelay = (i * 40) + 'ms';
+            it.style.transform = 'translate(-50%, -50%) scale(0.5)';
+          });
+        }
+        document.dispatchEvent(new CustomEvent('hub:toggle', { detail: { open: open } }));
+      }
+      toggle.addEventListener('click', function() { setOpen(!open); });
+      items.forEach(function(it) {
+        it.addEventListener('mouseenter', function() { paused = true; });
+        it.addEventListener('mouseleave', function() { paused = false; });
+        it.addEventListener('focus', function() { paused = true; });
+        it.addEventListener('blur', function() { paused = false; });
+        it.addEventListener('click', function() {
+          var target = document.querySelector(it.dataset.target);
+          setOpen(false);
           if (target) target.scrollIntoView({ behavior: 'smooth', block: 'start' });
         });
+      });
+      document.addEventListener('keydown', function(e) {
+        if (e.key === 'Escape' && open) setOpen(false);
       });
     }
 
@@ -2176,13 +2208,12 @@ footer { border-top: 1px solid var(--border); padding: 72px var(--side-pad) 36px
       heroCta1: 'Start Your Project', heroCta2: 'View Collection',
       heroMeta1: 'Projects', heroMeta2: 'Average Delivery', heroMeta3: 'Support',
       scrollHint: 'Scroll',
-      ecoWebsite: 'Website', ecoBrand: 'Branding', ecoAuto: 'Automation', ecoGrowth: 'Growth',
-      ecoHint: 'Explore the ecosystem',
-      ecoWebsiteT: 'Your digital home', ecoWebsiteD: 'The center of your brand. Every customer journey starts here.', ecoWebsiteG: 'View collection →',
-      ecoSeoT: 'Found on Google', ecoSeoD: 'Rank higher in search so new customers come to you.', ecoSeoG: 'See how it works →',
-      ecoBrandT: 'First impressions', ecoBrandD: 'Beautiful design builds trust — and trust becomes sales.', ecoBrandG: 'See the transformation →',
-      ecoAutoT: 'Works by itself', ecoAutoD: 'Orders, forms, messages — working even while you sleep.', ecoAutoG: 'Calculate your price →',
-      ecoGrowthT: 'Measurable results', ecoGrowthD: "Numbers don't lie. We measure results together.", ecoGrowthG: 'See the results →',
+      hubHint: 'Click the logo to open the menu',
+      hubTplL: 'Templates', hubTplD: 'Ready-made premium websites',
+      hubSrvL: 'Services', hubSrvD: 'Built custom, just for you',
+      hubPriceL: 'Pricing', hubPriceD: 'Transparent, simple packages',
+      hubCalcL: 'Calculator', hubCalcD: 'Know your budget in 2 minutes',
+      hubContactL: 'Contact', hubContactD: 'We reply within an hour',
       baHint: '⟷ Drag to compare',
       visionStatement: 'The future of business <em>begins with beautiful</em> design.',
       visionFoot: "We don't sell websites. We craft digital environments that make your brand felt.",
@@ -2369,7 +2400,7 @@ footer { border-top: 1px solid var(--border); padding: 72px var(--side-pad) 36px
     document.addEventListener('DOMContentLoaded', function() {
       renderTemplates();
       initCalculator();
-      initEcosystem();
+      initHub();
       initBASlider();
       initTrustTicker();
 
@@ -2517,6 +2548,234 @@ footer { border-top: 1px solid var(--border); padding: 72px var(--side-pad) 36px
         });
       });
     });
+  </script>
+
+  <!-- ============================================================
+       3D LOGO ENGINE (Three.js, lazy-loaded)
+       Extruded OGT UUR letters · glass-metal materials · brand
+       gradient · emissive glow · particles · cinematic letter
+       separation on hub open. Falls back to the CSS sphere when
+       WebGL or the CDN is unavailable.
+       ============================================================ -->
+  <script type="importmap">
+  {
+    "imports": {
+      "three": "https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.module.js",
+      "three/addons/": "https://cdn.jsdelivr.net/npm/three@0.160.0/examples/jsm/"
+    }
+  }
+  </script>
+  <script type="module">
+    var hub3dContainer = document.getElementById('hero-3d-container');
+    var reduceMotion3D = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    var coarsePointer = window.matchMedia('(pointer: coarse)').matches;
+
+    async function initLogo3D() {
+      const THREE = await import('three');
+      const { FontLoader } = await import('three/addons/loaders/FontLoader.js');
+      const { TextGeometry } = await import('three/addons/geometries/TextGeometry.js');
+      const { RoomEnvironment } = await import('three/addons/environments/RoomEnvironment.js');
+
+      const canvas = document.getElementById('logoCanvas');
+      if (!canvas || !hub3dContainer) return;
+
+      const renderer = new THREE.WebGLRenderer({ canvas: canvas, alpha: true, antialias: true });
+      renderer.toneMapping = THREE.ACESFilmicToneMapping;
+      renderer.toneMappingExposure = 1.05;
+
+      const scene = new THREE.Scene();
+      const camera = new THREE.PerspectiveCamera(40, 1, 0.1, 60);
+      camera.position.z = 9;
+
+      // Reflections: studio environment
+      const pmrem = new THREE.PMREMGenerator(renderer);
+      scene.environment = pmrem.fromScene(new RoomEnvironment(renderer), 0.04).texture;
+
+      // Cinematic rim lights in brand colors
+      const lPink = new THREE.PointLight(0xff6496, 60, 30); lPink.position.set(5, 3, 5); scene.add(lPink);
+      const lCyan = new THREE.PointLight(0x50c8ff, 50, 30); lCyan.position.set(-5, -2, 4); scene.add(lCyan);
+      const lPurple = new THREE.PointLight(0x7850ff, 40, 30); lPurple.position.set(0, 4, -3); scene.add(lPurple);
+
+      // Font + extruded letters with rounded bevels
+      const font = await new Promise(function(resolve, reject) {
+        new FontLoader().load(
+          'https://cdn.jsdelivr.net/npm/three@0.160.0/examples/fonts/helvetiker_bold.typeface.json',
+          resolve, undefined, reject
+        );
+      });
+
+      const chars = ['O', 'G', 'T', 'U', 'U', 'R'];
+      const brand = [0x8b5cf6, 0xc44df0, 0xff4fa0, 0x4f7dff, 0x38bdf8, 0x22d3ee];
+      const group = new THREE.Group();
+      const lettersGroup = new THREE.Group();
+      group.add(lettersGroup);
+      scene.add(group);
+
+      const letters = [];
+      let cursorX = 0;
+      chars.forEach(function(ch, i) {
+        const geo = new TextGeometry(ch, {
+          font: font, size: 0.85, height: 0.3, curveSegments: 10,
+          bevelEnabled: true, bevelThickness: 0.045, bevelSize: 0.035, bevelSegments: 4
+        });
+        geo.computeBoundingBox();
+        const w = geo.boundingBox.max.x - geo.boundingBox.min.x;
+        const mat = new THREE.MeshPhysicalMaterial({
+          color: brand[i], metalness: 0.6, roughness: 0.16,
+          clearcoat: 1, clearcoatRoughness: 0.12,
+          emissive: brand[i], emissiveIntensity: 0.3, envMapIntensity: 1.3
+        });
+        const mesh = new THREE.Mesh(geo, mat);
+        mesh.position.x = cursorX - geo.boundingBox.min.x;
+        lettersGroup.add(mesh);
+        letters.push({ mesh: mesh, baseX: 0, dir: i - 2.5 });
+        cursorX += w + 0.1 + (i === 2 ? 0.42 : 0);
+      });
+      const totalW = cursorX - 0.1;
+      lettersGroup.children.forEach(function(m) { m.position.x -= totalW / 2; });
+      letters.forEach(function(l) { l.baseX = l.mesh.position.x; });
+      lettersGroup.position.y = -0.32;
+
+      // Soft glow backdrop (additive sprites)
+      function glowTexture() {
+        const c = document.createElement('canvas');
+        c.width = c.height = 256;
+        const g = c.getContext('2d');
+        const grad = g.createRadialGradient(128, 128, 0, 128, 128, 128);
+        grad.addColorStop(0, 'rgba(255,255,255,0.9)');
+        grad.addColorStop(0.4, 'rgba(255,255,255,0.25)');
+        grad.addColorStop(1, 'rgba(255,255,255,0)');
+        g.fillStyle = grad;
+        g.fillRect(0, 0, 256, 256);
+        return new THREE.CanvasTexture(c);
+      }
+      const glowTex = glowTexture();
+      function makeGlow(color, x, sx, sy) {
+        const m = new THREE.SpriteMaterial({
+          map: glowTex, color: color, transparent: true, opacity: 0.4,
+          blending: THREE.AdditiveBlending, depthWrite: false
+        });
+        const s = new THREE.Sprite(m);
+        s.scale.set(sx, sy, 1);
+        s.position.set(x, 0, -1.6);
+        scene.add(s);
+        return m;
+      }
+      const glowL = makeGlow(0x7850ff, -1.6, 7, 4.2);
+      const glowR = makeGlow(0x22d3ee, 1.8, 6, 3.8);
+
+      // Particle field (appears on hover / hub open)
+      const pCount = coarsePointer ? 90 : 150;
+      const pPos = new Float32Array(pCount * 3);
+      for (let i = 0; i < pCount; i++) {
+        pPos[i * 3] = (Math.random() - 0.5) * 8.5;
+        pPos[i * 3 + 1] = (Math.random() - 0.5) * 4.2;
+        pPos[i * 3 + 2] = (Math.random() - 0.5) * 3 - 0.5;
+      }
+      const pGeo = new THREE.BufferGeometry();
+      pGeo.setAttribute('position', new THREE.BufferAttribute(pPos, 3));
+      const pMat = new THREE.PointsMaterial({
+        color: 0xb9a3ff, size: 0.04, transparent: true, opacity: 0,
+        blending: THREE.AdditiveBlending, depthWrite: false
+      });
+      const particles = new THREE.Points(pGeo, pMat);
+      scene.add(particles);
+
+      // ---- Interaction state ----
+      let hover = false, open = false, spread = 0, scl = 1, parX = 0, parY = 0;
+      const toggleBtn = document.getElementById('hubToggle');
+      if (toggleBtn) {
+        toggleBtn.addEventListener('mouseenter', function() { hover = true; });
+        toggleBtn.addEventListener('mouseleave', function() { hover = false; });
+      }
+      document.addEventListener('hub:toggle', function(e) { open = e.detail.open; });
+      if (!coarsePointer) {
+        hub3dContainer.addEventListener('mousemove', function(e) {
+          const r = hub3dContainer.getBoundingClientRect();
+          parX = ((e.clientX - r.left) / r.width) * 2 - 1;
+          parY = ((e.clientY - r.top) / r.height) * 2 - 1;
+        });
+        hub3dContainer.addEventListener('mouseleave', function() { parX = 0; parY = 0; });
+      }
+
+      // ---- Sizing / perf ----
+      function resize() {
+        const w = hub3dContainer.clientWidth, h = hub3dContainer.clientHeight;
+        if (!w || !h) return;
+        const cap = w < 600 ? 1.5 : 2;
+        renderer.setPixelRatio(Math.min(window.devicePixelRatio || 1, cap));
+        renderer.setSize(w, h, false);
+        camera.aspect = w / h;
+        camera.updateProjectionMatrix();
+      }
+      resize();
+      new ResizeObserver(resize).observe(hub3dContainer);
+
+      let running = true;
+      new IntersectionObserver(function(entries) {
+        running = entries[0].isIntersecting;
+      }, { threshold: 0.02 }).observe(hub3dContainer);
+      document.addEventListener('visibilitychange', function() {
+        if (document.hidden) running = false;
+        else running = true;
+      });
+
+      // ---- Render loop ----
+      const clock = new THREE.Clock();
+      const damp = THREE.MathUtils.damp;
+      function frame() {
+        requestAnimationFrame(frame);
+        if (!running) { clock.getDelta(); return; }
+        const dt = Math.min(clock.getDelta(), 0.05);
+        const t = clock.elapsedTime;
+
+        spread = damp(spread, open ? 1 : 0, 4.5, dt);
+        scl = damp(scl, (hover || open) ? 1.07 : 1, 6, dt);
+
+        // cinematic letter separation
+        letters.forEach(function(l) {
+          l.mesh.position.x = l.baseX + l.dir * 0.22 * spread;
+          l.mesh.position.z = -Math.abs(l.dir) * 0.1 * spread;
+          l.mesh.rotation.y = l.dir * 0.06 * spread;
+        });
+
+        // idle motion + mouse parallax
+        const idle = reduceMotion3D ? 0 : 1;
+        group.rotation.y = Math.sin(t * 0.35) * 0.13 * idle + parX * 0.2;
+        group.rotation.x = Math.sin(t * 0.5) * 0.04 * idle - parY * 0.12 - spread * 0.1;
+        group.position.y = Math.sin(t * 0.8) * 0.07 * idle;
+        group.scale.setScalar(scl);
+
+        // breathing emissive glow
+        const breathe = 0.3 + Math.sin(t * 1.6) * 0.07 * idle + ((hover || open) ? 0.28 : 0);
+        letters.forEach(function(l) {
+          l.mesh.material.emissiveIntensity = damp(l.mesh.material.emissiveIntensity, breathe, 5, dt);
+        });
+        const glowTarget = 0.34 + Math.sin(t * 1.6) * 0.06 * idle + ((hover || open) ? 0.3 : 0);
+        glowL.opacity = damp(glowL.opacity, glowTarget, 5, dt);
+        glowR.opacity = damp(glowR.opacity, glowTarget * 0.85, 5, dt);
+
+        // particles on hover / open
+        pMat.opacity = damp(pMat.opacity, (hover || open) ? 0.8 : 0, 4, dt);
+        particles.rotation.y += dt * 0.05;
+
+        // camera pulls back when the hub opens
+        camera.position.z = damp(camera.position.z, open ? 10.5 : 9, 4, dt);
+
+        renderer.render(scene, camera);
+      }
+      frame();
+      hub3dContainer.classList.add('webgl-on');
+    }
+
+    // Lazy boot: keep first paint clean
+    var boot3D = function() {
+      initLogo3D().catch(function(err) {
+        console.warn('3D logo disabled, CSS fallback active:', err);
+      });
+    };
+    if ('requestIdleCallback' in window) requestIdleCallback(boot3D, { timeout: 2500 });
+    else setTimeout(boot3D, 600);
   </script>
 </body>
 </html>

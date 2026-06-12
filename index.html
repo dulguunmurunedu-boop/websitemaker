@@ -281,16 +281,69 @@ nav.scrolled {
 .ho-ring.r3 { inset: -9%; border-color: rgba(80,200,255,0.12); animation-duration: 48s; }
 .ho-ring.r3::before { background: var(--accent); box-shadow: 0 0 16px var(--accent); }
 @keyframes spinSlow { to { transform: rotate(360deg); } }
-.ho-glass {
-  position: absolute; border-radius: 16px;
-  background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.12);
-  backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px);
-  animation: floatY 6s ease-in-out infinite;
+/* Interactive ecosystem nodes — each orbit is a service; hover = value, click = related section */
+.eco-node {
+  position: absolute; transform: translate(-50%, -50%);
+  display: flex; flex-direction: column; align-items: center; gap: 9px;
+  background: none; border: none; cursor: pointer; z-index: 6;
+  font-family: var(--font-body); padding: 0;
 }
-.ho-glass.g1 { width: 64px; height: 64px; top: 6%; right: 12%; animation-delay: 0s; }
-.ho-glass.g2 { width: 42px; height: 42px; bottom: 14%; left: 4%; animation-delay: -2s; border-radius: 50%; }
-.ho-glass.g3 { width: 28px; height: 28px; top: 38%; left: -4%; animation-delay: -4s; }
-@keyframes floatY { 0%,100% { transform: translateY(0); } 50% { transform: translateY(-18px); } }
+.eco-node[data-eco="website"]    { top: -2%;  left: 50%; }
+.eco-node[data-eco="seo"]        { top: 30%;  left: 101%; }
+.eco-node[data-eco="branding"]   { top: 92%;  left: 82%; }
+.eco-node[data-eco="automation"] { top: 92%;  left: 18%; }
+.eco-node[data-eco="growth"]     { top: 30%;  left: -1%; }
+.eco-icon {
+  width: 56px; height: 56px; border-radius: 50%;
+  background: rgba(13,13,22,0.75); border: 1px solid rgba(255,255,255,0.14);
+  backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px);
+  display: flex; align-items: center; justify-content: center;
+  color: #b9a3ff; font-size: 1rem;
+  transition: all .4s var(--ease-out);
+  animation: floatY 7s ease-in-out infinite;
+  box-shadow: 0 8px 32px rgba(0,0,0,0.4);
+}
+.eco-node[data-eco="seo"] .eco-icon { animation-delay: -1.4s; color: #80d4ff; }
+.eco-node[data-eco="branding"] .eco-icon { animation-delay: -2.8s; color: #ff8fab; }
+.eco-node[data-eco="automation"] .eco-icon { animation-delay: -4.2s; color: #ffd080; }
+.eco-node[data-eco="growth"] .eco-icon { animation-delay: -5.6s; color: #7ee8b5; }
+.eco-node:hover .eco-icon, .eco-node:focus-visible .eco-icon {
+  border-color: rgba(120,80,255,0.7); transform: scale(1.12);
+  box-shadow: 0 0 32px rgba(120,80,255,0.4);
+}
+.eco-label {
+  font-family: var(--font-mono); font-size: .56rem; letter-spacing: .2em; text-transform: uppercase;
+  color: var(--text-dim); white-space: nowrap; transition: color .3s;
+}
+.eco-node:hover .eco-label, .eco-node:focus-visible .eco-label { color: #fff; }
+.eco-tip {
+  position: absolute; bottom: calc(100% + 16px); left: 50%;
+  transform: translateX(-50%) translateY(8px);
+  width: 232px; padding: 18px 20px; border-radius: 16px; text-align: left;
+  background: rgba(10,10,18,0.94); border: 1px solid rgba(120,80,255,0.3);
+  backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px);
+  box-shadow: 0 20px 60px rgba(0,0,0,0.6);
+  opacity: 0; pointer-events: none; transition: all .4s var(--ease-out); z-index: 20;
+}
+.eco-node:hover .eco-tip, .eco-node:focus-visible .eco-tip { opacity: 1; transform: translateX(-50%) translateY(0); }
+.eco-node[data-eco="branding"] .eco-tip, .eco-node[data-eco="automation"] .eco-tip { bottom: auto; top: calc(100% + 16px); transform: translateX(-50%) translateY(-8px); }
+.eco-node[data-eco="branding"] .eco-tip { left: auto; right: -10px; transform: translateY(-8px); }
+.eco-node[data-eco="branding"]:hover .eco-tip, .eco-node[data-eco="branding"]:focus-visible .eco-tip { transform: translateY(0); }
+.eco-node[data-eco="automation"]:hover .eco-tip, .eco-node[data-eco="automation"]:focus-visible .eco-tip { transform: translateX(-50%) translateY(0); }
+.eco-tip h4 { font-family: var(--font-heading); font-size: .92rem; font-weight: 600; color: #fff; margin-bottom: 6px; }
+.eco-tip p { font-size: .76rem; color: var(--text-dim); font-weight: 300; line-height: 1.55; margin-bottom: 10px; }
+.eco-tip .eco-go { font-size: .7rem; font-weight: 600; color: #b9a3ff; letter-spacing: .04em; }
+.eco-hint {
+  position: absolute; bottom: -8%; left: 50%; transform: translateX(-50%);
+  font-family: var(--font-mono); font-size: .58rem; letter-spacing: .26em; text-transform: uppercase;
+  color: var(--text-muted); white-space: nowrap; pointer-events: none;
+}
+@keyframes floatY { 0%,100% { transform: translateY(0); } 50% { transform: translateY(-12px); } }
+@media (max-width: 640px) {
+  .eco-icon { width: 44px; height: 44px; font-size: .85rem; }
+  .eco-label { font-size: .5rem; }
+  .eco-tip { width: 190px; padding: 14px 16px; }
+}
 .hero-scroll-hint {
   position: absolute; bottom: 36px; left: 50%; transform: translateX(-50%);
   display: flex; flex-direction: column; align-items: center; gap: 10px;
@@ -316,29 +369,47 @@ nav.scrolled {
 /* ===== TRANSFORMATION ===== */
 .transformation { padding: var(--section-pad) var(--side-pad); }
 .transformation-inner { max-width: 1280px; margin: 0 auto; }
-.compare-grid { display: grid; grid-template-columns: 1fr 1fr; gap: clamp(24px, 4vw, 56px); margin-top: 88px; position: relative; align-items: stretch; }
-.compare-arrow {
-  position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); z-index: 5;
-  width: 64px; height: 64px; border-radius: 50%;
-  background: linear-gradient(135deg, var(--accent), #5a3fd4); color: #fff;
-  display: flex; align-items: center; justify-content: center; font-size: 1.1rem;
-  box-shadow: 0 12px 48px rgba(120,80,255,0.5);
+/* Drag comparison: one frame, two realities */
+.ba-wrap { margin-top: 88px; }
+.ba-frame {
+  position: relative; border-radius: var(--radius-lg); overflow: hidden;
+  border: 1px solid var(--border-strong); background: var(--bg-card);
+  height: clamp(360px, 48vw, 520px); cursor: ew-resize;
+  touch-action: pan-y; user-select: none; -webkit-user-select: none;
 }
-.compare-panel {
-  border-radius: var(--radius-lg); overflow: hidden; position: relative;
-  border: 1px solid var(--border); background: var(--bg-card);
-  display: flex; flex-direction: column;
+.ba-layer { position: absolute; inset: 0; padding: 60px 28px 28px; }
+.ba-layer.ba-before { filter: saturate(0.25); }
+.ba-layer.ba-after {
+  clip-path: inset(0 calc(100% - var(--ba, 50%)) 0 0);
+  background: var(--bg);
 }
-.compare-tag {
-  position: absolute; top: 20px; left: 20px; z-index: 4;
+.ba-tag {
+  position: absolute; top: 18px; z-index: 4;
   font-family: var(--font-mono); font-size: .62rem; letter-spacing: .28em; text-transform: uppercase;
-  padding: 8px 16px; border-radius: 100px; backdrop-filter: blur(12px);
+  padding: 8px 16px; border-radius: 100px; backdrop-filter: blur(12px); pointer-events: none;
 }
-.compare-panel.before .compare-tag { background: rgba(255,255,255,0.06); color: var(--text-muted); border: 1px solid var(--border); }
-.compare-panel.after .compare-tag { background: rgba(120,80,255,0.2); color: #c9b8ff; border: 1px solid rgba(120,80,255,0.4); }
-.compare-screen { padding: 64px 28px 28px; min-height: 340px; flex: 1; }
-/* Before: tired, grey, cluttered */
-.compare-panel.before { filter: saturate(0.25); }
+.ba-tag.tag-before { right: 18px; background: rgba(255,255,255,0.06); color: var(--text-muted); border: 1px solid var(--border); }
+.ba-tag.tag-after { left: 18px; background: rgba(120,80,255,0.2); color: #c9b8ff; border: 1px solid rgba(120,80,255,0.4); }
+.ba-divider {
+  position: absolute; top: 0; bottom: 0; left: var(--ba, 50%); width: 2px; z-index: 5;
+  background: linear-gradient(180deg, var(--accent), var(--accent-2)); pointer-events: none;
+  box-shadow: 0 0 24px rgba(120,80,255,0.5);
+}
+.ba-handle {
+  position: absolute; top: 50%; left: var(--ba, 50%); transform: translate(-50%, -50%); z-index: 6;
+  width: 56px; height: 56px; border-radius: 50%; cursor: ew-resize;
+  background: linear-gradient(135deg, var(--accent), #5a3fd4); border: none; color: #fff; font-size: .95rem;
+  box-shadow: 0 12px 48px rgba(120,80,255,0.55), inset 0 1px 0 rgba(255,255,255,0.25);
+  transition: box-shadow .3s;
+}
+.ba-handle:hover, .ba-handle:focus-visible { box-shadow: 0 12px 56px rgba(120,80,255,0.8), inset 0 1px 0 rgba(255,255,255,0.25); }
+.ba-hint {
+  margin-top: 20px; text-align: center;
+  font-family: var(--font-mono); font-size: .62rem; letter-spacing: .3em; text-transform: uppercase; color: var(--text-muted);
+}
+.ba-captions { display: grid; grid-template-columns: 1fr 1fr; gap: clamp(24px, 4vw, 56px); margin-top: 40px; }
+.ba-captions .compare-caption { border-top: none; padding: 0; }
+.ba-captions .compare-caption.cap-before { text-align: right; }
 .before-site { background: #16161a; border-radius: 10px; padding: 14px; height: 100%; display: flex; flex-direction: column; gap: 10px; }
 .before-bar { height: 26px; background: #232328; border-radius: 4px; display: flex; align-items: center; gap: 6px; padding: 0 8px; }
 .before-bar i { width: 34px; height: 8px; background: #38383f; border-radius: 2px; }
@@ -906,6 +977,43 @@ footer { border-top: 1px solid var(--border); padding: 72px var(--side-pad) 36px
 .btn-outline { background: transparent; border: 1px solid var(--border-strong); color: var(--text); }
 .btn-outline:hover { border-color: rgba(255,255,255,0.3); background: rgba(255,255,255,0.05); }
 
+/* ===== VALUE COMMUNICATION ===== */
+.card-outcome {
+  display: flex; align-items: center; gap: 10px;
+  font-size: .82rem; font-weight: 500; color: #7ee8b5;
+  padding: 11px 16px; border-radius: 12px;
+  background: rgba(66,211,146,0.07); border: 1px solid rgba(66,211,146,0.16);
+  margin-bottom: 14px;
+}
+.card-outcome i { font-size: .72rem; }
+.calc-recommend {
+  margin: 36px 0 4px; padding: 26px; border-radius: 18px; text-align: left;
+  background: rgba(120,80,255,0.06); border: 1px solid rgba(120,80,255,0.25);
+}
+.calc-recommend-label {
+  font-family: var(--font-mono); font-size: .6rem; letter-spacing: .3em; text-transform: uppercase;
+  color: #b9a3ff; margin-bottom: 16px; display: flex; align-items: center; gap: 10px;
+}
+.calc-recommend-card { display: flex; align-items: center; gap: 18px; flex-wrap: wrap; }
+.calc-recommend-swatch { width: 52px; height: 52px; border-radius: 14px; flex-shrink: 0; box-shadow: 0 8px 28px rgba(0,0,0,0.35); }
+.calc-recommend-body { flex: 1; min-width: 160px; }
+.calc-recommend-body h4 { font-family: var(--font-heading); font-size: 1.1rem; font-weight: 600; color: #fff; margin-bottom: 3px; }
+.calc-recommend-body p { font-size: .8rem; color: var(--text-dim); font-weight: 300; }
+.calc-recommend-actions { display: flex; gap: 10px; flex-wrap: wrap; }
+.calc-recommend-actions .btn { padding: 13px 24px; font-size: .8rem; }
+.trust-live {
+  display: inline-flex; align-items: center; gap: 12px;
+  margin-top: 40px; padding: 13px 26px; border-radius: 100px;
+  background: rgba(66,211,146,0.06); border: 1px solid rgba(66,211,146,0.2);
+  font-size: .84rem; color: var(--text-dim);
+}
+.live-dot {
+  width: 8px; height: 8px; border-radius: 50%; background: #42d392; flex-shrink: 0;
+  box-shadow: 0 0 12px rgba(66,211,146,0.8); animation: pulse 2.2s infinite;
+}
+#trustTicker { transition: opacity .45s ease; }
+#trustTicker.fading { opacity: 0; }
+
 /* ===== RESPONSIVE ===== */
 @media (max-width: 1180px) {
   .stats-grid { grid-template-columns: repeat(2, 1fr); }
@@ -915,7 +1023,8 @@ footer { border-top: 1px solid var(--border); padding: 72px var(--side-pad) 36px
   .nav-cta { display: none; }
   .hamburger { display: flex; }
   .hero-inner { grid-template-columns: 1fr; gap: 56px; }
-  .hero-3d { max-width: 420px; margin: 0 auto; max-height: 50vh; }
+  .hero-3d { max-width: 420px; margin: 0 auto; max-height: none; }
+  .hero-scroll-hint { display: none; }
   .custom-inner { grid-template-columns: 1fr; }
   .custom-narrative { position: static; }
   .packages-grid { grid-template-columns: 1fr; max-width: 520px; margin-left: auto; margin-right: auto; }
@@ -927,10 +1036,10 @@ footer { border-top: 1px solid var(--border); padding: 72px var(--side-pad) 36px
   .atmo-orb { filter: blur(80px); }
 }
 @media (max-width: 820px) {
-  .compare-grid { grid-template-columns: 1fr; }
-  .compare-arrow { position: relative; top: auto; left: auto; transform: rotate(90deg); margin: -10px auto; order: 2; }
-  .compare-panel.before { order: 1; }
-  .compare-panel.after { order: 3; }
+  .ba-frame { height: 340px; }
+  .ba-layer { padding: 54px 16px 16px; }
+  .ba-captions { grid-template-columns: 1fr; gap: 24px; }
+  .ba-captions .compare-caption.cap-before { text-align: left; }
   .contact-container { grid-template-columns: 1fr; }
 }
 @media (max-width: 640px) {
@@ -1066,15 +1175,61 @@ footer { border-top: 1px solid var(--border); padding: 72px var(--side-pad) 36px
            To embed a Spline scene, paste inside #hero-3d-container:
            <iframe src="https://my.spline.design/YOUR-SCENE-URL/" loading="lazy" title="3D"></iframe>
            or use the spline-viewer web component. The CSS fallback object hides automatically. -->
-      <div class="hero-3d" id="hero-3d-container" data-reveal="scale" data-delay="250" aria-hidden="true">
+      <div class="hero-3d" id="hero-3d-container" data-reveal="scale" data-delay="250">
         <div class="hero-object">
-          <div class="ho-ring r3"></div>
-          <div class="ho-ring"></div>
-          <div class="ho-ring r2"></div>
-          <div class="ho-core"></div>
-          <div class="ho-glass g1"></div>
-          <div class="ho-glass g2"></div>
-          <div class="ho-glass g3"></div>
+          <div class="ho-ring r3" aria-hidden="true"></div>
+          <div class="ho-ring" aria-hidden="true"></div>
+          <div class="ho-ring r2" aria-hidden="true"></div>
+          <div class="ho-core" aria-hidden="true"></div>
+
+          <!-- Interactive ecosystem: hover = value, click = related section -->
+          <button class="eco-node" data-eco="website" data-target="#work">
+            <span class="eco-icon"><i class="fas fa-laptop-code"></i></span>
+            <span class="eco-label" data-i18n="ecoWebsite">Вэбсайт</span>
+            <span class="eco-tip">
+              <h4 data-i18n="ecoWebsiteT">Таны дижитал гэр</h4>
+              <p data-i18n="ecoWebsiteD">Брэндийн төв цэг. Бүх харилцагч эндээс эхэлж танилцана.</p>
+              <span class="eco-go" data-i18n="ecoWebsiteG">Цуглуулга үзэх →</span>
+            </span>
+          </button>
+          <button class="eco-node" data-eco="seo" data-target="#custom">
+            <span class="eco-icon"><i class="fas fa-magnifying-glass-chart"></i></span>
+            <span class="eco-label">SEO</span>
+            <span class="eco-tip">
+              <h4 data-i18n="ecoSeoT">Google-д олдоно</h4>
+              <p data-i18n="ecoSeoD">Хайлтад дээгүүр гарч, шинэ харилцагч өөрөө ирдэг болно.</p>
+              <span class="eco-go" data-i18n="ecoSeoG">Хэрхэн ажилладаг →</span>
+            </span>
+          </button>
+          <button class="eco-node" data-eco="branding" data-target="#transformation">
+            <span class="eco-icon"><i class="fas fa-gem"></i></span>
+            <span class="eco-label" data-i18n="ecoBrand">Брэндинг</span>
+            <span class="eco-tip">
+              <h4 data-i18n="ecoBrandT">Анхны сэтгэгдэл</h4>
+              <p data-i18n="ecoBrandD">Сайхан дизайн итгэл төрүүлж, итгэл худалдан авалт болдог.</p>
+              <span class="eco-go" data-i18n="ecoBrandG">Өөрчлөлт харах →</span>
+            </span>
+          </button>
+          <button class="eco-node" data-eco="automation" data-target="#calculator">
+            <span class="eco-icon"><i class="fas fa-bolt"></i></span>
+            <span class="eco-label" data-i18n="ecoAuto">Автомат</span>
+            <span class="eco-tip">
+              <h4 data-i18n="ecoAutoT">Өөрөө ажилладаг</h4>
+              <p data-i18n="ecoAutoD">Захиалга, форм, мессеж — таныг унтаж байхад ч ажиллана.</p>
+              <span class="eco-go" data-i18n="ecoAutoG">Үнэ тооцох →</span>
+            </span>
+          </button>
+          <button class="eco-node" data-eco="growth" data-target="#trust">
+            <span class="eco-icon"><i class="fas fa-chart-line"></i></span>
+            <span class="eco-label" data-i18n="ecoGrowth">Өсөлт</span>
+            <span class="eco-tip">
+              <h4 data-i18n="ecoGrowthT">Хэмжигдэх үр дүн</h4>
+              <p data-i18n="ecoGrowthD">Тоо худал хэлдэггүй. Үр дүнг хамтдаа хэмжинэ.</p>
+              <span class="eco-go" data-i18n="ecoGrowthG">Үр дүн харах →</span>
+            </span>
+          </button>
+
+          <span class="eco-hint" data-i18n="ecoHint">Экосистемийг судлаарай</span>
         </div>
       </div>
     </div>
@@ -1106,10 +1261,10 @@ footer { border-top: 1px solid var(--border); padding: 72px var(--side-pad) 36px
           <span data-i18n="transTitle2">брэнд туршлага руу.</span>
         </h2>
       </div>
-      <div class="compare-grid">
-        <div class="compare-panel before" data-reveal="left">
-          <span class="compare-tag" data-i18n="beforeTag">Өмнө</span>
-          <div class="compare-screen">
+      <div class="ba-wrap" data-reveal data-delay="200">
+        <div class="ba-frame" id="baFrame" style="--ba:50%">
+          <div class="ba-layer ba-before">
+            <span class="ba-tag tag-before" data-i18n="beforeTag">Өмнө</span>
             <div class="before-site">
               <div class="before-bar"><i></i><i></i><i></i><i></i></div>
               <div class="before-banner"><span>BANNER 1280×300</span></div>
@@ -1121,15 +1276,8 @@ footer { border-top: 1px solid var(--border); padding: 72px var(--side-pad) 36px
               <div class="before-foot"></div>
             </div>
           </div>
-          <div class="compare-caption">
-            <h3 data-i18n="beforeTitle">Ердийн бизнес сайт</h3>
-            <p data-i18n="beforeDesc">Хуучирсан загвар, удаан ачаалал, утсан дээр эвдэрдэг. Зочин 5 секундын дотор гарч одно.</p>
-          </div>
-        </div>
-        <div class="compare-arrow" aria-hidden="true"><i class="fas fa-arrow-right"></i></div>
-        <div class="compare-panel after" data-reveal="right" data-delay="150">
-          <span class="compare-tag" data-i18n="afterTag">Дараа</span>
-          <div class="compare-screen">
+          <div class="ba-layer ba-after">
+            <span class="ba-tag tag-after" data-i18n="afterTag">Дараа</span>
             <div class="after-site">
               <div class="after-nav"><b>BRAND</b><span><i></i><i></i><i></i></span></div>
               <div class="after-hero">
@@ -1145,9 +1293,20 @@ footer { border-top: 1px solid var(--border); padding: 72px var(--side-pad) 36px
               </div>
             </div>
           </div>
-          <div class="compare-caption">
+          <div class="ba-divider" aria-hidden="true"></div>
+          <button class="ba-handle" id="baHandle" aria-label="Өмнө/дараа харьцуулагч — сум товчоор хөдөлгөнө" role="slider" aria-valuemin="0" aria-valuemax="100" aria-valuenow="50">
+            <i class="fas fa-arrows-left-right"></i>
+          </button>
+        </div>
+        <div class="ba-hint" data-i18n="baHint">⟷ Чирж харьцуулаарай</div>
+        <div class="ba-captions">
+          <div class="compare-caption cap-after">
             <h3 data-i18n="afterTitle">OGT UUR туршлага</h3>
             <p data-i18n="afterDesc">Кино шиг урсгал, хурдан, мобайлд төгс. Зочин үлдэж, итгэж, харилцагч болдог.</p>
+          </div>
+          <div class="compare-caption cap-before">
+            <h3 data-i18n="beforeTitle">Ердийн бизнес сайт</h3>
+            <p data-i18n="beforeDesc">Хуучирсан загвар, удаан ачаалал, утсан дээр эвдэрдэг. Зочин 5 секундын дотор гарч одно.</p>
           </div>
         </div>
       </div>
@@ -1303,6 +1462,10 @@ footer { border-top: 1px solid var(--border); padding: 72px var(--side-pad) 36px
           <span data-i18n="trustTitle1">Тоо ярьдаг.</span><br>
           <span data-i18n="trustTitle2">Үр дүн батaлдаг.</span>
         </h2>
+        <div class="trust-live" data-reveal data-delay="200">
+          <span class="live-dot" aria-hidden="true"></span>
+          <span id="trustTicker">Студи онлайн — дунджаар 30 минутад хариу өгдөг</span>
+        </div>
       </div>
       <div class="stats-grid">
         <div class="stat-card" data-reveal data-delay="0">
@@ -1436,6 +1599,7 @@ footer { border-top: 1px solid var(--border); padding: 72px var(--side-pad) 36px
           <i class="fas fa-info-circle"></i>
           <span data-i18n="calcNotice">Энэхүү үнэ нь урьдчилсан тооцоолол. Нарийвчилсан үнийг манай мэргэжилтэнтэй 5 минут ярьсны дараа гаргаж өгнө.</span>
         </div>
+        <div class="calc-recommend" id="calcRecommend"></div>
         <div class="calc-trust">
           <div class="calc-trust-item" data-i18n="calcTrust1">⚡ 30 минутын дотор эргэн холбогдоно</div>
           <div class="calc-trust-item" data-i18n="calcTrust2">📄 Үнийн санал үнэгүй</div>
@@ -1704,6 +1868,19 @@ footer { border-top: 1px solid var(--border); padding: 72px var(--side-pad) 36px
     /* ============================================================
        MARKETPLACE (preserved functionality)
        ============================================================ */
+    // Business outcome per template theme — what the buyer gains, not what the file contains
+    var OUTCOMES = {
+      shop:       { mn: 'Онлайн борлуулалтаа 24/7 нээнэ',        en: 'Opens your sales 24/7' },
+      business:   { mn: 'Итгэлцэл бүрдүүлж, харилцагч татна',     en: 'Builds trust, attracts clients' },
+      portfolio:  { mn: 'Хувийн брэндийг тань бэхжүүлнэ',         en: 'Strengthens your personal brand' },
+      restaurant: { mn: 'Ширээний захиалгыг автоматжуулна',       en: 'Automates table bookings' },
+      clinic:     { mn: 'Цаг авалтыг хялбар, итгэлтэй болгоно',   en: 'Makes appointments easy & trusted' },
+      delivery:   { mn: 'Захиалга хүлээн авалтыг автоматжуулна',  en: 'Automates order intake' },
+      education:  { mn: 'Сурагчдын бүртгэлийг өсгөнө',            en: 'Grows student enrollment' },
+      realestate: { mn: 'Заруудыг хурдан борлуулахад тусална',    en: 'Helps listings sell faster' }
+    };
+    function currentLang() { return document.documentElement.lang === 'en' ? 'en' : 'mn'; }
+
     function renderTemplates() {
       var grid = document.getElementById('marketplaceGrid');
       if (!grid) return;
@@ -1722,6 +1899,7 @@ footer { border-top: 1px solid var(--border); padding: 72px var(--side-pad) 36px
               '<div class="price-amount" style="background:' + t.gradient + ';-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text">' + t.price + '</div>' +
               '<div class="price-delivery">⚡ ' + t.delivery + '</div>' +
             '</div>' +
+            '<div class="card-outcome"><i class="fas fa-arrow-trend-up"></i> ' + (OUTCOMES[t.theme] ? OUTCOMES[t.theme][currentLang()] : '') + '</div>' +
             '<div class="social-proof">' + t.socialProof + '</div>' +
             '<button class="btn-reset template-btn">Live Preview →</button>' +
           '</div>' +
@@ -1813,12 +1991,51 @@ footer { border-top: 1px solid var(--border); padding: 72px var(--side-pad) 36px
       var tMax = tMin + 3;
       document.getElementById('calcResultPriceMin').textContent = calcFmt(min);
       document.getElementById('calcResultPriceMax').textContent = calcFmt(max);
-      document.getElementById('calcResultTime').textContent = tMin + ' – ' + tMax + ' өдөр';
+      document.getElementById('calcResultTime').textContent = tMin + ' – ' + tMax + (currentLang() === 'en' ? ' days' : ' өдөр');
+      calcRenderRecommendation();
       document.getElementById('calcResult').classList.add('show');
       document.getElementById('calcLeadForm').classList.add('show');
       document.getElementById('calcFormSuccess').classList.remove('show');
       var form = document.getElementById('calcForm');
       if (form) form.style.display = '';
+    }
+
+    // Recommendation: connect the estimate to a concrete next step
+    var CALC_REC_MAP = { intro: 1, shop: 0, booking: 3, clinic: 4, other: -1 };
+    var REC_STR = {
+      mn: { label: 'Танд тохирох шийдэл', view: 'Загвар үзэх', custom: 'Custom хийлгэх',
+            customTitle: 'Custom хөгжүүлэлт', customDesc: 'Таны хэрэгцээ онцгой тул тусгайлан бүтээхийг зөвлөж байна.',
+            tplDesc: 'Бэлэн загвараар илүү хурдан, хямд эхлэх боломжтой.' },
+      en: { label: 'Recommended for you', view: 'View template', custom: 'Go custom',
+            customTitle: 'Custom development', customDesc: 'Your needs are unique — we recommend a tailored build.',
+            tplDesc: 'Start faster and cheaper with a ready-made template.' }
+    };
+    function calcRenderRecommendation() {
+      var box = document.getElementById('calcRecommend');
+      if (!box) return;
+      var L = REC_STR[currentLang()];
+      var idx = CALC_REC_MAP[document.querySelector('#calcStep1 .calc-option-btn.selected') ?
+        document.querySelector('#calcStep1 .calc-option-btn.selected').dataset.value : 'other'];
+      var goCustom = (idx === -1) || calcState.multiplier >= 1.5;
+      var html = '<div class="calc-recommend-label"><i class="fas fa-wand-magic-sparkles"></i> ' + L.label + '</div>';
+      if (goCustom) {
+        html += '<div class="calc-recommend-card">' +
+          '<div class="calc-recommend-swatch" style="background:linear-gradient(135deg,#7850ff,#ff6496)"></div>' +
+          '<div class="calc-recommend-body"><h4>' + L.customTitle + '</h4><p>' + L.customDesc + '</p></div>' +
+          '<div class="calc-recommend-actions"><a href="#custom" class="btn btn-primary">' + L.custom + '</a></div>' +
+        '</div>';
+      } else {
+        var t = templates[idx];
+        html += '<div class="calc-recommend-card">' +
+          '<div class="calc-recommend-swatch" style="background:' + t.gradient + '"></div>' +
+          '<div class="calc-recommend-body"><h4>' + t.name + ' — ' + t.price + '</h4><p>' + L.tplDesc + '</p></div>' +
+          '<div class="calc-recommend-actions">' +
+            '<button type="button" class="btn btn-primary" onclick="openModal(' + idx + ')">' + L.view + '</button>' +
+            '<a href="#custom" class="btn btn-ghost">' + L.custom + '</a>' +
+          '</div>' +
+        '</div>';
+      }
+      box.innerHTML = html;
     }
 
     window.calcGoBack = function(n) {
@@ -1874,6 +2091,79 @@ footer { border-top: 1px solid var(--border); padding: 72px var(--side-pad) 36px
     }
 
     /* ============================================================
+       INTERACTIVE STORYTELLING
+       ============================================================ */
+    // Hero ecosystem: each orbit node guides to the section that proves its value
+    function initEcosystem() {
+      document.querySelectorAll('.eco-node').forEach(function(node) {
+        node.addEventListener('click', function() {
+          var target = document.querySelector(node.dataset.target);
+          if (target) target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        });
+      });
+    }
+
+    // Before/After drag comparison
+    function initBASlider() {
+      var frame = document.getElementById('baFrame');
+      var handle = document.getElementById('baHandle');
+      if (!frame || !handle) return;
+      var pos = 50;
+      function setPos(p) {
+        pos = Math.max(4, Math.min(96, p));
+        frame.style.setProperty('--ba', pos + '%');
+        handle.setAttribute('aria-valuenow', Math.round(pos));
+      }
+      function fromEvent(e) {
+        var rect = frame.getBoundingClientRect();
+        setPos((e.clientX - rect.left) / rect.width * 100);
+      }
+      var dragging = false;
+      frame.addEventListener('pointerdown', function(e) {
+        dragging = true;
+        try { frame.setPointerCapture(e.pointerId); } catch (err) {}
+        fromEvent(e);
+      });
+      frame.addEventListener('pointermove', function(e) { if (dragging) fromEvent(e); });
+      ['pointerup', 'pointercancel'].forEach(function(ev) {
+        frame.addEventListener(ev, function() { dragging = false; });
+      });
+      handle.addEventListener('keydown', function(e) {
+        if (e.key === 'ArrowLeft') { setPos(pos - 4); e.preventDefault(); }
+        if (e.key === 'ArrowRight') { setPos(pos + 4); e.preventDefault(); }
+      });
+    }
+
+    // Dynamic trust indicator: rotating live status line
+    var TICKER = {
+      mn: [
+        'Студи онлайн — дунджаар 30 минутад хариу өгдөг',
+        'Сүүлийн төсөл энэ долоо хоногт хүргэгдсэн',
+        'Үнийн санал үнэгүй — 1 цагийн дотор',
+        '50+ бизнес бидэнтэй хамт онлайн боллоо'
+      ],
+      en: [
+        'Studio online — replies in ~30 minutes',
+        'Latest project delivered this week',
+        'Quotes are free — within 1 hour',
+        '50+ businesses launched with us'
+      ]
+    };
+    function initTrustTicker() {
+      var el = document.getElementById('trustTicker');
+      if (!el) return;
+      var i = 0;
+      setInterval(function() {
+        el.classList.add('fading');
+        setTimeout(function() {
+          i = (i + 1) % TICKER.mn.length;
+          el.textContent = TICKER[currentLang()][i];
+          el.classList.remove('fading');
+        }, 450);
+      }, 4200);
+    }
+
+    /* ============================================================
        LANGUAGE SWITCHER (MN / EN)
        ============================================================ */
     var I18N_EN = {
@@ -1886,6 +2176,14 @@ footer { border-top: 1px solid var(--border); padding: 72px var(--side-pad) 36px
       heroCta1: 'Start Your Project', heroCta2: 'View Collection',
       heroMeta1: 'Projects', heroMeta2: 'Average Delivery', heroMeta3: 'Support',
       scrollHint: 'Scroll',
+      ecoWebsite: 'Website', ecoBrand: 'Branding', ecoAuto: 'Automation', ecoGrowth: 'Growth',
+      ecoHint: 'Explore the ecosystem',
+      ecoWebsiteT: 'Your digital home', ecoWebsiteD: 'The center of your brand. Every customer journey starts here.', ecoWebsiteG: 'View collection →',
+      ecoSeoT: 'Found on Google', ecoSeoD: 'Rank higher in search so new customers come to you.', ecoSeoG: 'See how it works →',
+      ecoBrandT: 'First impressions', ecoBrandD: 'Beautiful design builds trust — and trust becomes sales.', ecoBrandG: 'See the transformation →',
+      ecoAutoT: 'Works by itself', ecoAutoD: 'Orders, forms, messages — working even while you sleep.', ecoAutoG: 'Calculate your price →',
+      ecoGrowthT: 'Measurable results', ecoGrowthD: "Numbers don't lie. We measure results together.", ecoGrowthG: 'See the results →',
+      baHint: '⟷ Drag to compare',
       visionStatement: 'The future of business <em>begins with beautiful</em> design.',
       visionFoot: "We don't sell websites. We craft digital environments that make your brand felt.",
       transEyebrow: 'Transformation',
@@ -1975,6 +2273,9 @@ footer { border-top: 1px solid var(--border); padding: 72px var(--side-pad) 36px
         b.classList.toggle('active', on);
         b.setAttribute('aria-pressed', on);
       });
+      // Re-render generated content so outcome lines follow the language
+      var grid = document.getElementById('marketplaceGrid');
+      if (grid && grid.children.length) { renderTemplates(); filterTemplates(); }
       try { localStorage.setItem('ogt-lang', lang); } catch (e) {}
     }
 
@@ -2068,6 +2369,9 @@ footer { border-top: 1px solid var(--border); padding: 72px var(--side-pad) 36px
     document.addEventListener('DOMContentLoaded', function() {
       renderTemplates();
       initCalculator();
+      initEcosystem();
+      initBASlider();
+      initTrustTicker();
 
       // Word-split text reveals
       if (!reduceMotion) {

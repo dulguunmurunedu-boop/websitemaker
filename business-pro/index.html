@@ -3,446 +3,958 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Business Pro — Мэргэжлийн Бизнес Вэбсайт Загвар</title>
-  <meta name="description" content="Business Pro — Мэргэжлийн бизнес вэбсайт загвар. 150+ амжилттай төсөл, 98% үйлчлүүлэгчийн сэтгэл ханамж." />
-  <meta property="og:title" content="Business Pro — Мэргэжлийн Бизнес Вэбсайт" />
-  <meta property="og:description" content="Мэргэжлийн бизнес вэбсайт загвар. Хурдан хүргэлт, тогтмол дэмжлэг." />
-  <meta property="og:type" content="website" />
-  <meta property="og:url" content="https://dulguunmurunedu-boop.github.io/websitemaker/business-pro/" />
-  <meta name="twitter:card" content="summary_large_image" />
+  <title>Оргил Партнерс — Санхүү, Татвар, Эрх зүйн зөвлөх үйлчилгээ | Business Pro Template</title>
+  <meta name="description" content="15+ жилийн туршлагатай зөвлөх баг. Санхүү бүртгэл, татварын төлөвлөлт, эрх зүйн зөвлөгөө, хүний нөөцийн шийдэл — нэг дороос. Үнэгүй зөвлөгөө аваарай.">
+  <meta property="og:title" content="Оргил Партнерс — Бизнесийн зөвлөх үйлчилгээ">
+  <meta property="og:description" content="Шийдвэр бүрийн ард мэргэжлийн баг. Санхүү, татвар, эрх зүй, хүний нөөц.">
+  <meta property="og:type" content="website">
+  <meta property="og:locale" content="mn_MN">
   <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600;700;800&family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
-  <link rel="stylesheet" href="assets/css/style.css">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "ProfessionalService",
+    "name": "Оргил Партнерс",
+    "description": "Санхүү, татвар, эрх зүй, хүний нөөцийн зөвлөх үйлчилгээ",
+    "areaServed": { "@type": "Country", "name": "Mongolia" },
+    "address": { "@type": "PostalAddress", "addressLocality": "Ulaanbaatar", "addressCountry": "MN" },
+    "telephone": "+976-7700-0000",
+    "priceRange": "₮₮₮"
+  }
+  </script>
+  <style>
+/* ============================================================
+   BUSINESS PRO — Premium Corporate Template
+   Dark luxury · Champagne gold · Serif authority
+   ============================================================ */
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; -webkit-font-smoothing: antialiased; text-rendering: optimizeLegibility; }
+:root {
+  --bg: #060708;
+  --bg-2: #0a0c0f;
+  --panel: rgba(255,255,255,0.025);
+  --panel-2: rgba(255,255,255,0.045);
+  --line: rgba(255,255,255,0.07);
+  --line-2: rgba(255,255,255,0.14);
+  --gold: #d9aa54;
+  --gold-2: #f0cf8e;
+  --gold-dim: rgba(217,170,84,0.16);
+  --blue: #6e8bff;
+  --text: #ece9e2;
+  --dim: rgba(236,233,226,0.6);
+  --mute: rgba(236,233,226,0.36);
+  --serif: 'Playfair Display', Georgia, serif;
+  --sans: 'Inter', sans-serif;
+  --mono: 'JetBrains Mono', monospace;
+  --ease: cubic-bezier(0.16, 1, 0.3, 1);
+  --pad: clamp(24px, 5vw, 72px);
+  --sect: clamp(110px, 13vw, 190px);
+}
+body { font-family: var(--sans); background: var(--bg); color: var(--text); line-height: 1.75; overflow-x: hidden; }
+a { color: inherit; text-decoration: none; }
+img { max-width: 100%; }
+::selection { background: rgba(217,170,84,0.35); color: #fff; }
+
+/* ---- atmosphere ---- */
+.atmo { position: fixed; inset: 0; z-index: -1; overflow: hidden; pointer-events: none; }
+.atmo-orb { position: absolute; border-radius: 50%; filter: blur(110px); will-change: transform; }
+.orb-g { width: 55vw; height: 55vw; top: -22vw; right: -16vw; background: radial-gradient(circle, rgba(217,170,84,0.10), transparent 65%); }
+.orb-b { width: 48vw; height: 48vw; top: 80vh; left: -20vw; background: radial-gradient(circle, rgba(110,139,255,0.07), transparent 65%); }
+.orb-g2 { width: 44vw; height: 44vw; top: 190vh; right: -14vw; background: radial-gradient(circle, rgba(217,170,84,0.06), transparent 65%); }
+.grain {
+  position: fixed; inset: 0; z-index: 9990; pointer-events: none; opacity: 0.5;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.035'/%3E%3C/svg%3E");
+}
+.progress { position: fixed; top: 0; left: 0; height: 2px; width: 0; background: linear-gradient(90deg, var(--gold), var(--gold-2)); z-index: 10001; }
+
+/* ---- reveal system ---- */
+[data-r] { opacity: 0; transform: translateY(42px); transition: opacity 1s var(--ease), transform 1s var(--ease); }
+[data-r="l"] { transform: translateX(-52px); }
+[data-r="r"] { transform: translateX(52px); }
+[data-r].in { opacity: 1; transform: none; }
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  *, *::before, *::after { animation-duration: .001s !important; transition-duration: .001s !important; }
+  [data-r] { opacity: 1 !important; transform: none !important; }
+}
+
+/* ---- type ---- */
+.k {
+  font-family: var(--mono); font-size: .66rem; letter-spacing: .42em; text-transform: uppercase;
+  color: var(--gold); display: flex; align-items: center; gap: 16px; margin-bottom: 28px;
+}
+.k::before { content: ''; width: 36px; height: 1px; background: var(--gold); opacity: .6; }
+.k.center { justify-content: center; }
+.k.center::after { content: ''; width: 36px; height: 1px; background: var(--gold); opacity: .6; }
+.h2 {
+  font-family: var(--serif); font-weight: 600; font-size: clamp(2.2rem, 4.6vw, 3.9rem);
+  line-height: 1.12; letter-spacing: -0.01em; color: #fff;
+}
+.h2 em { font-style: italic; color: var(--gold-2); }
+.lead { font-size: clamp(.98rem, 1.3vw, 1.12rem); color: var(--dim); font-weight: 300; max-width: 560px; margin-top: 22px; }
+.section { padding: var(--sect) var(--pad); position: relative; }
+.wrap { max-width: 1240px; margin: 0 auto; }
+.head-row { display: flex; justify-content: space-between; align-items: flex-end; gap: 40px; flex-wrap: wrap; margin-bottom: clamp(48px, 7vw, 88px); }
+
+/* ---- buttons ---- */
+.btn {
+  display: inline-flex; align-items: center; justify-content: center; gap: 10px;
+  padding: 17px 38px; border-radius: 4px; font-size: .88rem; font-weight: 600; letter-spacing: .02em;
+  cursor: pointer; border: none; font-family: var(--sans); transition: all .45s var(--ease); position: relative;
+}
+.btn-gold { background: linear-gradient(135deg, var(--gold), #b8893d); color: #14100a; box-shadow: 0 10px 36px rgba(217,170,84,0.25); }
+.btn-gold:hover { transform: translateY(-3px); box-shadow: 0 18px 48px rgba(217,170,84,0.4); }
+.btn-line { background: transparent; color: var(--text); border: 1px solid var(--line-2); }
+.btn-line:hover { border-color: rgba(217,170,84,0.6); color: var(--gold-2); transform: translateY(-3px); }
+.btn-block { width: 100%; }
+
+/* ---- nav ---- */
+nav {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 22px var(--pad); transition: all .5s var(--ease);
+}
+nav.on { background: rgba(6,7,8,0.82); backdrop-filter: blur(28px) saturate(1.4); -webkit-backdrop-filter: blur(28px) saturate(1.4); border-bottom: 1px solid var(--line); padding: 14px var(--pad); }
+.logo { display: flex; align-items: baseline; gap: 10px; }
+.logo b { font-family: var(--serif); font-size: 1.25rem; font-weight: 700; color: #fff; letter-spacing: .01em; }
+.logo b span { color: var(--gold); }
+.logo small { font-family: var(--mono); font-size: .56rem; letter-spacing: .3em; text-transform: uppercase; color: var(--mute); }
+.nav-links { display: flex; gap: 38px; }
+.nav-links a { font-size: .8rem; font-weight: 500; color: var(--dim); transition: color .3s; position: relative; padding: 4px 0; }
+.nav-links a::after { content: ''; position: absolute; left: 0; bottom: 0; width: 0; height: 1px; background: var(--gold); transition: width .4s var(--ease); }
+.nav-links a:hover { color: #fff; }
+.nav-links a:hover::after { width: 100%; }
+.nav-cta { font-size: .8rem; font-weight: 600; color: var(--gold-2); padding: 11px 24px; border: 1px solid rgba(217,170,84,0.4); border-radius: 4px; transition: all .4s; }
+.nav-cta:hover { background: var(--gold-dim); }
+.burger { display: none; background: none; border: none; cursor: pointer; flex-direction: column; gap: 5px; padding: 8px; }
+.burger span { width: 22px; height: 1.5px; background: #fff; display: block; transition: .3s; }
+.m-nav {
+  position: fixed; inset: 0; z-index: 10000; background: rgba(6,7,8,0.97);
+  backdrop-filter: blur(30px); -webkit-backdrop-filter: blur(30px);
+  display: flex; flex-direction: column; justify-content: center; padding: 48px; gap: 6px;
+  opacity: 0; pointer-events: none; transition: opacity .45s var(--ease);
+}
+.m-nav.open { opacity: 1; pointer-events: auto; }
+.m-nav a { font-family: var(--serif); font-size: clamp(1.8rem, 7vw, 2.6rem); color: var(--dim); padding: 10px 0; transition: color .3s; }
+.m-nav a:hover { color: var(--gold-2); }
+.m-close { position: absolute; top: 26px; right: 26px; background: none; border: none; color: #fff; font-size: 1.5rem; cursor: pointer; }
+
+/* ---- hero ---- */
+.hero { min-height: 100vh; display: flex; align-items: center; padding: 150px var(--pad) 90px; position: relative; overflow: hidden; }
+.hero-wrap { max-width: 1240px; margin: 0 auto; width: 100%; display: grid; grid-template-columns: 1.1fr .9fr; gap: clamp(48px, 6vw, 90px); align-items: center; }
+.hero-badge {
+  display: inline-flex; align-items: center; gap: 12px; padding: 9px 20px; border-radius: 100px;
+  background: var(--panel); border: 1px solid var(--line); font-family: var(--mono);
+  font-size: .62rem; letter-spacing: .26em; text-transform: uppercase; color: var(--dim); margin-bottom: 34px;
+}
+.hero-badge i { color: var(--gold); font-size: .55rem; }
+.hero h1 {
+  font-family: var(--serif); font-weight: 700; font-size: clamp(2.7rem, 6vw, 5rem);
+  line-height: 1.08; letter-spacing: -0.01em; color: #fff; margin-bottom: 30px;
+}
+.hero h1 em { font-style: italic; background: linear-gradient(110deg, var(--gold-2), var(--gold)); -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; }
+.hero-desc { font-size: clamp(1rem, 1.4vw, 1.15rem); color: var(--dim); font-weight: 300; max-width: 500px; margin-bottom: 44px; }
+.hero-actions { display: flex; gap: 16px; flex-wrap: wrap; margin-bottom: 60px; }
+.hero-stats { display: flex; gap: clamp(28px, 4vw, 56px); flex-wrap: wrap; }
+.hstat .n { font-family: var(--serif); font-size: clamp(1.7rem, 2.6vw, 2.4rem); font-weight: 700; color: #fff; line-height: 1; }
+.hstat .n i { font-style: normal; color: var(--gold); }
+.hstat .l { font-size: .7rem; letter-spacing: .12em; text-transform: uppercase; color: var(--mute); margin-top: 8px; }
+
+/* hero visual — layered KPI glass composition */
+.hero-vis { position: relative; height: clamp(380px, 44vw, 540px); }
+.hv-card {
+  position: absolute; border-radius: 14px;
+  background: linear-gradient(160deg, rgba(255,255,255,0.05), rgba(255,255,255,0.015));
+  border: 1px solid var(--line-2); backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px);
+  box-shadow: 0 30px 80px rgba(0,0,0,0.5); padding: 26px; will-change: transform;
+}
+.hv-main { top: 8%; left: 4%; right: 18%; bottom: 14%; display: flex; flex-direction: column; }
+.hv-main .t { font-family: var(--mono); font-size: .6rem; letter-spacing: .3em; text-transform: uppercase; color: var(--mute); margin-bottom: 18px; }
+.hv-chart { flex: 1; display: flex; align-items: flex-end; gap: 9%; padding-bottom: 6px; border-bottom: 1px solid var(--line); }
+.hv-bar { flex: 1; border-radius: 3px 3px 0 0; background: linear-gradient(180deg, rgba(217,170,84,0.85), rgba(217,170,84,0.15)); transform-origin: bottom; transform: scaleY(0); transition: transform 1.2s var(--ease); }
+.hv-bar:nth-child(2) { transition-delay: .1s; } .hv-bar:nth-child(3) { transition-delay: .2s; }
+.hv-bar:nth-child(4) { transition-delay: .3s; } .hv-bar:nth-child(5) { transition-delay: .4s; }
+.hv-bar:nth-child(6) { transition-delay: .5s; }
+.in .hv-bar { transform: scaleY(1); }
+.hv-foot { display: flex; justify-content: space-between; margin-top: 14px; font-family: var(--mono); font-size: .56rem; color: var(--mute); letter-spacing: .1em; }
+.hv-kpi1 { top: 0; right: 0; width: 200px; }
+.hv-kpi2 { bottom: 0; right: 8%; width: 220px; }
+.hv-kpi .num { font-family: var(--serif); font-size: 1.7rem; font-weight: 700; color: var(--gold-2); line-height: 1.1; }
+.hv-kpi .lbl { font-size: .7rem; color: var(--dim); margin-top: 4px; }
+.hv-kpi .up { display: inline-flex; align-items: center; gap: 6px; margin-top: 10px; font-size: .62rem; color: #79d49a; font-family: var(--mono); }
+.hero-scroll { position: absolute; bottom: 34px; left: 50%; transform: translateX(-50%); display: flex; flex-direction: column; align-items: center; gap: 8px; font-family: var(--mono); font-size: .56rem; letter-spacing: .3em; text-transform: uppercase; color: var(--mute); }
+.hero-scroll .ln { width: 1px; height: 38px; background: linear-gradient(180deg, var(--gold), transparent); animation: drop 2.4s var(--ease) infinite; }
+@keyframes drop { 0% { transform: scaleY(0); transform-origin: top; } 50% { transform: scaleY(1); transform-origin: top; } 51% { transform-origin: bottom; } 100% { transform: scaleY(0); transform-origin: bottom; } }
+
+/* ---- trust ---- */
+.trust { padding: 56px var(--pad); border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); background: rgba(255,255,255,0.012); }
+.trust-wrap { max-width: 1240px; margin: 0 auto; display: flex; align-items: center; gap: clamp(28px, 5vw, 64px); flex-wrap: wrap; justify-content: center; }
+.trust-label { font-family: var(--mono); font-size: .6rem; letter-spacing: .3em; text-transform: uppercase; color: var(--mute); flex-shrink: 0; }
+.trust-logos { display: flex; gap: clamp(28px, 5vw, 60px); flex-wrap: wrap; align-items: center; justify-content: center; }
+.tlogo { font-family: var(--serif); font-size: 1.02rem; font-weight: 600; letter-spacing: .06em; color: rgba(236,233,226,0.3); transition: color .4s; white-space: nowrap; }
+.tlogo:hover { color: rgba(236,233,226,0.75); }
+
+/* ---- services ---- */
+.s-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 22px; }
+.s-card {
+  position: relative; padding: 44px 38px; border-radius: 10px;
+  background: var(--panel); border: 1px solid var(--line);
+  transition: transform .55s var(--ease), border-color .4s, background .4s; overflow: hidden;
+}
+.s-card::before {
+  content: ''; position: absolute; top: 0; left: 0; right: 0; height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(217,170,84,0.7), transparent);
+  opacity: 0; transition: opacity .5s;
+}
+.s-card:hover { transform: translateY(-8px); border-color: var(--line-2); background: var(--panel-2); }
+.s-card:hover::before { opacity: 1; }
+.s-num { font-family: var(--mono); font-size: .62rem; letter-spacing: .26em; color: var(--mute); margin-bottom: 26px; }
+.s-icon { width: 50px; height: 50px; border-radius: 8px; background: var(--gold-dim); border: 1px solid rgba(217,170,84,0.3); display: flex; align-items: center; justify-content: center; color: var(--gold-2); font-size: 1rem; margin-bottom: 24px; }
+.s-card h3 { font-family: var(--serif); font-size: 1.3rem; font-weight: 600; color: #fff; margin-bottom: 12px; }
+.s-card p { font-size: .88rem; color: var(--dim); font-weight: 300; margin-bottom: 22px; }
+.s-link { font-size: .76rem; font-weight: 600; color: var(--gold); letter-spacing: .04em; display: inline-flex; align-items: center; gap: 8px; transition: gap .3s; }
+.s-card:hover .s-link { gap: 13px; }
+
+/* ---- case studies ---- */
+.case { display: grid; grid-template-columns: 1fr 1fr; border: 1px solid var(--line); border-radius: 12px; overflow: hidden; background: var(--panel); margin-bottom: 26px; transition: border-color .4s; }
+.case:hover { border-color: var(--line-2); }
+.case-vis { position: relative; min-height: 300px; padding: 40px; display: flex; align-items: center; justify-content: center; overflow: hidden; }
+.case:nth-child(odd) .case-vis { order: 2; }
+.case-vis::before { content: ''; position: absolute; inset: 0; opacity: .9; }
+.cv-1::before { background: linear-gradient(140deg, #15110a 0%, #241a0d 55%, #1a1208 100%); }
+.cv-2::before { background: linear-gradient(140deg, #0a0e15 0%, #101a2a 55%, #0a1018 100%); }
+.cv-3::before { background: linear-gradient(140deg, #0c130e 0%, #122016 55%, #0b150e 100%); }
+.case-metric { position: relative; text-align: center; }
+.case-metric .big { font-family: var(--serif); font-weight: 800; font-size: clamp(3.4rem, 7vw, 5.6rem); line-height: 1; background: linear-gradient(120deg, #fff 25%, var(--gold-2)); -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; }
+.case-metric .sub { font-family: var(--mono); font-size: .62rem; letter-spacing: .3em; text-transform: uppercase; color: var(--dim); margin-top: 14px; }
+.case-body { padding: clamp(36px, 4.5vw, 60px); display: flex; flex-direction: column; justify-content: center; }
+.case-tag { font-family: var(--mono); font-size: .6rem; letter-spacing: .3em; text-transform: uppercase; color: var(--gold); margin-bottom: 18px; }
+.case-body h3 { font-family: var(--serif); font-size: clamp(1.4rem, 2.2vw, 1.85rem); font-weight: 600; color: #fff; margin-bottom: 16px; line-height: 1.3; }
+.case-body p { font-size: .92rem; color: var(--dim); font-weight: 300; margin-bottom: 26px; }
+.case-points { display: flex; flex-direction: column; gap: 11px; }
+.case-points span { display: flex; gap: 12px; align-items: baseline; font-size: .85rem; color: var(--dim); }
+.case-points i { color: var(--gold); font-size: .6rem; }
+
+/* ---- process ---- */
+.proc-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 22px; position: relative; }
+.proc-grid::before { content: ''; position: absolute; top: 31px; left: 8%; right: 8%; height: 1px; background: linear-gradient(90deg, transparent, rgba(217,170,84,0.35) 20%, rgba(217,170,84,0.35) 80%, transparent); }
+.p-step { position: relative; text-align: left; padding-top: 0; }
+.p-dot {
+  width: 62px; height: 62px; border-radius: 50%; position: relative; z-index: 2;
+  background: var(--bg-2); border: 1px solid rgba(217,170,84,0.4);
+  display: flex; align-items: center; justify-content: center;
+  font-family: var(--serif); font-size: 1.05rem; font-weight: 700; color: var(--gold-2); margin-bottom: 26px;
+}
+.p-step h3 { font-family: var(--serif); font-size: 1.15rem; font-weight: 600; color: #fff; margin-bottom: 10px; }
+.p-step p { font-size: .84rem; color: var(--dim); font-weight: 300; }
+.p-step .free { display: inline-block; margin-top: 12px; font-family: var(--mono); font-size: .58rem; letter-spacing: .2em; text-transform: uppercase; color: #79d49a; border: 1px solid rgba(121,212,154,0.3); padding: 5px 12px; border-radius: 100px; }
+
+/* ---- benefits ---- */
+.b-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px; background: var(--line); border: 1px solid var(--line); border-radius: 12px; overflow: hidden; }
+.b-cell { background: var(--bg); padding: 44px 38px; transition: background .4s; position: relative; }
+.b-cell:hover { background: var(--bg-2); }
+.b-cell i.fa-solid, .b-cell i.fas { color: var(--gold); font-size: 1.1rem; margin-bottom: 20px; display: block; }
+.b-cell h3 { font-size: 1.02rem; font-weight: 600; color: #fff; margin-bottom: 10px; }
+.b-cell p { font-size: .84rem; color: var(--dim); font-weight: 300; }
+
+/* ---- FAQ ---- */
+.faq-wrap { max-width: 820px; margin: 0 auto; }
+.faq-item { border-bottom: 1px solid var(--line); }
+.faq-q {
+  width: 100%; display: flex; justify-content: space-between; align-items: center; gap: 24px;
+  padding: 28px 6px; background: none; border: none; cursor: pointer; text-align: left;
+  font-family: var(--serif); font-size: clamp(1.02rem, 1.6vw, 1.25rem); font-weight: 600; color: var(--text);
+  transition: color .3s;
+}
+.faq-q:hover { color: var(--gold-2); }
+.faq-q .x { width: 30px; height: 30px; flex-shrink: 0; border: 1px solid var(--line-2); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: .7rem; color: var(--gold); transition: transform .45s var(--ease), background .3s; }
+.faq-item.open .faq-q .x { transform: rotate(45deg); background: var(--gold-dim); }
+.faq-a { max-height: 0; overflow: hidden; transition: max-height .55s var(--ease); }
+.faq-a p { padding: 0 6px 28px; font-size: .92rem; color: var(--dim); font-weight: 300; max-width: 680px; }
+
+/* ---- testimonials ---- */
+.t-stage { max-width: 880px; margin: 0 auto; position: relative; min-height: 280px; }
+.t-slide { position: absolute; inset: 0; opacity: 0; transform: translateY(18px); transition: opacity .7s var(--ease), transform .7s var(--ease); pointer-events: none; text-align: center; padding: 0 16px; }
+.t-slide.on { opacity: 1; transform: none; pointer-events: auto; position: relative; }
+.t-mark { font-family: var(--serif); font-size: 4rem; line-height: .6; color: var(--gold); opacity: .8; display: block; margin-bottom: 26px; }
+.t-slide blockquote { font-family: var(--serif); font-size: clamp(1.2rem, 2.4vw, 1.7rem); font-weight: 500; font-style: italic; color: #fff; line-height: 1.5; margin-bottom: 34px; }
+.t-who { display: flex; align-items: center; justify-content: center; gap: 16px; }
+.t-ava { width: 48px; height: 48px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-family: var(--serif); font-weight: 700; color: #14100a; background: linear-gradient(135deg, var(--gold-2), var(--gold)); }
+.t-who .nm { font-size: .92rem; font-weight: 600; color: #fff; text-align: left; }
+.t-who .rl { font-size: .74rem; color: var(--mute); text-align: left; }
+.t-dots { display: flex; justify-content: center; gap: 10px; margin-top: 44px; }
+.t-dot { width: 26px; height: 3px; border-radius: 100px; background: var(--line-2); border: none; cursor: pointer; transition: background .4s, width .4s; padding: 0; }
+.t-dot.on { background: var(--gold); width: 44px; }
+
+/* ---- pricing ---- */
+.pr-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; align-items: stretch; }
+.pr-card {
+  padding: 46px 40px; border-radius: 12px; background: var(--panel); border: 1px solid var(--line);
+  display: flex; flex-direction: column; position: relative; transition: transform .5s var(--ease), border-color .4s;
+}
+.pr-card:hover { transform: translateY(-8px); border-color: var(--line-2); }
+.pr-card.hot { border-color: rgba(217,170,84,0.45); background: linear-gradient(180deg, rgba(217,170,84,0.07), var(--panel) 55%); }
+.pr-flag { position: absolute; top: 22px; right: 22px; font-family: var(--mono); font-size: .54rem; letter-spacing: .24em; text-transform: uppercase; color: var(--gold-2); border: 1px solid rgba(217,170,84,0.45); padding: 6px 13px; border-radius: 100px; background: var(--gold-dim); }
+.pr-name { font-family: var(--mono); font-size: .62rem; letter-spacing: .32em; text-transform: uppercase; color: var(--mute); margin-bottom: 18px; }
+.pr-price { font-family: var(--serif); font-size: clamp(1.7rem, 2.4vw, 2.1rem); font-weight: 700; color: #fff; line-height: 1.1; }
+.pr-price small { font-size: .85rem; font-family: var(--sans); font-weight: 400; color: var(--mute); }
+.pr-desc { font-size: .84rem; color: var(--dim); font-weight: 300; margin: 12px 0 30px; }
+.pr-list { list-style: none; display: flex; flex-direction: column; gap: 13px; margin-bottom: 38px; flex: 1; }
+.pr-list li { display: flex; gap: 12px; align-items: baseline; font-size: .86rem; color: var(--dim); font-weight: 300; }
+.pr-list i { color: var(--gold); font-size: .6rem; }
+.pr-note { text-align: center; margin-top: 36px; font-size: .78rem; color: var(--mute); font-weight: 300; }
+
+/* ---- contact ---- */
+.c-wrap {
+  max-width: 1240px; margin: 0 auto; display: grid; grid-template-columns: 1fr 1.05fr;
+  gap: clamp(40px, 6vw, 88px); border: 1px solid var(--line); border-radius: 14px;
+  background: var(--panel); padding: clamp(36px, 5vw, 70px);
+}
+.c-info h2 { font-family: var(--serif); font-size: clamp(1.7rem, 3vw, 2.5rem); font-weight: 600; color: #fff; line-height: 1.2; margin-bottom: 18px; }
+.c-info h2 em { font-style: italic; color: var(--gold-2); }
+.c-info > p { font-size: .94rem; color: var(--dim); font-weight: 300; margin-bottom: 40px; }
+.c-rows { display: flex; flex-direction: column; gap: 24px; }
+.c-row { display: flex; gap: 18px; align-items: flex-start; }
+.c-row i { width: 42px; height: 42px; flex-shrink: 0; border-radius: 8px; background: var(--gold-dim); border: 1px solid rgba(217,170,84,0.3); color: var(--gold-2); display: flex; align-items: center; justify-content: center; font-size: .82rem; }
+.c-row b { display: block; font-size: .86rem; color: #fff; font-weight: 600; }
+.c-row span { font-size: .85rem; color: var(--dim); font-weight: 300; line-height: 1.6; }
+.c-form { display: flex; flex-direction: column; gap: 15px; }
+.c-form .duo { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; }
+.c-form input, .c-form textarea {
+  width: 100%; padding: 16px 20px; border-radius: 6px; background: rgba(255,255,255,0.03);
+  border: 1px solid var(--line-2); color: #fff; font-family: var(--sans); font-size: .9rem;
+  outline: none; resize: vertical; transition: border-color .3s;
+}
+.c-form input:focus, .c-form textarea:focus { border-color: rgba(217,170,84,0.65); }
+.c-form input::placeholder, .c-form textarea::placeholder { color: var(--mute); }
+.c-sent { display: none; text-align: center; padding: 40px 0; }
+.c-sent.show { display: block; }
+.c-sent i { font-size: 2.2rem; color: #79d49a; margin-bottom: 16px; }
+.c-sent h3 { font-family: var(--serif); font-size: 1.4rem; color: #fff; margin-bottom: 8px; }
+.c-sent p { color: var(--dim); font-size: .9rem; }
+
+/* ---- footer ---- */
+footer { border-top: 1px solid var(--line); padding: 70px var(--pad) 34px; }
+.f-wrap { max-width: 1240px; margin: 0 auto; display: grid; grid-template-columns: 1.4fr 1fr 1fr; gap: clamp(36px, 5vw, 72px); }
+.f-brand p { font-size: .85rem; color: var(--dim); font-weight: 300; max-width: 300px; margin-top: 18px; }
+.f-col h4 { font-family: var(--mono); font-size: .6rem; letter-spacing: .3em; text-transform: uppercase; color: var(--mute); margin-bottom: 22px; }
+.f-col a, .f-col span { display: block; font-size: .86rem; color: var(--dim); font-weight: 300; padding: 6px 0; transition: color .3s; }
+.f-col a:hover { color: var(--gold-2); }
+.f-base { max-width: 1240px; margin: 56px auto 0; padding-top: 26px; border-top: 1px solid var(--line); display: flex; justify-content: space-between; gap: 14px; flex-wrap: wrap; font-size: .74rem; color: var(--mute); font-weight: 300; }
+
+/* ---- responsive ---- */
+@media (max-width: 1080px) {
+  .s-grid { grid-template-columns: 1fr 1fr; }
+  .b-grid { grid-template-columns: 1fr 1fr; }
+  .proc-grid { grid-template-columns: 1fr 1fr; gap: 44px 22px; }
+  .proc-grid::before { display: none; }
+}
+@media (max-width: 920px) {
+  .nav-links, .nav-cta { display: none; }
+  .burger { display: flex; }
+  .hero-wrap { grid-template-columns: 1fr; }
+  .hero-vis { max-width: 560px; }
+  .case { grid-template-columns: 1fr; }
+  .case:nth-child(odd) .case-vis { order: 0; }
+  .case-vis { min-height: 240px; }
+  .pr-grid { grid-template-columns: 1fr; max-width: 480px; margin: 0 auto; }
+  .c-wrap { grid-template-columns: 1fr; }
+  .f-wrap { grid-template-columns: 1fr; gap: 36px; }
+}
+@media (max-width: 600px) {
+  .s-grid, .b-grid { grid-template-columns: 1fr; }
+  .proc-grid { grid-template-columns: 1fr; }
+  .hero-actions .btn { width: 100%; }
+  .c-form .duo { grid-template-columns: 1fr; }
+  .hero-stats { gap: 24px; }
+  .hv-kpi1 { display: none; }
+}
+  </style>
 </head>
 <body>
-  <!-- NAVIGATION -->
-  <nav class="nav" id="navbar">
-    <div class="nav-container">
-      <a href="index.html" class="nav-logo">
-        <span class="logo-icon">B</span>
-        <span class="logo-text">Business<span class="logo-accent">Pro</span></span>
-      </a>
-      <ul class="nav-links">
-        <li><a href="index.html" class="active">Нүүр</a></li>
-        <li><a href="pages/about.html">Бидний тухай</a></li>
-        <li><a href="pages/services.html">Үйлчилгээ</a></li>
-        <li><a href="pages/projects.html">Төслүүд</a></li>
-        <li><a href="pages/team.html">Баг</a></li>
-        <li><a href="pages/pricing.html">Үнэ</a></li>
-        <li><a href="pages/blog.html">Блог</a></li>
-        <li><a href="pages/contact.html">Холбоо барих</a></li>
-      </ul>
-      <div class="nav-actions">
-        <a href="pages/contact.html" class="btn btn-primary btn-sm">Үнийн санал авах</a>
-      </div>
-      <button class="nav-toggle" id="navToggle" aria-label="Цэс нээх">
-        <span></span><span></span><span></span>
-      </button>
+
+  <div class="progress" id="prog"></div>
+  <div class="atmo" aria-hidden="true">
+    <div class="atmo-orb orb-g" data-sp="0.05"></div>
+    <div class="atmo-orb orb-b" data-sp="-0.04"></div>
+    <div class="atmo-orb orb-g2" data-sp="0.04"></div>
+  </div>
+  <div class="grain" aria-hidden="true"></div>
+
+  <!-- NAV -->
+  <nav id="nav" aria-label="Үндсэн цэс">
+    <a href="#top" class="logo">
+      <b>Оргил<span>.</span></b>
+      <small>Партнерс</small>
+    </a>
+    <div class="nav-links">
+      <a href="#services">Үйлчилгээ</a>
+      <a href="#cases">Үр дүн</a>
+      <a href="#process">Үйл явц</a>
+      <a href="#pricing">Үнэ</a>
+      <a href="#faq">Асуулт</a>
     </div>
+    <a href="#contact" class="nav-cta">Үнэгүй зөвлөгөө</a>
+    <button class="burger" id="burger" aria-label="Цэс нээх"><span></span><span></span><span></span></button>
   </nav>
 
-  <!-- HERO SECTION -->
-  <section class="hero">
-    <div class="hero-bg">
-      <div class="hero-orb orb-1"></div>
-      <div class="hero-orb orb-2"></div>
-      <div class="hero-grid"></div>
-    </div>
-    <div class="container">
-      <div class="hero-content">
-        <div class="hero-badge">
-          <span class="badge-dot"></span>
-          Тогтвортой бизнес өсөлт
-        </div>
-        <h1 class="hero-title">
-          Таны бизнесийн<br>
-          <span class="gradient-text">өсөлтийн найдвартай</span><br>
-          түнш.
-        </h1>
-        <p class="hero-desc">
-          Стратеги зөвлөгөө, төслийн удирдлага, үйл ажиллагааны оновчлол.
-          Бид таны салбарын амжилтыг дараагийн түвшинд хүргэнэ.
-        </p>
-        <div class="hero-actions">
-          <a href="pages/contact.html" class="btn btn-primary btn-lg">
-            <i class="fas fa-rocket"></i>
-            Холбогдох
-          </a>
-          <a href="pages/projects.html" class="btn btn-ghost btn-lg">
-            <i class="fas fa-eye"></i>
-            Төслүүд үзэх
-          </a>
-        </div>
-        <div class="hero-stats">
-          <div class="stat-item">
-            <span class="stat-number" data-count="150">0</span><span class="stat-suffix">+</span>
-            <span class="stat-label">Амжилттай төсөл</span>
-          </div>
-          <div class="stat-item">
-            <span class="stat-number" data-count="98">0</span><span class="stat-suffix">%</span>
-            <span class="stat-label">Сэтгэл ханамж</span>
-          </div>
-          <div class="stat-item">
-            <span class="stat-number" data-count="24">0</span><span class="stat-suffix">/7</span>
-            <span class="stat-label">Дэмжлэг</span>
-          </div>
-        </div>
-      </div>
-    </div>
-    <div class="hero-scroll">
-      <span>Гүйлгэж харах</span>
-      <div class="scroll-line"></div>
-    </div>
-  </section>
+  <div class="m-nav" id="mnav">
+    <button class="m-close" id="mclose" aria-label="Цэс хаах"><i class="fas fa-times"></i></button>
+    <a href="#services">Үйлчилгээ</a>
+    <a href="#cases">Үр дүн</a>
+    <a href="#process">Үйл явц</a>
+    <a href="#pricing">Үнэ</a>
+    <a href="#faq">Асуулт</a>
+    <a href="#contact">Холбоо барих</a>
+  </div>
 
-  <!-- CLIENT LOGOS -->
-  <section class="clients">
-    <div class="container">
-      <p class="clients-label">Түүхий компаниуд бидэнд итгэдэг</p>
-      <div class="clients-grid">
-        <div class="client-logo">Монгол Банк</div>
-        <div class="client-logo">Эрдэнэс Тавантолгой</div>
-        <div class="client-logo">Голомт Банк</div>
-        <div class="client-logo">Мобиком</div>
-        <div class="client-logo">Транс Монгол</div>
-        <div class="client-logo">АТМ Групп</div>
+  <main id="top">
+
+  <!-- ============ HERO ============ -->
+  <header class="hero">
+    <div class="hero-wrap">
+      <div>
+        <div class="hero-badge" data-r><i class="fas fa-circle"></i> Санхүү · Татвар · Эрх зүй · Хүний нөөц</div>
+        <h1 data-r>Шийдвэр бүрийн ард <em>мэргэжлийн баг</em> байг.</h1>
+        <p class="hero-desc" data-r>Оргил Партнерс нь 15 жилийн турш Монголын 240 гаруй байгууллагын санхүү, татвар, эрх зүйн асуудлыг хариуцаж, өсөлтийг нь хамгаалж ирсэн.</p>
+        <div class="hero-actions" data-r>
+          <a href="#contact" class="btn btn-gold">Үнэгүй зөвлөгөө авах</a>
+          <a href="#cases" class="btn btn-line">Үр дүнг харах</a>
+        </div>
+        <div class="hero-stats" data-r>
+          <div class="hstat"><div class="n"><span data-cnt="15">0</span><i>+</i></div><div class="l">Жилийн туршлага</div></div>
+          <div class="hstat"><div class="n"><span data-cnt="240">0</span><i>+</i></div><div class="l">Харилцагч байгууллага</div></div>
+          <div class="hstat"><div class="n"><span data-cnt="98">0</span><i>%</i></div><div class="l">Гэрээ үргэлжлүүлэлт</div></div>
+        </div>
+      </div>
+      <div class="hero-vis" data-r="r" id="heroVis">
+        <div class="hv-card hv-main" data-par="14">
+          <div class="t">Харилцагчийн өсөлт — сүүлийн 6 улирал</div>
+          <div class="hv-chart">
+            <div class="hv-bar" style="height:34%"></div>
+            <div class="hv-bar" style="height:46%"></div>
+            <div class="hv-bar" style="height:42%"></div>
+            <div class="hv-bar" style="height:61%"></div>
+            <div class="hv-bar" style="height:74%"></div>
+            <div class="hv-bar" style="height:92%"></div>
+          </div>
+          <div class="hv-foot"><span>Q1</span><span>Q2</span><span>Q3</span><span>Q4</span><span>Q1</span><span>Q2</span></div>
+        </div>
+        <div class="hv-card hv-kpi hv-kpi1" data-par="30">
+          <div class="num">₮1.2 тэрбум</div>
+          <div class="lbl">Хэмнэсэн татварын зардал — 2025</div>
+          <span class="up"><i class="fas fa-arrow-trend-up"></i> +23% жилээр</span>
+        </div>
+        <div class="hv-card hv-kpi hv-kpi2" data-par="22">
+          <div class="num">24 цаг</div>
+          <div class="lbl">Хариу өгөх дундаж хугацаа</div>
+          <span class="up"><i class="fas fa-check"></i> Гэрээгээр баталгаажсан</span>
+        </div>
       </div>
     </div>
-  </section>
+    <div class="hero-scroll" aria-hidden="true">Гүйлгэх<span class="ln"></span></div>
+  </header>
 
-  <!-- SERVICES SECTION -->
-  <section class="services section" id="services">
-    <div class="container">
-      <div class="section-header">
-        <span class="section-badge">ҮЙЛЧИЛГЭЭ</span>
-        <h2 class="section-title">Бидний мэргэжлийн үйлчилгээ</h2>
-        <p class="section-desc">Таны бизнесийн хэрэгцээнд тохирсон цогц шийдэл</p>
-      </div>
-      <div class="services-grid">
-        <div class="service-card">
-          <div class="service-icon purple"><i class="fas fa-chart-line"></i></div>
-          <h3>Стратеги зөвлөгөө</h3>
-          <p>Таны бизнесийн өсөлтийг хангах стратеги төлөвлөгөө, зах зээл шинжилгээ</p>
-          <a href="pages/services.html" class="service-link">Дэлгэрэнгүй <i class="fas fa-arrow-right"></i></a>
-        </div>
-        <div class="service-card">
-          <div class="service-icon pink"><i class="fas fa-project-diagram"></i></div>
-          <h3>Төслийн удирдлага</h3>
-          <p>Төслүүдийг цаг хугацаа, төсөв, чанарын хувьд удирдах</p>
-          <a href="pages/services.html" class="service-link">Дэлгэрэнгүй <i class="fas fa-arrow-right"></i></a>
-        </div>
-        <div class="service-card">
-          <div class="service-icon blue"><i class="fas fa-cogs"></i></div>
-          <h3>Үйл ажиллагааны оновчлол</h3>
-          <p>Ажлын үйл явцыг оновчилж, бүтээмжийг нэмэгдүүлэх</p>
-          <a href="pages/services.html" class="service-link">Дэлгэрэнгүй <i class="fas fa-arrow-right"></i></a>
-        </div>
-        <div class="service-card">
-          <div class="service-icon green"><i class="fas fa-handshake"></i></div>
-          <h3>Харилцагчийн шийдэл</h3>
-          <p>Харилцагчийн сэтгэл ханамжийг нэмэгдүүлэх цогц шийдэл</p>
-          <a href="pages/services.html" class="service-link">Дэлгэрэнгүй <i class="fas fa-arrow-right"></i></a>
-        </div>
-        <div class="service-card">
-          <div class="service-icon orange"><i class="fas fa-user-tie"></i></div>
-          <h3>Мэргэжлийн зөвлөгөө</h3>
-          <p>Салбарын мэргэжилтнүүдийн туршлага, мэдлэгийг ашиглах</p>
-          <a href="pages/services.html" class="service-link">Дэлгэрэнгүй <i class="fas fa-arrow-right"></i></a>
-        </div>
-        <div class="service-card">
-          <div class="service-icon cyan"><i class="fas fa-headset"></i></div>
-          <h3>Тогтмол дэмжлэг</h3>
-          <p>24/7 дэмжлэг, асуудал шийдвэрлэлт, тогтмол хяналт</p>
-          <a href="pages/services.html" class="service-link">Дэлгэрэнгүй <i class="fas fa-arrow-right"></i></a>
-        </div>
+  <!-- ============ TRUST ============ -->
+  <section class="trust" aria-label="Харилцагч байгууллагууд">
+    <div class="trust-wrap" data-r>
+      <span class="trust-label">Бидэнд итгэдэг:</span>
+      <div class="trust-logos">
+        <span class="tlogo">ТЭНГЭР ГРУПП</span>
+        <span class="tlogo">МӨНХ КОНСТРАКШН</span>
+        <span class="tlogo">ХАН ЛОЖИСТИК</span>
+        <span class="tlogo">СОЁМБО РИТЕЙЛ</span>
+        <span class="tlogo">АЛТАН ТАРИА ХХК</span>
+        <span class="tlogo">ОЧИР ПРОПЕРТИ</span>
       </div>
     </div>
   </section>
 
-  <!-- PROJECTS SECTION -->
-  <section class="projects section" id="projects">
-    <div class="container">
-      <div class="section-header">
-        <span class="section-badge">ТӨСЛҮҮД</span>
-        <h2 class="section-title">Амжилттай төслүүд</h2>
-        <p class="section-desc">Манай хамт олны гүйцэтгэсэн онцлох төслүүд</p>
+  <!-- ============ SERVICES ============ -->
+  <section class="section" id="services">
+    <div class="wrap">
+      <div class="head-row">
+        <div>
+          <div class="k" data-r>Үйлчилгээ</div>
+          <h2 class="h2" data-r>Бизнесийн <em>бүх тулгуур</em> —<br>нэг багийн хариуцлагад.</h2>
+        </div>
+        <p class="lead" data-r>Салангид зөвлөхүүд биш — таны бизнесийг бүхэлд нь ойлгодог нэг баг. Асуудал хоорондын уялдааг бид хариуцна.</p>
       </div>
-      <div class="projects-grid">
-        <div class="project-card">
-          <div class="project-image" style="background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);">
-            <div class="project-overlay">
-              <span class="project-category">Үйлдвэрлэл</span>
-            </div>
-          </div>
-          <div class="project-info">
-            <h3>Монгол Үйлдвэр ХХК</h3>
-            <p>Нийлүүлэлтийн сүлжээний оновчлол</p>
-            <div class="project-results">
-              <span class="result">+35% Бүтээмж</span>
-              <span class="result">-20% Зардал</span>
-            </div>
-          </div>
-        </div>
-        <div class="project-card">
-          <div class="project-image" style="background: linear-gradient(135deg, #0a1628 0%, #1a2a4a 100%);">
-            <div class="project-overlay">
-              <span class="project-category">Барилга</span>
-            </div>
-          </div>
-          <div class="project-info">
-            <h3>Улаанбаатар Барилга ХХК</h3>
-            <p>Төслийн удирдлага, үйл явцын шинэчлэл</p>
-            <div class="project-results">
-              <span class="result">+20% Үр ашиг</span>
-              <span class="result">3 сар хурдан</span>
-            </div>
-          </div>
-        </div>
-        <div class="project-card">
-          <div class="project-image" style="background: linear-gradient(135deg, #1a0a1a 0%, #2d152d 100%);">
-            <div class="project-overlay">
-              <span class="project-category">Худалдаа</span>
-            </div>
-          </div>
-          <div class="project-info">
-            <h3>Дэлгүүр Групп ХХК</h3>
-            <p>Харилцагчийн сэтгэл ханамж нэмэгдүүлэх</p>
-            <div class="project-results">
-              <span class="result">+40% Дахин захиалга</span>
-              <span class="result">4.9 Үнэлгээ</span>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="section-cta">
-        <a href="pages/projects.html" class="btn btn-primary">Бүх төслүүд үзэх</a>
+      <div class="s-grid">
+        <article class="s-card" data-r>
+          <div class="s-num">01</div>
+          <div class="s-icon"><i class="fas fa-calculator"></i></div>
+          <h3>Санхүү, нягтлан бодох бүртгэл</h3>
+          <p>Сар бүрийн тайлан, НӨАТ, нийгмийн даатгал — хугацаандаа, алдаагүй. Та тоо биш, бизнесээ удирдаарай.</p>
+          <a href="#contact" class="s-link">Зөвлөгөө авах <i class="fas fa-arrow-right"></i></a>
+        </article>
+        <article class="s-card" data-r>
+          <div class="s-num">02</div>
+          <div class="s-icon"><i class="fas fa-scale-balanced"></i></div>
+          <h3>Татварын төлөвлөлт</h3>
+          <p>Хуулийн хүрээнд татварын дарамтыг бууруулах стратеги. Эрсдэлийн үнэлгээ, шалгалтад бэлтгэх дэмжлэг.</p>
+          <a href="#contact" class="s-link">Зөвлөгөө авах <i class="fas fa-arrow-right"></i></a>
+        </article>
+        <article class="s-card" data-r>
+          <div class="s-num">03</div>
+          <div class="s-icon"><i class="fas fa-gavel"></i></div>
+          <h3>Эрх зүйн зөвлөх</h3>
+          <p>Гэрээ хэлцэл, хөдөлмөрийн харилцаа, маргаан шийдвэрлэлт. Асуудал гарахаас өмнө хамгаална.</p>
+          <a href="#contact" class="s-link">Зөвлөгөө авах <i class="fas fa-arrow-right"></i></a>
+        </article>
+        <article class="s-card" data-r>
+          <div class="s-num">04</div>
+          <div class="s-icon"><i class="fas fa-users"></i></div>
+          <h3>Хүний нөөцийн шийдэл</h3>
+          <p>Дотоод журам, цалингийн бүтэц, сонгон шалгаруулалт. Зөв хүнийг зөв байранд — системтэйгээр.</p>
+          <a href="#contact" class="s-link">Зөвлөгөө авах <i class="fas fa-arrow-right"></i></a>
+        </article>
+        <article class="s-card" data-r>
+          <div class="s-num">05</div>
+          <div class="s-icon"><i class="fas fa-chart-line"></i></div>
+          <h3>Бизнес стратеги</h3>
+          <p>Өсөлтийн төлөвлөгөө, санхүүгийн загварчлал, хөрөнгө оруулалт татахад бэлтгэх иж бүрэн дэмжлэг.</p>
+          <a href="#contact" class="s-link">Зөвлөгөө авах <i class="fas fa-arrow-right"></i></a>
+        </article>
+        <article class="s-card" data-r>
+          <div class="s-num">06</div>
+          <div class="s-icon"><i class="fas fa-magnifying-glass-chart"></i></div>
+          <h3>Дотоод аудит</h3>
+          <p>Санхүүгийн хяналт, процессын эрсдэлийн үнэлгээ. Удирдлагад бодит зургийг — тогтмол, ил тод.</p>
+          <a href="#contact" class="s-link">Зөвлөгөө авах <i class="fas fa-arrow-right"></i></a>
+        </article>
       </div>
     </div>
   </section>
 
-  <!-- WHY CHOOSE US -->
-  <section class="why-us section" id="why-us">
-    <div class="container">
-      <div class="section-header">
-        <span class="section-badge">ЯАГААД БИД</span>
-        <h2 class="section-title">Яагаад биднийг сонгох вэ?</h2>
+  <!-- ============ CASE STUDIES ============ -->
+  <section class="section" id="cases" style="padding-top:0">
+    <div class="wrap">
+      <div class="head-row">
+        <div>
+          <div class="k" data-r>Үр дүн</div>
+          <h2 class="h2" data-r>Бид амлалт биш,<br><em>тоо</em> ярьдаг.</h2>
+        </div>
+        <p class="lead" data-r>Харилцагч бүрийн төсөл хэмжигдэхүйц үр дүнгээр дуусдаг. Доорх кейсүүд — бодит гэрээний үр дүн.</p>
       </div>
-      <div class="why-grid">
-        <div class="why-card">
-          <div class="why-icon"><i class="fas fa-award"></i></div>
-          <h3>10+ Жилийн туршлага</h3>
-          <p>2014 оноос хойш олон салбарт 150+ төслийг гүйцэтгэсэн</p>
+
+      <article class="case" data-r>
+        <div class="case-vis cv-1"><div class="case-metric"><div class="big">−23%</div><div class="sub">Татварын зардал / жил</div></div></div>
+        <div class="case-body">
+          <div class="case-tag">Барилгын салбар · 180 ажилтан</div>
+          <h3>Татварын бүтцийг өөрчилж, жилд 340 сая ₮ хэмнэв</h3>
+          <p>Томоохон барилгын компанийн худалдан авалт, туслан гүйцэтгэгчийн гэрээний бүтцийг шинэчилж, хуулийн хүрээнд татварын дарамтыг бууруулав.</p>
+          <div class="case-points">
+            <span><i class="fas fa-circle"></i> Гэрээний бүтцийн иж бүрэн шинэчлэл</span>
+            <span><i class="fas fa-circle"></i> Татварын шалгалтад зөрчилгүй тэнцсэн</span>
+            <span><i class="fas fa-circle"></i> 3 жилийн турш үргэлжилж буй гэрээ</span>
+          </div>
         </div>
-        <div class="why-card">
-          <div class="why-icon"><i class="fas fa-shield-alt"></i></div>
-          <h3>Найдвартай хамтын ажиллагаа</h3>
-          <p>Урт хугацааны түншлэл, ил тод, шударга харьцаа</p>
+      </article>
+
+      <article class="case" data-r>
+        <div class="case-vis cv-2"><div class="case-metric"><div class="big">5×</div><div class="sub">Тайлангийн хурд</div></div></div>
+        <div class="case-body">
+          <div class="case-tag">Жижиглэн худалдаа · 12 салбар</div>
+          <h3>12 салбарын бүртгэлийг нэгтгэж, сарын хаалтыг 3 хоног болгов</h3>
+          <p>Салбар бүр өөр системтэй байсан худалдааны сүлжээний санхүүг нэг стандартад оруулж, удирдлага бодит цагийн мэдээлэлтэй болов.</p>
+          <div class="case-points">
+            <span><i class="fas fa-circle"></i> Нэгдсэн дансны төлөвлөгөө, процесс</span>
+            <span><i class="fas fa-circle"></i> Сарын хаалт: 15 хоног → 3 хоног</span>
+            <span><i class="fas fa-circle"></i> Удирдлагын сарын тайлан автоматжсан</span>
+          </div>
         </div>
-        <div class="why-card">
-          <div class="why-icon"><i class="fas fa-headset"></i></div>
-          <h3>Мэргэжлийн дэмжлэг</h3>
-          <p>24/7 дэмжлэг, асуудал шийдвэрлэлт, тогтмол хяналт</p>
+      </article>
+
+      <article class="case" data-r>
+        <div class="case-vis cv-3"><div class="case-metric"><div class="big">₮1.8 тэрбум</div><div class="sub">Татсан хөрөнгө оруулалт</div></div></div>
+        <div class="case-body">
+          <div class="case-tag">Технологийн компани · Цуврал A</div>
+          <h3>Due diligence-д бүрэн бэлтгэж, хөрөнгө оруулалтыг амжилттай хаав</h3>
+          <p>Гурван жилийн санхүүг олон улсын стандартад нийцүүлэн цэгцэлж, эрх зүйн бүх баримт бичгийг хөрөнгө оруулагчийн шалгалтад бэлтгэв.</p>
+          <div class="case-points">
+            <span><i class="fas fa-circle"></i> Санхүүгийн загварчлал, үнэлгээний дэмжлэг</span>
+            <span><i class="fas fa-circle"></i> Эрх зүйн баримтын бүрэн цэгцлэл</span>
+            <span><i class="fas fa-circle"></i> 4 сарын дотор гэрээ хаагдсан</span>
+          </div>
         </div>
-        <div class="why-card">
-          <div class="why-icon"><i class="fas fa-chart-line"></i></div>
-          <h3>Үр дүнтэй шийдэл</h3>
-          <p>Хэмжих боломжтой үр дүн, бодит өсөлт гаргах</p>
-        </div>
-      </div>
+      </article>
     </div>
   </section>
 
-  <!-- PROCESS SECTION -->
-  <section class="process section" id="process">
-    <div class="container">
-      <div class="section-header">
-        <span class="section-badge">ҮЙЛ ЯВЦ</span>
-        <h2 class="section-title">Хэрхэн ажилладаг вэ?</h2>
+  <!-- ============ PROCESS ============ -->
+  <section class="section" id="process">
+    <div class="wrap">
+      <div class="head-row">
+        <div>
+          <div class="k" data-r>Үйл явц</div>
+          <h2 class="h2" data-r>Эхний уулзалтаас<br><em>тогтмол түншлэл</em> хүртэл.</h2>
+        </div>
       </div>
-      <div class="process-timeline">
-        <div class="process-step">
-          <div class="step-number">01</div>
-          <div class="step-content">
-            <h3>Ярилцлага</h3>
-            <p>Таны бизнес, зорилго, хэрэгцээг ойлгох</p>
-          </div>
+      <div class="proc-grid">
+        <div class="p-step" data-r>
+          <div class="p-dot">01</div>
+          <h3>Танилцах уулзалт</h3>
+          <p>Бизнесийн өнөөгийн байдал, асуудлыг сонсоно. Ямар ч үүрэг хүлээхгүй.</p>
+          <span class="free">Үнэгүй</span>
         </div>
-        <div class="process-step">
-          <div class="step-number">02</div>
-          <div class="step-content">
-            <h3>Төлөвлөгөө</h3>
-            <p>Стратеги, дизайн, хөгжүүлэлтийн төлөвлөгөө</p>
-          </div>
+        <div class="p-step" data-r>
+          <div class="p-dot">02</div>
+          <h3>Оношилгоо ба санал</h3>
+          <p>Санхүү, татвар, эрх зүйн эрсдэлийн үнэлгээ хийж, тодорхой үнэтэй санал тавина.</p>
         </div>
-        <div class="process-step">
-          <div class="step-number">03</div>
-          <div class="step-content">
-            <h3>Хөгжүүлэлт</h3>
-            <p>Чанартай код, гоо сайхан, функц</p>
-          </div>
+        <div class="p-step" data-r>
+          <div class="p-dot">03</div>
+          <h3>Хэрэгжүүлэлт</h3>
+          <p>Хариуцсан зөвлөх томилогдож, төлөвлөгөөний дагуу ажил эхэлнэ. Явц долоо хоног бүр тайлагнагдана.</p>
         </div>
-        <div class="process-step">
-          <div class="step-number">04</div>
-          <div class="step-content">
-            <h3>Хүргэлт</h3>
-            <p>Туршилт, сургалт, нээлт</p>
-          </div>
+        <div class="p-step" data-r>
+          <div class="p-dot">04</div>
+          <h3>Тогтмол түншлэл</h3>
+          <p>Сар бүрийн үйлчилгээ, шуурхай зөвлөгөө, эрсдэлийн урьдчилсан сэрэмжлүүлэг.</p>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- TESTIMONIALS -->
-  <section class="testimonials section" id="testimonials">
-    <div class="container">
-      <div class="section-header">
-        <span class="section-badge">СЭТГЭГДЭЛ</span>
-        <h2 class="section-title">Үйлчлүүлэгчдийн сэтгэгдэл</h2>
-      </div>
-      <div class="testimonials-slider" id="testimonialSlider">
-        <div class="testimonial-card active">
-          <div class="testimonial-stars">⭐⭐⭐⭐⭐</div>
-          <p class="testimonial-text">"Бидний нийлүүлэлтийн сүлжээний оновчлолын дараа бүтээмж 35% нэмэгдсөн. Мэргэжлийн баг, хурдан хүргэлт, чанартай ажил."</p>
-          <div class="testimonial-author">
-            <div class="author-avatar">Б</div>
-            <div class="author-info">
-              <strong>Б. Батболд</strong>
-              <span>Захирал, Монгол Үйлдвэр ХХК</span>
-            </div>
-          </div>
-        </div>
-        <div class="testimonial-card">
-          <div class="testimonial-stars">⭐⭐⭐⭐⭐</div>
-          <p class="testimonial-text">"Төслийн удирдлага маш сайн болсон. Бидний үйл ажиллагаа 20% илүү үр ашигтай болсон. Баг маш мэргэжлийн."</p>
-          <div class="testimonial-author">
-            <div class="author-avatar">Д</div>
-            <div class="author-info">
-              <strong>Д. Дорж</strong>
-              <span>Төслийн захирал, Улаанбаатар Барилга</span>
-            </div>
-          </div>
-        </div>
-        <div class="testimonial-card">
-          <div class="testimonial-stars">⭐⭐⭐⭐⭐</div>
-          <p class="testimonial-text">"Харилцагчийн сэтгэл ханамж 40% нэмэгдсөн. Цогц шийдэл маш үр дүнтэй байсан."</p>
-          <div class="testimonial-author">
-            <div class="author-avatar">Н</div>
-            <div class="author-info">
-              <strong>Н. Наран</strong>
-              <span>Харилцагчийн хэлтсийн захирал, Дэлгүүр Групп</span>
-            </div>
-          </div>
+  <!-- ============ BENEFITS ============ -->
+  <section class="section" id="benefits" style="padding-top:0">
+    <div class="wrap">
+      <div class="head-row">
+        <div>
+          <div class="k" data-r>Яагаад бид</div>
+          <h2 class="h2" data-r>Зөвлөх олон бий.<br><em>Хариуцлага</em> ховор.</h2>
         </div>
       </div>
-      <div class="testimonial-dots">
-        <span class="dot active" data-slide="0"></span>
-        <span class="dot" data-slide="1"></span>
-        <span class="dot" data-slide="2"></span>
+      <div class="b-grid" data-r>
+        <div class="b-cell"><i class="fas fa-shield-halved"></i><h3>Хариуцлагын баталгаа</h3><p>Бидний алдаанаас үүссэн торгууль, хохирлыг гэрээгээр бид хариуцна.</p></div>
+        <div class="b-cell"><i class="fas fa-tag"></i><h3>Ил тод үнэ</h3><p>Сарын тогтмол төлбөр — нэмэлт, далд хураамжгүй. Юу авахаа урьдчилж мэднэ.</p></div>
+        <div class="b-cell"><i class="fas fa-bolt"></i><h3>24 цагийн хариу</h3><p>Асуулт бүрд ажлын 24 цагийн дотор хариулна. Яаралтай үед — шууд утсаар.</p></div>
+        <div class="b-cell"><i class="fas fa-lock"></i><h3>Нууцлалын гэрээ</h3><p>Бүх мэдээлэл NDA-аар хамгаалагдана. 15 жилд нэг ч удаа зөрчөөгүй.</p></div>
+        <div class="b-cell"><i class="fas fa-building"></i><h3>Салбарын туршлага</h3><p>Барилга, худалдаа, технологи, үйлдвэрлэл — салбар бүрийн онцлогийг мэднэ.</p></div>
+        <div class="b-cell"><i class="fas fa-chart-simple"></i><h3>Хэмжигдэх үр дүн</h3><p>Улирал бүр гүйцэтгэлийн тайлан: хэмнэсэн зардал, шийдсэн асуудал — тоогоор.</p></div>
       </div>
     </div>
   </section>
 
-  <!-- FAQ -->
-  <section class="faq section" id="faq">
-    <div class="container">
-      <div class="section-header">
-        <span class="section-badge">АСУУЛТ</span>
-        <h2 class="section-title">Түгээмэл асуултууд</h2>
-      </div>
-      <div class="faq-list">
-        <div class="faq-item">
-          <button class="faq-question">
-            <span>Хэр хугацаанд төсөл хийж дуусгах вэ?</span>
-            <i class="fas fa-chevron-down"></i>
-          </button>
-          <div class="faq-answer">
-            <p>Дундаж хэмжээний төсөл 3-5 долоо хоногт бэлэн болно. Нарийн төвөгтэй төслүүд 1-2 сар шаардагдаж болно.</p>
-          </div>
+  <!-- ============ FAQ ============ -->
+  <section class="section" id="faq">
+    <div class="wrap">
+      <div class="k center" data-r>Түгээмэл асуулт</div>
+      <h2 class="h2" style="text-align:center; margin-bottom: clamp(40px,6vw,72px)" data-r>Эргэлзээгээ <em>эндээс</em> шийдээрэй.</h2>
+      <div class="faq-wrap">
+        <div class="faq-item" data-r>
+          <button class="faq-q" aria-expanded="false">Үйлчилгээний үнэ хэрхэн тогтдог вэ?<span class="x"><i class="fas fa-plus"></i></span></button>
+          <div class="faq-a"><p>Танай байгууллагын гүйлгээний хэмжээ, ажилтны тоо, салбарын онцлогоос хамаарч сарын тогтмол төлбөр тогтоно. Эхний уулзалтын дараа бичгээр, задаргаатай үнийн санал өгдөг — далд хураамж байхгүй.</p></div>
         </div>
-        <div class="faq-item">
-          <button class="faq-question">
-            <span>Үнэ хэд вэ?</span>
-            <i class="fas fa-chevron-down"></i>
-          </button>
-          <div class="faq-answer">
-            <p>Стартер багц 650,000₮-өөс эхэлнэ. Дэлгэрэнгүй үнийг төслийн хэмжээнээс хамаарч тодорхойлно.</p>
-          </div>
+        <div class="faq-item" data-r>
+          <button class="faq-q" aria-expanded="false">Жижиг бизнестэй ажилладаг уу?<span class="x"><i class="fas fa-plus"></i></span></button>
+          <div class="faq-a"><p>Тийм. Харилцагчдын маань гуравны нэг нь 10 хүртэлх ажилтантай компаниуд. Жижиг бизнест зориулсан "Суурь" багц нь яг хэрэгтэй үйлчилгээг л багтаасан, илүүдэлгүй бүтэцтэй.</p></div>
         </div>
-        <div class="faq-item">
-          <button class="faq-question">
-            <span>Тогтмол дэмжлэг үнэгүй юу?</span>
-            <i class="fas fa-chevron-down"></i>
-          </button>
-          <div class="faq-answer">
-            <p>Тийм, бүх багцанд тогтмол дэмжлэг үнэгүй багтсан.</p>
-          </div>
+        <div class="faq-item" data-r>
+          <button class="faq-q" aria-expanded="false">Гэрээний доод хугацаа байдаг уу?<span class="x"><i class="fas fa-plus"></i></span></button>
+          <div class="faq-a"><p>Сарын үйлчилгээний гэрээ 6 сарын доод хугацаатай. Гэхдээ эхний 2 сард үр дүнд сэтгэл ханамжгүй бол торгуульгүйгээр цуцлах эрхийг гэрээнд тусгадаг — эрсдэл бидний талд.</p></div>
         </div>
-        <div class="faq-item">
-          <button class="faq-question">
-            <span>Нэмэлт өөрчлөлт хийж болох уу?</span>
-            <i class="fas fa-chevron-down"></i>
-          </button>
-          <div class="faq-answer">
-            <p>Тийм, хүссэн үедээ нэмэлт функц, хуудас нэмж болно.</p>
-          </div>
+        <div class="faq-item" data-r>
+          <button class="faq-q" aria-expanded="false">Манай мэдээллийн нууцлал хэрхэн хамгаалагдах вэ?<span class="x"><i class="fas fa-plus"></i></span></button>
+          <div class="faq-a"><p>Гэрээ байгуулахаас өмнө нууцлалын гэрээ (NDA) байгуулна. Мэдээлэлд зөвхөн танай багт томилогдсон зөвлөхүүд хандана. 15 жилийн хугацаанд нууцлалын нэг ч зөрчил гаргаагүй.</p></div>
+        </div>
+        <div class="faq-item" data-r>
+          <button class="faq-q" aria-expanded="false">Одоо нягтлантай, гэхдээ зөвлөгөө л хэрэгтэй бол?<span class="x"><i class="fas fa-plus"></i></span></button>
+          <div class="faq-a"><p>Болно. Дотоод багтай нь хамтран ажиллах "зөвлөх" хэлбэр түгээмэл — танай нягтлан өдөр тутмын бүртгэлээ хийж, бид татварын төлөвлөлт, эрсдэлийн хяналт, төвөгтэй асуудлыг хариуцна.</p></div>
+        </div>
+        <div class="faq-item" data-r>
+          <button class="faq-q" aria-expanded="false">Хэрхэн эхлэх вэ?<span class="x"><i class="fas fa-plus"></i></span></button>
+          <div class="faq-a"><p>Доорх маягтаар эсвэл утсаар холбогдоход л хангалттай. 24 цагийн дотор эргэн холбогдож, үнэгүй танилцах уулзалтын цаг тохирно. Уулзалт 45 минут — танай асуудлыг сонсоод, бодит зөвлөгөө өгнө.</p></div>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- CONTACT CTA -->
-  <section class="cta section">
-    <div class="container">
-      <div class="cta-box">
-        <h2>Бизнесээ дараагийн түвшинд гаргах үү?</h2>
-        <p>Бид таны өсөлтөд хамт тусална.</p>
-        <div class="cta-actions">
-          <a href="pages/contact.html" class="btn btn-primary btn-lg">Холбогдох</a>
-          <a href="tel:99620992" class="btn btn-ghost btn-lg"><i class="fas fa-phone"></i> 9962 0992</a>
+  <!-- ============ TESTIMONIALS ============ -->
+  <section class="section" id="testimonials" style="padding-top:0">
+    <div class="wrap">
+      <div class="k center" data-r>Сэтгэгдэл</div>
+      <h2 class="h2" style="text-align:center; margin-bottom: clamp(40px,6vw,72px)" data-r>Харилцагчид <em>юу гэж</em> хэлдэг вэ?</h2>
+      <div class="t-stage" data-r>
+        <div class="t-slide on">
+          <span class="t-mark">“</span>
+          <blockquote>Өмнө нь гурван өөр компаниар санхүү, татвар, хуулийн асуудлаа шийдүүлдэг байсан. Одоо нэг л дугаар руу залгадаг. Хариуцлагыг нэг баг бүрэн үүрдэг нь хамгийн том ялгаа.</blockquote>
+          <div class="t-who">
+            <div class="t-ava">Б</div>
+            <div><div class="nm">Б. Билгүүн</div><div class="rl">Гүйцэтгэх захирал · Барилгын компани</div></div>
+          </div>
+        </div>
+        <div class="t-slide">
+          <span class="t-mark">“</span>
+          <blockquote>Татварын шалгалтад анх удаа айдасгүй орлоо. Бүх баримт цэгцтэй, бүх асуултад хариулт бэлэн байсан. Энэ амар амгалан мөнгөөр хэмжигдэхгүй.</blockquote>
+          <div class="t-who">
+            <div class="t-ava">О</div>
+            <div><div class="nm">О. Оюунчимэг</div><div class="rl">Санхүү хариуцсан захирал · Худалдааны сүлжээ</div></div>
+          </div>
+        </div>
+        <div class="t-slide">
+          <span class="t-mark">“</span>
+          <blockquote>Хөрөнгө оруулалт татах гэж байгаа компани бүрд Оргилийн багийг санал болгоно. Due diligence-ийн үеэр хөрөнгө оруулагч маань "ийм цэгцтэй санхүү ховор" гэж хэлсэн.</blockquote>
+          <div class="t-who">
+            <div class="t-ava">Т</div>
+            <div><div class="nm">Т. Тэмүүжин</div><div class="rl">Үүсгэн байгуулагч · Технологийн стартап</div></div>
+          </div>
+        </div>
+        <div class="t-dots" role="tablist" aria-label="Сэтгэгдэл сонгох">
+          <button class="t-dot on" data-i="0" aria-label="Сэтгэгдэл 1"></button>
+          <button class="t-dot" data-i="1" aria-label="Сэтгэгдэл 2"></button>
+          <button class="t-dot" data-i="2" aria-label="Сэтгэгдэл 3"></button>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- FOOTER -->
-  <footer class="footer">
-    <div class="container">
-      <div class="footer-grid">
-        <div class="footer-brand">
-          <a href="index.html" class="nav-logo">
-            <span class="logo-icon">B</span>
-            <span class="logo-text">Business<span class="logo-accent">Pro</span></span>
-          </a>
-          <p>Мэргэжлийн бизнес вэбсайт загвар. Хурдан хүргэлт, тогтмол дэмжлэг.</p>
+  <!-- ============ PRICING ============ -->
+  <section class="section" id="pricing">
+    <div class="wrap">
+      <div class="head-row">
+        <div>
+          <div class="k" data-r>Үнийн санал</div>
+          <h2 class="h2" data-r>Тогтмол төлбөр.<br><em>Тогтмол</em> амар амгалан.</h2>
         </div>
-        <div class="footer-links">
-          <h4>Хуудаснууд</h4>
-          <a href="pages/about.html">Бидний тухай</a>
-          <a href="pages/services.html">Үйлчилгээ</a>
-          <a href="pages/projects.html">Төслүүд</a>
-          <a href="pages/pricing.html">Үнэ</a>
+        <p class="lead" data-r>Цагийн хөлс биш — сарын тогтмол үйлчилгээ. Төсвөө урьдчилж мэдэж, гэнэтийн нэхэмжлэхээс ангид байгаарай.</p>
+      </div>
+      <div class="pr-grid">
+        <div class="pr-card" data-r>
+          <div class="pr-name">Суурь</div>
+          <div class="pr-price">1,500,000₮ <small>/ сар</small></div>
+          <p class="pr-desc">10 хүртэл ажилтантай жижиг бизнест</p>
+          <ul class="pr-list">
+            <li><i class="fas fa-circle"></i> Сар бүрийн санхүү бүртгэл, тайлан</li>
+            <li><i class="fas fa-circle"></i> НӨАТ, НДШ тооцоолол, тушаалт</li>
+            <li><i class="fas fa-circle"></i> Татварын үндсэн зөвлөгөө</li>
+            <li><i class="fas fa-circle"></i> Имэйл дэмжлэг — 24 цагт хариу</li>
+          </ul>
+          <a href="#contact" class="btn btn-line btn-block">Зөвлөгөө авах</a>
         </div>
-        <div class="footer-links">
-          <h4>Үйлчилгээ</h4>
-          <a href="pages/services.html">Стратеги зөвлөгөө</a>
-          <a href="pages/services.html">Төслийн удирдлага</a>
-          <a href="pages/services.html">Үйл ажиллагааны оновчлол</a>
-          <a href="pages/services.html">Мэргэжлийн зөвлөгөө</a>
+        <div class="pr-card hot" data-r>
+          <div class="pr-flag">Түгээмэл</div>
+          <div class="pr-name">Бизнес</div>
+          <div class="pr-price">3,200,000₮ <small>/ сар</small></div>
+          <p class="pr-desc">Өсөж буй дунд хэмжээний байгууллагад</p>
+          <ul class="pr-list">
+            <li><i class="fas fa-circle"></i> Суурь багцын бүх үйлчилгээ</li>
+            <li><i class="fas fa-circle"></i> Татварын төлөвлөлт, эрсдэлийн хяналт</li>
+            <li><i class="fas fa-circle"></i> Гэрээ, эрх зүйн зөвлөгөө (сард 10 цаг)</li>
+            <li><i class="fas fa-circle"></i> Хүний нөөцийн баримт бичгийн дэмжлэг</li>
+            <li><i class="fas fa-circle"></i> Хариуцсан зөвлөх — шууд утас</li>
+          </ul>
+          <a href="#contact" class="btn btn-gold btn-block">Зөвлөгөө авах</a>
         </div>
-        <div class="footer-contact">
-          <h4>Холбоо барих</h4>
-          <p><i class="fas fa-phone"></i> 9962 0992</p>
-          <p><i class="fas fa-envelope"></i> info@businesspro.mn</p>
-          <p><i class="fas fa-map-marker-alt"></i> Улаанбаатар, Монгол</p>
+        <div class="pr-card" data-r>
+          <div class="pr-name">Энтерпрайз</div>
+          <div class="pr-price">Тусгай санал</div>
+          <p class="pr-desc">Том байгууллага, группын бүтцэд</p>
+          <ul class="pr-list">
+            <li><i class="fas fa-circle"></i> Бүрэн зөвлөх баг — санхүү, татвар, хууль, ХН</li>
+            <li><i class="fas fa-circle"></i> Дотоод аудит, улирлын эрсдэлийн тайлан</li>
+            <li><i class="fas fa-circle"></i> Удирдлагын зөвлөлийн түвшний зөвлөгөө</li>
+            <li><i class="fas fa-circle"></i> Хөрөнгө оруулалт, нэгдэл худалдан авалтын дэмжлэг</li>
+          </ul>
+          <a href="#contact" class="btn btn-line btn-block">Уулзалт товлох</a>
         </div>
       </div>
-      <div class="footer-bottom">
-        <span>&copy; 2024 Business Pro. Бүх эрх хуулиар хамгаалагдсан.</span>
+      <p class="pr-note" data-r>Бүх багц 6 сарын гэрээтэй · Эхний 2 сард торгуульгүй цуцлах нөхцөлтэй · Үнэд НӨАТ багтаагүй</p>
+    </div>
+  </section>
+
+  <!-- ============ CONTACT ============ -->
+  <section class="section" id="contact" style="padding-top:0">
+    <div class="c-wrap" data-r>
+      <div class="c-info">
+        <h2>Эхний алхам — <em>нэг уулзалт.</em></h2>
+        <p>45 минутын үнэгүй уулзалтаар танай бизнесийн санхүү, татвар, эрх зүйн өнөөгийн байдлыг үнэлж, бодит зөвлөгөө өгнө. Үүрэг амлалт шаардахгүй.</p>
+        <div class="c-rows">
+          <div class="c-row"><i class="fas fa-phone"></i><div><b>Утас</b><span>7700-0000, 9900-0000</span></div></div>
+          <div class="c-row"><i class="fas fa-envelope"></i><div><b>Имэйл</b><span>info@orgilpartners.mn</span></div></div>
+          <div class="c-row"><i class="fas fa-location-dot"></i><div><b>Хаяг</b><span>Улаанбаатар, Сүхбаатар дүүрэг,<br>Бизнес тауэр, 12 давхар</span></div></div>
+          <div class="c-row"><i class="fas fa-clock"></i><div><b>Ажлын цаг</b><span>Да–Ба 09:00–18:00</span></div></div>
+        </div>
       </div>
+      <div>
+        <form class="c-form" id="cform" novalidate>
+          <div class="duo">
+            <input type="text" name="name" placeholder="Таны нэр *" required aria-label="Нэр">
+            <input type="tel" name="phone" placeholder="Утасны дугаар *" required aria-label="Утас">
+          </div>
+          <input type="text" name="company" placeholder="Байгууллагын нэр" aria-label="Байгууллага">
+          <textarea name="message" rows="5" placeholder="Ямар асуудлаар зөвлөгөө авахыг хүсэж байна вэ?" aria-label="Зурвас"></textarea>
+          <button type="submit" class="btn btn-gold btn-block">Үнэгүй уулзалт товлох</button>
+          <p style="font-size:.72rem; color:var(--mute); text-align:center; font-weight:300">Илгээснээр 24 цагийн дотор бид тантай холбогдоно.</p>
+        </form>
+        <div class="c-sent" id="csent">
+          <i class="fas fa-circle-check"></i>
+          <h3>Хүсэлт хүлээн авлаа</h3>
+          <p>Манай зөвлөх ажлын 24 цагийн дотор тантай холбогдоно.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  </main>
+
+  <!-- ============ FOOTER ============ -->
+  <footer>
+    <div class="f-wrap">
+      <div class="f-brand">
+        <a href="#top" class="logo"><b>Оргил<span>.</span></b><small>Партнерс</small></a>
+        <p>Санхүү, татвар, эрх зүй, хүний нөөцийн зөвлөх үйлчилгээ. 2011 оноос хойш Монголын бизнесийн итгэлт түнш.</p>
+      </div>
+      <div class="f-col">
+        <h4>Цэс</h4>
+        <a href="#services">Үйлчилгээ</a>
+        <a href="#cases">Үр дүн</a>
+        <a href="#process">Үйл явц</a>
+        <a href="#pricing">Үнийн санал</a>
+        <a href="#faq">Түгээмэл асуулт</a>
+      </div>
+      <div class="f-col">
+        <h4>Холбоо барих</h4>
+        <span>7700-0000</span>
+        <span>info@orgilpartners.mn</span>
+        <span>Улаанбаатар, Сүхбаатар дүүрэг</span>
+        <span>Да–Ба 09:00–18:00</span>
+      </div>
+    </div>
+    <div class="f-base">
+      <span>© 2026 Оргил Партнерс ХХК. Бүх эрх хуулиар хамгаалагдсан.</span>
+      <span>Business Pro загвар — OGT UUR студи</span>
     </div>
   </footer>
 
-  <script src="assets/js/main.js"></script>
+  <script>
+    (function() {
+      'use strict';
+      var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+      /* reveal */
+      var io = new IntersectionObserver(function(es) {
+        es.forEach(function(e) {
+          if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); }
+        });
+      }, { threshold: 0.12, rootMargin: '0px 0px -50px 0px' });
+      document.querySelectorAll('[data-r]').forEach(function(el) { io.observe(el); });
+
+      /* counters */
+      var cio = new IntersectionObserver(function(es) {
+        es.forEach(function(e) {
+          if (!e.isIntersecting) return;
+          cio.unobserve(e.target);
+          var el = e.target, t = parseInt(el.dataset.cnt), s = null;
+          if (reduce) { el.textContent = t; return; }
+          (function tick(ts) {
+            if (!s) s = ts;
+            var p = Math.min((ts - s) / 1500, 1);
+            el.textContent = Math.round(t * (1 - Math.pow(1 - p, 4)));
+            if (p < 1) requestAnimationFrame(tick);
+          })(performance.now());
+        });
+      }, { threshold: 0.6 });
+      document.querySelectorAll('[data-cnt]').forEach(function(el) { cio.observe(el); });
+
+      /* nav + progress + parallax */
+      var nav = document.getElementById('nav'), prog = document.getElementById('prog');
+      var orbs = document.querySelectorAll('.atmo-orb');
+      var ticking = false;
+      window.addEventListener('scroll', function() {
+        if (ticking) return;
+        ticking = true;
+        requestAnimationFrame(function() {
+          var y = window.scrollY;
+          nav.classList.toggle('on', y > 40);
+          var h = document.documentElement.scrollHeight - innerHeight;
+          prog.style.width = (h > 0 ? y / h * 100 : 0) + '%';
+          if (!reduce) orbs.forEach(function(o) {
+            o.style.transform = 'translateY(' + y * parseFloat(o.dataset.sp || 0) + 'px)';
+          });
+          ticking = false;
+        });
+      }, { passive: true });
+
+      /* hero visual mouse parallax */
+      var vis = document.getElementById('heroVis');
+      if (vis && !reduce && matchMedia('(pointer: fine)').matches) {
+        var cards = vis.querySelectorAll('[data-par]');
+        vis.addEventListener('mousemove', function(e) {
+          var r = vis.getBoundingClientRect();
+          var px = (e.clientX - r.left) / r.width - 0.5;
+          var py = (e.clientY - r.top) / r.height - 0.5;
+          cards.forEach(function(c) {
+            var d = parseFloat(c.dataset.par);
+            c.style.transform = 'translate(' + (-px * d) + 'px,' + (-py * d) + 'px)';
+          });
+        });
+        vis.addEventListener('mouseleave', function() {
+          cards.forEach(function(c) { c.style.transform = ''; });
+        });
+      }
+
+      /* mobile nav */
+      var mnav = document.getElementById('mnav');
+      document.getElementById('burger').addEventListener('click', function() { mnav.classList.add('open'); });
+      document.getElementById('mclose').addEventListener('click', function() { mnav.classList.remove('open'); });
+      mnav.querySelectorAll('a').forEach(function(a) {
+        a.addEventListener('click', function() { mnav.classList.remove('open'); });
+      });
+
+      /* FAQ accordion */
+      document.querySelectorAll('.faq-item').forEach(function(item) {
+        var q = item.querySelector('.faq-q'), a = item.querySelector('.faq-a');
+        q.addEventListener('click', function() {
+          var open = item.classList.contains('open');
+          document.querySelectorAll('.faq-item.open').forEach(function(o) {
+            o.classList.remove('open');
+            o.querySelector('.faq-a').style.maxHeight = '0';
+            o.querySelector('.faq-q').setAttribute('aria-expanded', 'false');
+          });
+          if (!open) {
+            item.classList.add('open');
+            a.style.maxHeight = a.scrollHeight + 'px';
+            q.setAttribute('aria-expanded', 'true');
+          }
+        });
+      });
+
+      /* testimonial slider */
+      var slides = document.querySelectorAll('.t-slide');
+      var dots = document.querySelectorAll('.t-dot');
+      var cur = 0, timer = null;
+      function show(i) {
+        cur = i;
+        slides.forEach(function(s, j) { s.classList.toggle('on', j === i); });
+        dots.forEach(function(d, j) { d.classList.toggle('on', j === i); });
+      }
+      function auto() {
+        clearInterval(timer);
+        if (!reduce) timer = setInterval(function() { show((cur + 1) % slides.length); }, 6000);
+      }
+      dots.forEach(function(d) {
+        d.addEventListener('click', function() { show(parseInt(d.dataset.i)); auto(); });
+      });
+      auto();
+
+      /* contact form */
+      document.getElementById('cform').addEventListener('submit', function(e) {
+        e.preventDefault();
+        var f = e.target;
+        if (!f.name.value.trim() || !f.phone.value.trim()) {
+          f.name.style.borderColor = f.name.value.trim() ? '' : 'rgba(255,120,120,.6)';
+          f.phone.style.borderColor = f.phone.value.trim() ? '' : 'rgba(255,120,120,.6)';
+          return;
+        }
+        /* TEMPLATE NOTE: connect your endpoint here (Formspree, own API, etc.) */
+        f.style.display = 'none';
+        document.getElementById('csent').classList.add('show');
+      });
+    })();
+  </script>
 </body>
 </html>
